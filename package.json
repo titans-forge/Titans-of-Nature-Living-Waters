@@ -1,0 +1,38 @@
+{
+  "name": "titans-of-nature-living-waters",
+  "version": "1.4.0",
+  "releaseDate": "2026-09-21",
+  "description": "A local-first educational fishing expedition through the world's living waters.",
+  "private": true,
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest run tests",
+    "test:e2e": "playwright test",
+    "build": "vitest run tests && tsc --noEmit && vite build",
+    "check": "npm run build && npm run test:e2e",
+    "release:itch": "node scripts/package-release.mjs",
+    "release:public": "node scripts/check-media-provenance.mjs && npm run check && npm run release:itch",
+    "postbuild": "node scripts/stage-release-licenses.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.2",
+    "vitest": "^3.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/titans-forge/Titans-of-Nature-Living-Waters.git"
+  },
+  "homepage": "https://titans-forge.itch.io/living-waters"
+}

@@ -1,0 +1,28 @@
+export interface GlossaryTerm { term: string; definition: string; example?: string }
+
+export const glossaryTerms: GlossaryTerm[] = [
+  { term: "Anadromous", definition: "Growing mainly at sea and returning to freshwater to reproduce.", example: "Coho salmon connect ocean feeding with river spawning." },
+  { term: "Barotrauma", definition: "An injury caused by a change in pressure.", example: "A rockfish brought rapidly from depth may become unable to swim back down." },
+  { term: "Benthic", definition: "Living on, in, or close to the bottom of a body of water.", example: "A sponge attached to lake-bed rock belongs to the benthic community." },
+  { term: "Bycatch", definition: "An animal caught unintentionally while someone is trying to catch or sample something else." },
+  { term: "Dissolved oxygen", definition: "Oxygen mixed into water that aquatic animals can use to breathe.", example: "Cool bottom water can still be poor habitat if it has too little oxygen." },
+  { term: "Ecological flow", definition: "The amount and timing of moving water needed to help a river's living system function." },
+  { term: "Echolocation", definition: "Finding objects by making sounds and sensing their returning echoes.", example: "River dolphins use echoes in water where vision is limited." },
+  { term: "Endemic", definition: "Naturally found only in a particular place or region.", example: "Some Baikal animals occur naturally only in that lake system." },
+  { term: "Estuary", definition: "A coastal place where river water meets and mixes with seawater." },
+  { term: "Flood pulse", definition: "A repeating rise and fall of water that temporarily connects a river with its floodplain." },
+  { term: "Food web", definition: "The linked feeding relationships through which energy moves among living things." },
+  { term: "Habitat", definition: "The place and conditions an organism uses to live, feed, shelter, or reproduce." },
+  { term: "Hypothesis", definition: "A possible explanation or prediction that observations can help test." },
+  { term: "Littoral", definition: "The nearshore part of a lake or coast.", example: "A lighted rocky shelf can support a different community from deep open water." },
+  { term: "Nursery habitat", definition: "A place where young animals can find food and shelter while growing." },
+  { term: "Photosynthesis", definition: "Using light to make food from water and carbon dioxide, as plants and many algae do." },
+  { term: "Productivity", definition: "How quickly living material is made in an ecosystem.", example: "Growth by algae and plankton helps supply energy to a marine food web." },
+  { term: "Recompression", definition: "Returning to higher pressure after pressure has fallen.", example: "A descending device helps return an overbuoyant fish to depth; it does not guarantee survival." },
+  { term: "Salinity", definition: "How much dissolved salt water contains." },
+  { term: "Sediment", definition: "Particles such as sand, silt, or mud carried by water or settled on the bottom." },
+  { term: "Stratification", definition: "Water separating into layers with different properties, often warmer surface water above cooler water." },
+  { term: "Turbidity", definition: "How cloudy water is because of suspended particles.", example: "A muddy inflow can raise turbidity without identifying which chemicals are present." },
+  { term: "Upwelling", definition: "Deeper water moving toward the surface, often bringing nutrients into sunlit water." },
+  { term: "Watershed", definition: "The land area whose water drains toward a particular river, lake, or coast." },
+];

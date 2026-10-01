@@ -1,0 +1,278 @@
+{
+  "schema": "forge_game_media_inventory_v1",
+  "assets": [
+    {
+      "path": "src/assets/aiko-guide.webp",
+      "sha256": "b0c3797b8e6ef1f90717bd29694dfb3077106897845acf6727d72dbbcf465989",
+      "bytes": 69190
+    },
+    {
+      "path": "src/assets/alaska-kelp-coast.webp",
+      "sha256": "74bd68450e352f8cf3b579076b44a98b420ce5256432be2b6b96f1a955e76600",
+      "bytes": 226968
+    },
+    {
+      "path": "src/assets/amazon-floodplain.webp",
+      "sha256": "ada2b45e7caf1cd7e8b2c15fa79eba94372fde34d0bcd701e07e099eb9ece80d",
+      "bytes": 297636
+    },
+    {
+      "path": "src/assets/anjali-guide.webp",
+      "sha256": "8d59fbb73a3ca224c2e4b07423a0e5d04114d0612116bb908b6c88538e479042",
+      "bytes": 144142
+    },
+    {
+      "path": "src/assets/anya-guide.webp",
+      "sha256": "39ef86e2c187ec875373cabf735de6ee1464fb8b2be6af8e84d02474194a1c24",
+      "bytes": 132196
+    },
+    {
+      "path": "src/assets/catches/african-tigerfish.webp",
+      "sha256": "20d1806883ad6040428e9f982f49a83fb00943dd359070b417f2e58cc6ed85e5",
+      "bytes": 164684
+    },
+    {
+      "path": "src/assets/catches/arapaima.webp",
+      "sha256": "cff561f1300ae16b04c2b9482036b5a3490b30880bd44adbe86e854b18ae3c16",
+      "bytes": 531442
+    },
+    {
+      "path": "src/assets/catches/baikal-sturgeon.webp",
+      "sha256": "4ec1b076500bdaca36e8fa99af7b270a60fd8213a61e63001867466494982bd3",
+      "bytes": 128656
+    },
+    {
+      "path": "src/assets/catches/beluga-research.webp",
+      "sha256": "05d62ad567598abfb05a6a3837992f513bac0391e457415bcf3243c38856a357",
+      "bytes": 367958
+    },
+    {
+      "path": "src/assets/catches/bunni.webp",
+      "sha256": "c701a259d102c029f7bc4ce10dbbd8b93a4a2914d2362b03717561896ab90736",
+      "bytes": 286108
+    },
+    {
+      "path": "src/assets/catches/channel-catfish.webp",
+      "sha256": "59f60ea020ca8909d7c47ba7681fcee5670879ebe249d0d1207a05fe65d417e5",
+      "bytes": 177630
+    },
+    {
+      "path": "src/assets/catches/coho-salmon.webp",
+      "sha256": "9bc16c1ecfbd3d13496f14b6f0540f1caf8b70c87e15aeaca44876268607a137",
+      "bytes": 147240
+    },
+    {
+      "path": "src/assets/catches/common-snook.webp",
+      "sha256": "5aff8ebbe06238e8aa725da6078bc27c1fbdc85a0257f3bbb5ccda4523c04eae",
+      "bytes": 318156
+    },
+    {
+      "path": "src/assets/catches/coral-trout.webp",
+      "sha256": "458a350a96a2f5d8a7b13d06fda40cbc42d22f63423b12658440c90239310fe7",
+      "bytes": 243334
+    },
+    {
+      "path": "src/assets/catches/giant-snakehead.webp",
+      "sha256": "5d932d9b2ee73639303b32c39bb7857a134f21994097872d9805a645ef4e0a6c",
+      "bytes": 264202
+    },
+    {
+      "path": "src/assets/catches/giant-trevally.webp",
+      "sha256": "e4ab6b8d5172a7f5a07e99a5ebb966d7009d9739233be25050fab3694b560b67",
+      "bytes": 166068
+    },
+    {
+      "path": "src/assets/catches/goonch-catfish.webp",
+      "sha256": "750ca2b12a98b6816a394f7a0258b9c44784ad4eb71d563e74993b8fe09493bf",
+      "bytes": 149676
+    },
+    {
+      "path": "src/assets/catches/japanese-sea-bass.webp",
+      "sha256": "98f7bec4ff66a57136e91d54a20a07d27059d1d625e068dde08b42283f1be72e",
+      "bytes": 158026
+    },
+    {
+      "path": "src/assets/catches/largemouth-bass.webp",
+      "sha256": "6bae812e518072c3ff4707547fd00a5a14698c585bf1c0c172d0b40ee8657c90",
+      "bytes": 196014
+    },
+    {
+      "path": "src/assets/catches/mesopotamian-catfish.webp",
+      "sha256": "69b0efbfc94d748d62cee31f4e52c1aaf70b6d5594d4d44b38251d39f43ac30e",
+      "bytes": 170112
+    },
+    {
+      "path": "src/assets/catches/nile-perch.webp",
+      "sha256": "10c8397de9fe90265297c09ec34e9b72c4f01ee2eb66269388b3886256bebdf3",
+      "bytes": 156970
+    },
+    {
+      "path": "src/assets/catches/nile-tilapia.webp",
+      "sha256": "cc38c9a123fd3dd00045917a07e384bb837ee29d51f75074234e3e4304ca4364",
+      "bytes": 191574
+    },
+    {
+      "path": "src/assets/catches/northern-pike.webp",
+      "sha256": "3c90a5e5d61531b57f9d2775313b0e5035bd2a567079114c10295b78ea9e0407",
+      "bytes": 226336
+    },
+    {
+      "path": "src/assets/catches/pacific-halibut.webp",
+      "sha256": "c508bd9843bda25f830bf6b6eba513a2e3dd27d164f83a1229bf03a4202a8c07",
+      "bytes": 154836
+    },
+    {
+      "path": "src/assets/catches/peacock-bass.webp",
+      "sha256": "82f9e21ab1ee9107d7cd69f7f4bbd6d08da5f907eb04345a8b9b15ab21fd45c8",
+      "bytes": 356270
+    },
+    {
+      "path": "src/assets/catches/red-seabream.webp",
+      "sha256": "1eae684192846849a909a73e1e6e09528cb1799d849953888b143da4e45f43e8",
+      "bytes": 202054
+    },
+    {
+      "path": "src/assets/catches/rohu.webp",
+      "sha256": "daa0c43ef0c564983cd3cd05ed9f2d9857dbf31763a85f5b1e22fca6a3c055b4",
+      "bytes": 264898
+    },
+    {
+      "path": "src/assets/catches/silver-arowana.webp",
+      "sha256": "02634b85fa6a3bcb6601b43ba0ca1532ee30d38e51140a5fd12f45b509756905",
+      "bytes": 202536
+    },
+    {
+      "path": "src/assets/catches/spotted-sea-bass.webp",
+      "sha256": "a7121f000d36dd3d80d6f3729bd5ab92630fd97a13d1e15b6143499675ca76f8",
+      "bytes": 134844
+    },
+    {
+      "path": "src/assets/danube-iron-gates.webp",
+      "sha256": "565de29ae86ba44ba9f8511993bdf67e877b9f9110a5e0229ad6f722fecf789d",
+      "bytes": 198148
+    },
+    {
+      "path": "src/assets/elena-guide.webp",
+      "sha256": "8f7db127f94610c6a62f5e05270196227fb98c705d8c2a3411a10dcace392896",
+      "bytes": 96620
+    },
+    {
+      "path": "src/assets/euphrates-marsh.webp",
+      "sha256": "34674019b8e32f83a8502eee469c57e531c41400703b83ba84d40ba6c13904b5",
+      "bytes": 226040
+    },
+    {
+      "path": "src/assets/florida-bay.webp",
+      "sha256": "852732e31cccea4ca6848521e20b61fac931e2838f7287cf4f3f4f73f7d4cc27",
+      "bytes": 380374
+    },
+    {
+      "path": "src/assets/galapagos-bolivar-channel.webp",
+      "sha256": "6ab39681641afd44acd428a6a078b8e9de655146040e4795b64fb0af2a2b5913",
+      "bytes": 224476
+    },
+    {
+      "path": "src/assets/ganges-river.webp",
+      "sha256": "0449f41242f310ec402406e80aceb666ee01613429de6445455df416843547ea",
+      "bytes": 198658
+    },
+    {
+      "path": "src/assets/great-barrier-reef.webp",
+      "sha256": "fa2639d138ad08777b027baadedeaf2140a73d65f85b5f738dbe49c94db3f7bf",
+      "bytes": 279650
+    },
+    {
+      "path": "src/assets/iara-guide.webp",
+      "sha256": "b0741afccd19438a8f9e025b80d3227c690ffc2d2dea9f06807975be35e1c290",
+      "bytes": 127462
+    },
+    {
+      "path": "src/assets/jack-guide.webp",
+      "sha256": "d0ba259695915a6fa96b907a03ff078455065cfeb7cc8f16e579eead97cbabb9",
+      "bytes": 71556
+    },
+    {
+      "path": "src/assets/jelena-guide.webp",
+      "sha256": "72fcc27fa414f4f02ae1c4f9af65de6904f28000e4c5ed215093bb3070e67f1a",
+      "bytes": 79026
+    },
+    {
+      "path": "src/assets/kabelo-guide.webp",
+      "sha256": "d52b3b886df2272cb65cc9c6b5f4ff506299e022342dc7711df2333fb2379b8c",
+      "bytes": 196942
+    },
+    {
+      "path": "src/assets/lake-baikal.webp",
+      "sha256": "8958d6c84e7b744ad75c69277a10180f92667ab3eac794624251cc23a1bf35d2",
+      "bytes": 230542
+    },
+    {
+      "path": "src/assets/lake-holiday.webp",
+      "sha256": "04edfbe1c3fb5be7ba93dd78c8305954c1bfd953033a20fdc6b3ca45ad501f88",
+      "bytes": 329218
+    },
+    {
+      "path": "src/assets/mariam-guide.webp",
+      "sha256": "0a14d1d94e39df9cd61bae94bbb7428361e67bb7d76ecdf39da2dcd0d8e01d6a",
+      "bytes": 163866
+    },
+    {
+      "path": "src/assets/mateo-guide.webp",
+      "sha256": "5c60c457de2fb5d972fd25d69f22d9ea4c84b7a7823e6e5457c2a45729314668",
+      "bytes": 86868
+    },
+    {
+      "path": "src/assets/maya-guide.webp",
+      "sha256": "2550b74773e0b6be8f87891c5d09355a07bf18642bf955b6c06c7611c6d45d60",
+      "bytes": 186704
+    },
+    {
+      "path": "src/assets/nile-river.webp",
+      "sha256": "f574bad60ddcb530bb2a3de280cd99997a9f4b36eb9cda12b8924d8b1adb5dc4",
+      "bytes": 270930
+    },
+    {
+      "path": "src/assets/noah-guide.webp",
+      "sha256": "a79ab85a62b11cacf01d14e7bde4b40887ebb1ce4989eba0741fad451840e4b2",
+      "bytes": 117160
+    },
+    {
+      "path": "src/assets/okavango-delta.webp",
+      "sha256": "0e46bad291c3c7bfd38317d34a6f340a350b296b62f154254b07462eb71fd93a",
+      "bytes": 219328
+    },
+    {
+      "path": "src/assets/seto-inland-sea.webp",
+      "sha256": "542bdfa843ff73ecfab50b5dbd628a9a57bb26d37e14cbbad229afc93aeec9b0",
+      "bytes": 186602
+    },
+    {
+      "path": "src/assets/sreyneang-guide.webp",
+      "sha256": "fb6f13aa73cca67a14888d2863bbdc9742598cea0bd69b9000c781b81efe248e",
+      "bytes": 158704
+    },
+    {
+      "path": "src/assets/tonle-sap.webp",
+      "sha256": "e7a004e926f63facb23752d69adc0a80f7d04a33167dabf538d3583a57c5b195",
+      "bytes": 206242
+    },
+    {
+      "path": "src/assets/wei-guide.webp",
+      "sha256": "1535ba802ace69578c15974a9148f4e352a776c515ae8397344ec7c02e8a524d",
+      "bytes": 82584
+    },
+    {
+      "path": "src/assets/yellow-river-delta.webp",
+      "sha256": "31d59968165651da13012fe3f8b842c804730783a1528de5ce81dffd9e82110f",
+      "bytes": 285108
+    },
+    {
+      "path": "src/assets/zahra-guide.webp",
+      "sha256": "808fc358a1e99284fdfaff03f99354eb88ced7f5031212f8f9952a6efc73f3b3",
+      "bytes": 206502
+    }
+  ],
+  "rights_record": "MEDIA_RIGHTS.md",
+  "provider_evidence": "Retained project records; asset hashes do not independently establish rights.",
+  "private_receipts_included": false
+}

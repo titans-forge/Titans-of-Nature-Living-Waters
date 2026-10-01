@@ -1,0 +1,20 @@
+{
+  "schema": "forge_game_github_license_checkpoint_v1",
+  "release_id": "FG-LIC-20260930-01-GH1",
+  "game": "Titans of Nature: Living Waters",
+  "repository": "titans-forge/Titans-of-Nature-Living-Waters",
+  "recorded_date": "2026-09-30",
+  "license": "Forge Game Hosting License 1.0",
+  "license_sha256": "28638be413f7815704fe68aed52a4ea4cb7bd4d28b35f2dca9b78d438a4a90bf",
+  "previous_mit_license_sha256": "f5ba04d99816b6e73a183fcba80bfdcdab78c82a075a21f183fe4ca4dfaa1cd9",
+  "previous_source_snapshot_sha256": "bb10e690713b263885314ef5ade7f4a3de9463f7f1e73cca86886e8fcfacc6bd",
+  "previous_mit_commit": null,
+  "source_version": "1.4.0",
+  "prior_grants_preserved": true,
+  "owner_upgrade_confirmation": "Owner confirms substantial upgrades since the first licensed releases; this migration creates no gameplay upgrade.",
+  "change_scope": "Clean source export, public documentation, release notices and packaging safeguards. Original gameplay and media are preserved.",
+  "third_party_and_media_terms_preserved": true,
+  "approval": "Owner authorized uploading the other catalog games on September 30, 2026; approved Forge license wording retained.",
+  "public_source_publication": "Prepared for authorized publication; successful upload must be verified separately.",
+  "itch_source_equivalence": "Must be established separately by exact archived runtime comparison."
+}
