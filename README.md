@@ -37,11 +37,11 @@ npx playwright install chromium
 npm run check
 ```
 
-The selected 1.4.0 edition currently passes 135 deterministic tests covering
+The 1.14.0 edition passes 370 deterministic and presentation tests covering
 timed control, observations, content, save validation and migration, followed by
 TypeScript and production bundling. Desktop/mobile Playwright scenarios are
 included; running those is separate from the deterministic test suite and build.
-See `docs/UPGRADE_VERIFICATION.md` for the earlier research edition's tested scope.
+See [release verification](docs/RELEASE_1_14.md) for the current tested scope.
 
 ## Create the itch.io package
 
@@ -51,7 +51,7 @@ npm run release:itch
 
 This rebuilds the game and creates:
 
-- `release/living-waters-html5-v1.4.0-forge-source-20260930.zip`
+- `release/living-waters-html5-v1.14.0.zip`
 - The archive-specific `.sha256` and `.manifest.json` files
 
 Existing releases are retained. A second attempt to package the same archive
