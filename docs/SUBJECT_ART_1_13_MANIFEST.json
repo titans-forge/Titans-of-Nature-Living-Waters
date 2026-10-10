@@ -1,0 +1,153 @@
+{
+  "created": "2026-10-09",
+  "provider": "OpenAI built-in image generation in Codex",
+  "model": "Not reported by built-in tool",
+  "scope": "Local Living Waters fish turn pass; no publication",
+  "formatConversion": "Pillow for WebP encoding and downscaling only; full frame and original RGBA alpha retained",
+  "disclosure": "Generated game reconstructions, not actual wildlife encounters or scientific evidence",
+  "assets": [
+    {
+      "id": "peacock-bass-turn",
+      "kind": "live-fish-turn-sprite",
+      "generatedSource": "exec-a5d3106d-9aec-4058-b9ef-e94963ef1ce8.png",
+      "sourceDimensions": [
+        1316,
+        1195
+      ],
+      "path": "src/assets/fish-sprites/peacock-bass-turn-v1.webp",
+      "dimensions": [
+        768,
+        697
+      ],
+      "sourceSha256": "2f2b49d08c7ab6373d8c708eca1538ce160bbe1314b34d082fb2a5b5f52244a8",
+      "sha256": "1b4d99cae003a62a8429e0241050e8f4d9f0520853b28512042786573fe57592",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "inputImages": [
+        "src/assets/fish-sprites/peacock-bass-v1.webp"
+      ],
+      "bytes": 144828,
+      "sourceAlphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "common-snook-turn",
+      "kind": "live-fish-turn-sprite",
+      "generatedSource": "exec-1ad59063-84a8-4875-8cad-ed2cb3162a44.png",
+      "sourceDimensions": [
+        1347,
+        1168
+      ],
+      "path": "src/assets/fish-sprites/common-snook-turn-v1.webp",
+      "dimensions": [
+        768,
+        666
+      ],
+      "sourceSha256": "43eaf21da17bf95ce40ef8b8ad5b203580e6c55624ec677435699c07b5c5bd9d",
+      "sha256": "68d3b23ee76dc0272d7b035be11f353c7fdfaa1c1723f549a95cd3a05aea9aed",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "inputImages": [
+        "src/assets/fish-sprites/common-snook-v1.webp"
+      ],
+      "bytes": 108482,
+      "sourceAlphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "spotted-seatrout-turn",
+      "kind": "live-fish-turn-sprite",
+      "generatedSource": "exec-cb2c247e-3570-45ec-833c-bbb2a610c1c2.png",
+      "sourceDimensions": [
+        1394,
+        1128
+      ],
+      "path": "src/assets/fish-sprites/spotted-seatrout-turn-v1.webp",
+      "dimensions": [
+        768,
+        621
+      ],
+      "sourceSha256": "8c3c7627fbb711f12b1f6fa60b3d0da0b4b4d37d106761032df6d7c59a53ed0b",
+      "sha256": "602b42f48e152ccdecbdf2dd10916e9fe342d1899d5654c78440aa89d6b19cd1",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "inputImages": [
+        "src/assets/fish-sprites/spotted-seatrout-v1.webp"
+      ],
+      "bytes": 107378,
+      "sourceAlphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "giant-snakehead-turn",
+      "kind": "live-fish-turn-sprite",
+      "generatedSource": "exec-82548027-d01e-4071-aa89-cc2f9350d09b.png",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "path": "src/assets/fish-sprites/giant-snakehead-turn-v1.webp",
+      "dimensions": [
+        768,
+        512
+      ],
+      "sourceSha256": "87813fcf6f3c35ceecb99431eb992eb651635456059433badc8bf0f3fcf91b21",
+      "sha256": "c316deb96ed449e913dadf3470b901ff6d1a8418fe16b055e04348009e87f6bd",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "inputImages": [
+        "src/assets/fish-sprites/giant-snakehead-v1.webp"
+      ],
+      "bytes": 103932,
+      "framingEditInput": "exec-6ec406be-41b4-434b-a4b2-ca833483afee.png",
+      "sourceAlphaExtrema": [
+        0,
+        254
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "key": "peacock-bass",
+      "file": "peacock-bass-v1.webp",
+      "identity": "adult peacock bass, preserving the olive gold flank coloring, orange lower fins, dark vertical bars and dark gold-ringed tail ocellus of the reference",
+      "prompt": "Use case: scientific-educational. Asset type: realistic transparent fish turn frame for a 2D educational fishing game. Input image 1 is the specimen identity and rendering reference. Create a new camera view of this same adult peacock bass, preserving the olive gold flank coloring, orange lower fins, dark vertical bars and dark gold-ringed tail ocellus of the reference. One complete fish only on genuine alpha transparency. The fish is swimming toward the viewer, viewed from slightly above: near-frontal, symmetric head-on view with the mouth at the horizontal center in the lower-middle of the frame, both eyes correctly placed, dorsal side upright, head nearest the viewer, body and tail receding directly behind the head. Show believable perspective depth, wet scales, fins with delicate rays, subtle naturally curved body, photographic natural-history realism. Preserve the reference specimen's size, markings, colors and fin anatomy. Mouth slightly parted with a clear natural center for a line anchor, not exaggerated; no snarling. Entire fish, pectoral fins, dorsal fin and tail visible inside frame with clean padding. No side-view profile, no mirrored duplicates, no extra fish, no water, bubbles, fishing tackle, hook or line, no cast shadow, no landscape, labels or text. Transparent background. Soft neutral lighting matching the reference. No cartoon, anime, toy gloss or simplified icon shapes. This is a separate turn frame, not an edit to the existing side-view asset."
+    },
+    {
+      "key": "common-snook",
+      "file": "common-snook-v1.webp",
+      "identity": "adult common snook, preserving the silver olive coloring, black lateral stripe, projecting lower jaw, two dorsal fins and natural narrow head of the reference",
+      "prompt": "Use case: scientific-educational. Asset type: realistic transparent fish turn frame for a 2D educational fishing game. Input image 1 is the specimen identity and rendering reference. Create a new camera view of this same adult common snook, preserving the silver olive coloring, black lateral stripe, projecting lower jaw, two dorsal fins and natural narrow head of the reference. One complete fish only on genuine alpha transparency. The fish is swimming toward the viewer, viewed from slightly above: near-frontal, symmetric head-on view with the mouth at the horizontal center in the lower-middle of the frame, both eyes correctly placed, dorsal side upright, head nearest the viewer, body and tail receding directly behind the head. Show believable perspective depth, wet scales, fins with delicate rays, subtle naturally curved body, photographic natural-history realism. Preserve the reference specimen's size, markings, colors and fin anatomy. Mouth slightly parted with a clear natural center for a line anchor, not exaggerated; no snarling. Entire fish, pectoral fins, dorsal fin and tail visible inside frame with clean padding. No side-view profile, no mirrored duplicates, no extra fish, no water, bubbles, fishing tackle, hook or line, no cast shadow, no landscape, labels or text. Transparent background. Soft neutral lighting matching the reference. No cartoon, anime, toy gloss or simplified icon shapes. This is a separate turn frame, not an edit to the existing side-view asset."
+    },
+    {
+      "key": "spotted-seatrout",
+      "file": "spotted-seatrout-v1.webp",
+      "identity": "adult spotted seatrout, preserving the silver olive coloring, many dark flank and fin spots and natural tapered head of the reference",
+      "prompt": "Use case: scientific-educational. Asset type: realistic transparent fish turn frame for a 2D educational fishing game. Input image 1 is the specimen identity and rendering reference. Create a new camera view of this same adult spotted seatrout, preserving the silver olive coloring, many dark flank and fin spots and natural tapered head of the reference. One complete fish only on genuine alpha transparency. The fish is swimming toward the viewer, viewed from slightly above: near-frontal, symmetric head-on view with the mouth at the horizontal center in the lower-middle of the frame, both eyes correctly placed, dorsal side upright, head nearest the viewer, body and tail receding directly behind the head. Show believable perspective depth, wet scales, fins with delicate rays, subtle naturally curved body, photographic natural-history realism. Preserve the reference specimen's size, markings, colors and fin anatomy. Mouth slightly parted with a clear natural center for a line anchor, not exaggerated; no snarling. Entire fish, pectoral fins, dorsal fin and tail visible inside frame with clean padding. No side-view profile, no mirrored duplicates, no extra fish, no water, bubbles, fishing tackle, hook or line, no cast shadow, no landscape, labels or text. Transparent background. Soft neutral lighting matching the reference. No cartoon, anime, toy gloss or simplified icon shapes. This is a separate turn frame, not an edit to the existing side-view asset."
+    },
+    {
+      "key": "giant-snakehead",
+      "file": "giant-snakehead-v1.webp",
+      "identity": "adult giant snakehead, preserving the charcoal olive mottled adult coloring, broad slightly flattened head, long low dorsal fin and rounded tail of the reference",
+      "prompt": "Use case: scientific-educational. Asset type: realistic transparent fish turn frame for a 2D educational fishing game. Input image 1 is the specimen identity and rendering reference. Create a new camera view of this same adult giant snakehead, preserving the charcoal olive mottled adult coloring, broad slightly flattened head, long low dorsal fin and rounded tail of the reference. One complete fish only on genuine alpha transparency. The fish is swimming toward the viewer, viewed from slightly above: near-frontal, symmetric head-on view with the mouth at the horizontal center in the lower-middle of the frame, both eyes correctly placed, dorsal side upright, head nearest the viewer, body and tail receding directly behind the head. Show believable perspective depth, wet scales, fins with delicate rays, subtle naturally curved body, photographic natural-history realism. Preserve the reference specimen's size, markings, colors and fin anatomy. Mouth slightly parted with a clear natural center for a line anchor, not exaggerated; no snarling. Entire fish, pectoral fins, dorsal fin and tail visible inside frame with clean padding. No side-view profile, no mirrored duplicates, no extra fish, no water, bubbles, fishing tackle, hook or line, no cast shadow, no landscape, labels or text. Transparent background. Soft neutral lighting matching the reference. No cartoon, anime, toy gloss or simplified icon shapes. This is a separate turn frame, not an edit to the existing side-view asset."
+    },
+    {
+      "key": "giant-snakehead-edge-edit",
+      "prompt": "Edit only the background and edge isolation of this generated giant snakehead game cutout. Preserve the exact fish pose, proportions, markings, anatomy, fin detail, lighting and photographic realism. Remove ALL the black and gray background, ALL fog, glow, bloom, shadows and halo surrounding the fish. Deliver the same one complete fish on genuine clean alpha transparency; pixels outside the fish silhouette and fine fin rays must be fully transparent, not translucent black or gray. Keep the full fish and fins with original padding, no cropping or additional objects, no water, no text. Preserve natural semitransparent fine fin edges only. Do not repaint the fish."
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { ExpeditionState } from "../types";
+import { useInteractionAudio } from "./InteractionAudio";
 
 const Preferences = createContext({ large: false, setLarge: (_large: boolean) => {}, sound: false, toggleSound: async () => {} });
 
@@ -30,5 +31,10 @@ export function FieldPreferences({ children }: { children: React.ReactNode }) {
 
 export function FieldSettings({ state, setState }: { state: ExpeditionState; setState: React.Dispatch<React.SetStateAction<ExpeditionState>> }) {
   const { large, setLarge, sound, toggleSound } = useContext(Preferences);
-  return <section className="field-settings"><h3>Make the field comfortable</h3><button aria-pressed={state.assistMode} onClick={() => setState((current) => ({ ...current, assistMode: !current.assistMode }))}>Untimed controls: {state.assistMode ? "on" : "off"}</button><p>Untimed mode advances one safe phase at a time. The journal records assistance separately; it never reduces access to a destination.</p><button aria-pressed={large} onClick={() => setLarge(!large)}>Larger reading text: {large ? "on" : "off"}</button><button aria-pressed={sound} onClick={() => void toggleSound()}>Quiet water ambience: {sound ? "on" : "off"}</button><small>Synthesized water texture. No instructions rely on sound. Sound starts only when you enable it.</small></section>;
+  const actionSound = useInteractionAudio();
+  return <section className="field-settings"><h3>Make the field comfortable</h3><button aria-pressed={state.assistMode} onClick={() => setState((current) => ({ ...current, assistMode: !current.assistMode }))}>Untimed controls: {state.assistMode ? "on" : "off"}</button><p>Untimed mode advances one safe phase at a time. The journal records assistance separately; it never reduces access to a destination.</p><button aria-pressed={large} onClick={() => setLarge(!large)}>Larger reading text: {large ? "on" : "off"}</button>
+    <button aria-pressed={actionSound.enabled} disabled={actionSound.pending} onClick={() => void actionSound.toggle()}>Field action sounds: {actionSound.pending ? "changing…" : actionSound.enabled ? "on" : "off"}</button>
+    <small>Quiet cast, pressure and completion cues. Off when you open the game; all cues also appear on screen.</small>
+    {actionSound.unavailable && <p role="status">Sound could not start. You can try the sound button again; the visual cues remain available.</p>}
+    <button aria-pressed={sound} onClick={() => void toggleSound()}>Quiet water ambience: {sound ? "on" : "off"}</button><small>Synthesized water texture. No instructions rely on sound. Sound starts only when you enable it.</small></section>;
 }

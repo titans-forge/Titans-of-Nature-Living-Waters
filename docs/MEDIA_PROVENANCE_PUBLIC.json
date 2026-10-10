@@ -157,9 +157,94 @@
       "bytes": 96620
     },
     {
+      "path": "src/assets/encounters/baikal-sponge-in-situ-v1.webp",
+      "sha256": "28a2b34b2ca1dbe6ddfd2d209634cfd9c41582ff748fa9f3c153f8b4bb420e87",
+      "bytes": 288820
+    },
+    {
+      "path": "src/assets/encounters/marine-iguana-observation-v1.webp",
+      "sha256": "3701221dddd43df8975a1db643ebfa15d458193de17bd1c5eb251d92157f7d26",
+      "bytes": 276202
+    },
+    {
+      "path": "src/assets/encounters/mooring-rope-response-v1.webp",
+      "sha256": "829a0864aa651a3c8d89e02720c88a338a8ec0fc0fb1efe30e737e7eb3ee7936",
+      "bytes": 235262
+    },
+    {
+      "path": "src/assets/encounters/river-turtle-waterline-v1.webp",
+      "sha256": "a9f683f4b1706bc6dcccb53a77bf4d8db5d60502f1b4713cda95928b4eeba449",
+      "bytes": 183440
+    },
+    {
+      "path": "src/assets/encounters/spotted-seatrout-waterline-v1.webp",
+      "sha256": "85d9b8a5049ffe6c115ef4f81c2099a7e7734f8be41baa69e5d4b1efa9d881f9",
+      "bytes": 186122
+    },
+    {
       "path": "src/assets/euphrates-marsh.webp",
       "sha256": "34674019b8e32f83a8502eee469c57e531c41400703b83ba84d40ba6c13904b5",
       "bytes": 226040
+    },
+    {
+      "path": "src/assets/fish-sprites/common-snook-oblique-v1.webp",
+      "sha256": "588863535b7a302da88ef3485daff62cf23809c765b546aad4b7d5443f7600ce",
+      "bytes": 83010
+    },
+    {
+      "path": "src/assets/fish-sprites/common-snook-turn-v1.webp",
+      "sha256": "68d3b23ee76dc0272d7b035be11f353c7fdfaa1c1723f549a95cd3a05aea9aed",
+      "bytes": 108482
+    },
+    {
+      "path": "src/assets/fish-sprites/common-snook-v1.webp",
+      "sha256": "8c847c968fc4aaf35dac93cbfe8efe53976b3c68faa60e3ed25ba7733f13d2ba",
+      "bytes": 105400
+    },
+    {
+      "path": "src/assets/fish-sprites/giant-snakehead-oblique-v1.webp",
+      "sha256": "86294a18da56a03059ddbb3c66d2608424af6e60d5932c2da4020303e86c3925",
+      "bytes": 82750
+    },
+    {
+      "path": "src/assets/fish-sprites/giant-snakehead-turn-v1.webp",
+      "sha256": "c316deb96ed449e913dadf3470b901ff6d1a8418fe16b055e04348009e87f6bd",
+      "bytes": 103932
+    },
+    {
+      "path": "src/assets/fish-sprites/giant-snakehead-v1.webp",
+      "sha256": "12aeb24a22c4044f29d6c58ea393f1c1fb64f284fce26b4115cddbe672051e9e",
+      "bytes": 131430
+    },
+    {
+      "path": "src/assets/fish-sprites/peacock-bass-oblique-v1.webp",
+      "sha256": "efa4cdc2570ff569c58dd1e05ccfd79e0df914f700f7bc5031d67124973632fe",
+      "bytes": 123474
+    },
+    {
+      "path": "src/assets/fish-sprites/peacock-bass-turn-v1.webp",
+      "sha256": "1b4d99cae003a62a8429e0241050e8f4d9f0520853b28512042786573fe57592",
+      "bytes": 144828
+    },
+    {
+      "path": "src/assets/fish-sprites/peacock-bass-v1.webp",
+      "sha256": "dc5f710d033b8e75862224fd5a49b0e0c328078ea89601baeff2e42179e31905",
+      "bytes": 191592
+    },
+    {
+      "path": "src/assets/fish-sprites/spotted-seatrout-oblique-v1.webp",
+      "sha256": "4e2b28db98f5309b5ab938a2f5a41d08b8fb678b3e48dd4db8fa0185a789423b",
+      "bytes": 99644
+    },
+    {
+      "path": "src/assets/fish-sprites/spotted-seatrout-turn-v1.webp",
+      "sha256": "602b42f48e152ccdecbdf2dd10916e9fe342d1899d5654c78440aa89d6b19cd1",
+      "bytes": 107378
+    },
+    {
+      "path": "src/assets/fish-sprites/spotted-seatrout-v1.webp",
+      "sha256": "45221215640dd5b87adf3a5f20e755e2611a873b3b271b0b44e811873836ee4b",
+      "bytes": 116036
     },
     {
       "path": "src/assets/florida-bay.webp",
@@ -271,8 +356,5 @@
       "sha256": "808fc358a1e99284fdfaff03f99354eb88ced7f5031212f8f9952a6efc73f3b3",
       "bytes": 206502
     }
-  ],
-  "rights_record": "MEDIA_RIGHTS.md",
-  "provider_evidence": "Retained project records; asset hashes do not independently establish rights.",
-  "private_receipts_included": false
+  ]
 }

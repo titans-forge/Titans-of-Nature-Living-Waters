@@ -8,9 +8,9 @@ export const okavangoQuestions: Question[] = [
 ];
 
 export const okavangoGear: GearSet[] = [
-  { id: "reed", name: "Reed-edge kit", rod: "6 ft medium rod", line: "15 lb line", hook: "Single barbless hook", lure: "Shallow-running spoon", tools: "Long pliers + polarized glasses", strength: "Controls a fast fish before it reaches dense stems.", tradeoff: "A moving lure can collect papyrus fibers near a closed edge." },
-  { id: "channel", name: "Channel-search kit", rod: "7 ft medium rod", line: "12 lb line", hook: "Single barbless hook", lure: "Small silver spinner", tools: "Long pliers + depth line", strength: "Covers open current and channel mouths efficiently.", tradeoff: "It offers less control if a fish turns into the reeds." },
-  { id: "light", name: "Floodplain kit", rod: "5 ft light rod", line: "8 lb line", hook: "Small barbless hook", lure: "Insect-pattern lure", tools: "Long pliers + field glass", strength: "Presents gently in shallow newly flooded grass.", tradeoff: "Light line is poorly suited to a large tigerfish near cover." },
+  { id: "reed", method: "angling", name: "Reed-edge kit", rod: "6 ft medium rod", line: "15 lb line", hook: "Single barbless hook", lure: "Shallow-running spoon", tools: "Long pliers + polarized glasses", strength: "Controls a fast fish before it reaches dense stems.", tradeoff: "A moving lure can collect papyrus fibers near a closed edge." },
+  { id: "channel", method: "angling", name: "Channel-search kit", rod: "7 ft medium rod", line: "12 lb line", hook: "Single barbless hook", lure: "Small silver spinner", tools: "Long pliers + depth line", strength: "Covers open current and channel mouths efficiently.", tradeoff: "It offers less control if a fish turns into the reeds." },
+  { id: "light", method: "angling", name: "Floodplain kit", rod: "5 ft light rod", line: "8 lb line", hook: "Small barbless hook", lure: "Insect-pattern lure", tools: "Long pliers + field glass", strength: "Presents gently in shallow newly flooded grass.", tradeoff: "Light line is poorly suited to a large tigerfish near cover." },
 ];
 
 export const okavangoHabitats: Habitat[] = [
@@ -28,7 +28,7 @@ export const okavangoEncounters: Record<string, Encounter> = {
     { id: "wet-release", label: "Wet your hands, support the fish, and release it beside the boat", result: "The fish rights itself and moves back toward the flooded margin.", safe: true },
     { id: "dry-deck", label: "Set it on the dry floor while finding the field guide", result: "The fish loses protective mucus while out of water longer than necessary.", safe: false },
   ], connections: ["Flood connectivity -> habitat access", "Shallow grass -> feeding area", "Seasonal water -> changing fish assemblage"] },
-  "papyrus-snag": { id: "papyrus-snag", type: "plant", name: "Papyrus root and stem snag", scientificName: "Cyperus papyrus", summary: "The lure returns wrapped in a fibrous stem and fine roots from the channel edge.", ecology: "Papyrus and other emergent plants structure wetland margins, slow water locally, shelter organisms, and provide material and habitat across the food web.", handling: [
+  "papyrus-snag": { id: "papyrus-snag", type: "plant", interaction: "snag", name: "Papyrus root and stem snag", scientificName: "Cyperus papyrus", summary: "The lure returns wrapped in a fibrous stem and fine roots from the channel edge.", ecology: "Papyrus and other emergent plants structure wetland margins, slow water locally, shelter organisms, and provide material and habitat across the food web.", handling: [
     { id: "back-out", label: "Move closer, reverse the lure path, and free the living stem", result: "The hook backs out with only loose fibers attached. The reed margin remains intact.", safe: true },
     { id: "rip-free", label: "Pull hard enough to tear the stem free", result: "The tackle returns, but the shortcut damages the very edge that shelters fish and insects.", safe: false },
   ], connections: ["Papyrus -> channel structure", "Reed insects -> fish food", "Dense stems -> tackle obstruction"] },

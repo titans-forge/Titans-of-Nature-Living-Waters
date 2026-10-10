@@ -34,6 +34,7 @@ const copies = [
   ['LICENSE', 'LICENSE.txt'],
   ['LICENSING.md', 'LICENSING.txt'],
   ['LICENSING_CHECKPOINT.json', 'LICENSING_CHECKPOINT.json'],
+  ['RELEASE_CHECKPOINT.json', 'RELEASE_CHECKPOINT.json'],
 ];
 for (const [source, target] of [['MEDIA_RIGHTS.md', 'MEDIA_RIGHTS.txt'], ['NOTICE', 'NOTICE.txt']]) {
   if (fs.existsSync(path.join(root, source))) copies.push([source, target]);

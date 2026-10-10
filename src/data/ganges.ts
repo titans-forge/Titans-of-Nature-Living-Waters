@@ -33,7 +33,7 @@ export const gangesQuestions: Question[] = [
 
 export const gangesGear: GearSet[] = [
   {
-    id: "float",
+    id: "float", method: "angling",
     name: "Floodplain nursery float",
     rod: "6 ft light rod",
     line: "10 lb line",
@@ -44,7 +44,7 @@ export const gangesGear: GearSet[] = [
     tradeoff: "It cannot control a large catfish or work the main current safely.",
   },
   {
-    id: "drift",
+    id: "drift", method: "angling",
     name: "Main-channel drift kit",
     rod: "7 ft medium-heavy rod",
     line: "30 lb braided line",
@@ -55,7 +55,7 @@ export const gangesGear: GearSet[] = [
     tradeoff: "A careless drift can cross working boats, a dolphin surfacing route, or abandoned netting.",
   },
   {
-    id: "acoustic",
+    id: "acoustic", method: "telemetry",
     name: "Dolphin acoustic watch",
     rod: "Hand line and marked retrieval cord",
     line: "High-visibility survey cord",
@@ -149,7 +149,7 @@ export const gangesEncounters: Record<string, Encounter> = {
   },
   "ghost-net-snag": {
     id: "ghost-net-snag",
-    type: "snag",
+    type: "snag", interaction: "snag",
     name: "Abandoned monofilament net",
     summary: "The survey line catches a nearly invisible length of monofilament drifting below the working bank.",
     ecology: "Lost synthetic netting can continue catching fish, turtles, birds, and dolphins after it stops helping a fisher. Recovery is safest when the boat controls both ends and avoids spreading smaller fragments through the current.",

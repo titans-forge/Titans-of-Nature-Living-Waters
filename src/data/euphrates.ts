@@ -33,7 +33,7 @@ export const euphratesQuestions: Question[] = [
 
 export const euphratesGear: GearSet[] = [
   {
-    id: "float",
+    id: "float", method: "angling",
     name: "Reed-edge survey float",
     rod: "6 ft light rod",
     line: "10 lb line",
@@ -44,7 +44,7 @@ export const euphratesGear: GearSet[] = [
     tradeoff: "It lacks the control needed for a large river fish in the distributary current.",
   },
   {
-    id: "drift",
+    id: "drift", method: "angling",
     name: "Distributary drift kit",
     rod: "7 ft medium rod",
     line: "25 lb braided line",
@@ -55,7 +55,7 @@ export const euphratesGear: GearSet[] = [
     tradeoff: "A fast retrieve can enter a reed island or miss fish holding in the deeper canal mouth.",
   },
   {
-    id: "bottom",
+    id: "bottom", method: "angling",
     name: "Canal-mouth circle rig",
     rod: "7 ft medium-heavy rod",
     line: "30 lb line",
@@ -136,7 +136,7 @@ export const euphratesEncounters: Record<string, Encounter> = {
   },
   "euphrates-softshell": {
     id: "euphrates-softshell",
-    type: "reptile",
+    type: "reptile", interaction: "bycatch",
     name: "Euphrates softshell turtle",
     scientificName: "Rafetus euphraticus",
     summary: "The bait moves sideways and an endangered softshell turtle surfaces beside the reed inlet.",
@@ -149,7 +149,7 @@ export const euphratesEncounters: Record<string, Encounter> = {
   },
   "reed-line-snag": {
     id: "reed-line-snag",
-    type: "snag",
+    type: "snag", interaction: "snag",
     name: "Reed bundle tangled in plastic line",
     summary: "The rig stops in a cut reed bundle wrapped with abandoned monofilament at the marsh opening.",
     ecology: "Reeds are both habitat and a renewable material used in marsh life. The problem is not a cut bundle by itself, but plastic line that can entangle wildlife and a blocked opening that interrupts water exchange.",

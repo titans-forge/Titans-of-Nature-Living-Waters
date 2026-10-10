@@ -8,9 +8,9 @@ export const baikalQuestions: Question[] = [
 ];
 
 export const baikalGear: GearSet[] = [
-  { id: "survey", name: "Permitted sturgeon survey rig", rod: "Heavy research rod", line: "Abrasion-resistant measured line", hook: "Single barbless circle hook", lure: "Standardized scent lure", tools: "Water cradle + scanner + measuring tape", strength: "Controls a large fish while keeping tagging and measurements repeatable.", tradeoff: "This equipment is lawful only within the authorized research survey." },
-  { id: "drift", name: "Cold-water drift kit", rod: "7 ft light rod", line: "8 lb low-visibility line", hook: "Single barbless hook", lure: "Small unbaited fly", tools: "Rubber net + thermometer", strength: "Presents lightly over clear shelf and channel water.", tradeoff: "It cannot safely control a sturgeon and should never be used for that target." },
-  { id: "camera", name: "Deep-edge observation kit", rod: "Instrument line and hand reel", line: "Depth-marked cable", hook: "No hook", lure: "Small lighted camera sled", tools: "Depth meter + recovery float", strength: "Observes deep-edge organisms without trying to bring them through a large pressure change.", tradeoff: "The sled can catch rock or fragile sponge colonies if dragged." },
+  { id: "survey", method: "angling", name: "Permitted sturgeon survey rig", rod: "Heavy research rod", line: "Abrasion-resistant measured line", hook: "Single barbless circle hook", lure: "Standardized scent lure", tools: "Water cradle + scanner + measuring tape", strength: "Controls a large fish while keeping tagging and measurements repeatable.", tradeoff: "This equipment is lawful only within the authorized research survey." },
+  { id: "drift", method: "angling", name: "Cold-water drift kit", rod: "7 ft light rod", line: "8 lb low-visibility line", hook: "Single barbless hook", lure: "Small unbaited fly", tools: "Rubber net + thermometer", strength: "Presents lightly over clear shelf and channel water.", tradeoff: "It cannot safely control a sturgeon and should never be used for that target." },
+  { id: "camera", method: "camera", name: "Deep-edge observation kit", rod: "Instrument line and hand reel", line: "Depth-marked cable", hook: "No hook", lure: "Small lighted camera sled", tools: "Depth meter + recovery float", strength: "Observes deep-edge organisms without trying to bring them through a large pressure change.", tradeoff: "The sled can catch rock or fragile sponge colonies if dragged." },
 ];
 
 export const baikalHabitats: Habitat[] = [

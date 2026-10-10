@@ -33,7 +33,7 @@ export const japanQuestions: Question[] = [
 
 export const japanGear: GearSet[] = [
   {
-    id: "eelgrass",
+    id: "eelgrass", method: "angling",
     name: "Eelgrass-edge lure kit",
     rod: "7 ft light-medium rod",
     line: "12 lb braided line",
@@ -44,7 +44,7 @@ export const japanGear: GearSet[] = [
     tradeoff: "A low retrieve uproots shoots and gathers reproductive blades during the growing season.",
   },
   {
-    id: "tai-rubber",
+    id: "tai-rubber", method: "angling",
     name: "Tidal-seam seabream kit",
     rod: "6 ft 6 in light jigging rod",
     line: "20 lb braid with fluorocarbon leader",
@@ -55,7 +55,7 @@ export const japanGear: GearSet[] = [
     tradeoff: "Excess weight lodges in rock, while drifting into a working lane conflicts with boat traffic.",
   },
   {
-    id: "survey",
+    id: "survey", method: "camera",
     name: "Satoumi habitat survey",
     rod: "No rod",
     line: "Marked camera tether",
@@ -136,7 +136,7 @@ export const japanEncounters: Record<string, Encounter> = {
   },
   "common-octopus": {
     id: "common-octopus",
-    type: "invertebrate",
+    type: "invertebrate", interaction: "bycatch",
     name: "East Asian common octopus",
     scientificName: "Octopus sinensis",
     summary: "A common octopus grips the slow lure and then fastens two arms around a submerged breakwater block.",
@@ -162,7 +162,7 @@ export const japanEncounters: Record<string, Encounter> = {
   },
   "harbor-line-snag": {
     id: "harbor-line-snag",
-    type: "snag",
+    type: "snag", interaction: "snag",
     name: "Discarded line at the breakwater",
     summary: "The camera tether catches monofilament looped between a mooring eye and shell-covered stone below the working landing.",
     ecology: "Ports concentrate fishing line, rope, vessel traffic, and marine growth in the same small space. Removing a loose loop can reduce entanglement, but entering an active berth or pulling an unknown fixed load creates new danger.",

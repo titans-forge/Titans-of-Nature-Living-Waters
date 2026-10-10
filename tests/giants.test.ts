@@ -16,13 +16,13 @@ describe('giant fish expeditions',()=>{
  });
  it('preserves non-capture beluga telemetry alongside the new migration research fight',()=>{
   expect(cast('danube','telemetry','navigation').encounterId).toBe('beluga-sturgeon');
-  expect(getFightProfile(cast('danube','telemetry','navigation')).id).toBe('passive');
+  expect(getFightProfile(cast('danube','telemetry','navigation')).id).toBe('telemetry');
   expect(cast('danube','research-cradle','navigation').encounterId).toBe('beluga-research');
   expect(cast('danube','research-cradle','navigation',1).encounterId).not.toBe('beluga-research');
  });
  it.each([['amazon','arapaima-kit','roots','arapaima'],['danube','research-cradle','navigation','beluga-research']])('completes and saves %s giant fish handling', (id,gear,habitat,fish)=>{
   let s=cast(id,gear,habitat);const v=venues.find(v=>v.id===id)!;
-  expect(getFightProfile(s).id).not.toBe('passive');
+  expect(getFightProfile(s).id).toBe(fish==='arapaima'?'burst':'bottom');
   for(let i=0;i<220&&!s.lineResolved;i++)s=advanceInteraction(s,s.fightPhase==='rest');
   expect(s.lineResolved).toBe(true);
   s=handleEncounter(revealEncounter(s),v.encounters[fish].handling.find(h=>h.safe)!.id);

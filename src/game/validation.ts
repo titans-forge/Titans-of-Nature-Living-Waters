@@ -1,6 +1,7 @@
 import { venues } from "../data/venues";
 import { buildAssignment } from "./assignments";
 import { getVenueSources } from "../data/sourceLedger";
+import { resolveSeasonEncounter } from "./seasons";
 
 export function validateContent(): string[] {
   const errors: string[] = [];
@@ -11,6 +12,10 @@ export function validateContent(): string[] {
     if (venue.questions.length < 4) errors.push(`${venue.id} requires at least four local questions.`);
     if (venue.seasons.length < 3) errors.push(`${venue.id} requires at least three ecological windows.`);
     if (venue.gearSets.length < 3 || venue.habitats.length !== 3) errors.push(`${venue.id} requires at least three gear sets and exactly three habitats.`);
+    for (const gear of venue.gearSets) {
+      if (!["angling", "camera", "telemetry", "sampling"].includes(gear.method)) errors.push(`${venue.id}:${gear.id} requires an authored field method.`);
+      if (gear.method !== "angling" && gear.hook !== "No hook") errors.push(`${venue.id}:${gear.id} describes hooked tackle for a no-capture method.`);
+    }
     const references = getVenueSources(venue.id);
     if (!references.length) errors.push(`${venue.id} requires at least one authority reference.`);
     for (const reference of references) {
@@ -28,6 +33,9 @@ export function validateContent(): string[] {
       }
     }
     for (const encounter of Object.values(venue.encounters)) {
+      if ((encounter.type === "snag" || encounter.type === "plant") && encounter.interaction !== "snag") errors.push(`${venue.id}:${encounter.id} requires an explicit physical-obstruction interaction.`);
+      if (encounter.interaction !== undefined && !["bycatch", "snag"].includes(encounter.interaction)) errors.push(`${venue.id}:${encounter.id} has an unknown incident interaction.`);
+      if (encounter.interaction === "bycatch" && !["fish", "reptile", "invertebrate"].includes(encounter.type)) errors.push(`${venue.id}:${encounter.id} marks non-animal habitat as bycatch.`);
       if (!encounter.summary || !encounter.ecology || encounter.connections.length < 3) errors.push(`${venue.id}:${encounter.id} is missing ecological content.`);
       if (encounter.handling.length < 2 || !encounter.handling.some((option) => option.safe) || !encounter.handling.some((option) => !option.safe)) errors.push(`${venue.id}:${encounter.id} needs safe and unsafe handling options.`);
       if (!venue.linePatterns[encounter.id] || venue.linePatterns[encounter.id].length !== 3) errors.push(`${venue.id}:${encounter.id} needs a three-step line pattern.`);
@@ -40,6 +48,15 @@ export function validateContent(): string[] {
       if (!season.availableEncounterIds.length) errors.push(`${venue.id}:${season.id} has no available encounters.`);
       for (const encounterId of season.availableEncounterIds) if (!venue.encounters[encounterId]) errors.push(`${venue.id}:${season.id} references unknown encounter ${encounterId}.`);
       if (!season.availableEncounterIds.includes(season.fallbackEncounterId)) errors.push(`${venue.id}:${season.id} fallback is unavailable in its own window.`);
+      for (const [gearId, encounterId] of Object.entries(season.fallbackByGear ?? {})) {
+        if (!venue.gearSets.some(gear => gear.id === gearId) || !season.availableEncounterIds.includes(encounterId)) errors.push(`${venue.id}:${season.id}:${gearId} has an invalid equipment-specific fallback.`);
+      }
+      for (const gear of venue.gearSets) for (const habitat of venue.habitats.filter(habitat => habitat.safe !== false)) {
+        const routed = venue.encounterRules[`${habitat.id}:${gear.id}`] ?? venue.fallbackEncounterId;
+        const encounter = venue.encounters[resolveSeasonEncounter(venue, season.id, routed, gear.id)];
+        if (gear.method === "angling" && encounter?.type === "observation" && !encounter.interaction) errors.push(`${venue.id}:${season.id}:${habitat.id}:${gear.id} turns angling equipment into an unhooked observation.`);
+        if (gear.method !== "angling" && encounter?.interaction === "bycatch") errors.push(`${venue.id}:${season.id}:${habitat.id}:${gear.id} creates hooked bycatch with no-capture equipment.`);
+      }
     }
     const seasonalEncounterIds = new Set(venue.seasons.flatMap((season) => season.availableEncounterIds));
     for (const encounterId of Object.keys(venue.encounters)) if (!seasonalEncounterIds.has(encounterId)) errors.push(`${venue.id}:${encounterId} is unavailable in every ecological window.`);

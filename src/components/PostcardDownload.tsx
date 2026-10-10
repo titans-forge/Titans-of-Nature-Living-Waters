@@ -16,7 +16,7 @@ export function PostcardDownload({ image, title, place, detail }: { image: strin
       ctx.fillStyle = '#9ed7c0'; ctx.font = '22px sans-serif'; ctx.fillText('LIVING WATERS · EXPEDITION RECORD', 44, 686);
       ctx.fillStyle = '#fff3d9'; ctx.font = 'bold 42px Georgia'; ctx.fillText(title, 44, 745, 1112);
       ctx.font = '23px sans-serif'; ctx.fillText(place, 44, 792, 1112); ctx.fillText(detail, 44, 833, 1112);
-      ctx.fillStyle = '#adc8b7'; ctx.font = '18px sans-serif'; ctx.fillText('Titans Forge · Game illustration, not a real-world catch record', 44, 902);
+      ctx.fillStyle = '#adc8b7'; ctx.font = '18px sans-serif'; ctx.fillText('Titans Forge · Game illustration, not a real-world field record', 44, 902);
       const blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('Export failed')), 'image/png'));
       const url = URL.createObjectURL(blob), link = document.createElement('a');
       link.href = url; link.download = `living-waters-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`;

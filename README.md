@@ -2,7 +2,7 @@
 
 **Every cast reveals part of a living system.**
 
-[Play](https://titans-forge.itch.io/living-waters) · [Forge collection](https://github.com/titans-forge/educational-games)
+[Play on GitHub](https://titans-forge.github.io/Titans-of-Nature-Living-Waters/) · [Play on itch.io](https://titans-forge.itch.io/living-waters) · [Download 1.14.0](https://github.com/titans-forge/Titans-of-Nature-Living-Waters/releases/tag/v1.14.0) · [Forge collection](https://github.com/titans-forge/educational-games)
 
 The upgraded edition is supplied under [Forge Game Hosting License 1.0](LICENSE).
 Read [the checkpoint](LICENSING.md) for scope, the hosting threshold, earlier
@@ -12,6 +12,10 @@ to prevent accidental package-registry publication; GitHub source is public.
 Living Waters is a free, local-first educational fishing expedition. Fifteen destinations connect conversations with fictional local guides, field equipment, habitat reading, fish and non-fish encounters, wildlife handling, seasonal change, and a shared ecosystem journal.
 
 No account, API key, AI service, analytics system, or backend is required. The deterministic game works offline after its static files load.
+
+## Version 1.14.0
+
+Updated October 10, 2026: continuous fish turns with new oblique artwork, clearer fishing controls on small screens, distinct field decisions in all fifteen waters, and visit comparisons. Existing local saves migrate to schema 12. See [release verification](docs/RELEASE_1_14.md).
 
 ## Play locally
 

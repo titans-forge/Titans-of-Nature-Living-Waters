@@ -1,5 +1,6 @@
 import { venueById, venues } from "../data/venues";
 import type { EcosystemLink, ExpeditionState, JournalDiscovery, Venue } from "../types";
+import { getEncounterPurpose } from "./assignments";
 
 export function getDiscoveries(state: ExpeditionState, venueId: string | "all" = "all"): JournalDiscovery[] {
   return state.journalIds.flatMap((journalId) => {
@@ -12,11 +13,22 @@ export function getDiscoveries(state: ExpeditionState, venueId: string | "all" =
 }
 
 export function getVenueProgress(state: ExpeditionState, venue: Venue) {
-  const found = new Set(getDiscoveries(state, venue.id).map((item) => item.encounter.id)).size;
+  const encountered = new Set(getDiscoveries(state, venue.id).map((item) => item.encounter.id));
+  const found = encountered.size;
   const total = Object.keys(venue.encounters).length;
   const percent = total ? Math.round((found / total) * 100) : 0;
-  const label = found === 0 ? "Uncharted" : found === total ? "Collection complete" : found / total >= 0.6 ? "Collection growing" : "Survey underway";
-  return { found, total, percent, label };
+  const tally = (purpose: "investigation" | "incident-response" | "habitat-care") => {
+    const selected = Object.values(venue.encounters).filter(encounter => getEncounterPurpose(encounter) === purpose);
+    const found = selected.filter(encounter => encountered.has(encounter.id)).length;
+    return { found, total: selected.length, percent: selected.length ? Math.round(found / selected.length * 100) : 0 };
+  };
+  const investigations = tally("investigation");
+  const incidentResponses = tally("incident-response");
+  const habitatCare = tally("habitat-care");
+  const label = found === 0 ? "Uncharted" : investigations.total > 0 && investigations.found === investigations.total ? "Survey coverage complete"
+    : investigations.percent >= 60 ? "Field record growing" : "Survey underway";
+  return { found, total, percent, label, investigations, incidentResponses, habitatCare,
+    investigationFound: investigations.found, investigationTotal: investigations.total, investigationPercent: investigations.percent };
 }
 
 export function parseConnections(discovery: JournalDiscovery): EcosystemLink[] {

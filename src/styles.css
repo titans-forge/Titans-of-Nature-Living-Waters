@@ -798,3 +798,373 @@ button[disabled] { opacity: .48; cursor: not-allowed; }
 @media(max-width:700px) { .fish-warning { min-height:0; padding:8px 10px; font-size:12px; } .fight-profile { display:none; } .fishing-mode button { font-size:13px; } }
 
 .cast-result { font-size:12px; margin:8px 0; color:var(--copper); }
+
+/* A measured interaction shell keeps the action out of the reading scroll area. */
+.cast-game--interaction { height:var(--interaction-height,calc(100svh - 139px)); min-height:0; overflow:hidden; }
+.cast-game--interaction .fishing-scene { min-height:0; height:100%; }
+.cast-game--interaction .interaction-console { min-height:0; padding:0; gap:0; grid-template-rows:minmax(0,1fr) auto; align-content:stretch; }
+.interaction-reading { min-height:0; overflow-y:auto; padding:20px 22px 12px; scrollbar-gutter:stable; }
+.interaction-actions { padding:12px 22px 16px; background:#111d17; border-top:1px solid #44624c; }
+.interaction-actions .interaction-control { position:static; min-height:72px; margin:0; padding:12px 16px; }
+.interaction-actions .primary { width:100%; min-height:52px; justify-content:center; }
+.interaction-actions .control-hint { display:block; font:12px/1.45 Arial,sans-serif; color:#c3d4c9; margin:9px 0 0; }
+.interaction-console .interaction-reading h1 { position:static; width:auto; height:auto; clip-path:none; overflow:visible; font-size:30px; margin:15px 0 10px; }
+.interaction-advice { min-height:4.5em; }
+.interaction-next { padding:8px 10px; background:#1d3028; border-left:3px solid #8ca9a0; font-size:13px; line-height:1.5; color:#cbdcd0; }
+.control-lesson { padding:10px 12px; background:#21372c; border:1px solid #496554; font-size:14px; line-height:1.5; }
+.interaction-control--mismatch.active { background:#e5b16a; color:#1e180e; border-color:#fae1b4; }
+.interaction-actions .control-input-state { font-weight:700; opacity:1; }
+.interaction-retries { display:grid; gap:8px; }
+.interaction-actions .primary { margin-top:0; }
+.interaction-retries .secondary { width:100%; min-height:44px; justify-content:center; margin:0; }
+.interaction-details { margin-top:14px; color:#c3d4c9; font-size:13px; }
+.interaction-details summary { min-height:35px; cursor:pointer; }
+.interaction-details p { font-size:13px; }
+.interaction-console .interaction-progress { margin:15px 0; }
+.interaction-console .tension-readout { margin:0; }
+.save-notice-actions { display:flex; gap:10px; flex-wrap:wrap; }
+@media(max-width:760px) {
+  .cast-game--interaction { display:grid; grid-template-columns:1fr; grid-template-rows:minmax(90px,25%) minmax(0,1fr); padding:0; }
+  .cast-game--interaction .fishing-scene { height:100%; }
+  .cast-game--interaction .scene-caption { top:12px; left:16px; }
+  .cast-game--interaction .scene-caption strong { font-size:22px; margin:5px 0; }
+  .interaction-reading { padding:12px 16px 8px; }
+  .interaction-actions { padding:10px 16px 12px; }
+  .interaction-console .interaction-reading h1 { font-size:25px; margin:10px 0 8px; }
+  .interaction-reading .interaction-advice { min-height:0; font-size:14px; }
+  .interaction-console .interaction-progress { margin:12px 0; }
+  .interaction-actions .control-hint { font-size:11px; }
+}
+@media(max-height:550px) and (min-width:761px) {
+  .interaction-reading { padding:10px 16px; }
+  .interaction-actions { padding:8px 16px; }
+  .interaction-actions .control-hint { font-size:11px; }
+}
+
+/* The scene depicts the tool or incident represented by the current mechanics. */
+.snag-choices { display:grid; gap:8px; }
+.snag-choices .secondary { width:100%; min-height:48px; justify-content:center; padding:10px 12px; }
+.incident-shadow { fill:#152a20; stroke:#152a20; stroke-width:.8; opacity:.65; }
+.snag-shadow { fill:none; stroke:#433f29; stroke-width:1.1; stroke-linecap:round; }
+.snag-shadow .snag-loop { stroke:#cbc39a; stroke-width:.35; }
+.camera-marker, .sampler-marker { fill:none; stroke:#efe1b4; stroke-width:.45; }
+.camera-marker circle { fill:#efe1b4; stroke:none; }
+.sampler-marker { fill:#163833; }
+.receiver-ping { fill:none; stroke:#8bdfd3; stroke-width:.25; stroke-dasharray:2 2; }
+.kind-bycatch .water-target, .kind-snag .water-target { animation:none; }
+.kind-telemetry .receiver-ping { animation:water-ripple 3s infinite; }
+.venue-progress > small { display:block; margin-top:6px; color:var(--muted); font:11px/1.5 Arial,sans-serif; }
+@media (prefers-reduced-motion: reduce) { .kind-telemetry .receiver-ping { animation:none; } }
+
+.save-notice-copy { min-width:0; flex:1; }
+@media (max-width:760px) { .save-notice-copy { flex-basis:100%; max-height:100px; overflow:auto; } }
+
+/* Evidence reviews use native named controls and a normal scrolling layout. */
+.learning-review { margin-top: 22px; border-top: 1px solid #617c6a; padding-top: 18px; }
+.learning-review fieldset { min-width: 0; margin: 18px 0; padding: 16px; border: 1px solid #617c6a; }
+.learning-review legend { padding: 0 7px; color: #e9bb73; font-weight: 600; line-height: 1.5; }
+.learning-review label { display: flex; align-items: flex-start; gap: 12px; min-height: 52px; padding: 12px; margin: 7px 0; color: #e7efe8; border: 1px solid #617c6a; background: #14271f; cursor: pointer; line-height: 1.6; overflow-wrap: anywhere; }
+.learning-review label:has(input:checked) { border-color: #e9bb73; background: #2b4437; }
+.learning-review label:focus-within { outline: 2px solid #8ed4c9; outline-offset: 3px; }
+.learning-review input[type=radio] { flex: 0 0 auto; width: 19px; height: 19px; margin: 4px 0 0; accent-color: #e9bb73; }
+.learning-evidence__record strong, .learning-evidence__record > span, .learning-evidence__record small { display: block; }
+.learning-evidence__record small { letter-spacing: 0; text-transform: none; color: #c3d6cb; line-height: 1.65; }
+.learning-review__choices { display: grid; gap: 4px; }
+.learning-review__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.learning-review__actions button { min-height: 52px; }
+.learning-review__feedback, .learning-review__saved { padding: 14px 16px; margin: 16px 0; border-left: 3px solid #e9bb73; background: #14271f; overflow-wrap: anywhere; }
+.learning-review [role=alert] { color: #f2c4b7; }
+.learning-review__feedback p, .learning-review__saved p { margin: 8px 0; }
+.learning-review__disclosure { margin-top: 18px; }
+.learning-review__disclosure > summary { cursor: pointer; padding: 14px 12px; min-height: 48px; box-sizing: border-box; color: #e9bb73; border: 1px solid #617c6a; line-height: 1.6; }
+.learning-review__disclosure > summary:focus-visible { outline: 2px solid #8ed4c9; outline-offset: 3px; }
+.learning-evidence__other { margin: 16px 0; padding: 14px 16px; border-left: 3px solid #617c6a; background: #14271f; overflow-wrap: anywhere; }
+.learning-review__result { color: #d4e8de; font-weight: 600; }
+.research-tab__status { display: block; margin-top: 5px; font-size: 12px; line-height: 1.5; color: #c3d6cb; }
+.large-text .learning-review label { font-size: 18px; line-height: 1.75; }
+@media (max-width: 700px) {
+  .learning-review fieldset { padding: 10px; }
+  .learning-review label { padding: 11px; }
+  .learning-review__actions button { width: 100%; }
+}
+
+/* Cast-placement pilot: relative distance along the selected habitat approach. */
+.cast-console--placement-pilot { width:min(720px,calc(100% - 32px)); padding:22px; }
+.cast-console--placement-pilot > h1 { font-size:clamp(30px,3.2vw,42px); line-height:1.15; }
+.cast-console--placement-pilot > p { margin:10px 0 14px; }
+.cast-placement { min-width:0; border:1px solid #5f8274; padding:14px; background:#10251e; }
+.cast-placement > header { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px 16px; }
+.cast-placement h2 { margin:0; font:700 18px/1.5 Arial,sans-serif; color:#e9f1e9; }
+.cast-placement > header > span { font-variant-numeric:tabular-nums; color:#a9e5d5; }
+.cast-placement__context { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px 15px; margin:12px 0; line-height:1.45; }
+.cast-placement__context dt { color:#aec6b9; font-size:12px; }
+.cast-placement__context dd { margin:3px 0 0; color:#e9f1e9; font-size:13px; overflow-wrap:anywhere; }
+.cast-placement__diagram { margin:0; }
+.cast-placement__diagram svg { display:block; width:100%; height:auto; border:1px solid #46685c; border-radius:8px; }
+.cast-placement__diagram figcaption { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-top:8px; color:#c9dace; font-size:12px; line-height:1.5; }
+.cast-placement__diagram figcaption > span:nth-child(2) { text-align:center; }
+.cast-placement__key { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 14px; margin-top:10px; color:#e8d4a4; font-size:12px; line-height:1.5; }
+.cast-placement__key > span:first-child { display:flex; align-items:center; gap:7px; }
+.cast-placement__key i { width:15px; height:15px; flex:0 0 15px; border:2px solid #f1c56e; background:#67552b; }
+.cast-placement__manual { margin-top:14px; padding-top:12px; border-top:1px solid #46685c; }
+.cast-placement__manual label { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:6px 14px; color:#e9f1e9; line-height:1.5; }
+.cast-placement__manual label strong { color:#a9e5d5; font-variant-numeric:tabular-nums; }
+.cast-placement__manual input[type=range] { display:block; width:100%; min-height:48px; margin:6px 0; cursor:pointer; accent-color:#a9e5d5; touch-action:pan-y; }
+.cast-placement__manual input[type=range]:focus-visible, .cast-placement__manual button:focus-visible { outline:3px solid #f1c56e; outline-offset:3px; }
+.cast-placement__manual button { min-height:48px; width:100%; padding:10px 14px; justify-content:center; line-height:1.5; }
+.cast-placement__feedback { display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px 14px; margin:12px 0 0; padding:10px 12px; color:#eed3ac; background:#293528; border-left:3px solid #c7a362; font-size:13px; line-height:1.5; }
+.cast-placement__feedback--accurate { color:#bcebd7; border-left-color:#a9e5d5; }
+.cast-placement__help { margin:10px 0 0; font-size:12px; line-height:1.55; color:#aec6b9; }
+.cast-console--placement-pilot .fishing-mode button { min-height:48px; line-height:1.5; }
+.large-text .cast-placement h2 { font-size:22px; }
+.large-text .cast-placement__context dd, .large-text .cast-placement__feedback { font-size:17px; }
+.large-text .cast-placement__context dt, .large-text .cast-placement__diagram figcaption, .large-text .cast-placement__key, .large-text .cast-placement__help { font-size:15px; }
+@media(max-width:600px) {
+  .cast-console--placement-pilot { width:100%; padding:16px; }
+  .cast-placement { padding:11px; }
+  .cast-placement__context { grid-template-columns:1fr; gap:7px; }
+  .cast-placement__context > div { display:grid; grid-template-columns:76px minmax(0,1fr); gap:10px; align-items:baseline; }
+  .cast-placement__context dd { margin:0; }
+  .cast-placement__diagram figcaption { flex-wrap:wrap; }
+  .cast-placement__diagram figcaption > span:nth-child(2) { order:3; width:100%; text-align:left; }
+  .cast-placement__feedback { display:block; }
+  .cast-placement__feedback > span { display:block; margin-top:4px; }
+}
+@media(prefers-reduced-motion:reduce) { .cast-placement *, .cast-placement *::before, .cast-placement *::after { animation:none!important; transition:none!important; } }
+
+/* Pilot scene movement follows the saved behavior clock, never a looping fish animation. */
+.cast-placement__cue text { fill:#e5eee5; font:600 13px Arial,sans-serif; paint-order:stroke; stroke:#10251e; stroke-width:3px; stroke-linejoin:round; }
+.fishing-scene--angling-pilot *, .fishing-scene--angling-pilot *::before, .fishing-scene--angling-pilot *::after { animation:none!important; }
+.fishing-scene--angling-pilot .water-light { opacity:.25; }
+.fishing-scene--angling-pilot .fishing-water { z-index:1; }
+.fishing-scene--angling-pilot .scene-caption { z-index:2; pointer-events:none; }
+.fishing-scene--angling-pilot .angling-scene-cue { display:block; margin-top:8px; max-width:35em; color:#f0d9a2; line-height:1.45; }
+.angling-habitat { fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.angling-cover { stroke:#b7a47c; stroke-width:.7; opacity:.35; }
+.angling-grass { stroke:#95bd8f; stroke-width:.65; opacity:.5; }
+.angling-current { stroke:#acdcd0; stroke-width:.4; opacity:.4; }
+.angling-bank { fill:#686546; stroke:#b7a47c; stroke-width:.4; opacity:.3; }
+.angling-boat { fill:#213b32; stroke:#adc1ac; stroke-width:.25; opacity:.65; }
+.angling-boat__deck { fill:#1b3128; }
+.angling-crew { fill:#adc1ac; stroke:#adc1ac; stroke-width:.45; }
+.angling-rod { fill:none; stroke:#dbc78b; stroke-width:.55; stroke-linecap:round; }
+.angling-rod--responding { stroke:#a9e5d5; }
+.angling-line { fill:none; stroke:#eee3be; stroke-width:.2; opacity:.85; }
+.angling-line.is-strained { stroke:#ffac88; stroke-width:.4; }
+.angling-target, .angling-heading { transition:transform 240ms linear; }
+.angling-fish { stroke:#142d23; stroke-width:.23; stroke-linejoin:round; }
+.angling-fish__body { fill:#bcba70; }
+.angling-fish__fin { fill:#9c923d; }
+.angling-fish__bars { fill:none; stroke:#435b37; stroke-width:1.1; }
+.angling-fish__tail-eye { fill:#142d23; stroke:#e5d58f; stroke-width:.35; }
+.angling-fish__eye { fill:#142d23; stroke:#e6dcc0; stroke-width:.12; }
+.angling-fish--common-snook .angling-fish__body { fill:#c7cfc4; }
+.angling-fish--common-snook .angling-fish__fin { fill:#a6b28e; }
+.angling-fish__stripe { fill:none; stroke:#33443a; stroke-width:.45; }
+.angling-fish--spotted-seatrout .angling-fish__body { fill:#aabdb1; }
+.angling-fish--spotted-seatrout .angling-fish__fin { fill:#809d83; }
+.angling-fish__spots { fill:#35483b; stroke:none; }
+.angling-surface { fill:none; stroke:#e7e7c8; stroke-width:.3; opacity:.8; }
+.angling-habitat-label { position:absolute; z-index:2; right:16px; bottom:14px; max-width:calc(100% - 32px); padding:5px 9px; background:#12261fd9; border:1px solid #6c8e7e; color:#e4ecdf; font:12px/1.5 Arial,sans-serif; }
+.angling-response-feedback { padding:9px 12px; border-left:3px solid #d7b06d; background:#26372b; color:#efdfbb; font-size:13px; line-height:1.5; }
+.fishing-scene--angling-pilot.fishing-scene--paused *, .fishing-scene--angling-pilot.fishing-scene--paused *::before, .fishing-scene--angling-pilot.fishing-scene--paused *::after { transition:none!important; }
+.large-text .angling-response-feedback { font-size:18px; }
+.large-text .angling-habitat-label { font-size:15px; }
+@media(max-width:760px) {
+  .fishing-scene--angling-pilot .scene-caption { max-width:76%; }
+  .fishing-scene--angling-pilot .scene-caption small { font-size:10px; }
+  .cast-game--interaction .fishing-scene--angling-pilot .scene-caption strong { font-size:clamp(16px,4vw,22px); margin:3px 0; }
+  .fishing-scene--angling-pilot .scene-caption > span { font-size:11px; }
+  .fishing-scene--angling-pilot .angling-scene-cue { margin-top:4px; }
+  .angling-habitat-label { right:8px; bottom:6px; font-size:10px; padding:3px 6px; }
+  .angling-response-feedback { margin:8px 0; }
+}
+@media(prefers-reduced-motion:reduce) { .fishing-scene--angling-pilot *, .fishing-scene--angling-pilot *::before, .fishing-scene--angling-pilot *::after { animation:none!important; transition:none!important; } }
+
+/* Every live field method keeps its reading pane beside the scene in short
+   landscape. Completed reconstructions retain their normal scroll layout. */
+@media(min-width:600px) and (max-height:550px) {
+  .cast-game--interaction:not(.cast-game--complete) { grid-template-columns:minmax(0,1fr) minmax(300px,1.8fr); grid-template-rows:minmax(0,1fr); min-height:220px; overflow:visible; }
+  .cast-game--interaction:not(.cast-game--complete) .interaction-actions { padding:8px 12px; }
+  .cast-game--interaction:not(.cast-game--complete) .interaction-control { grid-template-columns:24px minmax(0,1fr); gap:0 8px; padding:10px 12px; }
+  .cast-game--interaction:not(.cast-game--complete) .interaction-control svg { width:24px; height:24px; }
+  .cast-game--interaction:not(.cast-game--complete) .interaction-control span { font-size:16px; line-height:1.25; }
+  .cast-game--interaction:not(.cast-game--complete) .interaction-control small { line-height:1.3; }
+  .cast-game--interaction:not(.cast-game--complete) .control-hint { margin-top:6px; line-height:1.3; }
+  .large-text .cast-game--interaction:not(.cast-game--complete) .interaction-control span { font-size:18px; }
+  .app--live-interaction .topbar { height:56px; grid-template-columns:1fr auto; gap:12px; padding:0 12px; }
+  .app--live-interaction .stage-track { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  .app--live-interaction .brand strong { font-size:19px; }
+  .app--live-interaction .brand span { font-size:10px; margin-top:3px; }
+  .app--live-interaction .save-notice, .app--live-interaction .expedition-tools { padding:5px 12px; gap:10px; }
+  .app--live-interaction .save-notice button, .app--live-interaction .expedition-tools button { padding:8px 10px; min-height:36px; }
+}
+@media(max-width:599px) and (max-height:650px) {
+  .app--live-interaction .topbar { height:56px; }
+  .app--live-interaction .brand strong { font-size:19px; }
+  .app--live-interaction .save-notice, .app--live-interaction .expedition-tools { padding:5px 10px; gap:8px; }
+  .app--live-interaction .save-notice button, .app--live-interaction .expedition-tools button { padding:8px 10px; min-height:36px; }
+  .app--live-interaction .save-notice-copy { max-height:48px; }
+  .cast-game--interaction:not(.cast-game--complete) { grid-template-rows:minmax(60px,20%) minmax(0,1fr); }
+  .cast-game--interaction:not(.cast-game--complete) .fishing-scene--angling-pilot .scene-caption strong { display:none; }
+  .interaction-console .interaction-reading h1 { font-size:22px; margin:6px 0; }
+}
+
+/* Live cutouts stay small, submerged and proportional above the habitat panorama. */
+.angling-live-fish { position:absolute; z-index:1; width:clamp(44px,11%,92px); max-width:22%; pointer-events:none; opacity:.8; filter:saturate(.85) brightness(1); transition:left 240ms linear, top 240ms linear; }
+.fishing-scene--angling-pilot .angling-target, .fishing-scene:has(.angling-live-fish) .water-target { transition:transform 240ms linear; }
+.fishing-scene:has(.angling-live-fish) .angling-line, .fishing-scene:has(.angling-live-fish) .angling-rod, .fishing-scene:has(.angling-live-fish) .fishing-line { transition:d 240ms linear; }
+.angling-live-fish--surface { opacity:.92; filter:saturate(.9) brightness(1); }
+.angling-live-fish__orientation, .angling-live-fish__view, .angling-live-fish__body, .angling-live-fish__tail, .angling-live-fish__piece, .angling-live-fish__fallback { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:contain; }
+.angling-live-fish__orientation, .angling-live-fish__body, .angling-live-fish__tail { transition:transform 240ms linear; }
+.angling-live-fish__piece { opacity:0; }
+.angling-live-fish__view.is-decoded .angling-live-fish__piece { opacity:1; }
+.angling-live-fish__view.is-decoded .angling-live-fish__fallback { visibility:hidden; }
+.angling-live-fish__fallback .angling-fish * { fill:#1c463c; stroke:#315447; stroke-width:.15; }
+.angling-live-fish__fallback .angling-fish__bars, .angling-live-fish__fallback .angling-fish__stripe { fill:none; }
+.angling-habitat-cue { fill:none; stroke:#abd0b5; stroke-width:.35; stroke-dasharray:1.6 2; opacity:.35; }
+.angling-mouth-joint { fill:#e8d7ab; opacity:.6; }
+.landed-reveal.encounter-artwork { z-index:3; }
+.encounter-artwork-caption { display:block; margin-top:7px; color:#d4ddd0; font:12px/1.5 Arial,sans-serif; font-style:normal; }
+.encounter-artwork--observation { border-color:#93b8ad; }
+.encounter-artwork--incident, .encounter-artwork--habitat-care { border-color:#bbaa7c; }
+.large-text .encounter-artwork-caption { font-size:15px; }
+
+/* Keep complete educational subjects visible; captions belong below the
+   reconstruction rather than across hands, fins or an attached colony base. */
+.catch-photo.encounter-artwork { aspect-ratio:auto; }
+.catch-photo.encounter-artwork::after { display:none; }
+.catch-photo.encounter-artwork img { height:auto; object-fit:contain; }
+.catch-photo.encounter-artwork figcaption { position:static; padding:14px 16px; background:#102219; }
+.landed-reveal.encounter-artwork { display:flex; flex-direction:column; background:#102219; overflow:hidden; }
+.landed-reveal.encounter-artwork img { flex:1 1 0; min-height:0; height:0; object-fit:contain; }
+.landed-reveal.encounter-artwork figcaption { position:static; flex:none; padding:10px 14px; background:#102219; font-size:18px; }
+.landed-reveal.encounter-artwork small { font-size:11px; line-height:1.4; }
+.control-coach { display:contents; }
+.control-coach__actions { display:grid; gap:8px; }
+.control-coach__actions button { width:100%; min-height:44px; margin:0; justify-content:center; }
+.control-coach__lesson { padding:14px; border:1px solid #8ed4c9; color:#c5efde; font-weight:700; }
+.control-coach__lesson span { display:block; margin-top:10px; color:#e7efe8; font-weight:400; }
+.research-return-actions { display:flex; flex-wrap:wrap; gap:12px; margin:20px 0; }
+.research-context-note { border-left:3px solid #e9bb73; padding:12px; background:#14271f; }
+.field-plan-practice, .guide-notebook { margin-top:24px; padding:18px; border:1px solid #617c6a; background:#14271f; }
+.field-plan-practice h3 { font:700 24px/1.3 Georgia,serif; }
+.field-plan-practice > div { display:grid; gap:10px; }
+.field-plan-practice button { min-height:52px; white-space:normal; text-align:left; line-height:1.6; padding:12px 16px; }
+.field-plan-practice button[aria-pressed=true] { border-color:#8ed4c9; background:#29493d; }
+.field-plan-practice__feedback { padding:14px; border-left:3px solid #8ed4c9; }
+.field-plan-practice__limit { color:#c3d4c9; font-size:13px; }
+.guide-notebook summary { cursor:pointer; min-height:44px; line-height:1.6; }
+.guide-notebook > details { border-top:1px solid #617c6a; margin-top:12px; padding-top:12px; }
+.cast-placement__context-disclosure { margin:8px 0; color:#c3d4c9; font-size:13px; }
+.cast-placement__context-disclosure summary, .cast-placement__help summary { min-height:44px; cursor:pointer; line-height:1.6; padding:10px 0; box-sizing:border-box; }
+.cast-placement__help p { font-size:inherit; line-height:inherit; margin:4px 0 10px; }
+.cast-placement .placement-lock { margin-top:12px; }
+@media(max-width:760px) {
+  .cast-console--placement-pilot { padding:16px 14px; }
+  .cast-console--placement-pilot h1 { font-size:32px; margin:6px 0 8px; }
+  .cast-console--placement-pilot > p { font-size:15px; margin:8px 0 12px; }
+  .cast-placement > header { gap:4px 8px; }
+  .cast-placement h2 { font-size:16px; }
+  .cast-placement > header > span { font-size:12px; }
+  .cast-placement__diagram { margin-top:8px; }
+  .cast-placement__diagram figcaption > span:nth-child(2) { display:none; }
+  .cast-placement__manual { margin-top:10px; padding-top:8px; }
+  .cast-placement__feedback { margin-top:8px; padding:8px 10px; }
+  .cast-placement .placement-lock { min-height:64px; margin-top:10px; }
+}
+.angling-live-fish[data-species=giant-snakehead] { width:clamp(64px,15%,130px); opacity:.78; }
+/* Interpolation follows saved encounter ticks; paused scenes have no motion clock. */
+.fishing-scene--paused .angling-live-fish, .fishing-scene--paused .angling-live-fish *, .fishing-scene--paused .angling-target, .fishing-scene--paused .water-target, .fishing-scene--paused .angling-line, .fishing-scene--paused .angling-rod, .fishing-scene--paused .fishing-line { transition:none !important; }
+@media(max-width:760px) {
+  .research-return-actions { display:grid; }
+  .research-return-actions button { width:100%; }
+  .field-plan-practice, .guide-notebook { padding:14px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .angling-live-fish, .angling-live-fish *, .fishing-scene .angling-target, .fishing-scene .water-target, .fishing-scene .angling-line, .fishing-scene .angling-rod, .fishing-scene .fishing-line { transition:none !important; }
+  .angling-live-fish__body, .angling-live-fish__tail { transform:none !important; }
+}
+.expedition-postcard { aspect-ratio:auto; background:#102219; }
+.expedition-postcard img { display:block; height:auto; object-fit:contain; }
+.expedition-postcard figcaption { position:static; padding:16px; background:#102219; }
+@media (max-width:700px) {
+  .handling .catch-photo.encounter-artwork { aspect-ratio:auto; }
+  .landed-reveal.encounter-artwork figcaption { font-size:16px; padding:8px 10px; }
+}
+@media (max-width:760px) {
+  /* Once the interaction is complete, it can scroll normally. The compact
+     timed console no longer needs to limit the subject to a tiny thumbnail. */
+  .cast-game--interaction:has(.landed-reveal.encounter-artwork) { height:auto; overflow:visible; grid-template-rows:auto auto; padding-bottom:64px; }
+  .cast-game--interaction:has(.landed-reveal.encounter-artwork) .fishing-scene { height:auto; }
+  .landed-reveal.encounter-artwork { position:relative; inset:auto; margin:12px 16px; }
+  .landed-reveal.encounter-artwork img { flex:none; height:auto; }
+  .fishing-scene:has(.landed-reveal.encounter-artwork) .angling-habitat-label { display:none; }
+}
+
+/* Local investigation plans put route tradeoffs beside the habitat evidence. */
+.field-decision { margin:20px 0; padding:18px; border:1px solid #617c6a; background:#14271f; }
+.field-decision > small, .field-decision-outcome > small { color:#aecbbe; letter-spacing:.08em; text-transform:uppercase; font-size:11px; }
+.field-decision h3, .field-decision-outcome h3 { margin:10px 0 12px; font:700 23px/1.3 Georgia,serif; }
+.field-decision__season, .field-decision__scope { color:#c3d4c9; font-size:13px; line-height:1.5; }
+.field-decision__choices { display:grid; gap:12px; margin-top:16px; }
+.field-decision__choice { padding:14px; border:1px solid #536d5e; background:#102219; min-width:0; }
+.field-decision__choice.is-selected { border-color:#8ed4c9; box-shadow:inset 3px 0 #8ed4c9; }
+.field-decision__choice h4 { margin:0 0 8px; font:700 18px/1.3 Georgia,serif; }
+.field-decision__choice p { margin:8px 0; font-size:14px; line-height:1.5; }
+.field-decision__choice button { display:block; width:100%; min-height:52px; margin-top:14px; padding:10px 12px; white-space:normal; text-align:left; line-height:1.4; }
+.field-decision__choice button small { display:block; margin-top:5px; font-size:12px; font-weight:400; }
+.field-decision__choice button[aria-pressed=true] { background:#29493d; border-color:#8ed4c9; }
+.field-decision__blocked { color:#f2cf9d; }
+.field-decision__selected, .field-decision__assignment-note { border-left:3px solid #8ed4c9; padding:10px 12px; background:#20392e; line-height:1.5; }
+.field-decision__assignment { margin-top:12px; border-top:1px solid #536d5e; }
+.field-decision__assignment summary { cursor:pointer; min-height:44px; padding:12px 0; line-height:1.5; }
+.field-decision__assignment p { font-size:14px; line-height:1.5; }
+.field-decision__custom { width:100%; white-space:normal; }
+.field-decision-outcome { margin:24px 0; padding:18px; border-left:3px solid #8ed4c9; background:#14271f; }
+.field-decision-outcome p { line-height:1.6; }
+.large-text .field-decision__choice p, .large-text .field-decision__season, .large-text .field-decision__scope, .large-text .field-decision__assignment p { font-size:17px; }
+.large-text .field-decision__choice button small { font-size:15px; }
+@media(max-width:760px) { .field-decision, .field-decision-outcome { padding:14px; } }
+
+.field-decision h3 { font-size:20px; }
+.field-decision__choice button { margin-top:0; font-weight:700; }
+.field-decision__evidence summary { cursor:pointer; padding:10px 0; min-height:44px; box-sizing:border-box; font-size:13px; line-height:1.5; color:#aecbbe; }
+
+.field-decision__choice button { color:var(--paper); background:#183227; border:1px solid #779987; cursor:pointer; }
+.field-decision__choice button:hover:not(:disabled) { background:#29493d; border-color:#8ed4c9; }
+.field-decision__choice button[aria-pressed=true] { background:#29493d; border-color:#8ed4c9; }
+@media(max-width:760px) { .fishing-scene .angling-scene-cue { display:none; } }
+
+/* Authored turn views keep their own proportional box and mouth registration. */
+.angling-live-fish__view { transition:none; }
+.angling-live-fish__view--turn, .angling-live-fish__view--oblique { right:auto; bottom:auto; }
+.visit-comparison { margin:24px 0; padding:18px; border:1px solid #617c6a; background:#14271f; }
+.visit-comparison > small { color:#aecbbe; letter-spacing:.08em; text-transform:uppercase; font-size:11px; }
+.visit-comparison h3 { margin:10px 0 12px; font:700 23px/1.3 Georgia,serif; }
+.visit-comparison p { line-height:1.6; }
+.visit-comparison label { display:grid; gap:8px; color:#c3d4c9; font-size:14px; }
+.visit-comparison select { width:100%; min-width:0; min-height:44px; padding:10px; color:var(--paper); background:#102219; border:1px solid #779987; font:inherit; }
+.visit-comparison__change { padding:12px; border-left:3px solid #8ed4c9; background:#20392e; }
+.visit-comparison__next { color:#d4e0d7; }
+.visit-comparison__details summary { min-height:44px; padding:12px 0; cursor:pointer; line-height:1.5; }
+.visit-comparison__records { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.visit-comparison__record { min-width:0; padding:14px; border:1px solid #536d5e; background:#102219; }
+.visit-comparison__record > small { display:block; }
+.visit-comparison__record > strong { display:block; margin:8px 0 10px; font:700 18px/1.4 Georgia,serif; }
+.visit-comparison__record dl { margin:0; display:grid; gap:4px; }
+.visit-comparison__record dt { margin-top:8px; color:#aecbbe; font-size:12px; }
+.visit-comparison__record dd { margin:0; font-size:14px; line-height:1.5; overflow-wrap:anywhere; }
+.visit-comparison__empty { color:#c3d4c9; font-size:14px; }
+.large-text .visit-comparison label, .large-text .visit-comparison__record dd, .large-text .visit-comparison__empty { font-size:17px; }
+@media(max-width:760px) { .visit-comparison { padding:14px; } .visit-comparison__records { grid-template-columns:1fr; } }
+
+/* Compact scenes reserve the water for the fish; habitat context is read
+   beside the controls. The common mouth anchor and 22% size cap stay intact. */
+.interaction-habitat-context { display:none; }
+@media (max-width:760px), (min-width:600px) and (max-height:550px) {
+  .angling-live-fish { width:clamp(64px,11%,92px); }
+  .cast-game--interaction:not(.cast-game--complete) .fishing-scene--angling-pilot .angling-habitat-label { display:none; }
+  .interaction-reading .interaction-habitat-context { display:block; margin:8px 0; padding:7px 9px; border-left:2px solid #6c8e7e; background:#162a20; color:#c6d8c9; font-size:12px; line-height:1.5; overflow-wrap:anywhere; }
+  .large-text .interaction-reading .interaction-habitat-context { font-size:15px!important; line-height:1.5!important; }
+}

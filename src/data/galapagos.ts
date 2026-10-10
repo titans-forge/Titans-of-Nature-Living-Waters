@@ -33,7 +33,7 @@ export const galapagosQuestions: Question[] = [
 
 export const galapagosGear: GearSet[] = [
   {
-    id: "shore-camera",
+    id: "shore-camera", method: "camera",
     name: "Lava-shore camera survey",
     rod: "No rod",
     line: "Marked pole-camera tether",
@@ -44,7 +44,7 @@ export const galapagosGear: GearSet[] = [
     tradeoff: "A low camera angle can hide swell, animal movement, and the safe distance from the rock shelf.",
   },
   {
-    id: "drift-survey",
+    id: "drift-survey", method: "camera",
     name: "Cold-current drift survey",
     rod: "No rod",
     line: "Depth-marked instrument tether",
@@ -55,7 +55,7 @@ export const galapagosGear: GearSet[] = [
     tradeoff: "An unlogged drift confuses a moving water mass with a fixed point on the map.",
   },
   {
-    id: "acoustic-array",
+    id: "acoustic-array", method: "telemetry",
     name: "Pelagic acoustic watch",
     rod: "No rod",
     line: "Receiver hydrophone tether",
@@ -162,7 +162,7 @@ export const galapagosEncounters: Record<string, Encounter> = {
   },
   "lost-longline": {
     id: "lost-longline",
-    type: "snag",
+    type: "snag", interaction: "snag",
     name: "Lost pelagic fishing line",
     summary: "The hydrophone tether brushes a loose monofilament loop drifting near the reserve boundary.",
     ecology: "Lost fishing gear can continue entangling animals far from where it entered the sea. Recovery is valuable only when it can be done safely, legally, and without dragging gear across habitat or wildlife.",

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { venues } from '../src/data/venues';
 import { learningQuestions } from '../src/data/learning';
-import { advanceInteraction, askQuestion, beginDebrief, beginQuestions, castLine, completeDebrief, continueExpedition, createInitialState, finishGear, finishQuestions, handleEncounter, revealEncounter, selectGear, selectHabitat, selectVenue } from '../src/game/engine';
+import { advanceInteraction, chooseSnagApproach, getRecommendedEngagement, askQuestion, beginDebrief, beginQuestions, castLine, completeDebrief, continueExpedition, createInitialState, finishGear, finishQuestions, handleEncounter, revealEncounter, selectGear, selectHabitat, selectVenue } from '../src/game/engine';
 import { MAX_SAVE_BYTES, parseExpedition, serializeExpedition, validateExpedition } from '../src/game/save';
 import type { ExpeditionState } from '../src/types';
 
@@ -12,13 +12,13 @@ function prepared() {
 }
 function recorded() {
   let state = castLine(selectHabitat(prepared(), 'roots'), 42);
-  for (let tick = 0; tick < 1000 && !state.lineResolved; tick += 1) state = advanceInteraction(state, state.fightPhase === 'rest');
+  for (let tick = 0; tick < 1000 && !state.lineResolved; tick += 1) state = advanceInteraction(state, getRecommendedEngagement(state));
   return handleEncounter(revealEncounter(state), 'steady-release');
 }
 function legacy(state: ExpeditionState, version: number) {
   const value = JSON.parse(JSON.stringify(state));
   value.version = version;
-  for (const key of ['observations', 'learningAnswers', 'expeditionNumber', 'castUsedAssistance']) delete value[key];
+  for (const key of ['observations', 'learningAnswers', 'expeditionNumber', 'castUsedAssistance', 'snagApproach', 'learningRevisions', 'anglingRules', 'anglingBeat']) delete value[key];
   if (version < 7) for (const key of ['experienceMode', 'assistMode', 'castAttempts', 'tripJournalIds', 'tripSafeJournalIds']) delete value[key];
   if (version <= 2) { delete value.venueId; delete value.activeAssignmentId; value.journalIds = value.journalIds.map((id: string) => id.replace('amazon:', '')); }
   return value;
@@ -29,7 +29,7 @@ describe('portable expedition saves', () => {
     const states: ExpeditionState[] = [createInitialState(), selectVenue(createInitialState(), 'amazon'), prepared()];
     states.push({ ...selectHabitat(prepared(), 'roots'), stage: 'cast' });
     let state = castLine(selectHabitat(prepared(), 'roots'), 42); states.push(state);
-    while (!state.lineResolved) { state = advanceInteraction(state, state.fightPhase === 'rest'); states.push(state); }
+    while (!state.lineResolved) { state = advanceInteraction(state, getRecommendedEngagement(state)); states.push(state); }
     states.push(revealEncounter(state), recorded(), continueExpedition(recorded()), beginDebrief(recorded()));
     state = completeDebrief(beginDebrief(recorded()), 'full-notes'); states.push(state, selectVenue(state, 'okavango'));
     for (const item of states) {
@@ -43,7 +43,8 @@ describe('portable expedition saves', () => {
       state = askQuestion(askQuestion(state, venue.questions[0].id), venue.questions[1].id);
       state = finishGear(selectGear(finishQuestions(state), gear.id));
       state = castLine(selectHabitat(state, habitat.id), venue.idealPower[habitat.id]);
-      for (let tick = 0; tick < 1000 && !state.lineResolved; tick += 1) state = advanceInteraction(state, state.fightPhase === 'rest');
+      if (venue.encounters[state.encounterId!].interaction === 'snag') state = chooseSnagApproach(state, 'back-out');
+      for (let tick = 0; tick < 1000 && !state.lineResolved; tick += 1) state = advanceInteraction(state, getRecommendedEngagement(state));
       expect(state.lineResolved).toBe(true);
       const encounter = venue.encounters[state.encounterId!];
       state = handleEncounter(revealEncounter(state), encounter.handling.find(h => h.safe)!.id);
@@ -54,7 +55,7 @@ describe('portable expedition saves', () => {
   });
   it.each([1, 2, 3, 4, 5, 6, 7])('migrates a supported v%s synthetic legacy-shaped journal without inventing detailed history', version => {
     const parsed = parseExpedition(JSON.stringify(legacy(recorded(), version)));
-    expect(parsed).toMatchObject({ ok: true, migrated: true, state: { version: 8, stage: 'journal', journalIds: ['amazon:peacock-bass'], observations: [], learningAnswers: [], tripSafeJournalIds: ['amazon:peacock-bass'] } });
+    expect(parsed).toMatchObject({ ok: true, migrated: true, state: { version: 12, stage: 'journal', journalIds: ['amazon:peacock-bass'], observations: [], learningAnswers: [], tripSafeJournalIds: ['amazon:peacock-bass'] } });
   });
   it('preserves v6 safe assignment eligibility for a pending community report', () => {
     const parsed = parseExpedition(JSON.stringify(legacy(recorded(), 6)));

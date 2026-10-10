@@ -1,7 +1,7 @@
 {
   "name": "titans-of-nature-living-waters",
-  "version": "1.4.0",
-  "releaseDate": "2026-09-21",
+  "version": "1.14.0",
+  "releaseDate": "2026-10-09",
   "description": "A local-first educational fishing expedition through the world's living waters.",
   "private": true,
   "license": "SEE LICENSE IN LICENSE",
@@ -29,10 +29,5 @@
     "typescript": "^5.9.2",
     "vite": "^7.1.2",
     "vitest": "^3.2.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/titans-forge/Titans-of-Nature-Living-Waters.git"
-  },
-  "homepage": "https://titans-forge.itch.io/living-waters"
+  }
 }

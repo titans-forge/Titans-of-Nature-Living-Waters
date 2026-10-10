@@ -1,0 +1,144 @@
+{
+  "created": "2026-10-09",
+  "provider": "OpenAI built-in image generation in Codex",
+  "model": "Not reported by built-in tool",
+  "scope": "Local Living Waters oblique turn pass; no publication",
+  "formatConversion": "Pillow for WebP encoding and downscaling only; full frame and original RGBA alpha retained",
+  "disclosure": "Generated game reconstructions, not actual wildlife encounters or scientific evidence",
+  "assets": [
+    {
+      "id": "peacock-bass-oblique",
+      "kind": "live-fish-oblique-sprite",
+      "generatedSource": "exec-8bcacf2f-01ab-4a06-a475-a9f70c55efb7.png",
+      "sourceDimensions": [
+        1586,
+        992
+      ],
+      "path": "src/assets/fish-sprites/peacock-bass-oblique-v1.webp",
+      "dimensions": [
+        768,
+        480
+      ],
+      "sourceSha256": "8410dea871b4cbb8793f667d8e8a9339abb80f04f2c53a3d32b7df7bba5edf1d",
+      "sha256": "efa4cdc2570ff569c58dd1e05ccfd79e0df914f700f7bc5031d67124973632fe",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sourceAlphaExtrema": [
+        0,
+        255
+      ],
+      "inputImages": [
+        "src/assets/fish-sprites/peacock-bass-v1.webp"
+      ],
+      "bytes": 123474
+    },
+    {
+      "id": "common-snook-oblique",
+      "kind": "live-fish-oblique-sprite",
+      "generatedSource": "exec-b3200bdd-81f6-4e98-a8f0-c6e50b506cb5.png",
+      "sourceDimensions": [
+        1683,
+        935
+      ],
+      "path": "src/assets/fish-sprites/common-snook-oblique-v1.webp",
+      "dimensions": [
+        768,
+        427
+      ],
+      "sourceSha256": "678a7bfabafb56312bd9718ee4e57783b9a2952b98981b6420c905070ce1f738",
+      "sha256": "588863535b7a302da88ef3485daff62cf23809c765b546aad4b7d5443f7600ce",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sourceAlphaExtrema": [
+        0,
+        255
+      ],
+      "inputImages": [
+        "src/assets/fish-sprites/common-snook-v1.webp"
+      ],
+      "bytes": 83010
+    },
+    {
+      "id": "spotted-seatrout-oblique",
+      "kind": "live-fish-oblique-sprite",
+      "generatedSource": "exec-e3e2a7af-3703-430f-8afe-80f605041da4.png",
+      "sourceDimensions": [
+        1683,
+        935
+      ],
+      "path": "src/assets/fish-sprites/spotted-seatrout-oblique-v1.webp",
+      "dimensions": [
+        768,
+        427
+      ],
+      "sourceSha256": "11c8bd4ea8c247b5e8154063bc74eaca30d935dab03913b37e19d6fd4082127d",
+      "sha256": "4e2b28db98f5309b5ab938a2f5a41d08b8fb678b3e48dd4db8fa0185a789423b",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sourceAlphaExtrema": [
+        0,
+        255
+      ],
+      "inputImages": [
+        "src/assets/fish-sprites/spotted-seatrout-v1.webp"
+      ],
+      "bytes": 99644
+    },
+    {
+      "id": "giant-snakehead-oblique",
+      "kind": "live-fish-oblique-sprite",
+      "generatedSource": "exec-93ea996d-4568-4498-aded-d0e2584b2f96.png",
+      "sourceDimensions": [
+        1860,
+        846
+      ],
+      "path": "src/assets/fish-sprites/giant-snakehead-oblique-v1.webp",
+      "dimensions": [
+        768,
+        349
+      ],
+      "sourceSha256": "be46ca8b1f26692843c4604015d9d47cbec03dda472f3a3bd10476d9bfca0417",
+      "sha256": "86294a18da56a03059ddbb3c66d2608424af6e60d5932c2da4020303e86c3925",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sourceAlphaExtrema": [
+        0,
+        255
+      ],
+      "inputImages": [
+        "src/assets/fish-sprites/giant-snakehead-v1.webp"
+      ],
+      "bytes": 82750
+    }
+  ],
+  "prompts": [
+    {
+      "key": "peacock-bass",
+      "input": "/Users/titansforge/Documents/Codex/2026-05-28/what-should-i-open-source-that/titans-of-nature-living-waters/src/assets/fish-sprites/peacock-bass-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: realistic transparent three-quarter fish yaw frame for a 2D educational fishing game. Input image is the specimen identity and rendering reference. Create one complete adult peacock bass with olive gold flanks, orange lower fins, dark vertical bars and the gold-ringed dark tail ocellus, preserving this reference specimen's markings, natural colors and fin anatomy. NEW VIEW: halfway between the reference's horizontal side profile and a head-on view, turned about 45 degrees toward the viewer, viewed from only slightly above. Head on the RIGHT near the viewer, tail extending to the LEFT and receding away. The body remains mainly left-to-right in a shallow diagonal; dorsal side upright. Both the front of the mouth and a substantial flank are visible, with believable perspective depth and foreshortening. Do not make a pure side profile or vertical head-on fish. Aim for a horizontal silhouette about 1.6 times wider than tall, including the fins. Complete body, tail and fins inside frame with clean modest padding. Wet detailed scales, delicate fin rays, soft neutral lighting matching the reference, photographic natural-history realism. Mouth naturally slightly parted, not exaggerated. Genuine clean alpha transparency outside fish and fine fin rays. No water, bubbles, haze, glow, cast shadow, background, hook, line, labels or text; no extra fish or mirrored duplicates. No toy, cartoon or anime styling. This is a separate intermediate-angle artwork, not an alteration to the existing side asset."
+    },
+    {
+      "key": "common-snook",
+      "input": "/Users/titansforge/Documents/Codex/2026-05-28/what-should-i-open-source-that/titans-of-nature-living-waters/src/assets/fish-sprites/common-snook-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: realistic transparent three-quarter fish yaw frame for a 2D educational fishing game. Input image is the specimen identity and rendering reference. Create one complete adult common snook with silver olive flanks, a black lateral stripe, projecting lower jaw, two dorsal fins and a narrow head, preserving this reference specimen's markings, natural colors and fin anatomy. NEW VIEW: halfway between the reference's horizontal side profile and a head-on view, turned about 45 degrees toward the viewer, viewed from only slightly above. Head on the RIGHT near the viewer, tail extending to the LEFT and receding away. The body remains mainly left-to-right in a shallow diagonal; dorsal side upright. Both the front of the mouth and a substantial flank are visible, with believable perspective depth and foreshortening. Do not make a pure side profile or vertical head-on fish. Aim for a horizontal silhouette about 1.8 times wider than tall, including the fins. Complete body, tail and fins inside frame with clean modest padding. Wet detailed scales, delicate fin rays, soft neutral lighting matching the reference, photographic natural-history realism. Mouth naturally slightly parted, not exaggerated. Genuine clean alpha transparency outside fish and fine fin rays. No water, bubbles, haze, glow, cast shadow, background, hook, line, labels or text; no extra fish or mirrored duplicates. No toy, cartoon or anime styling. This is a separate intermediate-angle artwork, not an alteration to the existing side asset."
+    },
+    {
+      "key": "spotted-seatrout",
+      "input": "/Users/titansforge/Documents/Codex/2026-05-28/what-should-i-open-source-that/titans-of-nature-living-waters/src/assets/fish-sprites/spotted-seatrout-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: realistic transparent three-quarter fish yaw frame for a 2D educational fishing game. Input image is the specimen identity and rendering reference. Create one complete adult spotted seatrout with silver olive flanks, many dark spots on its flank and fins, and a tapered head, preserving this reference specimen's markings, natural colors and fin anatomy. NEW VIEW: halfway between the reference's horizontal side profile and a head-on view, turned about 45 degrees toward the viewer, viewed from only slightly above. Head on the RIGHT near the viewer, tail extending to the LEFT and receding away. The body remains mainly left-to-right in a shallow diagonal; dorsal side upright. Both the front of the mouth and a substantial flank are visible, with believable perspective depth and foreshortening. Do not make a pure side profile or vertical head-on fish. Aim for a horizontal silhouette about 1.8 times wider than tall, including the fins. Complete body, tail and fins inside frame with clean modest padding. Wet detailed scales, delicate fin rays, soft neutral lighting matching the reference, photographic natural-history realism. Mouth naturally slightly parted, not exaggerated. Genuine clean alpha transparency outside fish and fine fin rays. No water, bubbles, haze, glow, cast shadow, background, hook, line, labels or text; no extra fish or mirrored duplicates. No toy, cartoon or anime styling. This is a separate intermediate-angle artwork, not an alteration to the existing side asset."
+    },
+    {
+      "key": "giant-snakehead",
+      "input": "/Users/titansforge/Documents/Codex/2026-05-28/what-should-i-open-source-that/titans-of-nature-living-waters/src/assets/fish-sprites/giant-snakehead-v1.webp",
+      "prompt": "Use case: scientific-educational. Asset type: realistic transparent three-quarter fish yaw frame for a 2D educational fishing game. Input image is the specimen identity and rendering reference. Create one complete adult giant snakehead with charcoal olive mottled flanks, a broad slightly flattened head, a long low dorsal fin and a rounded tail, preserving this reference specimen's markings, natural colors and fin anatomy. NEW VIEW: halfway between the reference's horizontal side profile and a head-on view, turned about 45 degrees toward the viewer, viewed from only slightly above. Head on the RIGHT near the viewer, tail extending to the LEFT and receding away. The body remains mainly left-to-right in a shallow diagonal; dorsal side upright. Both the front of the mouth and a substantial flank are visible, with believable perspective depth and foreshortening. Do not make a pure side profile or vertical head-on fish. Aim for a horizontal silhouette about 2.2 times wider than tall, including the fins. Complete body, tail and fins inside frame with clean modest padding. Wet detailed scales, delicate fin rays, soft neutral lighting matching the reference, photographic natural-history realism. Mouth naturally slightly parted, not exaggerated. Genuine clean alpha transparency outside fish and fine fin rays. No water, bubbles, haze, glow, cast shadow, background, hook, line, labels or text; no extra fish or mirrored duplicates. No toy, cartoon or anime styling. This is a separate intermediate-angle artwork, not an alteration to the existing side asset."
+    }
+  ]
+}

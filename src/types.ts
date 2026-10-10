@@ -2,7 +2,10 @@ export type Stage = "venue" | "arrival" | "questions" | "gear" | "habitat" | "ca
 export type LineAction = "reel" | "hold" | "give";
 export type FightPhase = "run" | "rest";
 export type ExperienceMode = "guided" | "field";
-export type FightProfileId = "burst" | "bottom" | "aerial" | "steady" | "passive";
+export type FightProfileId = "burst" | "bottom" | "aerial" | "steady" | "passive" | "bycatch" | "snag" | "camera" | "telemetry" | "sampling";
+export type GearMethod = "angling" | "camera" | "telemetry" | "sampling";
+export type AnglingRules = "classic" | "habitat-v1";
+export type InteractionKind = "fish" | "bycatch" | "snag" | "camera" | "telemetry" | "sampling";
 
 export interface SourceReference {
   id: string;
@@ -24,6 +27,7 @@ export interface Question {
 
 export interface GearSet {
   id: string;
+  method: GearMethod;
   name: string;
   rod: string;
   line: string;
@@ -47,6 +51,8 @@ export interface Habitat {
 
 export interface Encounter {
   id: string;
+  /** Physical incidents override the field kit's normal survey method. */
+  interaction?: "bycatch" | "snag";
   type: "fish" | "invertebrate" | "reptile" | "plant" | "snag" | "observation";
   name: string;
   scientificName?: string;
@@ -110,6 +116,7 @@ export interface EcosystemLink {
 
 export interface FieldAssignment {
   id: string;
+  purpose: "investigation" | "incident-response" | "habitat-care";
   venueId: string;
   targetEncounterId: string;
   habitatId: string;
@@ -120,6 +127,7 @@ export interface FieldAssignment {
 }
 
 export type DebriefChoice = "full-notes" | "identity-only" | "private-notes";
+export type ObservationReportingStatus = DebriefChoice | "pending" | "legacy-unknown";
 
 export interface FieldObservation {
   id: number;
@@ -134,15 +142,24 @@ export interface FieldObservation {
   controlMistakes: number;
   assisted: boolean;
   shared: boolean;
+  reportingStatus: ObservationReportingStatus;
 }
 
 export interface LearningAnswer { questionId: string; answerId: string; correct: boolean }
 
+// The initial answer is retained in learningAnswers. This bounded latest review
+// stores the player's current explanation and the records they explicitly link.
+export interface LearningRevision extends LearningAnswer {
+  evidenceIds: number[];
+  limitationId: string;
+}
+
 export interface ExpeditionState {
   observations: FieldObservation[];
   learningAnswers: LearningAnswer[];
+  learningRevisions: LearningRevision[];
   expeditionNumber: number;
-  version: 8;
+  version: 12;
   venueId: string | null;
   stage: Stage;
   askedQuestions: string[];
@@ -154,6 +171,9 @@ export interface ExpeditionState {
   lineTurn: number;
   lineTension: number;
   lineActions: LineAction[];
+  anglingRules: AnglingRules;
+  anglingBeat: number;
+  snagApproach: "unassessed" | "back-out" | "pull-through";
   lineQuality: number;
   lineResolved: boolean;
   fishDistance: number;

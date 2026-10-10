@@ -1,4 +1,5 @@
 import type { LearningAnswer } from "../types";
+import { journeyByteLength, MAX_SAVE_BYTES } from "../game/limits";
 
 export interface LearningQuestion {
   id: string;
@@ -254,8 +255,16 @@ export function getLearningQuestion(id: string): LearningQuestion | undefined {
   return learningQuestions.find((question) => question.id === id);
 }
 
+export function getLearningAnswerProblem<T extends { learningAnswers: LearningAnswer[] }>(state: T, questionId: string, answerId: string): string | null {
+  const question = getLearningQuestion(questionId);
+  if (!question || !question.options.some((option) => option.id === answerId)) return "Choose an explanation from this question.";
+  if (state.learningAnswers.some((answer) => answer.questionId === questionId)) return "Your first answer is preserved. Use the evidence review to revisit it.";
+  const next = { ...state, learningAnswers: [...state.learningAnswers, { questionId, answerId, correct: answerId === question.correctId }] };
+  return journeyByteLength(next) > MAX_SAVE_BYTES ? "This journey has reached its save capacity. Export your current journey before starting a new one; the first answer has not been changed." : null;
+}
+
 export function recordLearningAnswer<T extends { learningAnswers: LearningAnswer[] }>(state: T, questionId: string, answerId: string): T {
   const question = getLearningQuestion(questionId);
-  if (!question || !question.options.some((option) => option.id === answerId) || state.learningAnswers.some((answer) => answer.questionId === questionId)) return state;
+  if (!question || getLearningAnswerProblem(state, questionId, answerId)) return state;
   return { ...state, learningAnswers: [...state.learningAnswers, { questionId, answerId, correct: answerId === question.correctId }] };
 }

@@ -33,7 +33,7 @@ export const chinaQuestions: Question[] = [
 
 export const chinaGear: GearSet[] = [
   {
-    id: "reed-lure",
+    id: "reed-lure", method: "angling",
     name: "Reed-channel lure kit",
     rod: "7 ft medium rod",
     line: "18 lb braided line",
@@ -44,7 +44,7 @@ export const chinaGear: GearSet[] = [
     tradeoff: "A fixed assumption about salinity can place the lure in water the target fish has already left.",
   },
   {
-    id: "channel-jig",
+    id: "channel-jig", method: "angling",
     name: "Brackish-channel jig kit",
     rod: "7 ft light jigging rod",
     line: "20 lb braid with abrasion leader",
@@ -55,7 +55,7 @@ export const chinaGear: GearSet[] = [
     tradeoff: "Too much weight buries in soft sediment or catches restoration stakes and submerged debris.",
   },
   {
-    id: "survey",
+    id: "survey", method: "sampling",
     name: "Delta nursery eDNA survey",
     rod: "No rod",
     line: "Marked sterile sampler tether",
@@ -136,7 +136,7 @@ export const chinaEncounters: Record<string, Encounter> = {
   },
   "chinese-mitten-crab": {
     id: "chinese-mitten-crab",
-    type: "invertebrate",
+    type: "invertebrate", interaction: "bycatch",
     name: "Chinese mitten crab",
     scientificName: "Eriocheir sinensis",
     summary: "A mitten crab grips the slow jig as the saltmarsh creek begins filling from the estuary.",
@@ -161,7 +161,7 @@ export const chinaEncounters: Record<string, Encounter> = {
   },
   "cordgrass-snag": {
     id: "cordgrass-snag",
-    type: "plant",
+    type: "plant", interaction: "snag",
     name: "Invasive cordgrass rhizome snag",
     scientificName: "Spartina alterniflora",
     summary: "The sampler catches a dense rhizome at the edge of a cordgrass-removal plot beside recovering native saltmarsh.",

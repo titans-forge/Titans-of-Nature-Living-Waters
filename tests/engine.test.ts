@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { advanceAssistedInteraction, advanceInteraction, askQuestion, beginDebrief, beginQuestions, castLine, castNotchForPower, castPowerForNotches, completeDebrief, continueExpedition, createInitialState, finishGear, finishQuestions, getFightProfile, getRecommendedLineAction, handleEncounter, manageLine, MAX_CAST_ATTEMPTS, revealEncounter, selectGear, selectHabitat, selectVenue } from "../src/game/engine";
+import { advanceAssistedInteraction, advanceInteraction, askQuestion, beginDebrief, beginQuestions, castLine, castNotchForPower, castPowerForNotches, completeDebrief, continueExpedition, createInitialState, finishGear, finishQuestions, getFightProfile, getRecommendedEngagement, chooseSnagApproach, handleEncounter, manageLine, MAX_CAST_ATTEMPTS, revealEncounter, selectGear, selectHabitat, selectVenue } from "../src/game/engine";
 import { buildAssignment, getNextAssignment } from "../src/game/assignments";
 import { validateContent } from "../src/game/validation";
 import { getComparedVenues, getDiscoveries, getVenueProgress, parseConnections } from "../src/game/progress";
 import { venueById } from "../src/data/venues";
 import { catchPhotoByEncounterId } from "../src/data/catchPhotos";
+import { needsSnagApproach } from "../src/game/interactions";
 import { getNextSeason, resolveSeasonEncounter } from "../src/game/seasons";
 import type { ExpeditionState } from "../src/types";
 
@@ -18,8 +19,10 @@ function prepared(venueId: string, questions: string[], gearId: string) {
 
 function landFish(state: ExpeditionState) {
   let current = state;
-  for (let turn = 0; turn < 80 && !current.lineResolved; turn += 1) {
-    current = manageLine(current, getRecommendedLineAction(current));
+  const venue = venueById[current.venueId!];
+  if (needsSnagApproach(current, venue)) current = chooseSnagApproach(current, "back-out");
+  for (let turn = 0; turn < 1000 && !current.lineResolved; turn += 1) {
+    current = advanceInteraction(current, getRecommendedEngagement(current));
   }
   expect(current.lineResolved).toBe(true);
   return current;
@@ -40,7 +43,7 @@ describe("multi-venue expedition engine", () => {
   });
   it("starts at destination selection and preserves journal entries while traveling", () => {
     const initial = createInitialState();
-    expect(initial).toMatchObject({ version: 8, experienceMode: "guided", assistMode: false, castAttempts: 0 });
+    expect(initial).toMatchObject({ version: 12, experienceMode: "guided", assistMode: false, castAttempts: 0 });
     expect(initial.stage).toBe("venue");
     const amazon = selectVenue({ ...initial, journalIds: ["amazon:peacock-bass"] }, "okavango");
     expect(amazon.stage).toBe("arrival");
@@ -122,7 +125,7 @@ describe("multi-venue expedition engine", () => {
   it("creates Amazon turtle bycatch from baited light tackle near plants", () => {
     let state = castLine(selectHabitat(prepared("amazon", ["plant-signs", "turtles"], "light"), "plants"), 56);
     expect(state.encounterId).toBe("river-turtle");
-    state = manageLine(manageLine(manageLine(state, "hold"), "give"), "hold");
+    state = landFish(state);
     state = handleEncounter(revealEncounter(state), "pliers-release");
     expect(state.stage).toBe("journal");
   });
@@ -167,7 +170,7 @@ describe("multi-venue expedition engine", () => {
     const survey = castLine(selectHabitat(prepared("great-barrier-reef", ["reef-zones", "seagrass-turtle"], "survey"), "seagrass"), 54);
     expect(getFightProfile(tigerfish).id).toBe("aerial");
     expect(getFightProfile(halibut).id).toBe("bottom");
-    expect(getFightProfile(survey).id).toBe("passive");
+    expect(getFightProfile(survey).id).toBe("camera");
   });
   it("supports untimed phase decisions", () => {
     let state = castLine(selectHabitat(prepared("okavango", ["flood-arrival", "fishery"], "channel"), "channel"), 68);
@@ -207,7 +210,7 @@ describe("multi-venue expedition engine", () => {
   it("turns bait near Tonle Sap lotus into turtle bycatch", () => {
     let state = castLine(selectHabitat(prepared("tonle-sap", ["turtle-release", "forest-role"], "bait"), "lotus"), 54);
     expect(state.encounterId).toBe("malayan-snail-turtle");
-    state = manageLine(manageLine(manageLine(state, "hold"), "give"), "hold");
+    state = landFish(state);
     state = handleEncounter(revealEncounter(state), "waterline-release");
     expect(state.journalIds).toContain("tonle-sap:malayan-snail-turtle");
   });
@@ -281,7 +284,7 @@ describe("multi-venue expedition engine", () => {
   it("turns a Ganges acoustic watch into a no-hook dolphin observation", () => {
     let state = castLine(selectHabitat(prepared("ganges", ["dolphin-sound", "ecological-flow"], "acoustic"), "channel"), 74);
     expect(state.encounterId).toBe("ganges-dolphin");
-    state = manageLine(manageLine(manageLine(state, "hold"), "give"), "hold");
+    state = landFish(state);
     state = handleEncounter(revealEncounter(state), "quiet-watch");
     expect(state.journalIds).toContain("ganges:ganges-dolphin");
     expect(state.trust).toBeGreaterThan(0);
@@ -289,7 +292,7 @@ describe("multi-venue expedition engine", () => {
   it("tracks a protected Danube sturgeon without a hook or pursuit", () => {
     let state = castLine(selectHabitat(prepared("danube", ["iron-gates-passage", "working-corridor"], "telemetry"), "navigation"), 58);
     expect(state.encounterId).toBe("beluga-sturgeon");
-    state = manageLine(manageLine(manageLine(state, "hold"), "give"), "hold");
+    state = landFish(state);
     state = handleEncounter(revealEncounter(state), "barrier-log");
     expect(state.journalIds).toContain("danube:beluga-sturgeon");
     expect(state.trust).toBeGreaterThan(0);
@@ -307,7 +310,7 @@ describe("multi-venue expedition engine", () => {
     let state = castLine(selectHabitat(prepared("great-barrier-reef", ["reef-zones", "seagrass-turtle"], "survey"), "seagrass"), 54);
     expect(state.encounterId).toBe("green-turtle");
     expect(state.fishMaxDistance).toBe(0);
-    state = manageLine(manageLine(manageLine(state, "hold"), "give"), "hold");
+    state = landFish(state);
     state = handleEncounter(revealEncounter(state), "drift-log");
     expect(state.journalIds).toContain("great-barrier-reef:green-turtle");
   });
@@ -325,7 +328,7 @@ describe("multi-venue expedition engine", () => {
     state = castLine(selectHabitat(state, "harbor"), 54);
     expect(state.encounterId).toBe("common-octopus");
     expect(state.fishMaxDistance).toBe(0);
-    state = manageLine(manageLine(manageLine(state, "give"), "hold"), "reel");
+    state = landFish(state);
     state = handleEncounter(revealEncounter(state), "water-release");
     expect(state.journalIds).toContain("seto-inland-sea:common-octopus");
   });
@@ -340,7 +343,7 @@ describe("multi-venue expedition engine", () => {
     let state = castLine(selectHabitat(prepared("yellow-river-delta", ["water-sediment", "ecological-release"], "survey"), "reed-channel"), 42);
     expect(state.encounterId).toBe("nursery-edna");
     expect(state.fishMaxDistance).toBe(0);
-    state = manageLine(manageLine(manageLine(state, "hold"), "give"), "hold");
+    state = landFish(state);
     state = handleEncounter(revealEncounter(state), "clean-filter");
     expect(state.journalIds).toContain("yellow-river-delta:nursery-edna");
   });
@@ -351,7 +354,7 @@ describe("multi-venue expedition engine", () => {
     state = castLine(selectHabitat(state, "saltmarsh"), 57);
     expect(state.encounterId).toBe("chinese-mitten-crab");
     expect(state.fishMaxDistance).toBe(0);
-    state = manageLine(manageLine(manageLine(state, "give"), "hold"), "reel");
+    state = landFish(state);
     state = handleEncounter(revealEncounter(state), "tray-release");
     expect(state.journalIds).toContain("yellow-river-delta:chinese-mitten-crab");
   });
@@ -359,7 +362,7 @@ describe("multi-venue expedition engine", () => {
     let state = castLine(selectHabitat(prepared("galapagos", ["current-convergence", "wildlife-distance"], "drift-survey"), "lava-shore"), 35);
     expect(state.encounterId).toBe("galapagos-penguin");
     expect(state.fishMaxDistance).toBe(0);
-    state = manageLine(manageLine(manageLine(state, "give"), "hold"), "give");
+    state = landFish(state);
     state = handleEncounter(revealEncounter(state), "drift-watch");
     expect(state.journalIds).toContain("galapagos:galapagos-penguin");
   });
@@ -367,7 +370,7 @@ describe("multi-venue expedition engine", () => {
     let state = castLine(selectHabitat(prepared("galapagos", ["reserve-zones", "current-convergence"], "acoustic-array"), "pelagic-edge"), 74);
     expect(state.encounterId).toBe("scalloped-hammerhead");
     expect(state.fishMaxDistance).toBe(0);
-    state = manageLine(manageLine(manageLine(state, "give"), "hold"), "give");
+    state = landFish(state);
     state = handleEncounter(revealEncounter(state), "passive-detection");
     expect(state.journalIds).toContain("galapagos:scalloped-hammerhead");
   });

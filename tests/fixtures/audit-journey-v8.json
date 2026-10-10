@@ -1,0 +1,228 @@
+{
+  "format": "titans-forge-living-waters",
+  "version": 8,
+  "state": {
+    "version": 8,
+    "observations": [
+      {
+        "id": 1,
+        "expedition": 1,
+        "venueId": "amazon",
+        "seasonId": "rising-water",
+        "habitatId": "roots",
+        "gearId": "surface",
+        "encounterId": "peacock-bass",
+        "handlingId": "hard-pull",
+        "castAccuracy": 84,
+        "controlMistakes": 19,
+        "assisted": true,
+        "shared": true
+      },
+      {
+        "id": 2,
+        "expedition": 2,
+        "venueId": "amazon",
+        "seasonId": "high-water",
+        "habitatId": "plants",
+        "gearId": "light",
+        "encounterId": "river-turtle",
+        "handlingId": "pliers-release",
+        "castAccuracy": 100,
+        "controlMistakes": 0,
+        "assisted": true,
+        "shared": true
+      },
+      {
+        "id": 3,
+        "expedition": 3,
+        "venueId": "tonle-sap",
+        "seasonId": "reverse-flow",
+        "habitatId": "forest",
+        "gearId": "forest",
+        "encounterId": "giant-snakehead",
+        "handlingId": "clear-release",
+        "castAccuracy": 100,
+        "controlMistakes": 0,
+        "assisted": true,
+        "shared": true
+      },
+      {
+        "id": 4,
+        "expedition": 4,
+        "venueId": "baikal",
+        "seasonId": "spring-migration",
+        "habitatId": "shelf",
+        "gearId": "camera",
+        "encounterId": "baikal-sponge",
+        "handlingId": "lift-clear",
+        "castAccuracy": 100,
+        "controlMistakes": 0,
+        "assisted": true,
+        "shared": true
+      },
+      {
+        "id": 5,
+        "expedition": 5,
+        "venueId": "danube",
+        "seasonId": "autumn-migration",
+        "habitatId": "navigation",
+        "gearId": "gravel-drift",
+        "encounterId": "mooring-snag",
+        "handlingId": "mark-report",
+        "castAccuracy": 100,
+        "controlMistakes": 0,
+        "assisted": true,
+        "shared": true
+      },
+      {
+        "id": 6,
+        "expedition": 6,
+        "venueId": "galapagos",
+        "seasonId": "cool-upwelling",
+        "habitatId": "lava-shore",
+        "gearId": "shore-camera",
+        "encounterId": "marine-iguana",
+        "handlingId": "distance-log",
+        "castAccuracy": 100,
+        "controlMistakes": 0,
+        "assisted": true,
+        "shared": true
+      },
+      {
+        "id": 7,
+        "expedition": 7,
+        "venueId": "florida-bay",
+        "seasonId": "wet-freshening",
+        "habitatId": "mangroves",
+        "gearId": "roots",
+        "encounterId": "common-snook",
+        "handlingId": "turn-release",
+        "castAccuracy": 76,
+        "controlMistakes": 13,
+        "assisted": false,
+        "shared": false
+      },
+      {
+        "id": 8,
+        "expedition": 8,
+        "venueId": "florida-bay",
+        "seasonId": "dry-salinity",
+        "habitatId": "seagrass",
+        "gearId": "flat",
+        "encounterId": "spotted-seatrout",
+        "handlingId": "water-release",
+        "castAccuracy": 100,
+        "controlMistakes": 0,
+        "assisted": true,
+        "shared": false
+      }
+    ],
+    "learningAnswers": [
+      {
+        "questionId": "amazon:prediction",
+        "answerId": "not-sure",
+        "correct": false
+      },
+      {
+        "questionId": "amazon:reflection",
+        "answerId": "compare",
+        "correct": true
+      },
+      {
+        "questionId": "tonle-sap:prediction",
+        "answerId": "exit",
+        "correct": true
+      },
+      {
+        "questionId": "project:floods",
+        "answerId": "area",
+        "correct": false
+      },
+      {
+        "questionId": "baikal:prediction",
+        "answerId": "route",
+        "correct": true
+      },
+      {
+        "questionId": "danube:prediction",
+        "answerId": "passage",
+        "correct": true
+      },
+      {
+        "questionId": "galapagos:prediction",
+        "answerId": "food",
+        "correct": true
+      },
+      {
+        "questionId": "florida-bay:prediction",
+        "answerId": "salinity",
+        "correct": true
+      }
+    ],
+    "expeditionNumber": 8,
+    "venueId": "florida-bay",
+    "stage": "debrief",
+    "askedQuestions": [
+      "tide-turn",
+      "seagrass-signs"
+    ],
+    "gearId": "flat",
+    "zoneId": "seagrass",
+    "encounterId": "spotted-seatrout",
+    "castPower": 62,
+    "castAccuracy": 100,
+    "lineTurn": 90,
+    "lineTension": 78,
+    "lineActions": [],
+    "lineQuality": 14,
+    "lineResolved": true,
+    "fishDistance": 0,
+    "fishMaxDistance": 7,
+    "fishStamina": 0,
+    "fightPhase": "rest",
+    "phaseProgress": 6,
+    "fightMessage": "The fish is alongside.",
+    "interactionProgress": 100,
+    "interactionMistakes": 0,
+    "handlingId": "water-release",
+    "fieldcraft": 27,
+    "biology": 8,
+    "ecology": 14,
+    "trust": 18,
+    "journalIds": [
+      "amazon:peacock-bass",
+      "amazon:river-turtle",
+      "tonle-sap:giant-snakehead",
+      "baikal:baikal-sponge",
+      "danube:mooring-snag",
+      "galapagos:marine-iguana",
+      "florida-bay:common-snook",
+      "florida-bay:spotted-seatrout"
+    ],
+    "activeAssignmentId": "florida-bay:spotted-seatrout",
+    "completedAssignmentIds": [
+      "tonle-sap:giant-snakehead",
+      "galapagos:marine-iguana"
+    ],
+    "debriefChoice": "private-notes",
+    "seasonId": "dry-salinity",
+    "venueVisitCounts": {
+      "amazon": 2,
+      "tonle-sap": 1,
+      "baikal": 1,
+      "danube": 1,
+      "galapagos": 1,
+      "florida-bay": 2
+    },
+    "experienceMode": "field",
+    "assistMode": true,
+    "castUsedAssistance": true,
+    "castAttempts": 1,
+    "tripJournalIds": [
+      "florida-bay:spotted-seatrout"
+    ],
+    "tripSafeJournalIds": [
+      "florida-bay:spotted-seatrout"
+    ]
+  }
+}

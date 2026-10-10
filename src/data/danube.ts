@@ -32,9 +32,9 @@ export const danubeQuestions: Question[] = [
 ];
 
 export const danubeGear: GearSet[] = [
-  { id: "research-cradle", name: "Beluga research encounter kit", rod: "Heavy research boat rod", line: "Heavy controlled-drag line", hook: "Single barbless hook", lure: "Simulated research capture rig", tools: "Specialist crew + in-water cradle", strength: "Unlocks a fictional supervised beluga capture-and-release exercise below the Iron Gates in the migration window.", tradeoff: "This game exercise is not an available recreational fishery. The telemetry kit remains the non-capture route." },
+  { id: "research-cradle", method: "angling", name: "Beluga research encounter kit", rod: "Heavy research boat rod", line: "Heavy controlled-drag line", hook: "Single barbless hook", lure: "Simulated research capture rig", tools: "Specialist crew + in-water cradle", strength: "Unlocks a fictional supervised beluga capture-and-release exercise below the Iron Gates in the migration window.", tradeoff: "This game exercise is not an available recreational fishery. The telemetry kit remains the non-capture route." },
   {
-    id: "floodplain-lure",
+    id: "floodplain-lure", method: "angling",
     name: "Floodplain edge lure",
     rod: "7 ft medium rod",
     line: "20 lb braided line",
@@ -45,7 +45,7 @@ export const danubeGear: GearSet[] = [
     tradeoff: "It is poorly suited to the deep navigation seam and must stay clear of nursery pockets.",
   },
   {
-    id: "gravel-drift",
+    id: "gravel-drift", method: "angling",
     name: "Gravel-seam drift rig",
     rod: "8 ft medium-heavy rod",
     line: "18 lb line",
@@ -56,7 +56,7 @@ export const danubeGear: GearSet[] = [
     tradeoff: "Too much weight lodges among stone reinforcement, cables, and abandoned mooring gear.",
   },
   {
-    id: "telemetry",
+    id: "telemetry", method: "telemetry",
     name: "Sturgeon telemetry watch",
     rod: "Collapsible receiver mast",
     line: "Marked instrument tether",
@@ -167,7 +167,7 @@ export const danubeEncounters: Record<string, Encounter> = {
   },
   "mooring-snag": {
     id: "mooring-snag",
-    type: "snag",
+    type: "snag", interaction: "snag",
     name: "Abandoned mooring rope",
     summary: "The drift rig stops against a frayed rope wedged between bank stone and the edge of a navigation marker.",
     ecology: "Working rivers accumulate cables, rope, and other submerged hazards. Recovery can remove entanglement risk, but entering a marked navigation margin or pulling unknown load from a moving vessel route can create a greater danger.",

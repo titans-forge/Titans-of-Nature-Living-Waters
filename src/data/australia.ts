@@ -33,7 +33,7 @@ export const australiaQuestions: Question[] = [
 
 export const australiaGear: GearSet[] = [
   {
-    id: "bommie",
+    id: "bommie", method: "angling",
     name: "Coral-edge casting kit",
     rod: "7 ft medium-heavy rod",
     line: "30 lb braid with abrasion leader",
@@ -44,7 +44,7 @@ export const australiaGear: GearSet[] = [
     tradeoff: "A low cast or prolonged fight can put both line and fish into branching coral.",
   },
   {
-    id: "pelagic",
+    id: "pelagic", method: "angling",
     name: "Channel trolling kit",
     rod: "7 ft heavy trolling rod",
     line: "40 lb line with wire-free leader",
@@ -55,7 +55,7 @@ export const australiaGear: GearSet[] = [
     tradeoff: "Fast pelagic fish demand measured drag; forcing the first run overheats tackle and fish.",
   },
   {
-    id: "survey",
+    id: "survey", method: "camera",
     name: "Seagrass wildlife watch",
     rod: "No rod",
     line: "Marked camera tether",
@@ -149,9 +149,9 @@ export const australiaEncounters: Record<string, Encounter> = {
   },
   "coral-line-snag": {
     id: "coral-line-snag",
-    type: "snag",
+    type: "snag", interaction: "snag",
     name: "Discarded line on coral",
-    summary: "The survey tether reveals monofilament looped through living coral with one loose end moving above the sand.",
+    summary: "The survey tether catches a loose monofilament loop above the sand. Its fixed section runs into living coral, so pulling harder would damage the reef.",
     ecology: "Lost fishing line can abrade coral and entangle wildlife. Recovery is useful only when it can be done without anchoring on, standing on, or tearing the reef; some removals require trained personnel and appropriate equipment.",
     handling: [
       { id: "mark-report", label: "Recover the loose end from over sand, mark the fixed section, and report it for equipped removal", result: "The immediate loop comes aboard while the coral-bound section remains accurately marked rather than ripped free.", safe: true },

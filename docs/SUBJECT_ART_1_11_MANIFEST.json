@@ -1,0 +1,42 @@
+{
+  "created": "2026-10-09",
+  "provider": "OpenAI built-in image generation in Codex",
+  "model": "Not reported by built-in tool",
+  "scope": "Local Living Waters audit fixes; no publication",
+  "formatConversion": "Pillow for WebP encoding and downscaling only; original transparent RGBA retained",
+  "disclosure": "Generated game reconstructions, not actual wildlife encounters or scientific evidence",
+  "assets": [
+    {
+      "id": "giant-snakehead",
+      "kind": "live-fish-sprite",
+      "generatedSource": "exec-4f2012ae-9cea-4d27-b3eb-625635a94b46.png",
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "path": "src/assets/fish-sprites/giant-snakehead-v1.webp",
+      "dimensions": [
+        1200,
+        400
+      ],
+      "sourceSha256": "062a0e714c48ee3b8dc5ec805aafeb64d35340079759fca5fcdb62268138601e",
+      "sha256": "12aeb24a22c4044f29d6c58ea393f1c1fb64f284fce26b4115cddbe672051e9e",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "inputImages": [],
+      "bytes": 131430
+    }
+  ],
+  "prompts": [
+    {
+      "key": "giant-snakehead",
+      "prompt": "Use case: scientific-educational. Asset type: transparent raster sprite for a realistic 2D freshwater fishing game. Primary request: one anatomically believable adult giant snakehead, Channa micropeltes, fully isolated with genuine alpha transparency. Adult coloring, elongated muscular cylindrical body, broad slightly flattened snake-like head, big terminal mouth, long low dorsal and anal fins, rounded unforked tail, olive charcoal back and subdued silver grey flanks with irregular dark mottling. Subtle wet scale detail. Do not use bright orange juvenile stripes. Composition: full fish in a wide horizontal frame, tail on the left and mouth on the right, slight natural swimming curve with head nearly straight. A modest elevated side view, matching a player looking into water from a boat. Complete tail and fins visible with padding. Realistic natural-history rendering with soft neutral light, clear silhouette at small game size. No water, ripples, boat, fishing hook, line, shadows, scene, text or labels, no aquarium background. One fish only, transparent background; avoid cartoon, anime, glossy toy materials, heavily forked tail, mammalian expressions."
+    }
+  ],
+  "factualReferences": [
+    "https://nas.er.usgs.gov/queries/factsheet.aspx?speciesid=414",
+    "https://pubs.usgs.gov/circ/2004/1251/report.pdf"
+  ]
+}

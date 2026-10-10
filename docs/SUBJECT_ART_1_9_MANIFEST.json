@@ -1,0 +1,196 @@
+{
+  "created": "2026-10-09",
+  "provider": "OpenAI built-in image generation in Codex",
+  "model": "Not reported by built-in tool",
+  "scope": "Local Living Waters subject art; no publication",
+  "formatConversion": "Pillow only for WebP encoding/downscaling; no manual image-content edits; transparent sprites retain RGBA",
+  "disclosure": "Generated game reconstructions, not actual wildlife encounters or scientific evidence",
+  "assets": [
+    {
+      "id": "peacock-bass",
+      "kind": "live-fish-sprite",
+      "generatedSource": "exec-341726fc-915b-4f53-bf9a-cb01566f1bdf.png",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "path": "src/assets/fish-sprites/peacock-bass-v1.webp",
+      "dimensions": [
+        1024,
+        512
+      ],
+      "bytes": 191592,
+      "sourceSha256": "96b56b0f3ea0ce46db0eba8a12405e8a338e00dcd973d239f9793f5dfdf8e681",
+      "sha256": "dc5f710d033b8e75862224fd5a49b0e0c328078ea89601baeff2e42179e31905",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "common-snook",
+      "kind": "live-fish-sprite",
+      "generatedSource": "exec-56aeb3eb-cdd1-4986-8a8f-6e7536f35584.png",
+      "sourceDimensions": [
+        1983,
+        793
+      ],
+      "path": "src/assets/fish-sprites/common-snook-v1.webp",
+      "dimensions": [
+        1024,
+        409
+      ],
+      "bytes": 105400,
+      "sourceSha256": "943119e4ddbc26f2a21d707dcc66fa6b234da073706865e0438d732084dd2a52",
+      "sha256": "8c847c968fc4aaf35dac93cbfe8efe53976b3c68faa60e3ed25ba7733f13d2ba",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "spotted-seatrout",
+      "kind": "live-fish-sprite",
+      "generatedSource": "exec-14a56403-f298-4074-907f-262254fa4d7e.png",
+      "sourceDimensions": [
+        2007,
+        784
+      ],
+      "path": "src/assets/fish-sprites/spotted-seatrout-v1.webp",
+      "dimensions": [
+        1024,
+        400
+      ],
+      "bytes": 116036,
+      "sourceSha256": "19c4e6579858ea6e6a4f09760834d4a2aae8d583a6adbd6bda7a9671154d24b3",
+      "sha256": "45221215640dd5b87adf3a5f20e755e2611a873b3b271b0b44e811873836ee4b",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "spotted-seatrout-waterline",
+      "kind": "contextual-encounter",
+      "generatedSource": "exec-6d1aa872-56a2-4907-b55a-15c912edf785.png",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "path": "src/assets/encounters/spotted-seatrout-waterline-v1.webp",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "bytes": 186122,
+      "sourceSha256": "38429edee8d38ab185a7d0e63518610ab68d187a0cc3f2bf9643a8f503a1d056",
+      "sha256": "85d9b8a5049ffe6c115ef4f81c2099a7e7734f8be41baa69e5d4b1efa9d881f9"
+    },
+    {
+      "id": "river-turtle-waterline",
+      "kind": "contextual-encounter",
+      "generatedSource": "exec-0fff2e5f-9e9f-4d6e-aa50-3c51da8353bf.png",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "path": "src/assets/encounters/river-turtle-waterline-v1.webp",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "bytes": 183440,
+      "sourceSha256": "4388a7f0ff9e2f53cea93cb14a2745e2ea676fbfef1fefbe0653f14af28ba68e",
+      "sha256": "a9f683f4b1706bc6dcccb53a77bf4d8db5d60502f1b4713cda95928b4eeba449"
+    },
+    {
+      "id": "baikal-sponge-in-situ",
+      "kind": "contextual-encounter",
+      "generatedSource": "exec-3dab58f1-79d6-46cc-927a-87904b849cfc.png",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "path": "src/assets/encounters/baikal-sponge-in-situ-v1.webp",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "bytes": 288820,
+      "sourceSha256": "e2b5641be3b46859c461bfb8d806a170fe03c2839bc6672727353294884f7903",
+      "sha256": "28a2b34b2ca1dbe6ddfd2d209634cfd9c41582ff748fa9f3c153f8b4bb420e87"
+    },
+    {
+      "id": "mooring-rope-response",
+      "kind": "contextual-encounter",
+      "generatedSource": "exec-54356f00-a88f-4eb0-a2fa-6688be9c4c12.png",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "path": "src/assets/encounters/mooring-rope-response-v1.webp",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "bytes": 235262,
+      "sourceSha256": "8caa6ea7d12f2141955ec2ea9c5edbd80266d26d0a94d0c846ecf08d36498066",
+      "sha256": "829a0864aa651a3c8d89e02720c88a338a8ec0fc0fb1efe30e737e7eb3ee7936"
+    },
+    {
+      "id": "marine-iguana-observation",
+      "kind": "contextual-encounter",
+      "generatedSource": "exec-52b8fb82-ab6b-4b44-9286-a840689ff341.png",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "path": "src/assets/encounters/marine-iguana-observation-v1.webp",
+      "dimensions": [
+        1280,
+        853
+      ],
+      "bytes": 276202,
+      "sourceSha256": "94cef8a1789a4d7228cfc63295eecbbfbcdfbfaf1a75c1c8671cf483f501e673",
+      "sha256": "3701221dddd43df8975a1db643ebfa15d458193de17bd1c5eb251d92157f7d26",
+      "editSource": "exec-a8ae496a-b896-49aa-ac0e-fe64ff05f5bb.png",
+      "editReason": "Restore full tail tip within frame.",
+      "editSourceSha256": "831049028b1585015e7ff980d3d04bd96705cd8910cfa980e366da6fd174043a"
+    }
+  ],
+  "prompts": [
+    {
+      "key": "peacock-bass",
+      "prompt": "Use case: scientific-educational. Asset type: realistic game fish sprite cutout. Create a single photorealistic peacock bass, Cichla species, seen in clean true lateral side profile, horizontal, head facing RIGHT, tail LEFT, whole body and all fins fully visible with generous transparent margins. Deep but athletic cichlid body, large natural mouth lightly open, olive-gold scaled flanks with three dark vertical bars and a black gold-ringed eyespot at the caudal base, natural muted orange on some fins. Fine wet scale texture, delicate translucent fin membranes, anatomically credible single fish, restrained natural reflected daylight. Neutral swimming pose with a slight organic tail bend, no exaggerated bulging eye, no cartoon outline. This will be rendered small below a river surface, so silhouette and markings must be clean. TRUE transparent alpha background, no water, no plants, no hands, no lure, no hook, no fishing line, no cast shadow, no backdrop, no ground, no checkerboard drawn into pixels, no text or labels. The output is an illustration reconstruction, not a real field photograph."
+    },
+    {
+      "key": "common-snook",
+      "prompt": "Use case: scientific-educational. Asset type: realistic game fish sprite cutout. Create ONE photorealistic common snook, Centropomus undecimalis, in clean true lateral side profile, horizontal, head facing RIGHT, tail LEFT, complete fish and all fins with generous transparent margins. Long streamlined silver body with subdued olive-grey back, pale belly, the distinct continuous dark lateral line from behind gill through forked tail, natural elongated sloping head and slightly protruding lower jaw, two distinguishable dorsal-fin sections, translucent gray-yellow fins. Natural fine scale and wet skin texture with soft outdoor reflected daylight, neutral swimming pose and small natural tail flex. Maintain authentic proportions, not a bass body or salmon body; no fish spots, no stripes except lateral line, no huge fantasy eyes. TRUE transparent alpha background. No water, plants, hands, lure, hook, fishing line, shadow, backdrop, ground, checkerboard pixels, text or labels. A single clean realistic subject for subtle small in-water game rendering. Generated reconstruction, not documentary evidence."
+    },
+    {
+      "key": "spotted-seatrout",
+      "prompt": "Use case: scientific-educational. Asset type: realistic game fish sprite cutout. Create ONE photorealistic spotted seatrout, Cynoscion nebulosus, in true lateral side profile, horizontal, head facing RIGHT, tail LEFT, whole fish and fins visible with generous transparent margins. Slender elongated silver body, dark green-gray back fading to pale belly, clearly scattered small black round spots over upper flank and back continuing onto dorsal and caudal fins, natural large sloping mouth and slight protruding lower jaw, anatomically plausible canine teeth if visible but mouth mostly closed, two-part dorsal fin, slightly concave natural tail. Authentic smooth fine scale texture and transparent fin membranes, soft outdoor reflected daylight. Neutral swimming pose with slight organic tail bend. This is a coastal drum-family fish, NOT a rainbow trout or salmon: no adipose fin, no pink stripe, no trout freshwater pattern. TRUE transparent alpha background. No water, plants, hands, lure, hook, fishing line, shadow, backdrop, ground, checkerboard pixels, text or labels. One realistic subject for small subtle underwater game rendering. Generated reconstruction, not documentary evidence."
+    },
+    {
+      "key": "spotted-seatrout-waterline",
+      "prompt": "Use case: scientific-educational\nAsset type: landscape encounter reconstruction for the educational fishing game Living Waters.\nCreate a photorealistic, candid documentary-style scene at the waterline in Florida Bay. A live spotted seatrout, Cynoscion nebulosus, lies horizontally with most body weight supported by shallow clear water, just above a pale sand opening among intact seagrass. Natural slender silvery body, gray-green back, dark spots continuing onto dorsal and tail fins, correct drum-family two-part dorsal fin, no adipose fin or pink stripe. Full fish and fins visible in centre of frame, broad enough view to understand the habitat. At most two anatomically correct wet human hands gently stabilize from underneath the belly and near the tail, at water level; no jaw suspension or gill grip. Long pliers are resting within reach in a small out-of-focus boat edge at upper corner, not touching the fish. This is a neutral paused encounter before the handling decision, not a completed release or trophy pose. Natural overcast sunlight, realistic silver scale reflections, clear wet surfaces and restrained colors. Landscape 3:2 composition, subject fully within central 70% so responsive screens do not crop head or tail. No wounds, blood, text, watermark, dry deck, hook extraction demonstration, smiling people or oversized fish."
+    },
+    {
+      "key": "river-turtle-waterline",
+      "prompt": "Use case: scientific-educational\nAsset type: landscape incidental-bycatch encounter reconstruction for Living Waters.\nPhotorealistic calm Amazon river plant margin in soft daylight, waterline viewpoint. One ordinary freshwater side-necked river turtle of genus Podocnemis, representative genus-level reconstruction without distinctive yellow head spots or a claimed exact species. Scuted dark olive-brown domed shell, plausible small head on neck, clawed aquatic feet rather than sea-turtle flippers. Turtle is buoyant and supported in the brown-green water among a few floating plants, with shell partly submerged and head above water to breathe. A slack thin fishing line reaches a very small inconspicuous hook near the outer mouth edge, never bearing the turtle's weight. Keep hook detail small, do not depict a barb or invasive extraction. One pair of long pliers sits within reach on a modest canoe gunwale at frame edge, not performing removal. No people needed, no turtle lifted or restrained, no hands gripping neck/tail, no trophy presentation. This is the neutral accidental encounter before a response, not an image of successful release. Full turtle centred with room for plant margin and water around it; central 70% subject, landscape 3:2. Candid natural textures, physically coherent reflections and realistic shell detail. No text, watermark, wounds, blood, nets, baiting or collection pose."
+    },
+    {
+      "key": "baikal-sponge-in-situ",
+      "prompt": "Use case: scientific-educational\nAsset type: landscape camera-observation reconstruction for Living Waters.\nA photorealistic underwater documentary view of Lake Baikal's rocky littoral habitat. The subject is one attached colony of Lubomirskia baicalensis freshwater sponge: irregular green branching finger-like growth with subtly porous sponge texture and a base visibly anchored to lake rocks. It is not tropical coral, seaweed, a kitchen sponge or a detached specimen. Clear cool water, natural filtered sunlight, muted gray stones and sandy gaps; believable green living branches, restrained colors. In the far upper corner a small unbranded underwater camera sled and a slack instrument tether remain visibly clear ABOVE and beside the colony, leaving a broad empty vertical withdrawal corridor. No instrument touches or cinches around the sponge. Broad scene rather than macro, whole colony in central 65%, landscape 3:2 composition, equipment peripheral so the ecological subject remains dominant. Neutral observation before the player chooses how to recover the instrument; do not show a harvested colony, hands, hooks, torn branches, specimen jars, divers holding it, text or watermark."
+    },
+    {
+      "key": "mooring-rope-response",
+      "prompt": "Use case: scientific-educational\nAsset type: landscape debris-snag encounter reconstruction for Living Waters.\nPhotorealistic candid view from a small stationary survey skiff beside the stone bank of the Danube, safely outside a distant navigation channel. Central subject: frayed abandoned mooring rope partly submerged and caught between rough bank stones; a small loose FREE loop floats in quiet shallows, while the unknown fixed section visibly remains wedged in stone. A thin fishing rig lies slack beside it. A modest boat gunwale appears at lower edge; engine off, no tow line under load. In distant background a navigation marker indicates the main channel well away from this work area. Calm daylight, gray-green freshwater, wet rough stones, old weathered natural-fiber rope strands, credible documentary detail. Neutral scene BEFORE any player response: nothing fully recovered, no cut rope, no completion claim. Full slack loop and fixed section both legible in central 70%, landscape 3:2. No people or gloves needed, no hands/feet inside loops, no motor-powered pulling, diving, taut towing rope, approaching vessel, active mooring cut, text or watermark."
+    },
+    {
+      "key": "marine-iguana-observation",
+      "prompt": "Use case: scientific-educational\nAsset type: landscape distant-camera wildlife observation reconstruction for Living Waters.\nPhotorealistic telephoto wildlife documentary image of ONE Gal\u00e1pagos marine iguana, Amblyrhynchus cristatus, warming on black basalt beside an algae-covered lava ledge and cool ocean surge. Short blunt face, rugged textured dark charcoal scales, serrated dorsal crest, strong clawed limbs and a long laterally compressed swimming tail; a marine iguana, not a bright green land iguana. Whole animal including tail stays visible in central 70%, with an open unobstructed route back to water. Show enough black lava, wet algae and sea to explain habitat. Natural overcast morning light, restrained real colors, detailed scales without fantasy exaggeration. Landscape 3:2. Camera viewpoint is optical telephoto from respectful distance, no camera or people beside the animal, no physical contact. This is in-place observation before a response, never a captured animal. No hands, hook, fishing line, net, bait, restraint, pursuit, equipment attached to animal, text or watermark."
+    }
+  ],
+  "targetedEdit": "Use case: precise-object-edit\nEdit the supplied Gal\u00e1pagos marine-iguana documentary reconstruction only to fix the framing: pull the camera back enough to show the WHOLE animal INCLUDING THE COMPLETE TAIL TIP, with clear black lava space beyond both snout and tail, and a generous 10% margin on all sides of the animal. Keep its realistic dark marine-iguana anatomy, blunt head, crest, natural pose, textures, lighting, ocean and algae lava habitat; do not substitute a land iguana. Landscape 3:2, animal within central 75% of image. Telephoto view from respectful distance; no humans/equipment/contact/text/watermark. The tail must terminate visibly inside the image rather than continuing off the right edge.\n"
+}

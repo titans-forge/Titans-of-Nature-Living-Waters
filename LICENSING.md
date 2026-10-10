@@ -24,3 +24,7 @@ for these hosting-restricted terms. Titans of Mars is a separate, unchanged game
 [SOURCE_SNAPSHOT.json](SOURCE_SNAPSHOT.json) records the selected original
 runtime-file hashes. No private Git history, learner exports, raw generation
 transcripts or unrelated Vault files are included. No old release is overwritten.
+
+## Current release
+
+Version 1.14.0, published October 10, 2026, continues the existing Forge Game Hosting License 1.0 terms for newly supplied Titans Forge-controlled upgrades. Earlier MIT and separate media grants remain unchanged. The historical September 30 checkpoint is retained; [the current release checkpoint](RELEASE_CHECKPOINT.json) identifies this edition.

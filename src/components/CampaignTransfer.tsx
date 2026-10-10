@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { venueById } from '../data/venues';
+import { createInitialState } from '../game/engine';
 import { MAX_SAVE_BYTES, parseExpedition, serializeExpedition } from '../game/save';
 import type { ExpeditionState } from '../types';
 
@@ -16,7 +17,7 @@ export function CampaignTransfer({ state, onImport, recoveryRaw }: {
   recoveryRaw?: string | null;
 }) {
   const [notice, setNotice] = useState('');
-  const [preview, setPreview] = useState<{ state: ExpeditionState; warnings: string[]; filename: string } | null>(null);
+  const [preview, setPreview] = useState<{ state: ExpeditionState; warnings: string[]; filename: string; newJourney?: boolean } | null>(null);
   const readNumber = useRef(0);
   const exportCurrent = () => {
     try { downloadExpeditionRaw(serializeExpedition(state), 'living-waters-journey.json'); setNotice('Journey exported. Keep the file to restore progress in another browser.'); }
@@ -37,10 +38,10 @@ export function CampaignTransfer({ state, onImport, recoveryRaw }: {
   return <section className="campaign-transfer" aria-label="Save and restore journey">
     <h3>Keep your journey</h3>
     <p>Export a portable copy, or restore one you saved earlier. Import replaces the current journey after confirmation.</p>
-    <div className="transfer-actions"><button onClick={exportCurrent}>Export journey</button><label>Choose save file<input type="file" accept="application/json,.json" onChange={event => { void read(event.target.files?.[0]); event.target.value = ''; }} /></label>
-      {recoveryRaw != null && <button onClick={() => { try { downloadExpeditionRaw(recoveryRaw); setNotice('Original stored data exported for recovery.'); } catch { setNotice('Recovery export failed. The stored original remains unchanged.'); } }}>Export original stored data</button>}
+    <div className="transfer-actions"><button onClick={exportCurrent}>Export journey</button><button onClick={() => { readNumber.current += 1; setPreview({ state: createInitialState(), warnings: [], filename: "New empty journey", newJourney: true }); setNotice("Export your current journey first. Starting over requires confirmation below."); }}>Start a new journey</button><label>Choose save file<input type="file" accept="application/json,.json" onChange={event => { void read(event.target.files?.[0]); event.target.value = ''; }} /></label>
+      {recoveryRaw != null && <button onClick={() => { try { downloadExpeditionRaw(recoveryRaw); setNotice('Recovery copy exported. Keep it alongside your current journey.'); } catch { setNotice('Recovery export failed. The stored original remains unchanged.'); } }}>Export recovery copy</button>}
     </div>
-    {preview && <div className="transfer-preview" role="region" aria-label="Imported journey preview"><h4>Restore this journey?</h4><p>{preview.filename}</p><p>{preview.state.venueId ? venueById[preview.state.venueId].title : 'Destination selection'} · {preview.state.stage} · {preview.state.journalIds.length} discoveries · {preview.state.completedAssignmentIds.length} completed assignments</p><p>{preview.state.observations.length} detailed observations · {preview.state.learningAnswers.length} learning answers</p>{preview.warnings.map(warning => <p key={warning}>{warning}</p>)}<p>This replaces the active expedition and journal. Export your current journey first if you want to keep a separate copy.</p><button onClick={() => { const selected = preview; setPreview(null); onImport(selected.state, selected.warnings.join(' ')); }}>Replace current journey</button><button onClick={() => { readNumber.current += 1; setPreview(null); setNotice('Import cancelled. Your current journey is unchanged.'); }}>Cancel import</button></div>}
+    {preview && <div className="transfer-preview" role="region" aria-label="Imported journey preview"><h4>{preview.newJourney ? "Start a new journey?" : "Restore this journey?"}</h4><p>{preview.filename}</p><p>{preview.state.venueId ? venueById[preview.state.venueId].title : 'Destination selection'} · {preview.state.stage} · {preview.state.journalIds.length} discoveries · {preview.state.completedAssignmentIds.length} completed assignments</p><p>{preview.state.observations.length} detailed observations · {preview.state.learningAnswers.length} learning answers</p>{preview.warnings.map(warning => <p key={warning}>{warning}</p>)}<p>This replaces the active expedition and journal. Export your current journey first if you want to keep a separate copy.</p><button onClick={() => { const selected = preview; setPreview(null); onImport(selected.state, selected.warnings.join(' ')); }}>{preview.newJourney ? "Confirm new journey" : "Replace current journey"}</button><button onClick={() => { readNumber.current += 1; setPreview(null); setNotice('Import cancelled. Your current journey is unchanged.'); }}>Cancel import</button></div>}
     <p role="status" aria-live="polite">{notice}</p>
   </section>;
 }

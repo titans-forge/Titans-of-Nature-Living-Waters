@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { venues } from "../src/data/venues";
-import { FISHING_TICK_MS, getCastTargetWidth, hasLostFish, retryFish, advanceAssistedInteraction, advanceInteraction, askQuestion, beginQuestions, castLine, createInitialState, finishGear, finishQuestions, getFightProfile, getPressureFeedback, selectGear, selectHabitat, selectVenue } from "../src/game/engine";
+import { FISHING_TICK_MS, getCastTargetWidth, hasLostFish, retryFish, advanceAssistedInteraction, advanceInteraction, askQuestion, beginQuestions, castLine, chooseSnagApproach, createInitialState, finishGear, finishQuestions, getFightProfile, getPressureFeedback, getRecommendedEngagement, getVenue, selectGear, selectHabitat, selectVenue } from "../src/game/engine";
+import { getInteractionKind, needsSnagApproach } from "../src/game/interactions";
 import { parseExpedition } from "../src/game/save";
 import type { ExpeditionState } from "../src/types";
 
@@ -16,14 +17,19 @@ function routes() {
     }))));
 }
 
-function resolve(state: ExpeditionState, policy: "rhythm" | "hold" | "assisted") {
-  let current = state;
+function assessed(state: ExpeditionState) {
+  const venue = getVenue(state)!;
+  return needsSnagApproach(state, venue) ? chooseSnagApproach(state, "back-out") : state;
+}
+
+function resolve(state: ExpeditionState, policy: "rhythm" | "assisted") {
+  let current = assessed(state);
   let turns = 0;
   while (!current.lineResolved && turns < 300) {
     current = policy === "assisted" ? advanceAssistedInteraction(current)
-      : advanceInteraction(current, policy === "hold" || current.fightPhase === "rest");
+      : advanceInteraction(current, getRecommendedEngagement(current));
     turns += 1;
-    if (policy !== "hold") expect(getPressureFeedback(current).label).toBe("Controlled");
+    expect(getPressureFeedback(current)).toMatchObject({ low: false, danger: false });
   }
   expect(current.lineResolved).toBe(true);
   return current;
@@ -48,9 +54,15 @@ describe("the interaction used by the UI", () => {
   it("continuous holding loses active fish; retry preserves records and grants no reward", () => {
     for (const route of routes()) {
       const cast = castLine(route.state, route.ideal);
-      let rushed = cast;
+      let rushed = assessed(cast);
       for (let tick = 0; tick < 300 && !rushed.lineResolved && !hasLostFish(rushed); tick++) rushed = advanceInteraction(rushed, true);
-      if (getFightProfile(cast).id === "passive") { expect(rushed.lineResolved).toBe(true); continue; }
+      if (getInteractionKind(cast, getVenue(cast)!) !== "fish") {
+        expect(rushed.lineResolved, route.name).toBe(false);
+        expect(hasLostFish(rushed), route.name).toBe(false);
+        expect(retryFish(rushed), route.name).toBe(rushed);
+        expect(parseExpedition(JSON.stringify(rushed)).ok, route.name).toBe(true);
+        continue;
+      }
       expect(hasLostFish(rushed), route.name).toBe(true);
       expect(rushed.lineResolved).toBe(false);
       expect(parseExpedition(JSON.stringify(rushed)).ok, route.name).toBe(true);
@@ -69,7 +81,7 @@ describe("the interaction used by the UI", () => {
   it("a well-played active fight takes about 20–40 seconds; never reeling cannot catch", () => {
     for (const route of routes()) {
       const cast = castLine(route.state, route.ideal);
-      if (getFightProfile(cast).id === "passive") continue;
+      if (getInteractionKind(cast, getVenue(cast)!) !== "fish") continue;
       const final = resolve(cast, "rhythm");
       expect(final.lineTurn * FISHING_TICK_MS / 1000).toBeGreaterThanOrEqual(20);
       expect(final.lineTurn * FISHING_TICK_MS / 1000).toBeLessThanOrEqual(40);
@@ -95,7 +107,7 @@ describe("the interaction used by the UI", () => {
       expect(assisted.interactionMistakes, route.name).toBe(0);
       expect(assisted.fieldcraft, route.name).toBe(taught.fieldcraft);
       expect(assisted.castUsedAssistance, route.name).toBe(true);
-      let rushed = cast;
+      let rushed = assessed(cast);
       for (let tick = 0; tick < 4; tick += 1) rushed = advanceInteraction(rushed, true);
       const recovered = resolve(hasLostFish(rushed) ? retryFish(rushed) : rushed, "assisted");
       expect(recovered.interactionMistakes, route.name).toBe(rushed.interactionMistakes);
@@ -104,12 +116,12 @@ describe("the interaction used by the UI", () => {
 
   it("allows two UI ticks of reaction time at phase changes on every route", () => {
     for (const route of routes()) {
-      let current = castLine(route.state, route.ideal);
+      let current = assessed(castLine(route.state, route.ideal));
       let previousPhase = current.fightPhase;
       let lag = 0;
       for (let tick = 0; tick < 300 && !current.lineResolved; tick += 1) {
         if (current.fightPhase !== previousPhase) { lag = 2; previousPhase = current.fightPhase; }
-        const taught = current.fightPhase === "rest";
+        const taught = getRecommendedEngagement(current);
         current = advanceInteraction(current, lag > 0 ? !taught : taught);
         lag = Math.max(0, lag - 1);
       }
@@ -122,9 +134,9 @@ describe("the interaction used by the UI", () => {
     const route = routes()[0];
     const cast = castLine(route.state, route.ideal);
     const profile = getFightProfile(cast);
-    expect(getPressureFeedback({ ...cast, lineTension: profile.safeMin - 1 }).label).toBe("Slack");
-    expect(getPressureFeedback({ ...cast, lineTension: profile.safeMax + 1 }).label).toBe("Strained");
-    expect(getPressureFeedback({ ...cast, lineTension: profile.safeMin }).label).toBe("Controlled");
+    expect(getPressureFeedback({ ...cast, lineTension: profile.safeMin - 1 })).toMatchObject({ low: true, danger: false });
+    expect(getPressureFeedback({ ...cast, lineTension: profile.safeMax + 1 })).toMatchObject({ low: false, danger: true });
+    expect(getPressureFeedback({ ...cast, lineTension: profile.safeMin })).toMatchObject({ low: false, danger: false });
     const final = resolve(cast, "rhythm");
     expect(advanceInteraction(final, true)).toBe(final);
     expect(advanceAssistedInteraction(final)).toBe(final);

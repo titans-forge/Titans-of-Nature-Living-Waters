@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { venues, venueById } from "../src/data/venues";
 import { buildAssignment, didCompleteCurrentAssignment, getActiveAssignment } from "../src/game/assignments";
-import { hasLostFish, retryFish, advanceAssistedInteraction, advanceInteraction, askQuestion, beginDebrief, beginQuestions, castLine, completeDebrief, continueExpedition, createInitialState, finishGear, finishQuestions, getHabitatBlockReason, handleEncounter, revealEncounter, selectGear, selectHabitat, selectVenue } from "../src/game/engine";
+import { hasLostFish, retryFish, advanceAssistedInteraction, advanceInteraction, askQuestion, beginDebrief, beginQuestions, castLine, completeDebrief, continueExpedition, createInitialState, finishGear, finishQuestions, getHabitatBlockReason, chooseSnagApproach, handleEncounter, revealEncounter, selectGear, selectHabitat, selectVenue } from "../src/game/engine";
+import { needsSnagApproach } from "../src/game/interactions";
 import { getVenueProgress } from "../src/game/progress";
 import type { ExpeditionState } from "../src/types";
 
@@ -61,9 +62,13 @@ describe("durable field records", () => {
   it("gives repeated identical catches no duplicate awards but recognizes technique improvement once", () => {
     const first = catchBass(prepare(), "hold");
     const second = catchBass(repeat(first), "hold");
+    const missedResponses = second.observations.at(-1)!.controlMistakes;
+    expect(missedResponses).toBeGreaterThan(0);
     for (const key of ["fieldcraft", "biology", "ecology", "trust"] as const) expect(second[key]).toBe(first[key]);
     const improved = catchBass(repeat(second));
-    expect(improved.fieldcraft - second.fieldcraft).toBe(4);
+    // A species-specific fight can break before the old fixed four-mistake
+    // script. Recognize the actual saved technique improvement, capped at four.
+    expect(improved.fieldcraft - second.fieldcraft).toBe(Math.min(4, missedResponses));
     expect(improved.biology).toBe(second.biology);
     expect(improved.ecology).toBe(second.ecology);
     expect(improved.observations).toHaveLength(3);
@@ -154,13 +159,14 @@ describe("assignments and collection claims", () => {
         state = selectHabitat(finishGear(selectGear(finishQuestions(state), assignment.gearId)), assignment.habitatId);
         state = castLine(state, venue.idealPower[assignment.habitatId]);
         expect(state.encounterId).toBe(assignment.targetEncounterId);
-        for (let turn = 0; turn < 20 && !state.lineResolved; turn += 1) state = advanceAssistedInteraction(state);
+        if (needsSnagApproach(state, venue)) state = chooseSnagApproach(state, "back-out");
+        for (let turn = 0; turn < 30 && !state.lineResolved; turn += 1) state = advanceAssistedInteraction(state);
         expect(state.lineResolved).toBe(true);
         state = handleEncounter(revealEncounter(state), venue.encounters[state.encounterId!].handling.find((option) => option.safe)!.id);
         state = completeDebrief(beginDebrief(state), "full-notes");
       }
       expect(state.completedAssignmentIds).toHaveLength(Object.keys(venue.encounters).length);
-      expect(getVenueProgress(state, venue).label).toBe("Collection complete");
+      expect(getVenueProgress(state, venue).label).toBe("Survey coverage complete");
       completed += state.completedAssignmentIds.length;
     }
     expect(completed).toBe(80);

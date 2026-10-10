@@ -8,9 +8,9 @@ export const floridaQuestions: Question[] = [
 ];
 
 export const floridaGear: GearSet[] = [
-  { id: "roots", name: "Mangrove-edge kit", rod: "6 ft medium rod", line: "15 lb leader", hook: "Single barbless hook", lure: "Shallow soft bait", tools: "Long pliers + salinity meter", strength: "Turns a fish away from prop roots without heavy terminal tackle.", tradeoff: "A low lure can still enter roots on a wide cast." },
-  { id: "flat", name: "Seagrass-flat kit", rod: "7 ft light rod", line: "10 lb leader", hook: "Single barbless hook", lure: "Suspending minnow", tools: "Long pliers + depth pole", strength: "Presents above grass in clear shallow water.", tradeoff: "Light line offers less control beside oyster shell or roots." },
-  { id: "creek", name: "Tidal-creek kit", rod: "7 ft medium rod", line: "12 lb leader", hook: "Single circle hook", lure: "Shrimp-pattern lure", tools: "Long pliers + tide card", strength: "Works moving water at creek mouths with fewer deep hooksets.", tradeoff: "The lure may collect loose grass on a draining tide." },
+  { id: "roots", method: "angling", name: "Mangrove-edge kit", rod: "6 ft medium rod", line: "15 lb leader", hook: "Single barbless hook", lure: "Shallow soft bait", tools: "Long pliers + salinity meter", strength: "Turns a fish away from prop roots without heavy terminal tackle.", tradeoff: "A low lure can still enter roots on a wide cast." },
+  { id: "flat", method: "angling", name: "Seagrass-flat kit", rod: "7 ft light rod", line: "10 lb leader", hook: "Single barbless hook", lure: "Suspending minnow", tools: "Long pliers + depth pole", strength: "Presents above grass in clear shallow water.", tradeoff: "Light line offers less control beside oyster shell or roots." },
+  { id: "creek", method: "angling", name: "Tidal-creek kit", rod: "7 ft medium rod", line: "12 lb leader", hook: "Single circle hook", lure: "Shrimp-pattern lure", tools: "Long pliers + tide card", strength: "Works moving water at creek mouths with fewer deep hooksets.", tradeoff: "The lure may collect loose grass on a draining tide." },
 ];
 
 export const floridaHabitats: Habitat[] = [
@@ -36,7 +36,7 @@ export const floridaEncounters: Record<string, Encounter> = {
     { id: "pliers-release", label: "Control the fish, avoid the teeth, and use long pliers", result: "The hook is removed without putting fingers near the fish's mouth, and it returns to shaded water.", safe: true },
     { id: "finger-mouth", label: "Grip it inside the mouth while removing the hook", result: "The snapper's teeth make the shortcut unsafe. Elena passes the pliers instead.", safe: false },
   ], connections: ["Mangrove shade -> juvenile refuge", "Creek mouth -> moving prey", "Estuary nursery -> coastal population"] },
-  "seagrass-snag": { id: "seagrass-snag", type: "plant", name: "Seagrass wrack on the line", scientificName: "Mixed seagrass blades", summary: "The lure returns wrapped in loose blades while intact grass waves below the skiff.", ecology: "Living seagrass meadows stabilize shallow bottom and support food webs. Detached wrack also transports nutrients and small organisms, but it should not be confused with permission to damage rooted grass.", handling: [
+  "seagrass-snag": { id: "seagrass-snag", type: "plant", interaction: "snag", name: "Seagrass wrack on the line", scientificName: "Mixed seagrass blades", summary: "The lure returns wrapped in loose blades while intact grass waves below the skiff.", ecology: "Living seagrass meadows stabilize shallow bottom and support food webs. Detached wrack also transports nutrients and small organisms, but it should not be confused with permission to damage rooted grass.", handling: [
     { id: "inspect-clear", label: "Inspect the loose wrack, clear the hook, and keep the skiff off rooted grass", result: "Small organisms move among the blades. The plant observation is recorded without anchoring in the meadow.", safe: true },
     { id: "drag-bottom", label: "Drag the lure through the bottom to clear a casting lane", result: "The shortcut tears rooted grass and turns fishing pressure into habitat damage.", safe: false },
   ], connections: ["Seagrass -> food-web foundation", "Wrack -> nutrient transport", "Shallow propeller use -> meadow scars"] },

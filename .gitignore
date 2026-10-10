@@ -1,8 +1,10 @@
 node_modules/
 dist/
-release/
-releases/
-test-results/
-playwright-report/
-*.zip
 .DS_Store
+*.log
+*.tgz
+.vite/
+coverage/
+playwright-report/
+test-results/
+release/
