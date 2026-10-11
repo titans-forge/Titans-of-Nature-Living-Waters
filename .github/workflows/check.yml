@@ -12,7 +12,7 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: node scripts/check-media-provenance.mjs
+      - run: node scripts/check-media-provenance.mjs --recorded-sources
       - run: npm test
       - run: npm run build
       - run: node scripts/stage-release-licenses.mjs --check

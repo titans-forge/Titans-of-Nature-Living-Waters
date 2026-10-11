@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { isAbsolute, relative, resolve } from "node:path";
 import ts from "typescript";
@@ -44,13 +44,39 @@ function checkRuntime(path, expectedHash, expectedBytes, label) {
   const bytes = readFileSync(resolve(root, path));
   if (!sha(expectedHash) || hash(bytes) !== expectedHash || bytes.length !== expectedBytes) failures.push(`${label}: game file does not match its recorded hash/size (${path})`);
 }
+// Local verification always reads originals. CI explicitly validates a frozen
+// local-verification receipt; it does not claim access to the original PNGs.
+const recordedSources = process.argv.includes("--recorded-sources");
+const writeReceipt = process.argv.includes("--write-source-receipt");
+if (process.argv.slice(2).some(arg => !["--recorded-sources", "--write-source-receipt"].includes(arg)) || recordedSources && writeReceipt) throw new Error("Invalid source-verification mode");
+const receiptPath = resolve(root, "docs/UNDERWATER_SOURCE_VERIFICATION.json");
+const sourceManifests = ["UNDERWATER_FISH_ART_V2_MANIFEST.json", "UNDERWATER_HABITAT_V2_MANIFEST.json"];
+const manifestHashes = Object.fromEntries(sourceManifests.map(name => [name, hash(readFileSync(resolve(root, "docs", name)))]));
+const verifiedSources = new Map();
+let receipt;
+if (recordedSources) {
+  receipt = JSON.parse(readFileSync(receiptPath, "utf8"));
+  if (receipt.schema !== 1 || !receipt.verifiedAt || receipt.verification !== "Original PNG bytes read locally; SHA-256 and PNG dimensions verified" || !isDeepStrictEqual(receipt.manifestHashes, manifestHashes) || !Array.isArray(receipt.sources)) throw new Error("Source receipt is incomplete or does not bind the current manifests");
+  if (new Set(receipt.sources.map(entry => entry.path)).size !== receipt.sources.length) throw new Error("Source receipt contains duplicate paths");
+}
 function checkSource(path, expectedHash, label, dimensions) {
   if (!isAbsolute(path ?? "") || !/^exec-[-a-f0-9]+\.png$/.test(path.split("/").at(-1) ?? "") || !sha(expectedHash)) {
     failures.push(`${label}: exact original output path/hash is missing`); return;
   }
-  const bytes = readFileSync(path);
-  if (hash(bytes) !== expectedHash) failures.push(`${label}: original PNG does not match its source hash`);
-  if (dimensions && (bytes.length < 24 || bytes.readUInt32BE(16) !== dimensions.width || bytes.readUInt32BE(20) !== dimensions.height)) failures.push(`${label}: original PNG dimensions disagree with the record`);
+  let entry;
+  if (recordedSources) {
+    entry = receipt.sources.find(item => item.path === path);
+    if (!entry || entry.sha256 !== expectedHash || !Number.isInteger(entry.bytes) || entry.bytes < 24 || !Number.isInteger(entry.width) || entry.width < 1 || !Number.isInteger(entry.height) || entry.height < 1) {
+      failures.push(`${label}: matching original-byte verification receipt is missing`); return;
+    }
+  } else {
+    const bytes = readFileSync(path);
+    if (bytes.length < 24 || bytes.subarray(0, 8).toString("hex") !== "89504e470d0a1a0a") { failures.push(`${label}: original is not a PNG`); return; }
+    entry = { path, sha256: hash(bytes), bytes: bytes.length, width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+    if (entry.sha256 !== expectedHash) failures.push(`${label}: original PNG does not match its source hash`);
+  }
+  if (dimensions && (entry.width !== dimensions.width || entry.height !== dimensions.height)) failures.push(`${label}: original PNG dimensions disagree with the record`);
+  verifiedSources.set(path, entry);
 }
 // Parse literal metadata with TypeScript's AST rather than executing app code.
 // In particular, generated atlas rectangles must agree with the exact runtime
@@ -202,6 +228,7 @@ try {
     if (!underwaterPlates.has(path)) failures.push(`Underwater art missing from a dated provenance batch: ${path}`);
   }
 } catch (error) { failures.push(`Media inventory could not be verified: ${error.message}`); }
+if (recordedSources && verifiedSources.size !== receipt.sources.length) failures.push("Source receipt contains unused or unverified originals");
 if (failures.length) {
   console.error("Public release blocked by incomplete media provenance:\n");
   for (const failure of failures) console.error(`- ${failure}`);
@@ -210,3 +237,8 @@ if (failures.length) {
 }
 
 console.log("Media provenance gate passed: earlier habitat/guide/catch records, dated subject sprites, 14 underwater habitats and 41 new fish with 123 atlas views are hash-bound to runtime inventories. This check does not publish a release or extend earlier redistribution confirmations to new batches.");
+
+if (writeReceipt) {
+  writeFileSync(receiptPath, JSON.stringify({ schema: 1, verifiedAt: new Date().toISOString(), verification: "Original PNG bytes read locally; SHA-256 and PNG dimensions verified", limitation: "CI checks this retained local verification and current runtime/manifest bindings; it does not independently reread original PNGs or grant rights clearance.", manifestHashes, sources: [...verifiedSources.values()].sort((a,b) => a.path.localeCompare(b.path)) }, null, 2) + "\n");
+}
+console.log(recordedSources ? "Original-source mode: retained local verification receipt; originals not reread in CI." : "Original-source mode: original PNG bytes independently read locally.");

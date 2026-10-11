@@ -1,0 +1,236 @@
+{
+  "schema": 1,
+  "verifiedAt": "2026-10-11T17:51:32.467Z",
+  "verification": "Original PNG bytes read locally; SHA-256 and PNG dimensions verified",
+  "limitation": "CI checks this retained local verification and current runtime/manifest bindings; it does not independently reread original PNGs or grant rights clearance.",
+  "manifestHashes": {
+    "UNDERWATER_FISH_ART_V2_MANIFEST.json": "42764f90da0779aaebe94f2b4a2e98ad838ffe1571d65d5e21830b305a3d1dab",
+    "UNDERWATER_HABITAT_V2_MANIFEST.json": "861502d4c4b924e91ace7845f458a57464f4d3159dd7d8ea45b942131c0e951d"
+  },
+  "sources": [
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-02cef39b-5dfa-4b42-b663-62f6662bf573.png",
+      "sha256": "98dab56a22bb8d47350ed6a92aad70e04549f3faf9acd3df3b3a674dfa114ef3",
+      "bytes": 1965623,
+      "width": 1086,
+      "height": 1448
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-29cbe79c-73c2-4b8f-a29b-bb68313d83b3.png",
+      "sha256": "058697f6b698bf18e6d58fdef6df07f06210732aaf4728a66c273466260d84bc",
+      "bytes": 2868083,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-429ad744-090d-4032-ba08-db18e4698c34.png",
+      "sha256": "49bd9dd7a9e35678b982bef2f0bfc587a494310aa4a528feeaaab3bd2656f312",
+      "bytes": 2694748,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-657a992c-ab78-43ba-b589-4d3c2a084c37.png",
+      "sha256": "9196fc2270d3b8f1e886d13d3f2d2a240f0a4b178395ad957b5c5f45fe05604d",
+      "bytes": 3012652,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-67ee7f0a-72f1-42c5-8697-013689a53364.png",
+      "sha256": "5b0383a041eaf9a00a6284b3faa9c3d57b23cff87d7b42bc9bec56aac008abd8",
+      "bytes": 3109457,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-7044a1fb-92c8-4161-ad75-ca77f07a8f8a.png",
+      "sha256": "d4294ff2de2b161068fb372ded34301231d0a553a9fc69bc2b2f75cffed131cb",
+      "bytes": 3028813,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-7781074e-c193-467c-af72-da1b6cddc249.png",
+      "sha256": "b1168f1eb190d0225fe9b3a0389b00cb161017007119cc5829cdc78df52cb01a",
+      "bytes": 3069539,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-831052a0-7367-4d53-a810-a56b2b7b84fd.png",
+      "sha256": "a9ceca14e3970c59646c93e11ac55f069c1dcf1a4b5f54223187909e3be8dd0c",
+      "bytes": 2987697,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-99bb122f-b082-4b10-81ca-40712c74670e.png",
+      "sha256": "31178ca7cbb5defe1dcfff48d57ebbf5b9c9e8f9aa7e71b566529eedbb3f6f77",
+      "bytes": 2967558,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-a161a294-7ce6-4ad9-969c-48b84c231969.png",
+      "sha256": "d9b783395932da487f2c8dd212ea48c182966fe0b9c7e520f6f4d01d5b63118e",
+      "bytes": 2931765,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-af40f016-74a1-493d-abd2-e2d0ddb977a8.png",
+      "sha256": "f65a4d0a37c534a873cbf4f1e1214675fc26c722b73b3ae30430a8e26b6c866c",
+      "bytes": 2974696,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-b8cb3d60-5a84-43c0-b2d8-ffdad7c19f90.png",
+      "sha256": "6c4771226a0c270e4ab4223a8485020a5f315067236e6a32e57635e7e13e9e50",
+      "bytes": 3121541,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-cfd3c702-5a2e-473b-bd4d-50f5063ebdda.png",
+      "sha256": "84394393fddf0bf3dbdcd010478f87e4fb48019dec89b01acd0e44903f42a47b",
+      "bytes": 2743572,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-e8bf1703-d297-4545-aff5-c2a95fd9c1a9.png",
+      "sha256": "b763a99fa136242c755e6a013a8da3a52a0dd6f2730968fc4be3f134f737c425",
+      "bytes": 3215541,
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-3a0eaaf7-f6f6-4a93-b667-dfaa3a1ccfd2.png",
+      "sha256": "156d2309d4de9fd6d20d6786e8e1026fbe384ba5d80add759aad09c26de9900a",
+      "bytes": 2555644,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-4e7750b4-9200-4aac-9dc1-81627d1953b2.png",
+      "sha256": "3b51085c072dc42ca2afa06b540ca194f8ce0db2eb684361d5e5a53fc6ac4090",
+      "bytes": 2388640,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-50480b4c-f3c7-4c9c-8e26-11d7d6d9262d.png",
+      "sha256": "2405b050c18a44a8a99ab3ed3de245a6c8fa674c4ce872b155bd2e7f9685d749",
+      "bytes": 2609455,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-5f2d7e55-09e4-46c6-9cc7-cc09d354e3f7.png",
+      "sha256": "323103adbc22eba47969c851c91157cf729270a25cd483a4e67e80d3c443fac7",
+      "bytes": 2010587,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-6bf588ff-ba05-4ef8-83bd-9ec6e28b5f7e.png",
+      "sha256": "8f891ba52c3fe5e1535f6614b846c4040644c206dc9e89fdc1c75c4b49348b05",
+      "bytes": 2354818,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-7a3011a5-1c37-4a16-9a48-49b5bf27d1b8.png",
+      "sha256": "ae993200abc755008d4c49e7bda6dee735bd7f6369d52ad5fd65774256be7755",
+      "bytes": 2419694,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-85309f4c-464b-4144-96e0-f342748eb7f9.png",
+      "sha256": "8f533bfabea0ceff39f584f462b9dd284ab8cc196c17cc6604219f3dcfa1dbf2",
+      "bytes": 2663176,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-8b2f7d47-0114-4e52-bd35-ac5929d7aa9c.png",
+      "sha256": "49582300d653c0bd06ba4a67a01261ef15c0a75ac3d55599f639e41084ec06fb",
+      "bytes": 2556236,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-8ba57ba1-726e-44bd-98e3-d5d4b1f257c6.png",
+      "sha256": "00eb21977c14353f729b57bf75bacea10a2891349ba95e0b76e555658d29afd6",
+      "bytes": 2328465,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-9b9cbe49-aba4-47dc-8c4d-212681f0c1ec.png",
+      "sha256": "8f515be6df8741f587e4e40cc5ba4f925cd50be95a74bf0cd78804b061ba8da7",
+      "bytes": 2184096,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-9d1b26de-c0f9-48d6-b9c1-a2ba25379e87.png",
+      "sha256": "818eaf663caafb9ab9a7d4e3f2ecee6d49f95eeecef02a2b3c44b4d3d6224b12",
+      "bytes": 2795835,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-a56c25b4-2209-40e6-9a88-22539bde9c1d.png",
+      "sha256": "ff68efd865d6f686e45e968d5ebf7067d9a7a41642b8b5b6bb76492218e6f2b9",
+      "bytes": 2061095,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-cd4ed732-202f-4afb-99fc-88f204417b45.png",
+      "sha256": "c42ccb2a05591fa3fc8bdc6f1a0ca1391453b4a5dd8037bf92952043e3483b05",
+      "bytes": 1463271,
+      "width": 1098,
+      "height": 1433
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-cd8ed353-f6b6-4f3b-bdea-c37371eecf36.png",
+      "sha256": "9684f731919ac808d365e963121865d2d2b795dcd567852a5c2e371b101a8bd8",
+      "bytes": 2374186,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-d24d3d72-c004-44cd-81ae-0e2217a06104.png",
+      "sha256": "d6569419191fcc912882107f71acee96e541c20c80fd44f0e83c02f815ec0ff4",
+      "bytes": 2604013,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-d89bca06-6a5a-45b5-bfee-9caff884e778.png",
+      "sha256": "133c50203e920184e76db6cb1f0ac44bae14345181c8dd13a8bb06fcbdabb3d9",
+      "bytes": 1456007,
+      "width": 1103,
+      "height": 1426
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-e4e7e8c0-4760-4092-bec3-c308ada3d707.png",
+      "sha256": "87f6cd4289bcfdc77afc835bb0ff68ec6276d69548f849850aac77a4c1db2092",
+      "bytes": 2676240,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "path": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-eeda82c0-097e-4ffd-8725-97e6b8bbcac5.png",
+      "sha256": "92fde8883f2bf9a925325466fb4058d5f35e7f36973e6c17a1cebafd92488e21",
+      "bytes": 2666098,
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}
