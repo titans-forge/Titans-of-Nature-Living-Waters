@@ -326,7 +326,7 @@ export function UnderwaterFishingScene({ state, venue, paused, engaged = false, 
         transform: 'translate(-98%, -50%)', opacity: .85 }}>
         <div style={{ position: 'absolute', inset: 0, transformOrigin: '98% 50%', transform: `scaleX(${pose.facing < 0 ? -1 : 1})` }}>
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}><path d={fallbackBodyPath(fish)} fill={fish.color}/><circle cx="90" cy="43" r="2" fill="#132921"/></svg>
-          {fish.side && !fish.side.sourceRect && <img src={fish.side.src} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} onError={event => { event.currentTarget.style.visibility = 'hidden'; }}/>} 
+          {fish.side && !fish.side.sourceRect && <img src={fish.side.src} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} onError={event => { event.currentTarget.style.visibility = 'hidden'; }}/>}
         </div>
       </div>
     </div>}
