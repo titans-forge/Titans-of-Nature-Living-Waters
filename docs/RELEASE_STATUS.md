@@ -1,6 +1,14 @@
-# Release 1.15.0 — publication in progress
+# Published release 1.15.0 — October 11, 2026
 
-October 11, 2026. The owner authorized GitHub and itch publication of the tested underwater candidate. Versioned packaging and platform verification are in progress; this checkpoint does not claim a completed upload. See RELEASE_1_15.md for changes and validation limits. Save schema13; existing hosting terms and legacy grants preserved.
+[GitHub player](https://titans-forge.github.io/Titans-of-Nature-Living-Waters/) · [itch player and download](https://titans-forge.itch.io/living-waters) · [Release ZIP, checksum and manifest](https://github.com/titans-forge/Titans-of-Nature-Living-Waters/releases/tag/v1.15.0).
+
+The tested underwater candidate is now published. Release tag points to `0ee10567bd7d73f8ca198d371be39f92db58934d`. GitHub source checks (38161620525) and Pages deployment (38161620590) passed with all 410 tests. The original-source check reads actual PNGs locally; public CI explicitly checks a frozen, manifest-bound verification receipt and every runtime image/hash/registry binding. CI does not claim independent access to original Mac PNGs. Two exhaustive geometry tests retain every assertion with a 30-second allowance for slower shared CPUs.
+
+The 115-file ZIP includes all 104 accepted-candidate runtime files unchanged plus 11 license/dependency notices. SHA-256: `2b7905c356129e08145d3d0b35e48187c1cdb6ba4b02d1b05c7426ca9c72704c`. GitHub reports this exact asset digest; the public itch download was downloaded and independently hashed to the same value. itch browser build: 19698706; download: 19698722. Earlier builds remain retained and hidden for rollback; license terms and pricing are unchanged.
+
+Both hosted players loaded natively without captured console warnings/errors and preserved their earlier saved journeys through schema13 migration. All 104 runtime files were checked on each host; hashes match, except itch index.html contains its expected platform wrapper script while loading the exact verified game bundle. Both hosted release checkpoints identify 1.15.0. Evidence is retained in Living-Waters-Release-1.15-2026-10-11 under the local outputs directory.
+
+The prior local-only records below describe the state at those earlier checkpoints. Publication does not close the outstanding complete automated browser suite, physical-device checks or independent new-player studies. Assets are educational reconstructions, not biological validation.
 
 # Local final candidate — not published
 
