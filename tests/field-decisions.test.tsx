@@ -71,7 +71,7 @@ describe('field investigation decisions', () => {
       const choice = getFieldDecision(enriched, venue)!.choices.find(item => !item.blockReason)!;
       const selected = applyFieldDecision(enriched, venue, choice.id);
       expect({ ...selected, gearId: enriched.gearId, zoneId: enriched.zoneId }).toEqual(enriched);
-      expect(selected.version).toBe(12);
+      expect(selected.version).toBe(13);
       expect(selected.observations).toBe(enriched.observations);
       expect(selected.learningAnswers).toBe(enriched.learningAnswers);
       expect(selected.learningRevisions).toBe(enriched.learningRevisions);
@@ -81,7 +81,7 @@ describe('field investigation decisions', () => {
     }
   });
 
-  it('preserves selected setup through normal schema-12 saving before the cast', () => {
+  it('preserves selected setup through normal schema-13 saving before the cast', () => {
     for (const { venue, state } of visits) {
       const choice = getFieldDecision(state, venue)!.choices.find(item => !item.blockReason)!;
       const selected = applyFieldDecision(state, venue, choice.id);
@@ -90,7 +90,7 @@ describe('field investigation decisions', () => {
       if (parsed.ok) {
         expect(parsed.state.gearId).toBe(choice.gearId);
         expect(parsed.state.zoneId).toBe(choice.habitatId);
-        expect(parsed.state.version).toBe(12);
+        expect(parsed.state.version).toBe(13);
         expect(parsed.state.learningAnswers).toEqual(selected.learningAnswers);
         expect(parsed.state.castAttempts).toBe(selected.castAttempts);
       }

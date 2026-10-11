@@ -1,0 +1,29 @@
+{
+  "created": "2026-10-10",
+  "provider": "OpenAI built-in image generation in Codex",
+  "model": "Not reported by built-in tool",
+  "scope": "Local Amazon peacock-bass underwater prototype; no publication",
+  "formatConversion": "Pillow for WebP encoding only; full frame preserved without cropping or compositing",
+  "disclosure": "Generated game reconstructions, not actual wildlife encounters or scientific evidence",
+  "assets": [
+    {
+      "id": "amazon-root-edge",
+      "kind": "underwater-habitat",
+      "generatedSource": "exec-51d5d4b6-043d-4219-b6b2-345e2fac28cc.png",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "path": "src/assets/underwater/amazon-root-edge-v1.webp",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sourceSha256": "3dd7f6ea2f883a30a4aa2298cc49390fd7b15056ad160c8170a6935b8f40277a",
+      "sha256": "36823c05e23ac6634e38746ba70e63312c0d45dd2844fc4111afbf8d68f9502c",
+      "bytes": 277612,
+      "prompt": "Use case: photorealistic-natural. Asset type: wide 16:9 background plate for a 2D educational game's underwater fishing fight, no fish painted in. Primary request: a believable submerged Amazon flooded forest root edge viewed from beneath the water, at fish-eye level, with an open swimming corridor across the central two thirds. Warm olive-green and tea-brown freshwater, moderate turbidity and faint fine suspended sediment, daylight filtering from the rippling water surface visible along the upper 12 percent. Real woody branching submerged tree roots at the far right and left edge, dark wet timber and sparse natural flooded vegetation, subtle leaf litter and sand near bottom, realistic depth falloff into murk. The open central swimming corridor must remain light enough to see a separately composited peacock bass; natural muted tones, not clear tropical reef blue. Perspective: underwater side-oblique camera, approximately 1 metre below surface, gently upward enough to show water surface overhead, no above-water horizon. Natural documentary underwater photography, realistic textures and scale. Constraints: absolutely no fish, people, boat, rod, lure, fishing line, interface, words, labels, logos, watermark or fantasy structures. No surface river panorama, no bright aquarium, no cartoon, no sunlit dry land. Compose breathing room center-left and center, distant roots right; few foreground roots at extreme edges, not across swimming corridor. Output landscape wide high detail.",
+      "inputImages": []
+    }
+  ]
+}

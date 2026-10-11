@@ -1,3 +1,4 @@
+import { advanceRecommendedInteraction } from './helpers/fishing';
 import { describe, expect, it } from "vitest";
 import { advanceAssistedInteraction, advanceInteraction, askQuestion, beginDebrief, beginQuestions, castLine, castNotchForPower, castPowerForNotches, completeDebrief, continueExpedition, createInitialState, finishGear, finishQuestions, getFightProfile, getRecommendedEngagement, chooseSnagApproach, handleEncounter, manageLine, MAX_CAST_ATTEMPTS, revealEncounter, selectGear, selectHabitat, selectVenue } from "../src/game/engine";
 import { buildAssignment, getNextAssignment } from "../src/game/assignments";
@@ -22,7 +23,7 @@ function landFish(state: ExpeditionState) {
   const venue = venueById[current.venueId!];
   if (needsSnagApproach(current, venue)) current = chooseSnagApproach(current, "back-out");
   for (let turn = 0; turn < 1000 && !current.lineResolved; turn += 1) {
-    current = advanceInteraction(current, getRecommendedEngagement(current));
+    current = advanceRecommendedInteraction(current);
   }
   expect(current.lineResolved).toBe(true);
   return current;
@@ -43,7 +44,7 @@ describe("multi-venue expedition engine", () => {
   });
   it("starts at destination selection and preserves journal entries while traveling", () => {
     const initial = createInitialState();
-    expect(initial).toMatchObject({ version: 12, experienceMode: "guided", assistMode: false, castAttempts: 0 });
+    expect(initial).toMatchObject({ version: 13, experienceMode: "guided", assistMode: false, castAttempts: 0 });
     expect(initial.stage).toBe("venue");
     const amazon = selectVenue({ ...initial, journalIds: ["amazon:peacock-bass"] }, "okavango");
     expect(amazon.stage).toBe("arrival");
@@ -142,9 +143,9 @@ describe("multi-venue expedition engine", () => {
     expect(rushed.lineTension).toBeGreaterThan(state.lineTension);
     expect(rushed.lineResolved).toBe(false);
   });
-  it("lands a fish through the unified run and rest control", () => {
+  it("lands a fish through pressure pulses and latched rod control", () => {
     let state = castLine(selectHabitat(prepared("okavango", ["flood-arrival", "fishery"], "channel"), "channel"), 68);
-    for (let tick = 0; tick < 160 && !state.lineResolved; tick += 1) state = advanceInteraction(state, state.fightPhase === "rest");
+    for (let tick = 0; tick < 280 && !state.lineResolved; tick += 1) state = advanceRecommendedInteraction(state);
     expect(state.lineResolved).toBe(true);
     expect(state.interactionProgress).toBe(100);
     expect(state.interactionMistakes).toBe(0);
@@ -159,7 +160,7 @@ describe("multi-venue expedition engine", () => {
   });
   it("uses the same hold and release rhythm for passive surveys", () => {
     let state = castLine(selectHabitat(prepared("great-barrier-reef", ["reef-zones", "seagrass-turtle"], "survey"), "seagrass"), 54);
-    for (let tick = 0; tick < 160 && !state.lineResolved; tick += 1) state = advanceInteraction(state, state.fightPhase === "rest");
+    for (let tick = 0; tick < 280 && !state.lineResolved; tick += 1) state = advanceRecommendedInteraction(state);
     expect(state.lineResolved).toBe(true);
     expect(state.fishMaxDistance).toBe(0);
     expect(state.interactionMistakes).toBe(0);

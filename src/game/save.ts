@@ -3,6 +3,7 @@ import { getLearningQuestion } from '../data/learning';
 import { createInitialState, getRoutedEncounterId } from './engine';
 import { getInteractionKind } from './interactions';
 import { getAnglingWindow, getPilotSpecies } from './angling';
+import { getSkillFishingCue } from './skillFishing';
 import { getRevisionProblem } from './research';
 import { encodeJourneyEnvelope, journeyByteLength, MAX_FIELD_OBSERVATIONS, MAX_SAVE_BYTES, SAVE_FORMAT, SAVE_VERSION } from './limits';
 import type { ExpeditionState, FieldObservation } from '../types';
@@ -12,9 +13,9 @@ export const MAX_OBSERVATIONS = MAX_FIELD_OBSERVATIONS;
 export type ParseExpeditionResult = { ok: true; state: ExpeditionState; migrated: boolean; warnings: string[] } | { ok: false; error: string };
 type ObjectValue = Record<string, unknown>;
 const stages = ['venue', 'arrival', 'questions', 'gear', 'habitat', 'cast', 'handling', 'journal', 'debrief'];
-const stateKeys = ['observations', 'learningAnswers', 'learningRevisions', 'expeditionNumber', 'castUsedAssistance', 'version', 'venueId', 'stage', 'askedQuestions', 'gearId', 'zoneId', 'encounterId', 'castPower', 'castAccuracy', 'lineTurn', 'lineTension', 'lineActions', 'anglingRules', 'anglingBeat', 'snagApproach', 'lineQuality', 'lineResolved', 'fishDistance', 'fishMaxDistance', 'fishStamina', 'fightPhase', 'phaseProgress', 'fightMessage', 'interactionProgress', 'interactionMistakes', 'handlingId', 'fieldcraft', 'biology', 'ecology', 'trust', 'journalIds', 'activeAssignmentId', 'completedAssignmentIds', 'debriefChoice', 'seasonId', 'venueVisitCounts', 'experienceMode', 'assistMode', 'castAttempts', 'tripJournalIds', 'tripSafeJournalIds'];
+const stateKeys = ['observations', 'learningAnswers', 'learningRevisions', 'expeditionNumber', 'castUsedAssistance', 'version', 'venueId', 'stage', 'askedQuestions', 'gearId', 'zoneId', 'encounterId', 'castPower', 'castAccuracy', 'lineTurn', 'lineTension', 'lineActions', 'anglingRules', 'anglingBeat', 'rodSide', 'snagApproach', 'lineQuality', 'lineResolved', 'fishDistance', 'fishMaxDistance', 'fishStamina', 'fightPhase', 'phaseProgress', 'fightMessage', 'interactionProgress', 'interactionMistakes', 'handlingId', 'fieldcraft', 'biology', 'ecology', 'trust', 'journalIds', 'activeAssignmentId', 'completedAssignmentIds', 'debriefChoice', 'seasonId', 'venueVisitCounts', 'experienceMode', 'assistMode', 'castAttempts', 'tripJournalIds', 'tripSafeJournalIds'];
 const pilotKeys = ['anglingRules', 'anglingBeat'];
-const pilotMigrationWarning = 'Existing encounters keep their original controls; new pilot casts use behavior-specific windows.';
+const pilotMigrationWarning = 'Existing encounters keep their original controls; new angling casts use pressure and rod-angle decisions.';
 const newKeys = ['observations', 'learningAnswers', 'expeditionNumber', 'castUsedAssistance'];
 const legacyObservationKeys = ['id', 'expedition', 'venueId', 'seasonId', 'habitatId', 'gearId', 'encounterId', 'handlingId', 'castAccuracy', 'controlMistakes', 'assisted', 'shared'];
 const observationKeys = [...legacyObservationKeys, 'reportingStatus'];
@@ -44,8 +45,8 @@ function validObservation(value: unknown, legacy = false): value is FieldObserva
       && value.shared === (value.reportingStatus === 'full-notes'))));
 }
 
-function stateError(value: unknown, legacyVersion: 8 | 9 | 10 | 11 | null = null): string | null {
-  const expectedKeys = legacyVersion ? stateKeys.filter(key => !pilotKeys.includes(key) && (legacyVersion === 11 || key !== 'learningRevisions') && (legacyVersion >= 10 || key !== 'snagApproach')) : stateKeys;
+function stateError(value: unknown, legacyVersion: 8 | 9 | 10 | 11 | 12 | null = null): string | null {
+  const expectedKeys = legacyVersion ? stateKeys.filter(key => key !== 'rodSide' && (legacyVersion >= 12 || !pilotKeys.includes(key)) && (legacyVersion >= 11 || key !== 'learningRevisions') && (legacyVersion >= 10 || key !== 'snagApproach')) : stateKeys;
   if (!object(value) || !exact(value, expectedKeys) || value.version !== (legacyVersion ?? SAVE_VERSION)) return 'The saved state has missing, unknown, or unsupported fields.';
   if (!text(value.stage) || !stages.includes(value.stage) || !optionalId(value.venueId, id => own(venueById, id))) return 'The saved destination or stage is invalid.';
   const venue = typeof value.venueId === 'string' ? venueById[value.venueId] : null;
@@ -56,9 +57,12 @@ function stateError(value: unknown, legacyVersion: 8 | 9 | 10 | 11 | null = null
     || !optionalId(value.encounterId, id => Boolean(venue && own(venue.encounters, id)))
     || !optionalId(value.seasonId, id => Boolean(venue?.seasons.some(s => s.id === id)))) return 'The saved kit, habitat, encounter, or season is unknown.';
   const encounter = venue && typeof value.encounterId === 'string' ? venue.encounters[value.encounterId] : null;
-  if (!legacyVersion) {
-    if (!['classic', 'habitat-v1'].includes(value.anglingRules as string) || !number(value.anglingBeat, 0, 1000000)) return 'The saved angling rules or behavior counter is invalid.';
+  if (!legacyVersion || legacyVersion === 12) {
+    if (!(legacyVersion === 12 ? ['classic', 'habitat-v1'] : ['classic', 'habitat-v1', 'habitat-v2']).includes(value.anglingRules as string) || !number(value.anglingBeat, 0, 1000000)) return 'The saved angling rules or behavior counter is invalid.';
     if (value.anglingRules === 'classic' && value.anglingBeat !== 0) return 'Classic encounters cannot contain a pilot behavior counter.';
+    if (!legacyVersion && (!['left', 'right', 'center'].includes(value.rodSide as string) || value.anglingRules !== 'habitat-v2' && value.rodSide !== 'center')) return 'The saved rod angle is invalid for these rules.';
+    if (value.anglingRules === 'habitat-v2' && (!venue || getInteractionKind(value as unknown as ExpeditionState, venue) !== 'fish'
+      || !['cast', 'handling', 'journal', 'debrief'].includes(value.stage))) return 'The saved skill rules do not belong to this subject, method, or stage.';
     if (value.anglingRules === 'habitat-v1') {
       if (!venue || !getPilotSpecies(value as unknown as ExpeditionState, venue) || !['cast', 'handling', 'journal', 'debrief'].includes(value.stage)) return 'The saved pilot rules do not belong to this subject, method, or stage.';
     }
@@ -84,9 +88,13 @@ function stateError(value: unknown, legacyVersion: 8 | 9 | 10 | 11 | null = null
     || !strings(value.lineActions, id => ['reel', 'hold', 'give'].includes(id), 100000, false)) return 'The saved interaction values are invalid.';
   for (const key of ['fieldcraft', 'biology', 'ecology', 'trust']) if (!number(value[key], key === 'trust' ? -1000000 : 0, 1000000)) return 'A saved score is outside its supported range.';
   if ((value.lineQuality as number) > (value.lineTurn as number) || (value.interactionMistakes as number) > (value.lineTurn as number) || (value.lineActions as string[]).length > (value.lineTurn as number) || (value.phaseProgress as number) > (value.lineTurn as number)) return 'The interaction counters disagree with the number of recorded turns.';
-  if (!legacyVersion && value.anglingRules === 'habitat-v1') {
+  if ((!legacyVersion || legacyVersion === 12) && value.anglingRules === 'habitat-v1') {
     const window = getAnglingWindow(value as unknown as ExpeditionState, venue!);
     if ((value.anglingBeat as number) > (value.lineTurn as number) || !window || value.fightPhase !== (window.engage ? 'rest' : 'run') || value.phaseProgress !== window.elapsed) return 'The saved pilot phase does not agree with its behavior clock.';
+  }
+  if (!legacyVersion && value.anglingRules === 'habitat-v2') {
+    const window = getSkillFishingCue(value as unknown as ExpeditionState, venue!);
+    if ((value.anglingBeat as number) > (value.lineTurn as number) || !window || value.fightPhase !== (window.engage ? 'rest' : 'run') || value.phaseProgress !== window.elapsed) return 'The saved skill phase does not agree with its behavior clock.';
   }
   if (venue && !value.seasonId) return 'The active expedition has no ecological window.';
   if (['venue', 'arrival', 'questions'].includes(value.stage) && (value.gearId !== null || value.zoneId !== null || value.encounterId !== null || value.handlingId !== null || value.castAttempts !== 0)) return 'The early expedition stage contains a later encounter.';
@@ -130,7 +138,7 @@ function stateError(value: unknown, legacyVersion: 8 | 9 | 10 | 11 | null = null
     if (!question || !question.options.some(option => option.id === answer.answerId) || answer.correct !== (answer.answerId === question.correctId)) return 'A saved learning answer does not match the authored question.';
     answered.add(answer.questionId);
   }
-  if (!legacyVersion || legacyVersion === 11) {
+  if (!legacyVersion || legacyVersion >= 11) {
     if (!Array.isArray(value.learningRevisions) || value.learningRevisions.length > venues.length * 2 + 3) return 'The evidence review record is invalid.';
     const reviewed = new Set<string>();
     for (const review of value.learningRevisions) {
@@ -159,10 +167,10 @@ function completeMigration(state: ExpeditionState, warnings: string[]): ParseExp
 
 function migrateLegacy(input: ObjectValue): ExpeditionState {
   const version = input.version as number;
-  const legacyKeys = stateKeys.filter(key => !newKeys.includes(key) && !pilotKeys.includes(key) && key !== 'snagApproach' && key !== 'learningRevisions');
+  const legacyKeys = stateKeys.filter(key => key !== 'rodSide' && !newKeys.includes(key) && !pilotKeys.includes(key) && key !== 'snagApproach' && key !== 'learningRevisions');
   if (!exact(input, legacyKeys, false)) throw new Error('The legacy save contains unknown fields. Its original data has been preserved.');
   for (const key of ['stage', 'askedQuestions', 'gearId', 'zoneId', 'encounterId', 'handlingId', 'journalIds', 'fieldcraft', 'biology', 'ecology', 'trust']) if (!own(input, key)) throw new Error('The legacy save is missing essential progress fields.');
-  const migrated = { ...createInitialState(), ...input, version: SAVE_VERSION, observations: [], learningAnswers: [], castUsedAssistance: false, anglingRules: 'classic', anglingBeat: 0 } as ExpeditionState;
+  const migrated = { ...createInitialState(), ...input, version: SAVE_VERSION, observations: [], learningAnswers: [], castUsedAssistance: false, anglingRules: 'classic', anglingBeat: 0, rodSide: 'center' } as ExpeditionState;
   if (version <= 2) migrated.venueId = input.stage === 'venue' ? null : 'amazon';
   for (const key of ['journalIds', 'completedAssignmentIds', 'tripJournalIds', 'tripSafeJournalIds'] as const) {
     const raw = migrated[key];
@@ -205,7 +213,7 @@ function migrateVersion8(input: ObjectValue): ExpeditionState {
       ? (input.debriefChoice ?? 'pending')
       : observation.shared ? 'full-notes' : 'legacy-unknown',
   }));
-  const migrated = { ...input, version: SAVE_VERSION, observations, snagApproach: 'unassessed', learningRevisions: [], anglingRules: 'classic', anglingBeat: 0 } as unknown as ExpeditionState;
+  const migrated = { ...input, version: SAVE_VERSION, observations, snagApproach: 'unassessed', learningRevisions: [], anglingRules: 'classic', anglingBeat: 0, rodSide: 'center' } as unknown as ExpeditionState;
   const migratedError = stateError(migrated);
   if (migratedError) throw new Error(migratedError);
   return migrated;
@@ -243,36 +251,43 @@ export function parseExpedition(raw: string): ParseExpeditionResult {
       const error = stateError(data);
       return error ? { ok: false, error } : journeyByteLength(data) > MAX_SAVE_BYTES ? { ok: false, error: 'This journey exceeds the supported 4 MiB portable-save limit.' } : { ok: true, state: data as unknown as ExpeditionState, migrated: false, warnings: [] };
     }
+    if (data.version === 12) {
+      const error = stateError(data, 12);
+      if (error) return { ok: false, error };
+      const state = { ...data, version: SAVE_VERSION, rodSide: 'center' } as unknown as ExpeditionState;
+      const migratedError = stateError(state);
+      return migratedError ? { ok: false, error: migratedError } : completeMigration(state, ['Updated version 12 to version 13. Your active encounter, original rules, behavior clock, records and decisions are preserved.', pilotMigrationWarning]);
+    }
     if (data.version === 11) {
       const error = stateError(data, 11);
       if (error) return { ok: false, error };
-      const state = { ...data, version: SAVE_VERSION, anglingRules: 'classic', anglingBeat: 0 } as unknown as ExpeditionState;
+      const state = { ...data, version: SAVE_VERSION, anglingRules: 'classic', anglingBeat: 0, rodSide: 'center' } as unknown as ExpeditionState;
       const migratedError = stateError(state);
-      return migratedError ? { ok: false, error: migratedError } : completeMigration(state, ['Updated version 11 to version 12. Your first answers, evidence reviews, field records and decisions are preserved.', pilotMigrationWarning]);
+      return migratedError ? { ok: false, error: migratedError } : completeMigration(state, ['Updated version 11 to version 13. Your first answers, evidence reviews, field records and decisions are preserved.', pilotMigrationWarning]);
     }
     if (data.version === 10) {
       const error = stateError(data, 10);
       if (error) return { ok: false, error };
-      const state = { ...data, version: SAVE_VERSION, learningRevisions: [], anglingRules: 'classic', anglingBeat: 0 } as unknown as ExpeditionState;
+      const state = { ...data, version: SAVE_VERSION, learningRevisions: [], anglingRules: 'classic', anglingBeat: 0, rodSide: 'center' } as unknown as ExpeditionState;
       const migratedError = stateError(state);
-      return migratedError ? { ok: false, error: migratedError } : completeMigration(state, ['Updated version 10 to version 12. Your first answers, field records and decisions are preserved. Earlier research answers have no selected evidence links; review them to build a supported conclusion.', pilotMigrationWarning]);
+      return migratedError ? { ok: false, error: migratedError } : completeMigration(state, ['Updated version 10 to version 13. Your first answers, field records and decisions are preserved. Earlier research answers have no selected evidence links; review them to build a supported conclusion.', pilotMigrationWarning]);
     }
     if (data.version === 9) {
       const error = stateError(data, 9);
       if (error) return { ok: false, error };
-      const normalized = normalizePendingLegacyEncounter({ ...data, version: SAVE_VERSION, snagApproach: 'unassessed', learningRevisions: [], anglingRules: 'classic', anglingBeat: 0 } as unknown as ExpeditionState);
+      const normalized = normalizePendingLegacyEncounter({ ...data, version: SAVE_VERSION, snagApproach: 'unassessed', learningRevisions: [], anglingRules: 'classic', anglingBeat: 0, rodSide: 'center' } as unknown as ExpeditionState);
       const state = normalized.state;
       const migratedError = stateError(state);
-      return migratedError ? { ok: false, error: migratedError } : completeMigration(state, ['Updated version 9 to version 12. Your records, first answers and reporting choices are preserved. Earlier research answers have no selected evidence links; any unfinished snag needs a fresh recovery assessment.', pilotMigrationWarning, ...normalized.warnings]);
+      return migratedError ? { ok: false, error: migratedError } : completeMigration(state, ['Updated version 9 to version 13. Your records, first answers and reporting choices are preserved. Earlier research answers have no selected evidence links; any unfinished snag needs a fresh recovery assessment.', pilotMigrationWarning, ...normalized.warnings]);
     }
     if (data.version === 8) {
       const normalized = normalizePendingLegacyEncounter(migrateVersion8(data));
-      return completeMigration(normalized.state, ['Updated version 8 reporting history to version 12. Earlier records without full notes are marked as an unknown legacy reporting choice; no past privacy decision was invented. First answers are preserved; evidence reviews begin with new play.', pilotMigrationWarning, ...normalized.warnings]);
+      return completeMigration(normalized.state, ['Updated version 8 reporting history to version 13. Earlier records without full notes are marked as an unknown legacy reporting choice; no past privacy decision was invented. First answers are preserved; evidence reviews begin with new play.', pilotMigrationWarning, ...normalized.warnings]);
     }
     if (!number(data.version, 1, 7)) return { ok: false, error: 'This save version is not supported. Keep the original file for a compatible release.' };
     const normalized = normalizePendingLegacyEncounter(migrateLegacy(data));
     const state = normalized.state;
-    return completeMigration(state, [`Updated version ${data.version} progress to version 12. Older saves have no detailed observation or learning-answer history; those records begin with new play.`, pilotMigrationWarning, ...normalized.warnings, ...(data.version === 5 && data.stage === 'cast' ? ['The older casting interaction resumes at habitat selection.'] : [])]);
+    return completeMigration(state, [`Updated version ${data.version} progress to version 13. Older saves have no detailed observation or learning-answer history; those records begin with new play.`, pilotMigrationWarning, ...normalized.warnings, ...(data.version === 5 && data.stage === 'cast' ? ['The older casting interaction resumes at habitat selection.'] : [])]);
   } catch (error) {
     return { ok: false, error: error instanceof SyntaxError ? 'The file is not valid JSON. Your current journey was not changed.' : error instanceof Error ? error.message : 'The save could not be read safely.' };
   }

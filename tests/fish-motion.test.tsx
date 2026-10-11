@@ -2,17 +2,22 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { FishingScene } from '../src/components/FishingScene';
 import { liveFishSpriteByEncounterId, type LiveFishSpecies } from '../src/data/liveFishSprites';
+import { underwaterFishByEncounterId } from '../src/data/underwaterFish';
 import { venueById } from '../src/data/venues';
 import { getAnglingWindow } from '../src/game/angling';
-import { castLine, createInitialState, getIdealCastPower } from '../src/game/engine';
+import { createInitialState, getIdealCastPower } from '../src/game/engine';
 import { getDecodedLiveFishView, getLiveFishMotion, getLiveFishTransform, getLiveFishView, LIVE_FISH_WATER_BOUNDS } from '../src/game/fishMotion';
+import { getUnderwaterFishFrameWidth, getUnderwaterFishPose, getUnderwaterLine, getUnderwaterMeshPoint } from '../src/game/underwaterMotion';
 import type { ExpeditionState } from '../src/types';
+import { legacyCastLine } from './helpers/fishing';
 
 function start(venueId = 'amazon', gearId = 'surface', zoneId = 'roots', seasonId = 'rising-water') {
   const state: ExpeditionState = { ...createInitialState(), stage: 'habitat', venueId, gearId, zoneId, seasonId };
-  return castLine(state, getIdealCastPower(state));
+  return legacyCastLine(state, getIdealCastPower(state));
 }
 const pilots = [start(), start('florida-bay', 'roots', 'creek', 'spring-exchange'), start('florida-bay', 'flat', 'seagrass', 'dry-salinity')];
+// Existing saved-clock motion/view contracts stay covered even though genuine
+// fish now share a submerged renderer across every water.
 const snakehead = start('tonle-sap', 'forest', 'forest', 'reverse-flow');
 
 function motion(state: ExpeditionState) {
@@ -23,6 +28,18 @@ function motion(state: ExpeditionState) {
 }
 function scene(state: ExpeditionState, paused = false, engaged = false) {
   return renderToStaticMarkup(<FishingScene state={state} venue={venueById[state.venueId!]} paused={paused} engaged={engaged}/>);
+}
+function savedScenePose(html: string) {
+  return ['data-mouth-x', 'data-mouth-y', 'data-beat', 'data-species'].map(attribute => html.match(new RegExp(`${attribute}="([^"]+)"`))?.[1]);
+}
+function expectSubmergedScene(state: ExpeditionState) {
+  const html = scene(state), pose = getUnderwaterFishPose(state, venueById[state.venueId!]);
+  expect(html).toContain('data-motion-source="saved-encounter"');
+  expect(html).toContain('underwater-fight-canvas');
+  expect(savedScenePose(html)).toEqual([`${pose.x}`, `${pose.y}`, `${pose.clock}`, state.encounterId]);
+  expect(html).not.toContain('angling-live-fish__piece');
+  expect(html).not.toContain('angling-boat'); expect(html).not.toContain('class="fish-shadow"');
+  return html;
 }
 
 describe('saved-clock fish motion', () => {
@@ -65,24 +82,21 @@ describe('saved-clock fish motion', () => {
     }
   });
 
-  it('joins the same deterministic mouth to line, ripple and articulated image in every live species', () => {
+  it('joins the same saved submerged mouth to the line and each continuous texture mesh', () => {
     for (const route of [...pilots, snakehead]) {
       const state = { ...route, anglingBeat: 11, lineTurn: 11, phaseProgress: 3, interactionProgress: 36 };
-      const view = motion(state), sprite = liveFishSpriteByEncounterId[state.encounterId as LiveFishSpecies];
-      const html = scene(state);
-      expect(html).toContain(`data-mouth-x="${view.x}" data-mouth-y="${view.y}"`);
-      expect(html).toContain(`left:${view.x}%;top:${view.y}%;aspect-ratio:${sprite.aspectRatio}`);
-      expect(html).toContain(` ${view.x} ${view.y}&quot;)`);
-      expect(html).toContain(`transform-origin:${sprite.mouthX}% ${sprite.mouthY}%;transform:${getLiveFishTransform(view)}`);
-      expect(html).toContain('angling-live-fish__body'); expect(html).toContain('angling-live-fish__tail');
-      expect(html).toContain(`left:${sprite.mouthX}%;top:${sprite.mouthY}%;width:${sprite.turn.widthScale * 100}%;height:auto;aspect-ratio:${sprite.turn.aspectRatio}`);
-      expect(html).toContain(`transform:translate(-${sprite.turn.mouthX}%, -${sprite.turn.mouthY}%)`);
-      expect(html).toContain(`left:${sprite.mouthX}%;top:${sprite.mouthY}%;width:${sprite.oblique.widthScale * 100}%;height:auto;aspect-ratio:${sprite.oblique.aspectRatio}`);
-      expect(html).toContain(`transform-origin:${sprite.oblique.mouthX}% ${sprite.oblique.mouthY}%;transform:translate(-${sprite.oblique.mouthX}%, -${sprite.oblique.mouthY}%) scaleX(`);
-      expect(html).toContain(sprite.turn.src);
-      expect(html).toContain(sprite.oblique.src);
-      expect(html.match(/class="angling-live-fish__piece/g)).toHaveLength(5);
-      expect(html).not.toContain('rotate(135deg)'); expect(html).not.toContain('rotate(155deg)');
+      const view = getUnderwaterFishPose(state, venueById[state.venueId!]), fish = underwaterFishByEncounterId[state.encounterId!];
+      expectSubmergedScene(state);
+      for (const [sceneWidth, sceneHeight] of [[390, 350], [1100, 650]]) {
+        const line = getUnderwaterLine(view, sceneWidth, sceneHeight)!;
+        expect(line.end).toEqual({ x: view.x * sceneWidth / 100, y: view.y * sceneHeight / 100 });
+        expect(line.start.y).toBeLessThan(line.end.y);
+        const width = getUnderwaterFishFrameWidth(view, sceneWidth, sceneHeight);
+        for (const [frame, strength] of [[fish.side!, 1], [fish.oblique!, .45], [fish.turn!, .15]] as const) {
+          const frameWidth = width * frame.widthScale;
+          expect(getUnderwaterMeshPoint(frame.mouthX / 100, frame.mouthY / 100, frameWidth, frameWidth / frame.aspectRatio, frame.mouthX, frame.mouthY, view, strength)).toEqual({ x: 0, y: 0 });
+        }
+      }
     }
   });
 
@@ -132,18 +146,18 @@ describe('saved-clock fish motion', () => {
         const pose = motion(state);
         if (Math.abs(pose.facing) !== .6875) continue;
         signs.add(Math.sign(pose.facing));
-        const html = scene(state);
-        expect(html).toContain('data-artwork-view="oblique"');
-        expect(html).toContain('data-view="oblique" data-view-opacity="1"');
-        expect(html).toContain(`scaleX(${Math.sign(pose.facing)})`);
-        expect(html).not.toContain('scaleX(0)');
+        const view = getLiveFishView(pose);
+        expect(view.artworkView).toBe('oblique'); expect(view.obliqueOpacity).toBe(1);
+        expect(view.obliqueScaleX).toBe(Math.sign(pose.facing));
+        expectSubmergedScene(state);
       }
       expect(signs).toEqual(new Set([-1, 1]));
     }
     for (const phaseProgress of [1, 3]) {
       const state = { ...snakehead, fightPhase: 'rest' as const, lineTurn: 12 + phaseProgress, phaseProgress };
       expect(Math.abs(motion(state).facing)).toBe(.6875);
-      expect(scene(state)).toContain('data-artwork-view="oblique"');
+      expect(getLiveFishView(motion(state)).artworkView).toBe('oblique');
+      expectSubmergedScene(state);
     }
   });
 
@@ -193,32 +207,28 @@ describe('saved-clock fish motion', () => {
         const pose = motion(state);
         if (pose.facing !== 0) continue;
         directions.add(Math.sign(motion({ ...state, anglingBeat: clock - 1, lineTurn: clock - 1 }).facing));
-        const html = scene(state);
-        expect(html).toContain('data-artwork-view="turn"');
-        expect(html).toContain('data-view="turn" data-view-opacity="1"');
-        expect(html).not.toContain('scaleX(0)');
-        const turnElement = html.match(/<div class="angling-live-fish__view angling-live-fish__view--turn[^>]+>/)![0];
-        expect(turnElement).not.toContain('scaleX');
+        expect(getLiveFishView(pose).artworkView).toBe('turn');
+        expect(getLiveFishView(pose).turnOpacity).toBe(1);
+        const fish = underwaterFishByEncounterId[state.encounterId!];
+        expect(fish.turn!.src).not.toBe(fish.side!.src);
+        expectSubmergedScene(state);
       }
       expect(directions).toEqual(new Set([-1, 1]));
     }
     const halfway = { ...snakehead, fightPhase: 'rest' as const, lineTurn: 14, phaseProgress: 2 };
-    expect(scene(halfway)).toContain('data-artwork-view="turn"');
+    expectSubmergedScene(halfway);
     expect(getLiveFishView(motion(halfway)).turnOpacity).toBe(1);
   });
 
   it('retains the side silhouette until the requested front artwork has decoded', () => {
     const halfway = { ...snakehead, fightPhase: 'rest' as const, lineTurn: 14, phaseProgress: 2 };
-    const html = scene(halfway);
-    const side = html.match(/<div class="angling-live-fish__view angling-live-fish__view--side[^>]+>/)![0];
-    const turn = html.match(/<div class="angling-live-fish__view angling-live-fish__view--turn[^>]+>/)![0];
-    expect(side).toContain('data-view-opacity="0"');
-    expect(side).toContain('style="opacity:1;');
-    expect(side).not.toContain('is-decoded');
-    expect(turn).toContain('data-view-opacity="1"');
-    expect(turn).toContain('opacity:0;');
-    expect(turn).not.toContain('is-decoded');
-    expect(html).toContain('angling-live-fish__fallback');
+    const pose = motion(halfway);
+    expect(getLiveFishView(pose).turnOpacity).toBe(1);
+    const loading = getDecodedLiveFishView(pose, { side: true, oblique: false, turn: false });
+    expect(loading.sideOpacity).toBe(1); expect(loading.turnOpacity).toBe(0); expect(loading.fallback).toBe(false);
+    const decoded = getDecodedLiveFishView(pose, { side: true, oblique: true, turn: true });
+    expect(decoded.turnOpacity).toBe(1); expect(decoded.fallback).toBe(false);
+    expectSubmergedScene(halfway);
   });
 
   it('keeps all camera mouths at the shared screen anchor across mobile and desktop framing and discrete mirrors', () => {
@@ -267,9 +277,8 @@ describe('saved-clock fish motion', () => {
     for (const route of states) {
       const state = Object.freeze({ ...route, interactionProgress: 40 });
       const saved = JSON.stringify(state);
-      const artwork = (html: string) => html.match(/<div class="angling-live-fish [\s\S]*?<div class="scene-caption">/)![0];
-      expect(artwork(scene(state, false, true))).toBe(artwork(scene(state, true, false)));
-      expect(artwork(scene(state, true))).toBe(artwork(scene(JSON.parse(saved), true)));
+      expect(savedScenePose(scene(state, false, true))).toEqual(savedScenePose(scene(state, true, false)));
+      expect(savedScenePose(scene(state, true))).toEqual(savedScenePose(scene(JSON.parse(saved), true)));
       expect(getLiveFishView(motion(state)).obliqueOpacity).toBe(1);
       expect(JSON.stringify(state)).toBe(saved);
     }
@@ -293,12 +302,15 @@ describe('saved-clock fish motion', () => {
       const state = Object.freeze({ ...route, anglingBeat: 19, lineTurn: 19, phaseProgress: 3, interactionProgress: 40 });
       const before = JSON.stringify(state);
       expect(motion(JSON.parse(before))).toEqual(motion(state));
-      const anatomy = (html: string) => html.match(/<div class="angling-live-fish [\s\S]*?<\/div>\s*<\/div>/)![0];
-      expect(anatomy(scene(state, false, true))).toBe(anatomy(scene(state, true, false)));
-      expect(anatomy(scene(state, true, true))).toBe(anatomy(scene(JSON.parse(before), true, false)));
+      expect(savedScenePose(scene(state, false, true))).toEqual(savedScenePose(scene(state, true, false)));
+      expect(savedScenePose(scene(state, true, true))).toEqual(savedScenePose(scene(JSON.parse(before), true, false)));
       const resolved = { ...state, lineResolved: true };
-      expect(anatomy(scene(resolved))).toBe(anatomy(scene(resolved, true)));
-      expect(scene({ ...state, lineTension: 100 })).not.toContain('data-mouth-x=');
+      expect(savedScenePose(scene(resolved))).toEqual(savedScenePose(scene(resolved, true)));
+      expect(scene(resolved)).toContain('data-underwater-phase="landed"');
+      expect(scene(resolved)).toContain('data-line-visible="false"'); expect(scene(resolved)).toContain('landed-reveal');
+      const lost = { ...state, lineTension: 100 };
+      expect(scene(lost)).toContain('data-underwater-phase="lost"'); expect(scene(lost)).toContain('data-line-visible="false"');
+      expect(getUnderwaterLine(getUnderwaterFishPose(lost, venueById[state.venueId!]), 740, 260)).toBeNull();
       expect(JSON.stringify(state)).toBe(before);
     }
   });
@@ -314,18 +326,17 @@ describe('saved-clock fish motion', () => {
     for (const route of routeStates) {
       const state = Object.freeze({ ...route, interactionProgress: 40 });
       const saved = JSON.stringify(state);
-      const artwork = (html: string) => html.match(/<div class="angling-live-fish [\s\S]*?<div class="scene-caption">/)![0];
-      expect(artwork(scene(state, false, true))).toBe(artwork(scene(state, true, false)));
-      expect(artwork(scene(state, true))).toBe(artwork(scene(JSON.parse(saved), true)));
+      expect(savedScenePose(scene(state, false, true))).toEqual(savedScenePose(scene(state, true, false)));
+      expect(savedScenePose(scene(state, true))).toEqual(savedScenePose(scene(JSON.parse(saved), true)));
       expect(getLiveFishView(motion(state)).turnOpacity).toBe(1);
       expect(JSON.stringify(state)).toBe(saved);
     }
   });
 
-  it('keeps the original classic pilot and nonfish rendering outside the new live view', () => {
+  it('uses the saved classic clock underwater while retaining nonfish and earlier-record scenes', () => {
     const classic = { ...pilots[0], anglingRules: 'classic' as const };
-    expect(scene(classic)).toContain('class="fish-shadow"');
-    expect(scene(classic)).not.toContain('angling-live-fish__orientation');
+    expectSubmergedScene(classic);
+    expect(getUnderwaterFishPose(classic, venueById.amazon).clock).toBe(classic.lineTurn);
     for (const [state, marker] of [
       [start('baikal', 'camera', 'shelf', 'summer-open-water'), 'camera-marker'],
       [start('amazon', 'light', 'plants', 'rising-water'), 'incident-shadow'],
@@ -333,10 +344,10 @@ describe('saved-clock fish motion', () => {
       [start('danube', 'telemetry', 'navigation', 'summer-navigation'), 'receiver-marker'],
     ] as const) {
       expect(scene(state)).toContain(marker);
-      expect(scene(state)).not.toContain('angling-live-fish__orientation');
+      expect(scene(state)).not.toContain('data-motion-source="saved-encounter"');
     }
     const earlier = { ...pilots[0], lineResolved: true, gearId: 'light', zoneId: 'plants' };
     expect(scene(earlier)).toContain('Earlier field record');
-    expect(scene(earlier)).not.toContain('angling-live-fish__orientation');
+    expect(scene(earlier)).not.toContain('data-motion-source="saved-encounter"');
   });
 });

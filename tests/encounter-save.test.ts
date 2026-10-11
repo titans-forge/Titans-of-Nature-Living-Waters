@@ -15,7 +15,7 @@ function snag() {
   return castLine(selectHabitat(finishGear(selectGear(finishQuestions(state), 'balanced')), 'roots'), 44);
 }
 function v9() {
-  const { snagApproach: _approach, learningRevisions: _reviews, anglingRules: _rules, anglingBeat: _beat, ...state } = snag();
+  const { snagApproach: _approach, learningRevisions: _reviews, anglingRules: _rules, anglingBeat: _beat, rodSide: _side, ...state } = snag();
   // Old genuine line-control actions must never be mistaken for a new assessment.
   return { ...state, version: 9, lineTurn: 3, lineActions: ['give', 'hold', 'reel'] };
 }
@@ -24,7 +24,7 @@ describe('encounter decisions and previous journeys', () => {
   it('preserves v9 progress and old actions without inventing a snag assessment', () => {
     const old = v9();
     const parsed = parseExpedition(JSON.stringify(old));
-    expect(parsed).toMatchObject({ ok: true, migrated: true, state: { version: 12, snagApproach: 'unassessed', lineActions: old.lineActions, observations: old.observations } });
+    expect(parsed).toMatchObject({ ok: true, migrated: true, state: { version: 13, snagApproach: 'unassessed', lineActions: old.lineActions, observations: old.observations } });
     if (!parsed.ok) return;
     expect(needsSnagApproach(parsed.state, venueById.amazon)).toBe(true);
     expect(advanceAssistedInteraction(parsed.state)).toEqual(parsed.state);
@@ -72,7 +72,7 @@ describe('encounter decisions and previous journeys', () => {
     const venue = venueById['great-barrier-reef'];
     state = askQuestion(askQuestion(state, venue.questions[0].id), venue.questions[1].id);
     state = castLine(selectHabitat(finishGear(selectGear(finishQuestions(state), 'pelagic')), 'channel'), 74);
-    const { snagApproach: _approach, learningRevisions: _reviews, anglingRules: _rules, anglingBeat: _beat, ...old } = state;
+    const { snagApproach: _approach, learningRevisions: _reviews, anglingRules: _rules, anglingBeat: _beat, rodSide: _side, ...old } = state;
     const legacy = { ...old, version: 9, encounterId: 'green-turtle', lineTurn: 18, phaseProgress: 5, interactionProgress: 42, interactionMistakes: 2 };
     const parsed = parseExpedition(JSON.stringify(legacy));
     expect(parsed.ok).toBe(true);
@@ -88,7 +88,7 @@ describe('encounter decisions and previous journeys', () => {
     let state = beginQuestions(selectVenue({ ...createInitialState(), venueVisitCounts: { [venue.id]: 2 } }, venue.id));
     state = askQuestion(askQuestion(state, venue.questions[0].id), venue.questions[1].id);
     state = castLine(selectHabitat(finishGear(selectGear(finishQuestions(state), 'pelagic')), 'channel'), 74);
-    const { snagApproach: _approach, learningRevisions: _reviews, anglingRules: _rules, anglingBeat: _beat, ...old } = state;
+    const { snagApproach: _approach, learningRevisions: _reviews, anglingRules: _rules, anglingBeat: _beat, rodSide: _side, ...old } = state;
     const legacy = { ...old, version: 9, encounterId: 'green-turtle', lineResolved: true, interactionProgress: 100, lineTurn: 18, fishDistance: 0, fishStamina: 0 };
     const parsed = parseExpedition(JSON.stringify(legacy));
     expect(parsed.ok).toBe(true);

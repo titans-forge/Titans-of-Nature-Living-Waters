@@ -4,7 +4,8 @@ export type FightPhase = "run" | "rest";
 export type ExperienceMode = "guided" | "field";
 export type FightProfileId = "burst" | "bottom" | "aerial" | "steady" | "passive" | "bycatch" | "snag" | "camera" | "telemetry" | "sampling";
 export type GearMethod = "angling" | "camera" | "telemetry" | "sampling";
-export type AnglingRules = "classic" | "habitat-v1";
+export type RodSide = "left" | "right" | "center";
+export type AnglingRules = "classic" | "habitat-v1" | "habitat-v2";
 export type InteractionKind = "fish" | "bycatch" | "snag" | "camera" | "telemetry" | "sampling";
 
 export interface SourceReference {
@@ -159,7 +160,7 @@ export interface ExpeditionState {
   learningAnswers: LearningAnswer[];
   learningRevisions: LearningRevision[];
   expeditionNumber: number;
-  version: 12;
+  version: 13;
   venueId: string | null;
   stage: Stage;
   askedQuestions: string[];
@@ -173,6 +174,7 @@ export interface ExpeditionState {
   lineActions: LineAction[];
   anglingRules: AnglingRules;
   anglingBeat: number;
+  rodSide: RodSide;
   snagApproach: "unassessed" | "back-out" | "pull-through";
   lineQuality: number;
   lineResolved: boolean;

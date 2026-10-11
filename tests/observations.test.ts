@@ -1,3 +1,4 @@
+import { advanceRecommendedInteraction } from './helpers/fishing';
 import { describe, expect, it } from "vitest";
 import { venues, venueById } from "../src/data/venues";
 import { buildAssignment, didCompleteCurrentAssignment, getActiveAssignment } from "../src/game/assignments";
@@ -15,8 +16,8 @@ function prepare(state = createInitialState(), assistMode = false) {
 function catchBass(state: ExpeditionState, policy: "rhythm" | "hold" | "assisted" = "rhythm", safe = true) {
   let current = castLine(state, 44);
   for (let tick = 0; tick < 300 && !current.lineResolved; tick += 1) current = policy === "assisted"
-    ? advanceAssistedInteraction(current) : advanceInteraction(current, policy === "hold" && current.interactionMistakes < 4 || current.fightPhase === "rest");
-  if (hasLostFish(current)) { current = retryFish(current); for (let tick = 0; tick < 300 && !current.lineResolved; tick++) current = advanceInteraction(current, current.fightPhase === "rest"); }
+    ? advanceAssistedInteraction(current) : policy === "hold" && current.interactionMistakes < 4 ? advanceInteraction(current, true) : advanceRecommendedInteraction(current);
+  if (hasLostFish(current)) { current = retryFish(current); for (let tick = 0; tick < 300 && !current.lineResolved; tick++) current = advanceRecommendedInteraction(current); }
   expect(current.lineResolved).toBe(true);
   return handleEncounter(revealEncounter(current), venueById.amazon.encounters["peacock-bass"].handling.find((option) => option.safe === safe)!.id);
 }
@@ -51,7 +52,7 @@ describe("durable field records", () => {
     let current = castLine(prepare(), 44);
     current = advanceAssistedInteraction(current);
     current = { ...current, assistMode: false };
-    for (let tick = 0; tick < 300 && !current.lineResolved; tick += 1) current = advanceInteraction(current, current.fightPhase === "rest");
+    for (let tick = 0; tick < 300 && !current.lineResolved; tick += 1) current = advanceRecommendedInteraction(current);
     const result = handleEncounter(revealEncounter(current), "steady-release");
     expect(result.observations[0].assisted).toBe(true);
     expect(continueExpedition(result).castUsedAssistance).toBe(false);

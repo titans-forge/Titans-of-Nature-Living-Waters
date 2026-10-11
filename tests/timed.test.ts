@@ -1,6 +1,7 @@
+import { legacyCastLine as castLine } from './helpers/fishing';
 import { describe, expect, it } from "vitest";
 import { venues } from "../src/data/venues";
-import { FISHING_TICK_MS, getCastTargetWidth, hasLostFish, retryFish, advanceAssistedInteraction, advanceInteraction, askQuestion, beginQuestions, castLine, chooseSnagApproach, createInitialState, finishGear, finishQuestions, getFightProfile, getPressureFeedback, getRecommendedEngagement, getVenue, selectGear, selectHabitat, selectVenue } from "../src/game/engine";
+import { FISHING_TICK_MS, getCastTargetWidth, hasLostFish, retryFish, advanceAssistedInteraction, advanceInteraction, askQuestion, beginQuestions,  chooseSnagApproach, createInitialState, finishGear, finishQuestions, getFightProfile, getPressureFeedback, getRecommendedEngagement, getVenue, selectGear, selectHabitat, selectVenue } from "../src/game/engine";
 import { getInteractionKind, needsSnagApproach } from "../src/game/interactions";
 import { parseExpedition } from "../src/game/save";
 import type { ExpeditionState } from "../src/types";

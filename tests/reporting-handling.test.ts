@@ -1,3 +1,4 @@
+import { advanceRecommendedInteraction } from './helpers/fishing';
 import { describe, expect, it } from 'vitest';
 import v8Journey from './fixtures/audit-journey-v8.json';
 import { venueById, venues } from '../src/data/venues';
@@ -14,7 +15,7 @@ function prepare(previous = createInitialState()) {
 
 function record(prepared = prepare()) {
   let state = castLine(prepared, 44);
-  for (let tick = 0; tick < 1000 && !state.lineResolved; tick++) state = advanceInteraction(state, state.fightPhase === 'rest');
+  for (let tick = 0; tick < 1000 && !state.lineResolved; tick++) state = advanceRecommendedInteraction(state);
   state = revealEncounter(state);
   return handleEncounter(state, getHandlingOptions(state).find(option => option.safe)!.id);
 }
@@ -24,7 +25,7 @@ function repeat(state: ExpeditionState) {
 }
 
 function version8(state: ExpeditionState) {
-  const { snagApproach: _approach, learningRevisions: _reviews, anglingRules: _rules, anglingBeat: _beat, ...oldState } = state;
+  const { snagApproach: _approach, learningRevisions: _reviews, anglingRules: _rules, anglingBeat: _beat, rodSide: _side, ...oldState } = state;
   return {
     ...oldState,
     version: 8,
@@ -59,7 +60,7 @@ describe('honest reporting history', () => {
   it('migrates the real eight-record v8 playthrough without inventing the lost older privacy choice', () => {
     const original = structuredClone(v8Journey);
     const parsed = parseExpedition(JSON.stringify(v8Journey));
-    expect(parsed).toMatchObject({ ok: true, migrated: true, state: { version: 12, expeditionNumber: 8 } });
+    expect(parsed).toMatchObject({ ok: true, migrated: true, state: { version: 13, expeditionNumber: 8 } });
     if (!parsed.ok) return;
     expect(parsed.state.observations.map(observation => observation.reportingStatus)).toEqual([
       'full-notes', 'full-notes', 'full-notes', 'full-notes', 'full-notes', 'full-notes', 'legacy-unknown', 'private-notes',
@@ -96,7 +97,7 @@ describe('honest reporting history', () => {
 describe('handling choices require reading rather than memorizing A', () => {
   it('keeps positions stable through rerender, settings changes and a save roundtrip while scoring by option ID', () => {
     let state = castLine(prepare(), 44);
-    for (let tick = 0; tick < 1000 && !state.lineResolved; tick++) state = advanceInteraction(state, state.fightPhase === 'rest');
+    for (let tick = 0; tick < 1000 && !state.lineResolved; tick++) state = advanceRecommendedInteraction(state);
     state = revealEncounter(state);
     const options = getHandlingOptions(state);
     const ids = options.map(option => option.id);

@@ -1,0 +1,2061 @@
+{
+  "version": 2,
+  "date": "2026-10-10",
+  "provider": "OpenAI built-in imagegen",
+  "model": "not reported by tool",
+  "scope": "Local all-water underwater fight rollout; generated educational reconstructions, not specimen photographs or measured physiology.",
+  "mode": "New image generation with transparent_background=true and no input references, plus explicitly recorded targeted built-in anatomy and spacing edits; input-reference paths are recorded per edit.",
+  "processing": "Full-frame PNG to WebP encoding only, exact chosen-source alpha preserved. Source rectangles use read-only alpha>12 connected-component bounds with four pixels of empty margin and visually inspected mouth anchors; no painted, erased, composited, or generated pixels from Python.",
+  "anatomySourceChecks": [
+    {
+      "claim": "Ocean-phase coho may have spots on the back and upper tail lobe, never the lower lobe; unspotted caudal tails also occur.",
+      "urls": [
+        "https://www.fisheries.noaa.gov/species/coho-salmon",
+        "https://s3.amazonaws.com/media.fisheries.noaa.gov/2024-11/species-idguide_2024.pdf"
+      ]
+    },
+    {
+      "claim": "Adult Pacific halibut have both eyes on the right/upper eyed side.",
+      "urls": [
+        "https://www.fisheries.noaa.gov/species/pacific-halibut"
+      ]
+    },
+    {
+      "claim": "Bunni is Mesopotamichthys sharpeyi; Shabout is Arabibarbus grypus.",
+      "urls": [
+        "https://doi.org/10.2305/IUCN.UK.2014-1.RLTS.T19383657A19849450.en",
+        "https://www.fishbase.se/summary/Arabibarbus-grypus"
+      ]
+    },
+    {
+      "claim": "Yellow drum is Nibea albiflora; small yellow croaker is Larimichthys polyactis.",
+      "urls": [
+        "https://www.fishbase.se/summary/13015",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5654061/"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "water": "amazon",
+      "species": [
+        "arapaima",
+        "silver-arowana"
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 2-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Equal-width columns, equal-height rows, perfectly organized, no drawn cell boundaries. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Arapaima gigas: very long cylindrical freshwater fish, broad bony head, broad scales, long rear-set dorsal and anal fins, rounded tail, olive-gray front and reddish-orange scales/fins toward tail\n2. Osteoglossum bicirrhosum: long compressed silver ribbonlike body, large mirror scales, upturned mouth with two barbels, long low dorsal and anal fins trailing toward small rounded tail\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-a56c25b4-2209-40e6-9a88-22539bde9c1d.png",
+      "sourceSha256": "ff68efd865d6f686e45e968d5ebf7067d9a7a41642b8b5b6bb76492218e6f2b9",
+      "runtimePath": "src/assets/fish-sprites/amazon-underwater-atlas-v2.webp",
+      "runtimeSha256": "6c614ed0ace0d617a3b1b54df87adf69bbfc104a79b8d27f5096b3d4d820e22f",
+      "runtimeBytes": 369880,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.653121,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "arapaima": {
+          "side": {
+            "aspectRatio": 3.5576,
+            "mouthX": 99.223,
+            "mouthY": 60.829,
+            "sourceRect": {
+              "x": 9,
+              "y": 168,
+              "width": 772,
+              "height": 217
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.63082,
+            "mouthX": 97.802,
+            "mouthY": 71.685,
+            "sourceRect": {
+              "x": 775,
+              "y": 143,
+              "width": 455,
+              "height": 279
+            },
+            "widthScale": 0.4584
+          },
+          "turn": {
+            "aspectRatio": 0.88449,
+            "mouthX": 51.119,
+            "mouthY": 81.518,
+            "sourceRect": {
+              "x": 1253,
+              "y": 118,
+              "width": 268,
+              "height": 303
+            },
+            "widthScale": 0.24862
+          }
+        },
+        "silver-arowana": {
+          "side": {
+            "aspectRatio": 3.35023,
+            "mouthX": 97.937,
+            "mouthY": 40.092,
+            "sourceRect": {
+              "x": 14,
+              "y": 645,
+              "width": 727,
+              "height": 217
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.95385,
+            "mouthX": 90.354,
+            "mouthY": 41.538,
+            "sourceRect": {
+              "x": 744,
+              "y": 628,
+              "width": 508,
+              "height": 260
+            },
+            "widthScale": 0.5832
+          },
+          "turn": {
+            "aspectRatio": 0.80357,
+            "mouthX": 45.926,
+            "mouthY": 52.381,
+            "sourceRect": {
+              "x": 1253,
+              "y": 584,
+              "width": 270,
+              "height": 336
+            },
+            "widthScale": 0.23986
+          }
+        }
+      },
+      "inspection": "Agent visual review: intended species row identity, three viewpoint arrangement, complete fish outlines, measured source rectangles and mouth anchors. Generated educational reconstruction; not measured physiology or a taxonomic specimen photograph."
+    },
+    {
+      "water": "okavango",
+      "species": [
+        "tigerfish",
+        "three-spot-tilapia",
+        "sharptooth-catfish"
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 3-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Equal-width columns, equal-height rows, perfectly organized, no drawn cell boundaries. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Hydrocynus vittatus: athletic silver streamlined fish with dark longitudinal stripes, orange-red tail/fins, forked tail, conspicuous interlocking conical teeth\n2. Oreochromis andersonii: deep-bodied olive-silver African tilapia, three modest dark flank spots, spiny dorsal fin, near-truncate tail\n3. Clarias gariepinus: elongated mottled dark gray-brown catfish, broad flattened head, four pairs barbels, very long dorsal and anal fins, rounded tail, no adipose fin\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-3a0eaaf7-f6f6-4a93-b667-dfaa3a1ccfd2.png",
+      "sourceSha256": "156d2309d4de9fd6d20d6786e8e1026fbe384ba5d80add759aad09c26de9900a",
+      "runtimePath": "src/assets/fish-sprites/okavango-underwater-atlas-v2.webp",
+      "runtimeSha256": "5e163fe62eea9669b48b7cfeaa4b4e5f16298e609b055a41fadd34813186c683",
+      "runtimeBytes": 521054,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.481654,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "tigerfish": {
+          "side": {
+            "aspectRatio": 2.61423,
+            "mouthX": 98.711,
+            "mouthY": 64.794,
+            "sourceRect": {
+              "x": 10,
+              "y": 50,
+              "width": 698,
+              "height": 267
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.5068,
+            "mouthX": 96.614,
+            "mouthY": 68.707,
+            "sourceRect": {
+              "x": 762,
+              "y": 34,
+              "width": 443,
+              "height": 294
+            },
+            "widthScale": 0.57638
+          },
+          "turn": {
+            "aspectRatio": 0.81548,
+            "mouthX": 54.745,
+            "mouthY": 64.881,
+            "sourceRect": {
+              "x": 1242,
+              "y": 7,
+              "width": 274,
+              "height": 336
+            },
+            "widthScale": 0.31194
+          }
+        },
+        "three-spot-tilapia": {
+          "side": {
+            "aspectRatio": 1.9039,
+            "mouthX": 98.738,
+            "mouthY": 54.955,
+            "sourceRect": {
+              "x": 29,
+              "y": 343,
+              "width": 634,
+              "height": 333
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.27536,
+            "mouthX": 97.045,
+            "mouthY": 62.319,
+            "sourceRect": {
+              "x": 719,
+              "y": 345,
+              "width": 440,
+              "height": 345
+            },
+            "widthScale": 0.66987
+          },
+          "turn": {
+            "aspectRatio": 0.86389,
+            "mouthX": 53.376,
+            "mouthY": 63.611,
+            "sourceRect": {
+              "x": 1222,
+              "y": 338,
+              "width": 311,
+              "height": 360
+            },
+            "widthScale": 0.45375
+          }
+        },
+        "sharptooth-catfish": {
+          "side": {
+            "aspectRatio": 2.93697,
+            "mouthX": 90.558,
+            "mouthY": 46.639,
+            "sourceRect": {
+              "x": 0,
+              "y": 726,
+              "width": 699,
+              "height": 238
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.86296,
+            "mouthX": 90.06,
+            "mouthY": 51.111,
+            "sourceRect": {
+              "x": 701,
+              "y": 728,
+              "width": 503,
+              "height": 270
+            },
+            "widthScale": 0.63431
+          },
+          "turn": {
+            "aspectRatio": 1.0031,
+            "mouthX": 51.543,
+            "mouthY": 57.585,
+            "sourceRect": {
+              "x": 1211,
+              "y": 687,
+              "width": 324,
+              "height": 323
+            },
+            "widthScale": 0.34154
+          }
+        }
+      },
+      "inspection": "Agent visual review: intended species row identity, three viewpoint arrangement, complete fish outlines, measured source rectangles and mouth anchors. Generated educational reconstruction; not measured physiology or a taxonomic specimen photograph."
+    },
+    {
+      "water": "tonle",
+      "species": [
+        "trey-riel",
+        "ricefield-snakehead"
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 2-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Equal-width columns, equal-height rows, perfectly organized, no drawn cell boundaries. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Henicorhynchus siamensis: small silver cyprinid fish, subtly arched back, small subterminal mouth, translucent gray fins, forked tail, no predatory teeth\n2. Channa striata: elongated mottled olive-brown snakehead with pale underside, broad blunt head, long low dorsal/anal fins and rounded tail, dark irregular transverse markings\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-5f2d7e55-09e4-46c6-9cc7-cc09d354e3f7.png",
+      "sourceSha256": "323103adbc22eba47969c851c91157cf729270a25cd483a4e67e80d3c443fac7",
+      "runtimePath": "src/assets/fish-sprites/tonle-underwater-atlas-v2.webp",
+      "runtimeSha256": "b896035b5598752266c0428be561b87df4e4d9adecfb9bbe0b8976c6cd009ef2",
+      "runtimeBytes": 328218,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.693731,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "trey-riel": {
+          "side": {
+            "aspectRatio": 2.4,
+            "mouthX": 98.788,
+            "mouthY": 60.727,
+            "sourceRect": {
+              "x": 28,
+              "y": 160,
+              "width": 660,
+              "height": 275
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.37536,
+            "mouthX": 97.5,
+            "mouthY": 71.92,
+            "sourceRect": {
+              "x": 698,
+              "y": 109,
+              "width": 480,
+              "height": 349
+            },
+            "widthScale": 0.57307
+          },
+          "turn": {
+            "aspectRatio": 0.8,
+            "mouthX": 53.767,
+            "mouthY": 76.164,
+            "sourceRect": {
+              "x": 1233,
+              "y": 102,
+              "width": 292,
+              "height": 365
+            },
+            "widthScale": 0.33333
+          }
+        },
+        "ricefield-snakehead": {
+          "side": {
+            "aspectRatio": 3.20188,
+            "mouthX": 98.534,
+            "mouthY": 53.521,
+            "sourceRect": {
+              "x": 13,
+              "y": 640,
+              "width": 682,
+              "height": 213
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.88931,
+            "mouthX": 97.98,
+            "mouthY": 69.084,
+            "sourceRect": {
+              "x": 707,
+              "y": 618,
+              "width": 495,
+              "height": 262
+            },
+            "widthScale": 0.59006
+          },
+          "turn": {
+            "aspectRatio": 1.00331,
+            "mouthX": 51.815,
+            "mouthY": 72.848,
+            "sourceRect": {
+              "x": 1223,
+              "y": 582,
+              "width": 303,
+              "height": 302
+            },
+            "widthScale": 0.31335
+          }
+        }
+      },
+      "inspection": "Agent visual review: intended species row identity, three viewpoint arrangement, complete fish outlines, measured source rectangles and mouth anchors. Generated educational reconstruction; not measured physiology or a taxonomic specimen photograph."
+    },
+    {
+      "water": "florida",
+      "species": [
+        "red-drum",
+        "mangrove-snapper"
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 2-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Columns arranged side profile, oblique, then head front; wide profile/oblique columns and narrower front column allowed. Row boundaries must stay clear. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Sciaenops ocellatus: copper-bronze back, silver-white belly, stocky elongated body, one clear black spot at tail base, shallowly concave tail, rounded blunt snout\n2. Lutjanus griseus: gray-olive and rusty-bronze mottled snapper, reddish fins, pointed snout, visible small canine teeth, spiny dorsal fin and shallow forked tail\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-cd8ed353-f6b6-4f3b-bdea-c37371eecf36.png",
+      "sourceSha256": "9684f731919ac808d365e963121865d2d2b795dcd567852a5c2e371b101a8bd8",
+      "runtimePath": "src/assets/fish-sprites/florida-underwater-atlas-v2.webp",
+      "runtimeSha256": "673f3e45ad9e9c877016da4738b86a343fa4d58d2f3215790832c15c8a24f66e",
+      "runtimeBytes": 432652,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.60169,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "red-drum": {
+          "side": {
+            "aspectRatio": 2.2574,
+            "mouthX": 98.689,
+            "mouthY": 62.13,
+            "sourceRect": {
+              "x": 7,
+              "y": 94,
+              "width": 763,
+              "height": 338
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.21818,
+            "mouthX": 98.294,
+            "mouthY": 68.312,
+            "sourceRect": {
+              "x": 776,
+              "y": 63,
+              "width": 469,
+              "height": 385
+            },
+            "widthScale": 0.53964
+          },
+          "turn": {
+            "aspectRatio": 0.69192,
+            "mouthX": 48.54,
+            "mouthY": 68.434,
+            "sourceRect": {
+              "x": 1254,
+              "y": 58,
+              "width": 274,
+              "height": 396
+            },
+            "widthScale": 0.30651
+          }
+        },
+        "mangrove-snapper": {
+          "side": {
+            "aspectRatio": 1.95276,
+            "mouthX": 99.194,
+            "mouthY": 61.155,
+            "sourceRect": {
+              "x": 14,
+              "y": 555,
+              "width": 744,
+              "height": 381
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.09953,
+            "mouthX": 97.629,
+            "mouthY": 67.773,
+            "sourceRect": {
+              "x": 772,
+              "y": 538,
+              "width": 464,
+              "height": 422
+            },
+            "widthScale": 0.56306
+          },
+          "turn": {
+            "aspectRatio": 0.68493,
+            "mouthX": 51.333,
+            "mouthY": 68.037,
+            "sourceRect": {
+              "x": 1236,
+              "y": 524,
+              "width": 300,
+              "height": 438
+            },
+            "widthScale": 0.35075
+          }
+        }
+      },
+      "inspection": "Agent visual review: intended species row identity, three viewpoint arrangement, complete fish outlines, measured source rectangles and mouth anchors. Generated educational reconstruction; not measured physiology or a taxonomic specimen photograph."
+    },
+    {
+      "water": "baikal",
+      "species": [
+        "baikal-sturgeon",
+        "baikal-omul",
+        "baikal-grayling"
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 3-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Columns arranged side profile, oblique, then head front; wide profile/oblique columns and narrower front column allowed. Row boundaries must stay clear. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Acipenser baerii baicalensis: Baikal Siberian sturgeon form, slender gray-brown armored body, five rows of bony scutes, long pointed blunt-tipped snout, four short underside barbels, ventral small mouth, rear-set dorsal fin and asymmetric heterocercal tail with larger upper lobe\n2. Coregonus migratorius: slender silver whitefish, gray blue back, bright plain scales, small slightly terminal mouth, adipose fin and deeply forked tail, NOT salmon spots\n3. Thymallus baicalensis: grayling with dark olive-blue back, silver flanks with subtle small spots, spectacular tall broad sail-like dorsal fin with red-purple spotting, adipose fin, small mouth, forked tail\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-6bf588ff-ba05-4ef8-83bd-9ec6e28b5f7e.png",
+      "sourceSha256": "8f891ba52c3fe5e1535f6614b846c4040644c206dc9e89fdc1c75c4b49348b05",
+      "runtimePath": "src/assets/fish-sprites/baikal-underwater-atlas-v2.webp",
+      "runtimeSha256": "8bade59e420ec09ddab052a622025e299e5fdc2073de418c3eaa4cb8aabd28f2",
+      "runtimeBytes": 423496,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.57277,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "baikal-sturgeon": {
+          "side": {
+            "aspectRatio": 3.95477,
+            "mouthX": 90.597,
+            "mouthY": 74.874,
+            "sourceRect": {
+              "x": 15,
+              "y": 84,
+              "width": 787,
+              "height": 199
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.77491,
+            "mouthX": 82.744,
+            "mouthY": 85.609,
+            "sourceRect": {
+              "x": 783,
+              "y": 40,
+              "width": 481,
+              "height": 271
+            },
+            "widthScale": 0.4488
+          },
+          "turn": {
+            "aspectRatio": 0.90541,
+            "mouthX": 49.627,
+            "mouthY": 86.824,
+            "sourceRect": {
+              "x": 1268,
+              "y": 21,
+              "width": 268,
+              "height": 296
+            },
+            "widthScale": 0.22894
+          }
+        },
+        "baikal-omul": {
+          "side": {
+            "aspectRatio": 2.99595,
+            "mouthX": 98.784,
+            "mouthY": 55.061,
+            "sourceRect": {
+              "x": 30,
+              "y": 368,
+              "width": 740,
+              "height": 247
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.59786,
+            "mouthX": 95.1,
+            "mouthY": 71.53,
+            "sourceRect": {
+              "x": 810,
+              "y": 350,
+              "width": 449,
+              "height": 281
+            },
+            "widthScale": 0.53334
+          },
+          "turn": {
+            "aspectRatio": 0.86735,
+            "mouthX": 50.98,
+            "mouthY": 73.81,
+            "sourceRect": {
+              "x": 1275,
+              "y": 330,
+              "width": 255,
+              "height": 294
+            },
+            "widthScale": 0.28951
+          }
+        },
+        "baikal-grayling": {
+          "side": {
+            "aspectRatio": 2.32919,
+            "mouthX": 99.067,
+            "mouthY": 63.354,
+            "sourceRect": {
+              "x": 23,
+              "y": 652,
+              "width": 750,
+              "height": 322
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.33908,
+            "mouthX": 97.854,
+            "mouthY": 75.862,
+            "sourceRect": {
+              "x": 804,
+              "y": 646,
+              "width": 466,
+              "height": 348
+            },
+            "widthScale": 0.57491
+          },
+          "turn": {
+            "aspectRatio": 0.72099,
+            "mouthX": 50.575,
+            "mouthY": 78.453,
+            "sourceRect": {
+              "x": 1275,
+              "y": 635,
+              "width": 261,
+              "height": 362
+            },
+            "widthScale": 0.30955
+          }
+        }
+      },
+      "inspection": "Agent visual review: intended species row identity, three viewpoint arrangement, complete fish outlines, measured source rectangles and mouth anchors. Generated educational reconstruction; not measured physiology or a taxonomic specimen photograph."
+    },
+    {
+      "water": "nile",
+      "species": [
+        "nile-tilapia",
+        "nile-perch",
+        "african-catfish"
+      ],
+      "prompt": "Use case: precise-object-edit. Repair ONLY spacing in the attached transparent 3-row by 3-view fish atlas while preserving fish identity, correct anatomy, photographic detail, and true side/oblique/front camera views.\nRe-layout and uniformly scale down fish as necessary so the COMPLETE rectangular bounding box of EVERY fish, including every fin and barbel, is separate from every neighbor's complete bounding box. There must be at least 50 pixels of genuine transparent blank horizontal and vertical space BETWEEN complete fish bounding boxes. No tail, barbel, dorsal-fin ray or alpha haze may intrude into another fish's rectangular territory. Use a taller canvas if necessary for 3 rows. Shorten excessively long barbels only enough to make them natural and fully contained; never cut them off or erase fins.\nKeep row1 Nile tilapia Oreochromis niloticus; row2 Nile perch Lates niloticus; row3 African catfish Clarias gariepinus. The catfish must retain its very LONG dorsal fin, rounded tail, flattened head and four pairs of barbels.\nColumn1 entire fish right-facing side profile, tail left; column2 entire fish right-facing three-quarter oblique, nose toward viewer and right; column3 genuine head-on front view with natural foreshortening. Same individual colors/anatomy across its three views. No extra fish, labels, visible cell grid, backgrounds, checkerboard or cast shadows. Genuine transparent alpha. Complete fish outlines and roomy transparent gaps. Wildlife photograph look, not illustration.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-cd4ed732-202f-4afb-99fc-88f204417b45.png",
+      "sourceSha256": "c42ccb2a05591fa3fc8bdc6f1a0ca1391453b4a5dd8037bf92952043e3483b05",
+      "runtimePath": "src/assets/fish-sprites/nile-underwater-atlas-v2.webp",
+      "runtimeSha256": "59d2e174768c34cd25948cca7b045949d927b0513e08afb78b80a160d1c6c52a",
+      "runtimeBytes": 386008,
+      "dimensions": {
+        "width": 1098,
+        "height": 1433
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparentPixelFraction": 0.682225,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "nile-tilapia": {
+          "side": {
+            "aspectRatio": 1.73358,
+            "mouthX": 98.526,
+            "mouthY": 58.029,
+            "sourceRect": {
+              "x": 19,
+              "y": 194,
+              "width": 475,
+              "height": 274
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.33942,
+            "mouthX": 98.093,
+            "mouthY": 62.044,
+            "sourceRect": {
+              "x": 512,
+              "y": 196,
+              "width": 367,
+              "height": 274
+            },
+            "widthScale": 0.77263
+          },
+          "turn": {
+            "aspectRatio": 0.63272,
+            "mouthX": 50.244,
+            "mouthY": 68.827,
+            "sourceRect": {
+              "x": 890,
+              "y": 151,
+              "width": 205,
+              "height": 324
+            },
+            "widthScale": 0.36498
+          }
+        },
+        "nile-perch": {
+          "side": {
+            "aspectRatio": 1.77193,
+            "mouthX": 97.426,
+            "mouthY": 60.351,
+            "sourceRect": {
+              "x": 13,
+              "y": 582,
+              "width": 505,
+              "height": 285
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.21306,
+            "mouthX": 97.167,
+            "mouthY": 67.698,
+            "sourceRect": {
+              "x": 529,
+              "y": 586,
+              "width": 353,
+              "height": 291
+            },
+            "widthScale": 0.6846
+          },
+          "turn": {
+            "aspectRatio": 0.70199,
+            "mouthX": 50.0,
+            "mouthY": 57.947,
+            "sourceRect": {
+              "x": 886,
+              "y": 577,
+              "width": 212,
+              "height": 302
+            },
+            "widthScale": 0.39617
+          }
+        },
+        "african-catfish": {
+          "side": {
+            "aspectRatio": 2.50739,
+            "mouthX": 89.587,
+            "mouthY": 51.232,
+            "sourceRect": {
+              "x": 14,
+              "y": 1051,
+              "width": 509,
+              "height": 203
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.71233,
+            "mouthX": 84.8,
+            "mouthY": 62.557,
+            "sourceRect": {
+              "x": 525,
+              "y": 1050,
+              "width": 375,
+              "height": 219
+            },
+            "widthScale": 0.68291
+          },
+          "turn": {
+            "aspectRatio": 0.73171,
+            "mouthX": 48.571,
+            "mouthY": 68.641,
+            "sourceRect": {
+              "x": 888,
+              "y": 990,
+              "width": 210,
+              "height": 287
+            },
+            "widthScale": 0.29182
+          }
+        }
+      },
+      "inspection": "Agent visual review: Nile tilapia tail stripes, Nile perch large mouth, African catfish long dorsal/anal fins, complete barbels and rounded tail; consistent side/oblique/front views. Targeted taller spacing edit reduces neighboring alpha-component pixels in all chosen frame rectangles below 0.36%. Educational reconstruction, not a measured physiological or specimen photograph.",
+      "generationHistory": [
+        {
+          "mode": "generate",
+          "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-8b2f7d47-0114-4e52-bd35-ac5929d7aa9c.png",
+          "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 3-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Columns arranged side profile, oblique, then head front; wide profile/oblique columns and narrower front column allowed. Row boundaries must stay clear. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Oreochromis niloticus: deep-bodied silvery gray-olive Nile tilapia, subtle dark vertical flank bars, DISTINCT narrow dark vertical stripes across broad truncate caudal fin, tall spiny dorsal fin\n2. Lates niloticus: powerfully built pale silver-olive perch, large oblique mouth, prominent black eye with yellow iris, two dorsal sections, broad pale fins and rounded/faintly concave tail\n3. Clarias gariepinus: elongated mottled dark gray-olive catfish, broad flattened head, four pairs of barbels, very long dorsal and anal fins, rounded tail, no adipose fin\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+          "transparentBackground": true,
+          "sha256": "49582300d653c0bd06ba4a67a01261ef15c0a75ac3d55599f639e41084ec06fb"
+        },
+        {
+          "mode": "edit",
+          "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-cd4ed732-202f-4afb-99fc-88f204417b45.png",
+          "referencedImagePaths": [
+            "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-8b2f7d47-0114-4e52-bd35-ac5929d7aa9c.png"
+          ],
+          "prompt": "Use case: precise-object-edit. Repair ONLY spacing in the attached transparent 3-row by 3-view fish atlas while preserving fish identity, correct anatomy, photographic detail, and true side/oblique/front camera views.\nRe-layout and uniformly scale down fish as necessary so the COMPLETE rectangular bounding box of EVERY fish, including every fin and barbel, is separate from every neighbor's complete bounding box. There must be at least 50 pixels of genuine transparent blank horizontal and vertical space BETWEEN complete fish bounding boxes. No tail, barbel, dorsal-fin ray or alpha haze may intrude into another fish's rectangular territory. Use a taller canvas if necessary for 3 rows. Shorten excessively long barbels only enough to make them natural and fully contained; never cut them off or erase fins.\nKeep row1 Nile tilapia Oreochromis niloticus; row2 Nile perch Lates niloticus; row3 African catfish Clarias gariepinus. The catfish must retain its very LONG dorsal fin, rounded tail, flattened head and four pairs of barbels.\nColumn1 entire fish right-facing side profile, tail left; column2 entire fish right-facing three-quarter oblique, nose toward viewer and right; column3 genuine head-on front view with natural foreshortening. Same individual colors/anatomy across its three views. No extra fish, labels, visible cell grid, backgrounds, checkerboard or cast shadows. Genuine transparent alpha. Complete fish outlines and roomy transparent gaps. Wildlife photograph look, not illustration.",
+          "transparentBackground": true,
+          "sha256": "c42ccb2a05591fa3fc8bdc6f1a0ca1391453b4a5dd8037bf92952043e3483b05"
+        }
+      ]
+    },
+    {
+      "water": "euphrates",
+      "species": [
+        "bunni",
+        "shabout",
+        "mesopotamian-catfish"
+      ],
+      "prompt": "Use case: precise-object-edit. Repair ONLY spacing in the attached transparent 3-row by 3-view Euphrates fish atlas while preserving fish identity, anatomy, realistic materials, orientation, and true side/oblique/front viewpoints.\nThe bottom row catfish's long barbels currently extend into the neighbor's rectangular crop region. Re-layout and uniformly scale down all nine isolated fish as needed so the entire rectangular bounding box of EVERY fish, including every fin and every barbel, is completely separated from the rectangular bounding box of every neighbor. There must be at least 50 pixels of genuine transparent blank horizontal and vertical space BETWEEN all complete fish bounding boxes. Make the catfish whiskers shorter if necessary, but anatomically natural and complete. Do not let any tail, barbel, fin or alpha haze intrude into another fish's rectangular territory. Especially bottom row side fish must end fully before middle fish begins; middle must end fully before front fish begins.\nKeep row1 bunni Mesopotamichthys sharpeyi, row2 shabout Arabibarbus grypus, row3 Mesopotamian catfish Silurus triostegus. Column1 right-facing side full body, column2 right three-quarter full body, column3 genuine head-on. No labels, no visible grid lines, no backgrounds, no checkerboard, no shadow. Genuine transparent alpha. Complete fish outlines with roomy transparent margins, photographic wild fish, not illustrations.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-9b9cbe49-aba4-47dc-8c4d-212681f0c1ec.png",
+      "sourceSha256": "8f515be6df8741f587e4e40cc5ba4f925cd50be95a74bf0cd78804b061ba8da7",
+      "runtimePath": "src/assets/fish-sprites/euphrates-underwater-atlas-v2.webp",
+      "runtimeSha256": "41c7763b4cfb40c0d12f431fa6f48ac3bc4d2703f6b3d7a1d02156a0ff24ef6e",
+      "runtimeBytes": 379604,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.633126,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "bunni": {
+          "side": {
+            "aspectRatio": 2.17778,
+            "mouthX": 98.299,
+            "mouthY": 64.074,
+            "sourceRect": {
+              "x": 54,
+              "y": 68,
+              "width": 588,
+              "height": 270
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.72137,
+            "mouthX": 97.339,
+            "mouthY": 75.573,
+            "sourceRect": {
+              "x": 743,
+              "y": 63,
+              "width": 451,
+              "height": 262
+            },
+            "widthScale": 0.79042
+          },
+          "turn": {
+            "aspectRatio": 0.85172,
+            "mouthX": 52.227,
+            "mouthY": 73.103,
+            "sourceRect": {
+              "x": 1250,
+              "y": 54,
+              "width": 247,
+              "height": 290
+            },
+            "widthScale": 0.3911
+          }
+        },
+        "shabout": {
+          "side": {
+            "aspectRatio": 2.50199,
+            "mouthX": 98.089,
+            "mouthY": 60.956,
+            "sourceRect": {
+              "x": 51,
+              "y": 399,
+              "width": 628,
+              "height": 251
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.70039,
+            "mouthX": 96.568,
+            "mouthY": 75.875,
+            "sourceRect": {
+              "x": 745,
+              "y": 388,
+              "width": 437,
+              "height": 257
+            },
+            "widthScale": 0.67962
+          },
+          "turn": {
+            "aspectRatio": 0.92963,
+            "mouthX": 50.996,
+            "mouthY": 77.407,
+            "sourceRect": {
+              "x": 1247,
+              "y": 377,
+              "width": 251,
+              "height": 270
+            },
+            "widthScale": 0.37156
+          }
+        },
+        "mesopotamian-catfish": {
+          "side": {
+            "aspectRatio": 3.54839,
+            "mouthX": 90.909,
+            "mouthY": 59.14,
+            "sourceRect": {
+              "x": 41,
+              "y": 732,
+              "width": 660,
+              "height": 186
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 2.0181,
+            "mouthX": 86.323,
+            "mouthY": 69.231,
+            "sourceRect": {
+              "x": 750,
+              "y": 727,
+              "width": 446,
+              "height": 221
+            },
+            "widthScale": 0.56874
+          },
+          "turn": {
+            "aspectRatio": 1.0,
+            "mouthX": 48.594,
+            "mouthY": 68.675,
+            "sourceRect": {
+              "x": 1249,
+              "y": 699,
+              "width": 249,
+              "height": 249
+            },
+            "widthScale": 0.28182
+          }
+        }
+      },
+      "inspection": "Agent visual review: species morphology and complete fins/barbels preserved, true side/oblique/front views, roomy transparent gutters after targeted spacing repair. Per-frame foreign alpha-component pixels were reduced below 0.04% (at most 9 low-area edge pixels) in the selected source. Generated educational reconstruction, not a specimen photograph or measured physiology.",
+      "generationHistory": [
+        {
+          "mode": "generate",
+          "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-8ba57ba1-726e-44bd-98e3-d5d4b1f257c6.png",
+          "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 3-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Columns arranged side profile, oblique, then head front; wide profile/oblique columns and narrower front column allowed. Row boundaries must stay clear. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Mesopotamichthys sharpeyi: deep-bodied brown-golden silver cyprinid, broad regular scales, gently arched back, short triangular dorsal fin, fleshy small subterminal lips with short barbels, forked tail\n2. Arabibarbus grypus: large elongated golden bronze cyprinid, cylindrical muscular body, small subterminal fleshy mouth and two pairs of short barbels, short triangular dorsal fin, large scales, forked caudal fin\n3. Silurus triostegus: long dark gray-brown smooth-skinned catfish, broad flattened head, one long upper pair and shorter chin barbels, very small short dorsal fin near front, long anal fin extending nearly to rounded tail, NO long dorsal fin and no adipose fin\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+          "transparentBackground": true,
+          "sha256": "00eb21977c14353f729b57bf75bacea10a2891349ba95e0b76e555658d29afd6"
+        },
+        {
+          "mode": "edit",
+          "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-9b9cbe49-aba4-47dc-8c4d-212681f0c1ec.png",
+          "referencedImagePaths": [
+            "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-8ba57ba1-726e-44bd-98e3-d5d4b1f257c6.png"
+          ],
+          "prompt": "Use case: precise-object-edit. Repair ONLY spacing in the attached transparent 3-row by 3-view Euphrates fish atlas while preserving fish identity, anatomy, realistic materials, orientation, and true side/oblique/front viewpoints.\nThe bottom row catfish's long barbels currently extend into the neighbor's rectangular crop region. Re-layout and uniformly scale down all nine isolated fish as needed so the entire rectangular bounding box of EVERY fish, including every fin and every barbel, is completely separated from the rectangular bounding box of every neighbor. There must be at least 50 pixels of genuine transparent blank horizontal and vertical space BETWEEN all complete fish bounding boxes. Make the catfish whiskers shorter if necessary, but anatomically natural and complete. Do not let any tail, barbel, fin or alpha haze intrude into another fish's rectangular territory. Especially bottom row side fish must end fully before middle fish begins; middle must end fully before front fish begins.\nKeep row1 bunni Mesopotamichthys sharpeyi, row2 shabout Arabibarbus grypus, row3 Mesopotamian catfish Silurus triostegus. Column1 right-facing side full body, column2 right three-quarter full body, column3 genuine head-on. No labels, no visible grid lines, no backgrounds, no checkerboard, no shadow. Genuine transparent alpha. Complete fish outlines with roomy transparent margins, photographic wild fish, not illustrations.",
+          "transparentBackground": true,
+          "sha256": "8f515be6df8741f587e4e40cc5ba4f925cd50be95a74bf0cd78804b061ba8da7"
+        }
+      ]
+    },
+    {
+      "water": "ganges",
+      "species": [
+        "rohu",
+        "hilsa",
+        "goonch"
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 3-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Columns arranged side profile, oblique, then head front; wide profile/oblique columns and narrower front column allowed. Row boundaries must stay clear. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Labeo rohita: Indian major carp, deep fusiform blue-gray silver-scaled body, slightly arched back, reddish fins, thick small downturned lips, tiny maxillary barbels, forked tail\n2. Tenualosa ilisha: bright silver compressed shad, blue-green back, small dark shoulder spot, keeled belly, large reflective scales, forked tail and translucent fins, small terminal mouth\n3. Bagarius bagarius: broad-headed mottled brown catfish adapted to river bottom, flattened snout, stout pectoral fins, very small eyes, stout visible barbels, short triangular dorsal fin plus adipose fin and deeply forked tail, dark irregular transverse saddles\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-4e7750b4-9200-4aac-9dc1-81627d1953b2.png",
+      "sourceSha256": "3b51085c072dc42ca2afa06b540ca194f8ce0db2eb684361d5e5a53fc6ac4090",
+      "runtimePath": "src/assets/fish-sprites/ganges-underwater-atlas-v2.webp",
+      "runtimeSha256": "c95044edb600cfe666c5ee0bc5efb30b01a2287ea821b7d4282bf0c08bd11131",
+      "runtimeBytes": 448976,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.562026,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "rohu": {
+          "side": {
+            "aspectRatio": 2.17532,
+            "mouthX": 98.507,
+            "mouthY": 58.766,
+            "sourceRect": {
+              "x": 29,
+              "y": 30,
+              "width": 670,
+              "height": 308
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.45886,
+            "mouthX": 96.963,
+            "mouthY": 65.823,
+            "sourceRect": {
+              "x": 747,
+              "y": 20,
+              "width": 461,
+              "height": 316
+            },
+            "widthScale": 0.67064
+          },
+          "turn": {
+            "aspectRatio": 0.83591,
+            "mouthX": 48.889,
+            "mouthY": 70.279,
+            "sourceRect": {
+              "x": 1237,
+              "y": 11,
+              "width": 270,
+              "height": 323
+            },
+            "widthScale": 0.38427
+          }
+        },
+        "hilsa": {
+          "side": {
+            "aspectRatio": 2.23397,
+            "mouthX": 98.422,
+            "mouthY": 59.615,
+            "sourceRect": {
+              "x": 29,
+              "y": 350,
+              "width": 697,
+              "height": 312
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.45988,
+            "mouthX": 97.886,
+            "mouthY": 67.593,
+            "sourceRect": {
+              "x": 748,
+              "y": 339,
+              "width": 473,
+              "height": 324
+            },
+            "widthScale": 0.65349
+          },
+          "turn": {
+            "aspectRatio": 0.83486,
+            "mouthX": 49.084,
+            "mouthY": 71.254,
+            "sourceRect": {
+              "x": 1236,
+              "y": 343,
+              "width": 273,
+              "height": 327
+            },
+            "widthScale": 0.37371
+          }
+        },
+        "goonch": {
+          "side": {
+            "aspectRatio": 2.8289,
+            "mouthX": 93.817,
+            "mouthY": 53.992,
+            "sourceRect": {
+              "x": 13,
+              "y": 701,
+              "width": 744,
+              "height": 263
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.43769,
+            "mouthX": 89.218,
+            "mouthY": 59.878,
+            "sourceRect": {
+              "x": 761,
+              "y": 677,
+              "width": 473,
+              "height": 329
+            },
+            "widthScale": 0.50822
+          },
+          "turn": {
+            "aspectRatio": 0.95181,
+            "mouthX": 52.848,
+            "mouthY": 62.651,
+            "sourceRect": {
+              "x": 1209,
+              "y": 676,
+              "width": 316,
+              "height": 332
+            },
+            "widthScale": 0.33646
+          }
+        }
+      },
+      "inspection": "Agent visual review: intended species row identity, three viewpoint arrangement, complete fish outlines, measured source rectangles and mouth anchors. Generated educational reconstruction; not measured physiology or a taxonomic specimen photograph."
+    },
+    {
+      "water": "danube",
+      "species": [
+        "beluga-research",
+        "northern-pike",
+        "common-barbel",
+        "round-goby"
+      ],
+      "prompt": "Use case: precise-object-edit. Repair ONLY spacing in the attached transparent 4-row by 3-view fish atlas while preserving fish identity, correct anatomy, photographic detail, and true side/oblique/front camera views.\nRe-layout and uniformly scale down fish as necessary so the COMPLETE rectangular bounding box of EVERY fish, including every fin and barbel, is separate from every neighbor's complete bounding box. There must be at least 50 pixels of genuine transparent blank horizontal and vertical space BETWEEN complete fish bounding boxes. No tail, barbel, dorsal-fin ray or alpha haze may intrude into another fish's rectangular territory. Use a taller canvas if necessary for 4 rows. Shorten excessively long barbels only enough to make them natural and fully contained; never cut them off or erase fins.\nKeep row1 Beluga sturgeon Huso huso; row2 Northern pike Esox lucius; row3 Common barbel Barbus barbus; row4 Round goby Neogobius melanostomus. Preserve the beluga underside mouth and four barbels; pike rear-set dorsal fin and duckbill; barbel four barbels; goby rounded tail and dorsal black spot.\nColumn1 entire fish right-facing side profile, tail left; column2 entire fish right-facing three-quarter oblique, nose toward viewer and right; column3 genuine head-on front view with natural foreshortening. Same individual colors/anatomy across its three views. No extra fish, labels, visible cell grid, backgrounds, checkerboard or cast shadows. Genuine transparent alpha. Complete fish outlines and roomy transparent gaps. Wildlife photograph look, not illustration.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-d89bca06-6a5a-45b5-bfee-9caff884e778.png",
+      "sourceSha256": "133c50203e920184e76db6cb1f0ac44bae14345181c8dd13a8bb06fcbdabb3d9",
+      "runtimePath": "src/assets/fish-sprites/danube-underwater-atlas-v2.webp",
+      "runtimeSha256": "e9e38c03ddc4782b486009b5ec11f3a307393e900dd236627cf77cfc05f6b24c",
+      "runtimeBytes": 451366,
+      "dimensions": {
+        "width": 1103,
+        "height": 1426
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparentPixelFraction": 0.676979,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "beluga-research": {
+          "side": {
+            "aspectRatio": 3.08092,
+            "mouthX": 96.06,
+            "mouthY": 73.41,
+            "sourceRect": {
+              "x": 11,
+              "y": 197,
+              "width": 533,
+              "height": 173
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.5314,
+            "mouthX": 91.483,
+            "mouthY": 71.498,
+            "sourceRect": {
+              "x": 546,
+              "y": 199,
+              "width": 317,
+              "height": 207
+            },
+            "widthScale": 0.49706
+          },
+          "turn": {
+            "aspectRatio": 1.01339,
+            "mouthX": 52.423,
+            "mouthY": 70.536,
+            "sourceRect": {
+              "x": 871,
+              "y": 183,
+              "width": 227,
+              "height": 224
+            },
+            "widthScale": 0.32892
+          }
+        },
+        "northern-pike": {
+          "side": {
+            "aspectRatio": 3.31138,
+            "mouthX": 98.553,
+            "mouthY": 60.479,
+            "sourceRect": {
+              "x": 8,
+              "y": 523,
+              "width": 553,
+              "height": 167
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.75661,
+            "mouthX": 97.289,
+            "mouthY": 68.783,
+            "sourceRect": {
+              "x": 571,
+              "y": 523,
+              "width": 332,
+              "height": 189
+            },
+            "widthScale": 0.53048
+          },
+          "turn": {
+            "aspectRatio": 0.97959,
+            "mouthX": 51.042,
+            "mouthY": 87.755,
+            "sourceRect": {
+              "x": 902,
+              "y": 508,
+              "width": 192,
+              "height": 196
+            },
+            "widthScale": 0.29583
+          }
+        },
+        "common-barbel": {
+          "side": {
+            "aspectRatio": 2.37668,
+            "mouthX": 97.925,
+            "mouthY": 70.404,
+            "sourceRect": {
+              "x": 14,
+              "y": 781,
+              "width": 530,
+              "height": 223
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.36522,
+            "mouthX": 93.949,
+            "mouthY": 77.391,
+            "sourceRect": {
+              "x": 553,
+              "y": 784,
+              "width": 314,
+              "height": 230
+            },
+            "widthScale": 0.57442
+          },
+          "turn": {
+            "aspectRatio": 1.02262,
+            "mouthX": 52.655,
+            "mouthY": 75.113,
+            "sourceRect": {
+              "x": 874,
+              "y": 783,
+              "width": 226,
+              "height": 221
+            },
+            "widthScale": 0.43027
+          }
+        },
+        "round-goby": {
+          "side": {
+            "aspectRatio": 2.23223,
+            "mouthX": 98.089,
+            "mouthY": 56.398,
+            "sourceRect": {
+              "x": 16,
+              "y": 1089,
+              "width": 471,
+              "height": 211
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.43868,
+            "mouthX": 95.41,
+            "mouthY": 61.321,
+            "sourceRect": {
+              "x": 525,
+              "y": 1098,
+              "width": 305,
+              "height": 212
+            },
+            "widthScale": 0.6445
+          },
+          "turn": {
+            "aspectRatio": 1.12617,
+            "mouthX": 50.622,
+            "mouthY": 57.477,
+            "sourceRect": {
+              "x": 851,
+              "y": 1092,
+              "width": 241,
+              "height": 214
+            },
+            "widthScale": 0.5045
+          }
+        }
+      },
+      "inspection": "Agent visual review: beluga ventral mouth and barbels, northern pike duckbill and rear-set dorsal, common barbel four barbels, round goby rounded tail and first-dorsal black spot; all outlines complete and viewpoint order consistent. Taller spacing correction eliminates material neighboring components from rectangular crops. Educational reconstruction, not a measured physiological or specimen photograph.",
+      "generationHistory": [
+        {
+          "mode": "generate",
+          "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-50480b4c-f3c7-4c9c-8e26-11d7d6d9262d.png",
+          "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 4-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Columns arranged side profile, oblique, then head front; wide profile/oblique columns and narrower front column allowed. Row boundaries must stay clear. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Huso huso: large pale gray beluga sturgeon, very broad rounded head and shorter triangular snout, conspicuous large ventral crescent mouth, four underside barbels, five rows modest bony scutes, posterior dorsal fin, asymmetric heterocercal tail\n2. Esox lucius: extremely elongated olive-green pike with pale cream bean-shaped flank spots, long broad duckbill snout, dorsal and anal fins far back close to deeply forked tail, no dorsal fin mid-body\n3. Barbus barbus: long golden-bronze cylindrical cyprinid, low sloping head and fleshy downturned small mouth, two pairs of distinct short barbels, short triangular dorsal fin, reddish lower fins and deeply forked tail\n4. Neogobius melanostomus: small stocky mottled beige-brown bottom fish, blunt head and raised eyes, two distinct dorsal fins, clear black spot on first dorsal, broad rounded pectoral fins, ROUND tail, fused pelvic suction disc\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+          "transparentBackground": true,
+          "sha256": "2405b050c18a44a8a99ab3ed3de245a6c8fa674c4ce872b155bd2e7f9685d749"
+        },
+        {
+          "mode": "edit",
+          "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-d89bca06-6a5a-45b5-bfee-9caff884e778.png",
+          "referencedImagePaths": [
+            "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-50480b4c-f3c7-4c9c-8e26-11d7d6d9262d.png"
+          ],
+          "prompt": "Use case: precise-object-edit. Repair ONLY spacing in the attached transparent 4-row by 3-view fish atlas while preserving fish identity, correct anatomy, photographic detail, and true side/oblique/front camera views.\nRe-layout and uniformly scale down fish as necessary so the COMPLETE rectangular bounding box of EVERY fish, including every fin and barbel, is separate from every neighbor's complete bounding box. There must be at least 50 pixels of genuine transparent blank horizontal and vertical space BETWEEN complete fish bounding boxes. No tail, barbel, dorsal-fin ray or alpha haze may intrude into another fish's rectangular territory. Use a taller canvas if necessary for 4 rows. Shorten excessively long barbels only enough to make them natural and fully contained; never cut them off or erase fins.\nKeep row1 Beluga sturgeon Huso huso; row2 Northern pike Esox lucius; row3 Common barbel Barbus barbus; row4 Round goby Neogobius melanostomus. Preserve the beluga underside mouth and four barbels; pike rear-set dorsal fin and duckbill; barbel four barbels; goby rounded tail and dorsal black spot.\nColumn1 entire fish right-facing side profile, tail left; column2 entire fish right-facing three-quarter oblique, nose toward viewer and right; column3 genuine head-on front view with natural foreshortening. Same individual colors/anatomy across its three views. No extra fish, labels, visible cell grid, backgrounds, checkerboard or cast shadows. Genuine transparent alpha. Complete fish outlines and roomy transparent gaps. Wildlife photograph look, not illustration.",
+          "transparentBackground": true,
+          "sha256": "133c50203e920184e76db6cb1f0ac44bae14345181c8dd13a8bb06fcbdabb3d9"
+        }
+      ]
+    },
+    {
+      "water": "australia",
+      "species": [
+        "coral-trout",
+        "giant-trevally",
+        "spanish-mackerel"
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 3-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Columns arranged side profile, oblique, then head front; wide profile/oblique columns and narrower front column allowed. Row boundaries must stay clear. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Plectropomus leopardus: elongated red-orange grouper with vivid small blue spots outlined darker, large predatory mouth, rounded pectoral fins, low continuous dorsal fin and slightly truncate tail\n2. Caranx ignobilis: big muscular silver-gray jack, steep broad head, deep compressed body, dark gray back, long sickle-shaped rear dorsal and anal lobes, strong narrow caudal peduncle and deeply forked tail, sharp lateral-line scutes near tail\n3. Scomberomorus commerson: very sleek silver narrow-barred mackerel, dark blue-green back, many narrow wavy vertical dark flank bars, pointed toothed snout, finlets behind dorsal and anal fins, narrow caudal peduncle and deeply forked tail\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-7a3011a5-1c37-4a16-9a48-49b5bf27d1b8.png",
+      "sourceSha256": "ae993200abc755008d4c49e7bda6dee735bd7f6369d52ad5fd65774256be7755",
+      "runtimePath": "src/assets/fish-sprites/australia-underwater-atlas-v2.webp",
+      "runtimeSha256": "f7520d9c7c6dda2429aa48b80fe3cf0d5ab8a6903933196c80855a931a959f93",
+      "runtimeBytes": 453632,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.549401,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "coral-trout": {
+          "side": {
+            "aspectRatio": 2.53903,
+            "mouthX": 98.682,
+            "mouthY": 58.364,
+            "sourceRect": {
+              "x": 23,
+              "y": 69,
+              "width": 683,
+              "height": 269
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.73214,
+            "mouthX": 97.113,
+            "mouthY": 68.214,
+            "sourceRect": {
+              "x": 751,
+              "y": 59,
+              "width": 485,
+              "height": 280
+            },
+            "widthScale": 0.68221
+          },
+          "turn": {
+            "aspectRatio": 0.8483,
+            "mouthX": 49.635,
+            "mouthY": 71.207,
+            "sourceRect": {
+              "x": 1252,
+              "y": 18,
+              "width": 274,
+              "height": 323
+            },
+            "widthScale": 0.3341
+          }
+        },
+        "giant-trevally": {
+          "side": {
+            "aspectRatio": 2.15265,
+            "mouthX": 98.553,
+            "mouthY": 62.617,
+            "sourceRect": {
+              "x": 29,
+              "y": 359,
+              "width": 691,
+              "height": 321
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.43465,
+            "mouthX": 97.881,
+            "mouthY": 69.301,
+            "sourceRect": {
+              "x": 748,
+              "y": 352,
+              "width": 472,
+              "height": 329
+            },
+            "widthScale": 0.66646
+          },
+          "turn": {
+            "aspectRatio": 0.89024,
+            "mouthX": 53.425,
+            "mouthY": 70.732,
+            "sourceRect": {
+              "x": 1242,
+              "y": 354,
+              "width": 292,
+              "height": 328
+            },
+            "widthScale": 0.41356
+          }
+        },
+        "spanish-mackerel": {
+          "side": {
+            "aspectRatio": 3.34234,
+            "mouthX": 98.787,
+            "mouthY": 53.153,
+            "sourceRect": {
+              "x": 11,
+              "y": 721,
+              "width": 742,
+              "height": 222
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.829,
+            "mouthX": 97.561,
+            "mouthY": 69.517,
+            "sourceRect": {
+              "x": 741,
+              "y": 700,
+              "width": 492,
+              "height": 269
+            },
+            "widthScale": 0.54722
+          },
+          "turn": {
+            "aspectRatio": 0.90741,
+            "mouthX": 51.701,
+            "mouthY": 73.765,
+            "sourceRect": {
+              "x": 1240,
+              "y": 675,
+              "width": 294,
+              "height": 324
+            },
+            "widthScale": 0.27149
+          }
+        }
+      },
+      "inspection": "Agent visual review: intended species row identity, three viewpoint arrangement, complete fish outlines, measured source rectangles and mouth anchors. Generated educational reconstruction; not measured physiology or a taxonomic specimen photograph."
+    },
+    {
+      "water": "lake-holiday",
+      "species": [
+        "largemouth-bass",
+        "bluegill",
+        "black-crappie",
+        "channel-catfish"
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: transparent photorealistic game fish sprite atlas. Produce exactly a FOUR ROW by THREE COLUMN equal-cell atlas, a clean rectangular grid with invisible cell boundaries on a genuinely transparent background. Each row is one species; each column is a different view of that SAME fish. Row1 largemouth bass (Micropterus salmoides), olive green large-jawed bass with broken dark lateral band. Row2 bluegill (Lepomis macrochirus), deep compressed olive bronze sunfish, dark opercular tab, blue cheek and warm orange breast. Row3 black crappie (Pomoxis nigromaculatus), silver deep body with irregular dense black mottling. Row4 channel catfish (Ictalurus punctatus), slate blue smooth scaleless body, barbels, deeply forked tail. Column1: entire fish in strict right-facing side profile, mouth at the right, horizontal neutral swimming posture. Column2: entire fish in three-quarter view, nose towards camera and right, tail receding left. Column3: genuine head-on front view, symmetrical face with natural body receding, fins visible and mouth near lower-middle. All images must show complete tails/fins without touching cell edges; each fish centered and contained with 8 percent transparent cell margin, no overlap across cells. Individual anatomy, fins, scales and wet texture look like high-quality wildlife photography under soft neutral underwater light, no surroundings. Same individual coloring and anatomy across its three views. The grid is exactly3 columns and4 rows, no other images. No labels, no humans, no water backgrounds, no hooks, no nets, no cast shadows, no frame, no checkerboard, no anime, no illustration style. Educational reconstructions, not trophies.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-02cef39b-5dfa-4b42-b663-62f6662bf573.png",
+      "sourceSha256": "98dab56a22bb8d47350ed6a92aad70e04549f3faf9acd3df3b3a674dfa114ef3",
+      "runtimePath": "src/assets/fish-sprites/lake-holiday-underwater-atlas-v2.webp",
+      "runtimeSha256": "b0551bc10e1ad7087c0d9102a66580206cb74b36569bd2b6882fe52e9b508590",
+      "runtimeBytes": 537732,
+      "dimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 255,
+        "transparentPixelFraction": 0.527553,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "largemouth-bass": {
+          "side": {
+            "aspectRatio": 2.08085,
+            "mouthX": 96.115,
+            "mouthY": 53.191,
+            "sourceRect": {
+              "x": 14,
+              "y": 91,
+              "width": 489,
+              "height": 235
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.12,
+            "mouthX": 92.857,
+            "mouthY": 51.636,
+            "sourceRect": {
+              "x": 514,
+              "y": 76,
+              "width": 308,
+              "height": 275
+            },
+            "widthScale": 0.53824
+          },
+          "turn": {
+            "aspectRatio": 0.8231,
+            "mouthX": 50.877,
+            "mouthY": 59.206,
+            "sourceRect": {
+              "x": 845,
+              "y": 60,
+              "width": 228,
+              "height": 277
+            },
+            "widthScale": 0.39556
+          }
+        },
+        "bluegill": {
+          "side": {
+            "aspectRatio": 1.47742,
+            "mouthX": 98.908,
+            "mouthY": 54.839,
+            "sourceRect": {
+              "x": 31,
+              "y": 383,
+              "width": 458,
+              "height": 310
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 0.90746,
+            "mouthX": 98.355,
+            "mouthY": 57.91,
+            "sourceRect": {
+              "x": 521,
+              "y": 369,
+              "width": 304,
+              "height": 335
+            },
+            "widthScale": 0.61422
+          },
+          "turn": {
+            "aspectRatio": 0.66272,
+            "mouthX": 51.786,
+            "mouthY": 59.467,
+            "sourceRect": {
+              "x": 851,
+              "y": 368,
+              "width": 224,
+              "height": 338
+            },
+            "widthScale": 0.44857
+          }
+        },
+        "black-crappie": {
+          "side": {
+            "aspectRatio": 1.66894,
+            "mouthX": 97.137,
+            "mouthY": 55.973,
+            "sourceRect": {
+              "x": 20,
+              "y": 730,
+              "width": 489,
+              "height": 293
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 0.97826,
+            "mouthX": 97.143,
+            "mouthY": 63.354,
+            "sourceRect": {
+              "x": 520,
+              "y": 723,
+              "width": 315,
+              "height": 322
+            },
+            "widthScale": 0.58616
+          },
+          "turn": {
+            "aspectRatio": 0.65517,
+            "mouthX": 53.11,
+            "mouthY": 63.323,
+            "sourceRect": {
+              "x": 857,
+              "y": 723,
+              "width": 209,
+              "height": 319
+            },
+            "widthScale": 0.39257
+          }
+        },
+        "channel-catfish": {
+          "side": {
+            "aspectRatio": 2.13025,
+            "mouthX": 96.647,
+            "mouthY": 62.185,
+            "sourceRect": {
+              "x": 10,
+              "y": 1089,
+              "width": 507,
+              "height": 238
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.07576,
+            "mouthX": 87.887,
+            "mouthY": 66.364,
+            "sourceRect": {
+              "x": 512,
+              "y": 1056,
+              "width": 355,
+              "height": 330
+            },
+            "widthScale": 0.50499
+          },
+          "turn": {
+            "aspectRatio": 0.66768,
+            "mouthX": 50.685,
+            "mouthY": 67.378,
+            "sourceRect": {
+              "x": 857,
+              "y": 1063,
+              "width": 219,
+              "height": 328
+            },
+            "widthScale": 0.31343
+          }
+        }
+      },
+      "inspection": "Agent visual review: intended species row identity, three viewpoint arrangement, complete fish outlines, measured source rectangles and mouth anchors. Generated educational reconstruction; not measured physiology or a taxonomic specimen photograph."
+    },
+    {
+      "water": "alaska",
+      "species": [
+        "coho-salmon",
+        "pacific-halibut",
+        "kelp-greenling"
+      ],
+      "prompt": "Use case: precise-object-edit. Make ONE localized correction to this transparent fish atlas: TOP ROW COHO SALMON tails. Keep every fish, position, angle, size, head, body, fins, middle halibut row and bottom greenling row unchanged, and keep genuine alpha transparency.\nThe top-left side-profile fish has its caudal tail fin at the far LEFT edge. The top-middle three-quarter fish also has its caudal tail at its far LEFT. These two broad forked TAIL FINS currently have dense black spots, incorrectly resembling Chinook. REMOVE EVERY BLACK SPOT FROM BOTH CAUDAL TAIL FINS: replace each spotted tail fin surface with smooth silvery translucent gray fin membrane and natural fin-ray striations. Make BOTH UPPER AND LOWER TAIL LOBES ENTIRELY UNSPOTTED. This is a valid silver ocean-phase coho look. Preserve black spots on the BODY BACK and dorsal fin. Do not remove body spots, do not modify halibut eyes again, do not change layout, do not add any background or shadows. Top-row caudal fins completely unspotted, all other pixels/composition unchanged.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-d24d3d72-c004-44cd-81ae-0e2217a06104.png",
+      "sourceSha256": "d6569419191fcc912882107f71acee96e541c20c80fd44f0e83c02f815ec0ff4",
+      "runtimePath": "src/assets/fish-sprites/alaska-underwater-atlas-v2.webp",
+      "runtimeSha256": "a912b5856eb0ea15c3f0ffaf7c47580afdf6b0bdb01647dcb2802d1a3dab0631",
+      "runtimeBytes": 507428,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.488192,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "coho-salmon": {
+          "side": {
+            "aspectRatio": 2.7379,
+            "mouthX": 98.822,
+            "mouthY": 59.274,
+            "sourceRect": {
+              "x": 12,
+              "y": 42,
+              "width": 679,
+              "height": 248
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.69257,
+            "mouthX": 97.206,
+            "mouthY": 74.662,
+            "sourceRect": {
+              "x": 707,
+              "y": 17,
+              "width": 501,
+              "height": 296
+            },
+            "widthScale": 0.6182
+          },
+          "turn": {
+            "aspectRatio": 0.87379,
+            "mouthX": 50.0,
+            "mouthY": 70.874,
+            "sourceRect": {
+              "x": 1236,
+              "y": 29,
+              "width": 270,
+              "height": 309
+            },
+            "widthScale": 0.31915
+          }
+        },
+        "pacific-halibut": {
+          "side": {
+            "aspectRatio": 2.0241,
+            "mouthX": 98.512,
+            "mouthY": 60.241,
+            "sourceRect": {
+              "x": 20,
+              "y": 335,
+              "width": 672,
+              "height": 332
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.45152,
+            "mouthX": 96.868,
+            "mouthY": 71.212,
+            "sourceRect": {
+              "x": 718,
+              "y": 350,
+              "width": 479,
+              "height": 330
+            },
+            "widthScale": 0.71712
+          },
+          "turn": {
+            "aspectRatio": 1.07095,
+            "mouthX": 51.42,
+            "mouthY": 80.743,
+            "sourceRect": {
+              "x": 1211,
+              "y": 343,
+              "width": 317,
+              "height": 296
+            },
+            "widthScale": 0.5291
+          }
+        },
+        "kelp-greenling": {
+          "side": {
+            "aspectRatio": 2.62069,
+            "mouthX": 98.246,
+            "mouthY": 58.621,
+            "sourceRect": {
+              "x": 7,
+              "y": 703,
+              "width": 684,
+              "height": 261
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.72852,
+            "mouthX": 98.211,
+            "mouthY": 69.759,
+            "sourceRect": {
+              "x": 701,
+              "y": 694,
+              "width": 503,
+              "height": 291
+            },
+            "widthScale": 0.65957
+          },
+          "turn": {
+            "aspectRatio": 1.05017,
+            "mouthX": 51.911,
+            "mouthY": 68.896,
+            "sourceRect": {
+              "x": 1214,
+              "y": 687,
+              "width": 314,
+              "height": 299
+            },
+            "widthScale": 0.40072
+          }
+        }
+      },
+      "inspection": "Agent visual review: ocean-phase coho tails now unspotted; halibut has two asymmetric eyes on its eyed upper surface, complete flat body and fin margins; kelp greenling male has blue spots. Final chosen transparent source was encoded with exact alpha preservation. NOAA anatomy checks are listed in the manifest. Educational reconstruction, not a specimen photograph.",
+      "generationHistory": [
+        {
+          "mode": "generate",
+          "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-85309f4c-464b-4144-96e0-f342748eb7f9.png",
+          "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 3-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Columns arranged side profile, oblique, then head front; wide profile/oblique columns and narrower front column allowed. Row boundaries must stay clear. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Oncorhynchus kisutch: bright ocean-phase silver coho salmon, blue-green dark back, small black spots on back and UPPER half of tail, white mouth gums, adipose fin, forked tail\n2. Hippoglossus stenolepis: REAL right-eyed flatfish with both eyes on mottled brown upper side, broad flattened diamond-shaped body and small head, continuous long dorsal and anal fin margins, broad shallow-concave tail. Side camera should show the eyed broad upper surface at a slight natural swimming tilt, not invent an upright bass. Three-quarter maintains flat body and both eyes on upper right side; front shows a flattened horizontal head and thin body, never a round upright symmetric fish\n3. Hexagrammos decagrammus: male kelp greenling, elongated mottled gray-brown body with blue spots, long spiny dorsal fin separated by notch from soft section, small mouth, rounded tail, real rocky-nearshore fish anatomy\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+          "transparentBackground": true,
+          "sha256": "8f533bfabea0ceff39f584f462b9dd284ab8cc196c17cc6604219f3dcfa1dbf2"
+        },
+        {
+          "mode": "edit",
+          "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-eeda82c0-097e-4ffd-8725-97e6b8bbcac5.png",
+          "referencedImagePaths": [
+            "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-85309f4c-464b-4144-96e0-f342748eb7f9.png"
+          ],
+          "prompt": "Use case: precise-object-edit. Edit the attached transparent fish atlas only to correct fish anatomy, preserving genuine background transparency, exact three-row/three-view layout, all complete outlines, camera angles, realistic materials, and the entire unchanged kelp greenling bottom row.\nTop row coho salmon: remove all black spots from the LOWER half of the caudal tail fin in the side and oblique images, preserving small black spots on the back and ONLY the UPPER tail lobe. Keep ocean-phase silver coho color, scales, and fins.\nMiddle row Pacific halibut: the head-on fish at right currently has too many eyes. Correct it to EXACTLY TWO eyes, both on the adult halibut's upper RIGHT side (the eyed side), natural asymmetry and flattened fish anatomy. In true head-on camera this means both visible eyes are together on the same upper side of the flattened head; there is no third eye, no eye on the blind white underside, and no bilateral bass-like symmetric eye arrangement. Preserve the flattened diamond body in the side and oblique views, both eyes on the same eyed surface, and fully contained fins and tail. No text, grid, background, checkerboard, scenery, hooks or lines. Do not redesign or add fish; only these anatomy corrections.",
+          "transparentBackground": true,
+          "sha256": "92fde8883f2bf9a925325466fb4058d5f35e7f36973e6c17a1cebafd92488e21"
+        },
+        {
+          "mode": "edit",
+          "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-d24d3d72-c004-44cd-81ae-0e2217a06104.png",
+          "referencedImagePaths": [
+            "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-eeda82c0-097e-4ffd-8725-97e6b8bbcac5.png"
+          ],
+          "prompt": "Use case: precise-object-edit. Make ONE localized correction to this transparent fish atlas: TOP ROW COHO SALMON tails. Keep every fish, position, angle, size, head, body, fins, middle halibut row and bottom greenling row unchanged, and keep genuine alpha transparency.\nThe top-left side-profile fish has its caudal tail fin at the far LEFT edge. The top-middle three-quarter fish also has its caudal tail at its far LEFT. These two broad forked TAIL FINS currently have dense black spots, incorrectly resembling Chinook. REMOVE EVERY BLACK SPOT FROM BOTH CAUDAL TAIL FINS: replace each spotted tail fin surface with smooth silvery translucent gray fin membrane and natural fin-ray striations. Make BOTH UPPER AND LOWER TAIL LOBES ENTIRELY UNSPOTTED. This is a valid silver ocean-phase coho look. Preserve black spots on the BODY BACK and dorsal fin. Do not remove body spots, do not modify halibut eyes again, do not change layout, do not add any background or shadows. Top-row caudal fins completely unspotted, all other pixels/composition unchanged.",
+          "transparentBackground": true,
+          "sha256": "d6569419191fcc912882107f71acee96e541c20c80fd44f0e83c02f815ec0ff4"
+        }
+      ]
+    },
+    {
+      "water": "japan",
+      "species": [
+        "red-seabream",
+        "japanese-sea-bass",
+        "black-rockfish"
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 3-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Columns arranged side profile, oblique, then head front; wide profile/oblique columns and narrower front column allowed. Row boundaries must stay clear. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Pagrus major: deep-bodied pink-red silver sea bream, darker rosy back, small scattered blue flank spots, small stout mouth, tall spiny dorsal fin, large near-forked dark-edged tail\n2. Lateolabrax japonicus: elongated silver Japanese sea bass, greenish-gray back, pale belly, large oblique mouth, raised spiny dorsal section followed by soft dorsal, slightly forked tail, adult largely plain flanks\n3. Sebastes cheni: dark olive-brown Japanese black rockfish, compact heavy body, large eyes, spiny cheek/head and long spiny dorsal, broad pectoral fins, pale belly, broad near-truncate tail\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-9d1b26de-c0f9-48d6-b9c1-a2ba25379e87.png",
+      "sourceSha256": "818eaf663caafb9ab9a7d4e3f2ecee6d49f95eeecef02a2b3c44b4d3d6224b12",
+      "runtimePath": "src/assets/fish-sprites/japan-underwater-atlas-v2.webp",
+      "runtimeSha256": "86d7487e62c9a133b7c37050b38f2157e2deeafb63ce74ddc7b906bdb5f98aa6",
+      "runtimeBytes": 581824,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.45317,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "red-seabream": {
+          "side": {
+            "aspectRatio": 2.01183,
+            "mouthX": 98.676,
+            "mouthY": 67.751,
+            "sourceRect": {
+              "x": 12,
+              "y": 12,
+              "width": 680,
+              "height": 338
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.37069,
+            "mouthX": 97.694,
+            "mouthY": 68.966,
+            "sourceRect": {
+              "x": 722,
+              "y": 8,
+              "width": 477,
+              "height": 348
+            },
+            "widthScale": 0.68132
+          },
+          "turn": {
+            "aspectRatio": 0.83862,
+            "mouthX": 51.546,
+            "mouthY": 73.199,
+            "sourceRect": {
+              "x": 1244,
+              "y": 7,
+              "width": 291,
+              "height": 347
+            },
+            "widthScale": 0.41684
+          }
+        },
+        "japanese-sea-bass": {
+          "side": {
+            "aspectRatio": 2.3539,
+            "mouthX": 98.207,
+            "mouthY": 62.338,
+            "sourceRect": {
+              "x": 12,
+              "y": 351,
+              "width": 725,
+              "height": 308
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.57643,
+            "mouthX": 97.576,
+            "mouthY": 67.197,
+            "sourceRect": {
+              "x": 737,
+              "y": 353,
+              "width": 495,
+              "height": 314
+            },
+            "widthScale": 0.66971
+          },
+          "turn": {
+            "aspectRatio": 0.84012,
+            "mouthX": 53.287,
+            "mouthY": 67.442,
+            "sourceRect": {
+              "x": 1247,
+              "y": 334,
+              "width": 289,
+              "height": 344
+            },
+            "widthScale": 0.35691
+          }
+        },
+        "black-rockfish": {
+          "side": {
+            "aspectRatio": 1.97421,
+            "mouthX": 97.968,
+            "mouthY": 57.307,
+            "sourceRect": {
+              "x": 16,
+              "y": 663,
+              "width": 689,
+              "height": 349
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.3764,
+            "mouthX": 96.939,
+            "mouthY": 58.989,
+            "sourceRect": {
+              "x": 735,
+              "y": 662,
+              "width": 490,
+              "height": 356
+            },
+            "widthScale": 0.69719
+          },
+          "turn": {
+            "aspectRatio": 0.85879,
+            "mouthX": 52.349,
+            "mouthY": 64.553,
+            "sourceRect": {
+              "x": 1238,
+              "y": 658,
+              "width": 298,
+              "height": 347
+            },
+            "widthScale": 0.435
+          }
+        }
+      },
+      "inspection": "Agent visual review: intended species row identity, three viewpoint arrangement, complete fish outlines, measured source rectangles and mouth anchors. Generated educational reconstruction; not measured physiology or a taxonomic specimen photograph."
+    },
+    {
+      "water": "china",
+      "species": [
+        "spotted-sea-bass",
+        "small-yellow-croaker",
+        "yellow-drum"
+      ],
+      "prompt": "Use case: scientific-educational. Asset type: transparent underwater game fish texture atlas.\nGenerate an exact 3-ROW by 3-COLUMN atlas on a genuine transparent alpha background. Every cell contains ONE complete isolated adult fish. Columns arranged side profile, oblique, then head front; wide profile/oblique columns and narrower front column allowed. Row boundaries must stay clear. Canvas landscape, generous 8% empty cell margins. Row order from top to bottom:\n1. Lateolabrax maculatus: silver gray-spotted sea bass with numerous clear black spots across back and upper flanks, greenish gray back, large oblique mouth, tall spiny front dorsal and soft rear dorsal, slightly forked tail\n2. Larimichthys polyactis: slender elongated small croaker, golden-yellow lower flanks and silver-gray back, small oblique mouth, long dorsal soft section behind short spiny front section, gently pointed/truncate tail, yellow translucent lower fins, NO barbels\n3. Nibea albiflora: yellow drum with silvery bronze upper body and golden belly, fine oblique/wavy dusky lines along upper flanks, blunt tapered snout, mouth below snout, short spiny dorsal followed by long soft dorsal section, near-truncate tail and yellow-gray fins\nEach row shows the SAME individual fish at three camera angles: COLUMN 1 full right-facing side profile, tail left and nose right; COLUMN 2 right-facing three-quarter oblique view, nose toward viewer and right, visible complete tail receding left; COLUMN 3 true straight head-on front view, face symmetrically toward viewer, body foreshortened directly behind, NOT another side or top view. Keep species anatomy/color/markings matched across all three views.\nStyle: wildlife-photographic realism, believable organic anatomy, fine scale/mucus detail, translucent fin rays, real eyes, neutral natural underwater diffuse light, no cartoon, anime or scientific drawing. Every fin and tail fully inside its own cell, entire outline uncut; background fully transparent with no halo or drop shadow. No water, rocks, hooks, lines, people, hands, labels, text, numbers, grid, checkerboard, gradients, scenery or ground. Species morphology takes priority over generic fish appearance. Head-front faces are true 3D viewpoints; all fins are anatomically consistent with their side views.",
+      "sourcePath": "/Users/titansforge/.codex/generated_images/01a12842-d189-7621-b1d3-68ba3e177216/exec-e4e7e8c0-4760-4092-bec3-c308ada3d707.png",
+      "sourceSha256": "87f6cd4289bcfdc77afc835bb0ff68ec6276d69548f849850aac77a4c1db2092",
+      "runtimePath": "src/assets/fish-sprites/china-underwater-atlas-v2.webp",
+      "runtimeSha256": "0611afc30eaa1babfdb9355a82c6313d8cebd9c233a8f353d41a90edbb73220f",
+      "runtimeBytes": 552772,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "alpha": {
+        "minimum": 0,
+        "maximum": 254,
+        "transparentPixelFraction": 0.463579,
+        "preservedExactly": true
+      },
+      "frameMetadata": {
+        "spotted-sea-bass": {
+          "side": {
+            "aspectRatio": 2.32484,
+            "mouthX": 98.493,
+            "mouthY": 59.873,
+            "sourceRect": {
+              "x": 24,
+              "y": 13,
+              "width": 730,
+              "height": 314
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.41768,
+            "mouthX": 96.989,
+            "mouthY": 62.5,
+            "sourceRect": {
+              "x": 788,
+              "y": 4,
+              "width": 465,
+              "height": 328
+            },
+            "widthScale": 0.6098
+          },
+          "turn": {
+            "aspectRatio": 0.81481,
+            "mouthX": 50.758,
+            "mouthY": 67.901,
+            "sourceRect": {
+              "x": 1266,
+              "y": 7,
+              "width": 264,
+              "height": 324
+            },
+            "widthScale": 0.35048
+          }
+        },
+        "small-yellow-croaker": {
+          "side": {
+            "aspectRatio": 2.44898,
+            "mouthX": 98.889,
+            "mouthY": 63.265,
+            "sourceRect": {
+              "x": 24,
+              "y": 343,
+              "width": 720,
+              "height": 294
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.53311,
+            "mouthX": 96.544,
+            "mouthY": 74.834,
+            "sourceRect": {
+              "x": 783,
+              "y": 342,
+              "width": 463,
+              "height": 302
+            },
+            "widthScale": 0.62602
+          },
+          "turn": {
+            "aspectRatio": 0.87708,
+            "mouthX": 53.03,
+            "mouthY": 72.425,
+            "sourceRect": {
+              "x": 1267,
+              "y": 341,
+              "width": 264,
+              "height": 301
+            },
+            "widthScale": 0.35814
+          }
+        },
+        "yellow-drum": {
+          "side": {
+            "aspectRatio": 2.07289,
+            "mouthX": 98.594,
+            "mouthY": 62.099,
+            "sourceRect": {
+              "x": 25,
+              "y": 660,
+              "width": 711,
+              "height": 343
+            },
+            "widthScale": 1.0
+          },
+          "oblique": {
+            "aspectRatio": 1.39884,
+            "mouthX": 96.901,
+            "mouthY": 73.121,
+            "sourceRect": {
+              "x": 752,
+              "y": 658,
+              "width": 484,
+              "height": 346
+            },
+            "widthScale": 0.67483
+          },
+          "turn": {
+            "aspectRatio": 0.80618,
+            "mouthX": 51.916,
+            "mouthY": 69.382,
+            "sourceRect": {
+              "x": 1247,
+              "y": 654,
+              "width": 287,
+              "height": 356
+            },
+            "widthScale": 0.38892
+          }
+        }
+      },
+      "inspection": "Agent visual review: intended species row identity, three viewpoint arrangement, complete fish outlines, measured source rectangles and mouth anchors. Generated educational reconstruction; not measured physiology or a taxonomic specimen photograph."
+    }
+  ]
+}

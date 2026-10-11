@@ -1168,3 +1168,57 @@ button[disabled] { opacity: .48; cursor: not-allowed; }
   .interaction-reading .interaction-habitat-context { display:block; margin:8px 0; padding:7px 9px; border-left:2px solid #6c8e7e; background:#162a20; color:#c6d8c9; font-size:12px; line-height:1.5; overflow-wrap:anywhere; }
   .large-text .interaction-reading .interaction-habitat-context { font-size:15px!important; line-height:1.5!important; }
 }
+
+/* Amazon's prototype reserves the scene for submerged fish and line geometry.
+   The ordinary console remains the sole place to operate the encounter. */
+.fishing-scene--underwater .underwater-fight-canvas { z-index:0; pointer-events:none; }
+.fishing-scene--underwater .underwater-scene-caption { z-index:2; top:20px; left:22px; right:auto; max-width:calc(100% - 44px); padding:10px 14px; background:#14281ec9; border-left:2px solid #c3c48a; pointer-events:none; }
+.underwater-scene-caption strong { font:600 clamp(17px,1.7vw,24px)/1.3 Georgia,serif; margin:6px 0; }
+.underwater-scene-caption small { font-size:11px; }
+.underwater-scene-caption > span { font-size:12px; }
+.underwater-scene-caption .angling-scene-cue { max-width:32em; margin-top:6px; line-height:1.5; color:#f0d9a2; }
+.fishing-scene--underwater .underwater-view-label { font-size:11px; padding:4px 8px; border-color:#748063; background:#14281ec9; }
+.fishing-scene--underwater[data-underwater-phase=landed] .underwater-scene-caption { display:none; }
+.fishing-scene--underwater[data-underwater-phase=landed] .underwater-fight-canvas,
+.fishing-scene--underwater[data-underwater-phase=landed] .underwater-canvas-fallback,
+.fishing-scene--underwater[data-underwater-phase=landed] .underwater-view-label { display:none; }
+.fishing-scene--underwater .landed-reveal { inset:9% 7% 8%; }
+@media(max-width:599px), (max-width:760px) and (min-height:551px) {
+  .cast-game--interaction:has(.fishing-scene--underwater):not(.cast-game--complete) { grid-template-rows:minmax(135px,32%) minmax(0,1fr); }
+}
+@media(max-width:760px) {
+  .fishing-scene--underwater .underwater-scene-caption { top:8px; left:10px; padding:6px 9px; max-width:calc(100% - 20px); }
+  .fishing-scene--underwater .underwater-scene-caption small { font-size:10px; }
+  .fishing-scene--underwater .underwater-scene-caption strong, .fishing-scene--underwater .underwater-scene-caption > span, .fishing-scene--underwater .underwater-view-label { display:none; }
+}
+@media(min-width:600px) and (max-height:550px) {
+  .fishing-scene--underwater .underwater-scene-caption strong, .fishing-scene--underwater .underwater-scene-caption > span { display:none; }
+  .fishing-scene--underwater .underwater-view-label { display:none; }
+}
+
+/* Keep skill decisions beside the reel instead of inside the scrolling brief. */
+.skill-fight-instruments { display:grid; gap:7px; margin-bottom:10px; }
+.skill-live-cue { display:flex; justify-content:space-between; align-items:center; gap:10px; font:700 14px/1.3 Arial,sans-serif; color:#f1dec1; }
+.skill-live-cue span { color:#bdcdc5; font-size:11px; font-weight:400; text-align:right; }
+.skill-fight-instruments .tension-readout { margin:0; gap:6px; font-size:11px; }
+.skill-fight-instruments .tension-readout i { min-height:15px; }
+.rod-side-controls { display:grid; grid-template-columns:minmax(0,1fr) auto auto; align-items:center; gap:6px; }
+.rod-side-controls>span { font:12px/1.35 Arial,sans-serif; color:#d6ddd4; }
+.rod-side-controls button { min-width:74px; min-height:44px; padding:6px 10px; border:1px solid #789183; background:#1d3026; color:#eff6ef; font:700 13px/1.25 Arial,sans-serif; }
+.rod-side-controls button[aria-pressed=true] { background:#88b8a7; border-color:#b4e5d1; color:#071d13; }
+.rod-side-controls button:disabled { opacity:.55; }
+.underwater-cover-cue { position:absolute; z-index:2; bottom:46px; left:16px; padding:5px 8px; max-width:calc(100% - 32px); background:#15241cc9; color:#f6d9a8; border-left:2px solid #c9ae6e; font:12px/1.3 Arial,sans-serif; pointer-events:none; }
+@media(max-width:599px), (max-height:550px) {
+  .cast-game--skill-fight .interaction-actions { padding:8px 12px; }
+  .cast-game--skill-fight .interaction-actions .interaction-control { min-height:56px; padding:8px 12px; }
+  .skill-fight-instruments { gap:5px; margin-bottom:7px; }
+  .skill-live-cue { font-size:12px; }
+  .skill-live-cue span { font-size:10px; }
+  .rod-side-controls>span { font-size:11px; }
+  .rod-side-controls button { min-width:62px; min-height:44px; padding:5px 7px; font-size:12px; }
+  .underwater-cover-cue { bottom:10px; left:10px; font-size:10px; }
+}
+@media(max-width:599px) {
+  .skill-fight-instruments .tension-readout { grid-template-columns:minmax(80px,1fr) auto; }
+  .skill-fight-instruments .tension-readout>span { grid-column:1 / -1; }
+}

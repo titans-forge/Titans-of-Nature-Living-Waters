@@ -1,6 +1,6 @@
 # Media Rights
 
-The application code is licensed under MIT. Media is tracked separately and is not automatically covered by the code license.
+Application licensing is described in LICENSE and LICENSING.md. Earlier MIT grants remain preserved. Media is tracked separately and is not automatically covered by the code license.
 
 ## Asset inventory
 
@@ -9,10 +9,13 @@ The application code is licensed under MIT. Media is tracked separately and is n
 | Habitat panoramas | `src/assets/*.webp`, excluding `*-guide.webp` | Generated through OpenAI image generation in Codex on August 13, 2026 | Owner-confirmed for public redistribution; see provenance record |
 | Guide portraits | `src/assets/*-guide.webp` | Generated through OpenAI image generation in Codex on August 13, 2026 | Owner-confirmed for public redistribution; see provenance record |
 | Catch reconstructions | `src/assets/catches/*.webp` | Generated for Titans Forge with OpenAI image generation on August 14, 2026 | Cleared for use subject to the provider terms applicable to the generating account |
-| Contextual encounter reconstructions | `src/assets/encounters/*-v1.webp` | OpenAI built-in image generation in Codex, October 9, 2026; five scenes | Local upgrade, not published; exact outputs, prompts and hashes in `docs/SUBJECT_ART_1_9_MANIFEST.json` |
-| Live fish profiles | `src/assets/fish-sprites/*-v1.webp`, excluding turn and oblique views | OpenAI built-in image generation in Codex, October 9, 2026; four transparent profiles | Local upgrade, not published; exact outputs, prompts and hashes in `docs/SUBJECT_ART_1_9_MANIFEST.json` and `docs/SUBJECT_ART_1_11_MANIFEST.json` |
-| Live fish front views | `src/assets/fish-sprites/*-turn-v1.webp` | OpenAI built-in image generation in Codex, October 9, 2026; four views | Local upgrade, not published; `docs/SUBJECT_ART_1_13_MANIFEST.json` |
-| Live fish oblique views | `src/assets/fish-sprites/*-oblique-v1.webp` | OpenAI built-in image generation in Codex, October 9, 2026; four views | Local upgrade, not published; `docs/SUBJECT_ART_1_14_MANIFEST.json` |
+| Contextual encounter reconstructions | `src/assets/encounters/*-v1.webp` | OpenAI built-in image generation in Codex, October 9, 2026; five scenes | Included in the earlier 1.14.0 release; exact outputs, prompts and hashes in `docs/SUBJECT_ART_1_9_MANIFEST.json` |
+| Live fish profiles | `src/assets/fish-sprites/*-v1.webp`, excluding turn and oblique views | OpenAI built-in image generation in Codex, October 9, 2026; four transparent profiles | Included in the earlier 1.14.0 release; exact outputs, prompts and hashes in `docs/SUBJECT_ART_1_9_MANIFEST.json` and `docs/SUBJECT_ART_1_11_MANIFEST.json` |
+| Live fish front views | `src/assets/fish-sprites/*-turn-v1.webp` | OpenAI built-in image generation in Codex, October 9, 2026; four views | Included in the earlier 1.14.0 release; `docs/SUBJECT_ART_1_13_MANIFEST.json` |
+| Live fish oblique views | `src/assets/fish-sprites/*-oblique-v1.webp` | OpenAI built-in image generation in Codex, October 9, 2026; four views | Included in the earlier 1.14.0 release; `docs/SUBJECT_ART_1_14_MANIFEST.json` |
+| Amazon underwater habitat | `src/assets/underwater/amazon-root-edge-v1.webp` | OpenAI built-in image generation in Codex, October 10, 2026 | Authorized for release 1.15.0; exact prompt and hashes in `docs/AMAZON_UNDERWATER_MANIFEST.json` |
+| All-water underwater habitats | `src/assets/underwater/*-habitat-v2.webp` | OpenAI built-in image generation in Codex, October 10, 2026; 13 new plates, with the earlier Amazon plate reused | Authorized for release 1.15.0; exact prompts, source/game hashes and processing in `docs/UNDERWATER_HABITAT_V2_MANIFEST.json` |
+| All-water underwater fish atlases | `src/assets/fish-sprites/*-underwater-atlas-v2.webp` | OpenAI built-in image generation in Codex, October 10, 2026; 14 atlases, 41 additional fish encounter IDs, 123 view frames | Authorized for release 1.15.0; exact prompts, edit histories, source/game hashes, alpha and view anchors in `docs/UNDERWATER_FISH_ART_V2_MANIFEST.json` |
 | Interface concept | `design-concept.png` | AI-generated development reference | Development/reference use; not loaded by the application |
 | Icons | Runtime Lucide React components | Lucide project | ISC License; see dependency package metadata |
 
@@ -44,3 +47,17 @@ Four new locally generated turn illustrations accompany the existing side sprite
 ## Fish intermediate turn views — October 9, 2026
 
 Four new oblique fish illustrations use the built-in OpenAI image tool with the existing generated profiles as identity references. Exact prompts, original output names, source/final hashes and alpha extrema are in `docs/SUBJECT_ART_1_14_MANIFEST.json`. Pillow only downscaled full RGBA frames and encoded WebPs. Display framing preserves each image aspect ratio and calibrates silhouette depth against its profile. These unpublished game reconstructions remain separate from the code license and subject to the generating account terms. This record asserts no new receipt or redistribution confirmation.
+
+## All-water underwater reconstruction — October 10, 2026
+
+Thirteen new submerged habitat plates extend the retained Amazon prototype to fourteen angling waters. Fourteen transparent fish atlases supply side, oblique and front views for 41 additional authored encounter identities; the four existing three-view fish families remain unchanged. These are generated educational reconstructions, not photographs of field sites, specimen records or measurements of fish physiology. Visibility is deliberately enhanced for play.
+
+Both new manifests retain exact prompts and original output paths, source/game SHA-256 hashes, dimensions and processing details. The built-in tool did not report an exact model name. Initial atlas generations used no reference images; targeted anatomy or spacing edits used the earlier generated output paths explicitly recorded in each edit history. Habitat plates were generated without image references. Pillow only encoded complete original frames as WebP; transparent alpha was preserved. Atlas source rectangles and mouth anchors are runtime display metadata, not painted or composited fish pixels.
+
+The Lake Holiday habitat prompt accidentally named Illinois, while the game venue is authored in Virginia. The original prompt is retained. Its accepted image represents a generic freshwater lake with natural woody cover; it does not establish an Illinois or Virginia field location, a particular lake bottom, or documentary geographic accuracy.
+
+Earlier account receipts, clearance records and owner confirmation dates remain attached only to their original batches. This local creation record does not assert a new redistribution confirmation, scientific certification, upload or publication.
+
+## Release authorization — October 11, 2026
+
+The project owner explicitly requested publication of the reviewed candidate on GitHub and itch on October 11, 2026. This authorization covers the Amazon underwater habitat, thirteen additional habitat plates, fourteen fish atlases and the associated game upgrades in release 1.15.0. It does not create an account receipt, change provider terms, certify biological accuracy or alter earlier license grants. Exact generation records remain in the dated manifests. The new LW favicon is an authored interface monogram, not a third-party image.

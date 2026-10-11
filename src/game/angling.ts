@@ -66,7 +66,7 @@ export function getAnglingWindow(state: ExpeditionState, venue: Venue): AnglingW
   return null;
 }
 
-export function getAnglingCue(window: AnglingWindow): string | null {
+export function getAnglingCue(window: { remaining: number; next: { label: string; instruction: string } }): string | null {
   return window.remaining <= 3 ? `Next: ${window.next.label.toLowerCase()} — ${window.next.instruction.toLowerCase()}.` : null;
 }
 

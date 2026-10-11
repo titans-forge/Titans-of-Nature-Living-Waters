@@ -1,0 +1,279 @@
+{
+  "version": 1,
+  "date": "2026-10-10",
+  "scope": "13 generated habitat plates; Amazon reuses reviewed amazon-root-edge-v1.webp",
+  "assets": [
+    {
+      "id": "florida-bay",
+      "tint": "rgba(24,78,70,.05)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate for Florida Bay. Camera submerged about1.5 metres underwater looking horizontally across a shallow estuarine mosaic. A fringe of real red-mangrove prop roots occupies the far-left margin, pale carbonate sand and an open swimming corridor through the center, natural seagrass blades and patchy meadow at the right and bottom; small shell fragments, subtle fine suspended particles, slightly green clear coastal water. The rippling underside of the water surface is visible overhead, sunlight refracts naturally, distance fades into water haze. An authentic natural shallow-water photograph, rich fine material detail, realistic scale, irregular vegetation, no cartoon graphics. Compose a broad16:9 landscape with open middle water for an animated fish, roots and grass outside that corridor. No fish, no animals, no people, no boat, no fishing line, no text, no UI, no logo. Visibility is enhanced for the educational camera while water still has depth and tint.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-67ee7f0a-72f1-42c5-8697-013689a53364.png",
+      "gameAsset": "src/assets/underwater/florida-bay-habitat-v2.webp",
+      "sourceSha256": "5b0383a041eaf9a00a6284b3faa9c3d57b23cff87d7b42bc9bec56aac008abd8",
+      "gameSha256": "720c562913ed438fc9f3b2a5dd96da5bcd597ecbe00217e80d607814bb8b0399",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 460480,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "okavango",
+      "tint": "rgba(65,91,49,.08)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Freshwater Okavango Delta channel margin in Botswana: tawny sandy silt bottom, papyrus and reed stems at both side edges, submerged floodplain grasses to the right, a clear narrow swimming corridor through center. Water has warm olive transparency and natural leaf shadows, no mangrove roots or marine coral. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-b8cb3d60-5a84-43c0-b2d8-ffdad7c19f90.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-b8cb3d60-5a84-43c0-b2d8-ffdad7c19f90.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/okavango-habitat-v2.webp",
+      "sourceSha256": "6c4771226a0c270e4ab4223a8485020a5f315067236e6a32e57635e7e13e9e50",
+      "gameSha256": "d0dafee6fbe9c1a46fc5acc81ecf47308f727b9f11ea3110c5a83326bc24ce3b",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 509958,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "tonle-sap",
+      "tint": "rgba(61,75,45,.09)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Cambodia Tonle Sap flooded-forest margin: dark tea-green water, seasonally submerged tree trunks and shrubs at the left fringe, thin rice stems and lotus petioles at the right fringe and floating leaves high overhead, silt and leaf litter below. Central open channel, believable turbid distance, no mangrove saltwater setting. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-cfd3c702-5a2e-473b-bd4d-50f5063ebdda.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-cfd3c702-5a2e-473b-bd4d-50f5063ebdda.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/tonle-sap-habitat-v2.webp",
+      "sourceSha256": "84394393fddf0bf3dbdcd010478f87e4fb48019dec89b01acd0e44903f42a47b",
+      "gameSha256": "60740f58612899add0be095950b44f851664fd9e34fe8607d113e58db723aac1",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 376400,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "alaska-kelp",
+      "tint": "rgba(24,59,72,.08)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Southeast Alaska cold North Pacific nearshore habitat: real brown bull-kelp stipes and long golden blades at the upper left and right edges, blue-green cold water, coarse pale gravel and rounded rock patches at bottom, sand corridor. Natural rock encrustation without tropical branching coral. Surface overhead, water depth about4metres, distant haze. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-7044a1fb-92c8-4161-ad75-ca77f07a8f8a.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-7044a1fb-92c8-4161-ad75-ca77f07a8f8a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/alaska-kelp-habitat-v2.webp",
+      "sourceSha256": "d4294ff2de2b161068fb372ded34301231d0a553a9fc69bc2b2f75cffed131cb",
+      "gameSha256": "7f6b03684737782d85f5dbb58f5c5207c19e29ccf95a0a1c3358c8de5f2e0089",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 440930,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "baikal",
+      "tint": "rgba(27,70,95,.07)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Lake Baikal freshwater littoral edge: cold exceptionally clear blue-green freshwater, rounded granitic stones and patches of clean sand, a small subtle patch of endemic green freshwater sponge on stone near left lower edge, sparse freshwater plants near right. No marine coral, no kelp forest, no palm roots. Natural stone texture and deep cool-water falloff, rippling surface overhead. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-7781074e-c193-467c-af72-da1b6cddc249.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-7781074e-c193-467c-af72-da1b6cddc249.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/baikal-habitat-v2.webp",
+      "sourceSha256": "b1168f1eb190d0225fe9b3a0389b00cb161017007119cc5829cdc78df52cb01a",
+      "gameSha256": "51d473ac166cb143760f238c93d5abdf580a240582220b35d48181de1bb28488",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 432502,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "lake-holiday",
+      "tint": "rgba(58,80,42,.09)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Illinois temperate freshwater lake littoral margin: submerged pondweed and broad freshwater vegetation at left fringe, gently sloping silt and sand with a few pebbles, fallen waterlogged branch partly at right fringe, modest green freshwater visibility, mottled daylight through rippling surface overhead. Fish swimming corridor central; no sea coral or tropical plants. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-657a992c-ab78-43ba-b589-4d3c2a084c37.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-657a992c-ab78-43ba-b589-4d3c2a084c37.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/lake-holiday-habitat-v2.webp",
+      "sourceSha256": "9196fc2270d3b8f1e886d13d3f2d2a240f0a4b178395ad957b5c5f45fe05604d",
+      "gameSha256": "17a6f36444443784cf80bfa8be8937cee6dd24cc657dfaaf69b6fc61de5b46c7",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 431210,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "nile",
+      "tint": "rgba(88,83,45,.09)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Egypt Nile freshwater margin: fine ochre-brown river silt, reed stems at left, submerged grass at right, a few smooth river pebbles, open current corridor central, naturally suspended silt and warm greenish-gold water haze. Visible underside of water surface overhead; no desert dunes underwater, no pyramids, no marine coral. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-a161a294-7ce6-4ad9-969c-48b84c231969.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-a161a294-7ce6-4ad9-969c-48b84c231969.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/nile-habitat-v2.webp",
+      "sourceSha256": "d9b783395932da487f2c8dd212ea48c182966fe0b9c7e520f6f4d01d5b63118e",
+      "gameSha256": "59798af412b73cea79b3a26d626aa4161c24a2c2ec1751576dcd3b3881945464",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 443784,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "euphrates",
+      "tint": "rgba(78,83,45,.09)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Southern Mesopotamian Euphrates freshwater marsh channel: submerged bases of common reeds at both far sides, thin emergent grass stems high overhead, soft light brown silt and decaying organic fragments below, calm warm green-gold water and particulate haze. Central open marsh-channel corridor. No statues, buildings, marine coral or palm-tree scene above water. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-29cbe79c-73c2-4b8f-a29b-bb68313d83b3.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-29cbe79c-73c2-4b8f-a29b-bb68313d83b3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/euphrates-habitat-v2.webp",
+      "sourceSha256": "058697f6b698bf18e6d58fdef6df07f06210732aaf4728a66c273466260d84bc",
+      "gameSha256": "87bee094fc2ec8e359de8999587f988a7ae6448765e6a04b0005aa14f235f86c",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 409600,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "ganges",
+      "tint": "rgba(93,88,61,.09)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Indian Ganges freshwater connected side channel: sandy river bed with scattered smooth rounded gravel, submerged reed and riparian grass roots at far left and a few sparse stems at right, moving-water corridor central, natural pale brown-green silt haze with a clear near viewing area. Realistic rippling water surface above, sunlight diffuse, no temples or decorative statues underwater, no marine coral. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-af40f016-74a1-493d-abd2-e2d0ddb977a8.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-af40f016-74a1-493d-abd2-e2d0ddb977a8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/ganges-habitat-v2.webp",
+      "sourceSha256": "f65a4d0a37c534a873cbf4f1e1214675fc26c722b73b3ae30430a8e26b6c866c",
+      "gameSha256": "98e8ab9ce252dae4999c797d6bb642498b789ecd6bb8b1da2c533f15782848d2",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 415800,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "danube",
+      "tint": "rgba(41,74,69,.07)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Danube freshwater river-bank channel in southeastern Europe: rounded gravel and stones at bottom, gray weathered riparian boulders at left edge, sparse submerged freshwater plants at right, subtle sunken wood near margins, green-blue flowing freshwater with mild silt haze. Open midwater swimming corridor, visible underside of surface overhead. No marine coral, no tropical palms, no underwater fortress. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-99bb122f-b082-4b10-81ca-40712c74670e.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-99bb122f-b082-4b10-81ca-40712c74670e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/danube-habitat-v2.webp",
+      "sourceSha256": "31178ca7cbb5defe1dcfff48d57ebbf5b9c9e8f9aa7e71b566529eedbb3f6f77",
+      "gameSha256": "f04357ff9e26a02bc7135f37f22a78f1fdd50418375df8c86a34c14d3193ab69",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 395818,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "great-barrier-reef",
+      "tint": "rgba(15,79,98,.05)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Queensland Great Barrier Reef shallow permitted sandy reef-edge habitat: natural blue tropical seawater, pale coral sand swimming corridor in the center, irregular living coral heads and low branching coral confined to far-left edge, a seagrass patch at the far-right with some shell fragments. Moderately shallow surface visible overhead, natural filtered sunlight, photorealistic reef ecology, no neon glowing fantasy coral, no fish. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-e8bf1703-d297-4545-aff5-c2a95fd9c1a9.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-e8bf1703-d297-4545-aff5-c2a95fd9c1a9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/great-barrier-reef-habitat-v2.webp",
+      "sourceSha256": "b763a99fa136242c755e6a013a8da3a52a0dd6f2730968fc4be3f134f737c425",
+      "gameSha256": "045575e2149075e512fc35c1046d0e353c5bc70657607e138af38847871c4979",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 491920,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "seto-inland-sea",
+      "tint": "rgba(25,68,72,.08)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. Japan Seto Inland Sea shallow satoumi habitat: temperate green-blue coastal seawater, eelgrass and brown seaweed fringe at right, low rocky seawall-like boulder edge on left with subtle shell and algae encrustation, sand and gravel open central corridor. Natural light through rippling surface overhead. No tropical reef coral forest or decorative torii gate, believable working-coast underwater mosaic without human equipment. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-831052a0-7367-4d53-a810-a56b2b7b84fd.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-831052a0-7367-4d53-a810-a56b2b7b84fd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/seto-inland-sea-habitat-v2.webp",
+      "sourceSha256": "a9ceca14e3970c59646c93e11ac55f069c1dcf1a4b5f54223187909e3be8dd0c",
+      "gameSha256": "de6e1d3b3cc4489286b4ead7aa05d4543591f42d5da819e1f2dafbe448f7888a",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 417560,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    },
+    {
+      "id": "yellow-river-delta",
+      "tint": "rgba(90,85,53,.08)",
+      "prompt": "Use case: photorealistic-natural. Asset type: underwater game habitat plate. China Yellow River Delta estuarine channel margin: soft ochre-gray silt and muddy sand, modest reeds and submerged vegetation at far-left fringe, fine shell fragments and gently rippled sediment, sparse organic stems at right. Central unobstructed swimming corridor in brackish green-brown water, significant natural distance turbidity but near scene readable. No yellow painted surface, no coral or decorative structures. Camera completely submerged, looking horizontally across a natural underwater habitat; a visible shimmering underside of the water surface in upper15 percent, ground occupies lower25 percent, open central midwater for an animated fish. Authentic detailed wildlife photographic reconstruction with fine natural sediment and vegetation textures, irregular forms, believable depth and suspended particles, restrained daylight, broad16:9 landscape. Keep detailed cover near side edges. Do not depict fish, animals, people, boats, fishing lines, hooks, human objects, text, UI, labels, grid or watermarks. No cartoon, anime or flat colored terrain. Clarity deliberately enhanced for educational viewing, not crystal-clear water everywhere.",
+      "source": "/Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-429ad744-090d-4032-ba08-db18e4698c34.png",
+      "output_hint": "Generated images are saved to /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e as /Users/titansforge/.codex/generated_images/01a07dec-6d36-7502-86fe-7095742e4f2e/exec-429ad744-090d-4032-ba08-db18e4698c34.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "gameAsset": "src/assets/underwater/yellow-river-delta-habitat-v2.webp",
+      "sourceSha256": "49bd9dd7a9e35678b982bef2f0bfc587a494310aa4a528feeaaab3bd2656f312",
+      "gameSha256": "cca60fb115f13c3c50db9bd73d8556929c29b41b2ede99ecf077c4491c4ac452",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "gameBytes": 329236,
+      "provider": "built-in image_gen",
+      "model": "not reported by tool",
+      "mode": "generate",
+      "processing": "WebP encoding only; no editing, crop, compositing or alpha changes",
+      "review": "Inspected individually for submerged camera, complete open swimming corridor, habitat materials and absence of fish/UI",
+      "limitations": "Educational reconstruction; enhanced camera visibility; not a photograph of a measured field site"
+    }
+  ]
+}

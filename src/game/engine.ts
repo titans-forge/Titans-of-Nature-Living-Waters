@@ -1,10 +1,13 @@
 import { venueById, venues } from "../data/venues";
-import type { Encounter, ExpeditionState, FieldObservation, FightProfileId, InteractionKind, LineAction, Venue } from "../types";
+import type { Encounter, ExpeditionState, FieldObservation, FightProfileId, InteractionKind, LineAction, RodSide, Venue } from "../types";
 import { getActiveAssignment, getNextAssignment } from "./assignments";
 import { getNextSeason, getSeason, } from "./seasons";
 import { journeyByteLength, MAX_FIELD_OBSERVATIONS, MAX_SAVE_BYTES, NEXT_OBSERVATION_RESERVE_BYTES } from "./limits";
 import { getInteractionKind, getRoutedEncounterId, needsSnagApproach } from "./interactions";
-import { getAnglingCue, getAnglingWindow, getPilotSpecies } from "./angling";
+import { getAnglingCue, getAnglingWindow } from "./angling";
+
+import { getSkillFishingCue, getRecommendedFishingInput } from "./skillFishing";
+export { getSkillFishingCue, getRecommendedFishingInput } from "./skillFishing";
 
 const CAST_NOTCH_POWER = 14;
 export const MAX_CAST_ATTEMPTS = 3;
@@ -63,6 +66,9 @@ export function getFightProfile(state: ExpeditionState): FightProfile {
   if (!venue || !encounter) return fightProfiles.steady;
   const kind = getInteractionKind(state, venue);
   if (kind !== "fish") return fightProfiles[kind];
+  const skill = getSkillFishingCue(state, venue);
+  if (skill) return { ...fightProfiles[inferFightProfile(encounter, true)], label: skill.label, cue: skill.advice, runTicks: skill.ticks, restTicks: skill.ticks,
+    progressGain: skill.gain, tensionGain: skill.tensionGain, tensionRelease: skill.tensionRelease, safeMin: skill.safeMin, safeMax: skill.safeMax };
   const window = getAnglingWindow(state, venue);
   if (window) return { ...fightProfiles.steady, label: window.label, cue: window.advice,
     runTicks: window.ticks, restTicks: window.ticks, progressGain: window.gain,
@@ -88,12 +94,14 @@ export function getPressureFeedback(state: ExpeditionState) {
 function techniquePoints(mistakes: number) { return Math.max(1, 5 - mistakes); }
 
 function techniqueImprovement(state: ExpeditionState, mistakes: number) {
+  if (state.anglingRules === "habitat-v2" && state.castUsedAssistance) return 0;
   const venue = getVenue(state);
   if (venue && getInteractionKind(state, venue) === "bycatch" && state.journalIds.includes(`${state.venueId}:${state.encounterId}`)) return 0;
   const previous = state.observations.filter((observation) => observation.expedition === state.expeditionNumber
-    && observation.venueId === state.venueId && observation.encounterId === state.encounterId);
+    && observation.venueId === state.venueId && observation.encounterId === state.encounterId
+    && (state.anglingRules !== "habitat-v2" || !observation.assisted));
   const alreadyRecorded = state.tripJournalIds.includes(`${state.venueId}:${state.encounterId}`);
-  const best = previous.length ? Math.max(...previous.map((observation) => techniquePoints(observation.controlMistakes))) : alreadyRecorded ? 5 : 0;
+  const best = previous.length ? Math.max(...previous.map((observation) => techniquePoints(observation.controlMistakes))) : alreadyRecorded && state.anglingRules !== "habitat-v2" ? 5 : 0;
   return Math.max(0, techniquePoints(mistakes) - best);
 }
 
@@ -110,7 +118,7 @@ export function getVenue(state: ExpeditionState): Venue | null {
 }
 
 export function createInitialState(): ExpeditionState {
-  return { version: 12, anglingRules: "classic", anglingBeat: 0, observations: [], learningAnswers: [], learningRevisions: [], expeditionNumber: 0, venueId: null, stage: "venue", askedQuestions: [], gearId: null, zoneId: null, encounterId: null, castPower: null, castAccuracy: 0, lineTurn: 0, lineTension: 48, lineActions: [], snagApproach: "unassessed", lineQuality: 0, lineResolved: false, fishDistance: 0, fishMaxDistance: 0, fishStamina: 0, fightPhase: "run", phaseProgress: 0, fightMessage: "", interactionProgress: 0, interactionMistakes: 0, handlingId: null, fieldcraft: 0, biology: 0, ecology: 0, trust: 0, journalIds: [], activeAssignmentId: null, completedAssignmentIds: [], debriefChoice: null, seasonId: null, venueVisitCounts: {}, experienceMode: "guided", assistMode: false, castUsedAssistance: false, castAttempts: 0, tripJournalIds: [], tripSafeJournalIds: [] };
+  return { version: 13, anglingRules: "classic", anglingBeat: 0, rodSide: "center", observations: [], learningAnswers: [], learningRevisions: [], expeditionNumber: 0, venueId: null, stage: "venue", askedQuestions: [], gearId: null, zoneId: null, encounterId: null, castPower: null, castAccuracy: 0, lineTurn: 0, lineTension: 48, lineActions: [], snagApproach: "unassessed", lineQuality: 0, lineResolved: false, fishDistance: 0, fishMaxDistance: 0, fishStamina: 0, fightPhase: "run", phaseProgress: 0, fightMessage: "", interactionProgress: 0, interactionMistakes: 0, handlingId: null, fieldcraft: 0, biology: 0, ecology: 0, trust: 0, journalIds: [], activeAssignmentId: null, completedAssignmentIds: [], debriefChoice: null, seasonId: null, venueVisitCounts: {}, experienceMode: "guided", assistMode: false, castUsedAssistance: false, castAttempts: 0, tripJournalIds: [], tripSafeJournalIds: [] };
 }
 
 export function selectVenue(state: ExpeditionState, venueId: string): ExpeditionState {
@@ -134,7 +142,7 @@ export function finishQuestions(state: ExpeditionState): ExpeditionState { retur
 
 export function selectGear(state: ExpeditionState, id: string): ExpeditionState {
   const venue = getVenue(state);
-  return venue && state.stage === "gear" && venue.gearSets.some((gear) => gear.id === id) ? { ...state, gearId: id, snagApproach: "unassessed" } : state;
+  return venue && state.stage === "gear" && venue.gearSets.some((gear) => gear.id === id) ? { ...state, gearId: id, snagApproach: "unassessed", rodSide: "center" } : state;
 }
 
 export function finishGear(state: ExpeditionState): ExpeditionState { return state.stage === "gear" && state.gearId ? { ...state, stage: "habitat" } : state; }
@@ -177,7 +185,7 @@ export function castLine(state: ExpeditionState, power = 50): ExpeditionState {
   const fishMaxDistance = activeFish ? Math.max(6, Math.min(10, Math.round((initialTension - 40) / 10) + 6)) : 0;
   const informed = state.askedQuestions.includes(venue.informedQuestionByZone[state.zoneId]);
   const newTripEntry = !state.tripJournalIds.includes(`${venue.id}:${encounterId}`) && !(kind === "bycatch" && state.journalIds.includes(`${venue.id}:${encounterId}`));
-  return { ...state, anglingRules: getPilotSpecies({ ...state, encounterId }, venue) ? "habitat-v1" : "classic", anglingBeat: 0, stage: "cast", encounterId, castPower: power, castAccuracy: accuracy, castUsedAssistance: state.assistMode, castAttempts: state.castAttempts + 1, lineTurn: 0, lineTension: initialTension, lineActions: [], snagApproach: "unassessed", lineQuality: 0, lineResolved: false, fishDistance: fishMaxDistance, fishMaxDistance, fishStamina: Math.ceil(fishMaxDistance / 2), fightPhase: "run", phaseProgress: 0, fightMessage: kind === "snag" ? "The tether has snagged. Choose a back-out approach before the response timer can start." : getInteractionMessage(kind, "run", false, initialTension >= 100), interactionProgress: 0, interactionMistakes: 0, fieldcraft: state.fieldcraft + (newTripEntry ? (informed ? 6 : 3) + (accuracy >= 70 ? 4 : accuracy >= 40 ? 2 : 0) : 0), ecology: state.ecology + (newTripEntry ? 3 : 0) };
+  return { ...state, anglingRules: activeFish ? "habitat-v2" : "classic", anglingBeat: 0, rodSide: "center", stage: "cast", encounterId, castPower: power, castAccuracy: accuracy, castUsedAssistance: state.assistMode, castAttempts: state.castAttempts + 1, lineTurn: 0, lineTension: initialTension, lineActions: [], snagApproach: "unassessed", lineQuality: 0, lineResolved: false, fishDistance: fishMaxDistance, fishMaxDistance, fishStamina: Math.ceil(fishMaxDistance / 2), fightPhase: "run", phaseProgress: 0, fightMessage: kind === "snag" ? "The tether has snagged. Choose a back-out approach before the response timer can start." : getInteractionMessage(kind, "run", false, initialTension >= 100), interactionProgress: 0, interactionMistakes: 0, fieldcraft: state.fieldcraft + (newTripEntry ? (informed ? 6 : 3) + (accuracy >= 70 ? 4 : accuracy >= 40 ? 2 : 0) : 0), ecology: state.ecology + (newTripEntry ? 3 : 0) };
 }
 
 export function isActiveFishFight(state: ExpeditionState, venue: Venue) {
@@ -202,7 +210,7 @@ export function hasLostFish(state: ExpeditionState) {
 export function retryFish(state: ExpeditionState): ExpeditionState {
   if (!hasLostFish(state)) return state;
   // Retry the same encounter without issuing cast rewards or consuming another assignment attempt.
-  return { ...state, anglingBeat: 0, lineTension: 48, interactionProgress: 0, fishDistance: state.fishMaxDistance,
+  return { ...state, anglingBeat: 0, rodSide: "center", lineTension: 48, interactionProgress: 0, fishDistance: state.fishMaxDistance,
     fightPhase: "run", phaseProgress: 0, fightMessage: "Another bite. Release during the run, then hold to reel when the fish tires." };
 }
 
@@ -225,6 +233,7 @@ function getInteractionMessage(kind: InteractionKind, phase: ExpeditionState["fi
 
 export function getRecommendedEngagement(state: ExpeditionState): boolean {
   const venue = getVenue(state);
+  if (venue && getSkillFishingCue(state, venue)) return getRecommendedFishingInput(state, venue).engaged;
   return (venue && getAnglingWindow(state, venue)?.engage) ?? (state.fightPhase === "rest");
 }
 
@@ -244,6 +253,10 @@ export function chooseSnagApproach(state: ExpeditionState, action: "back-out" | 
 export function getInteractionCue(state: ExpeditionState) {
   const profile = getFightProfile(state);
   const venue = getVenue(state); const kind = venue ? getInteractionKind(state, venue) : "fish";
+  const skill = venue && getSkillFishingCue(state, venue);
+  if (skill) return state.lineResolved || hasLostFish(state) ? null
+    : skill.remaining <= 3 ? `Next: ${skill.next.label.toLowerCase()} — ${skill.next.instruction.toLowerCase()}.`
+      : skill.needsRodSide && state.rodSide !== skill.requiredRodSide ? `Cover is on the ${skill.coverSide}. Select rod ${skill.requiredRodSide}.` : skill.actionLabel;
   const window = venue && getAnglingWindow(state, venue);
   if (window) return state.lineResolved || hasLostFish(state) ? null : getAnglingCue(window);
   if (venue && needsSnagApproach(state, venue)) return "Assess the snag first. Back out rather than pulling through.";
@@ -327,12 +340,50 @@ function advancePilotAngling(state: ExpeditionState, engaged: boolean, venue: Ve
       : resolved ? 'The fish is alongside.' : penaltyTick ? window.miss : nextWindow.advice };
 }
 
+/** A rod angle is one latched choice, independent of the held reel control. */
+export function setRodSide(state: ExpeditionState, side: RodSide): ExpeditionState {
+  const venue = getVenue(state);
+  if (!venue || state.stage !== "cast" || state.lineResolved || hasLostFish(state) || !getSkillFishingCue(state, venue)
+    || !["left", "right", "center"].includes(side) || state.rodSide === side) return state;
+  return { ...state, rodSide: side };
+}
+
+function advanceSkillFishing(state: ExpeditionState, engaged: boolean, venue: Venue): ExpeditionState {
+  const cue = getSkillFishingCue(state, venue)!;
+  // The physical load is never automatically snapped into the safe band.
+  const lineTension = Math.max(8, Math.min(100, state.lineTension + (engaged ? cue.tensionGain : -cue.tensionRelease)));
+  const correctSide = !cue.needsRodSide || state.rodSide === cue.requiredRodSide;
+  const strained = lineTension > cue.safeMax; const slack = lineTension < cue.safeMin;
+  const wrong = engaged && !cue.engage || cue.needsRodSide && !correctSide || engaged && strained;
+  const mistake = wrong && !cue.grace && cue.elapsed % 3 === 0;
+  const productive = engaged && cue.engage && correctSide && !strained && !slack;
+  // Releasing during recovery manages pressure; it is not a missed input.
+  const loss = mistake ? cue.needsRodSide && !correctSide ? 2 : 3 : 0;
+  const progress = Math.max(0, Math.min(100, state.interactionProgress + (productive ? cue.gain : 0) - loss));
+  const mistakes = state.interactionMistakes + (mistake ? 1 : 0);
+  const lineResolved = progress >= 100 && lineTension < 100;
+  const next = { ...state, anglingBeat: state.anglingBeat + 1, lineTurn: state.lineTurn + 1, lineTension,
+    interactionProgress: progress, interactionMistakes: mistakes, lineResolved,
+    lineQuality: state.lineQuality + (productive ? 1 : 0), fishDistance: Math.max(0, Math.ceil((100 - progress) / 10)),
+    fishStamina: Math.max(0, Math.ceil((100 - progress) / 20)),
+    fieldcraft: state.fieldcraft + (lineResolved ? techniqueImprovement(state, mistakes) : 0) };
+  const upcoming = getSkillFishingCue(next, venue)!;
+  return { ...next, fightPhase: upcoming.engage ? "rest" : "run", phaseProgress: upcoming.elapsed,
+    fightMessage: lineTension >= 100 ? "The line broke under excessive pressure. Release earlier and read the pressure band."
+      : lineResolved ? "The fish is alongside. The crew is ready for the handling decision."
+      : !correctSide && cue.needsRodSide ? `The fish is turning toward ${cue.coverSide} cover. Select rod ${cue.requiredRodSide}.`
+      : strained ? "Pressure is strained. Release until it settles into the controlled band."
+      : slack && cue.engage ? "Contact is light. Pulse the reel to rebuild controlled pressure."
+      : upcoming.actionLabel };
+}
+
 export function advanceInteraction(state: ExpeditionState, engaged: boolean): ExpeditionState {
   const venue = getVenue(state);
   if (!venue || state.stage !== "cast" || !state.encounterId || state.lineResolved || hasLostFish(state)) return state;
   if (needsSnagApproach(state, venue)) return state;
   const kind = getInteractionKind(state, venue);
   if (kind !== "fish") return advanceNonfishInteraction(state, engaged, kind);
+  if (getSkillFishingCue(state, venue)) return advanceSkillFishing(state, engaged, venue);
   if (getAnglingWindow(state, venue)) return advancePilotAngling(state, engaged, venue);
 
   const activeFish = isActiveFishFight(state, venue);
@@ -384,6 +435,15 @@ export function advanceAssistedInteraction(state: ExpeditionState): ExpeditionSt
   if (state.stage !== "cast" || !state.encounterId || state.lineResolved) return state;
   const venue = getVenue(state);
   if (!venue || needsSnagApproach(state, venue)) return state;
+  const skill = getSkillFishingCue(state, venue);
+  if (skill) {
+    let current = { ...state, castUsedAssistance: true };
+    for (let tick = 0; tick < skill.remaining && !current.lineResolved && !hasLostFish(current); tick++) {
+      const input = getRecommendedFishingInput(current, venue);
+      current = advanceInteraction(setRodSide(current, input.rodSide), input.engaged);
+    }
+    return current;
+  }
   const window = getAnglingWindow(state, venue);
   if (window) {
     let current = { ...state, castUsedAssistance: true };
@@ -413,6 +473,8 @@ function expectedRunAction(state: ExpeditionState, venue: Venue): LineAction {
 export function getRecommendedLineAction(state: ExpeditionState): LineAction {
   const venue = getVenue(state);
   if (!venue || !state.encounterId) return "hold";
+  const skill = getSkillFishingCue(state, venue);
+  if (skill) return getRecommendedFishingInput(state, venue).engaged ? skill.id === "cover" ? "hold" : "reel" : "give";
   const window = getAnglingWindow(state, venue);
   if (window) return window.engage ? window.id === 'cover' ? 'hold' : 'reel' : 'give';
   if (!isActiveFishFight(state, venue)) return needsSnagApproach(state, venue) ? "give" : getRecommendedEngagement(state) ? "hold" : "give";
@@ -497,7 +559,7 @@ function manageFishFight(state: ExpeditionState, action: LineAction, venue: Venu
 export function manageLine(state: ExpeditionState, action: LineAction): ExpeditionState {
   const venue = getVenue(state);
   if (!venue || state.stage !== "cast" || !state.encounterId || state.lineResolved) return state;
-  if (getAnglingWindow(state, venue)) {
+  if (getSkillFishingCue(state, venue) || getAnglingWindow(state, venue)) {
     const next = advanceInteraction(state, action !== 'give');
     return next === state ? state : { ...next, lineActions: [...state.lineActions, action] };
   }
@@ -559,7 +621,7 @@ export function handleEncounter(state: ExpeditionState, handlingId: string): Exp
 
 export function continueExpedition(state: ExpeditionState): ExpeditionState {
   if (state.stage !== "journal" || state.castAttempts >= MAX_CAST_ATTEMPTS) return state;
-  return { ...state, anglingRules: "classic", anglingBeat: 0, stage: "gear", encounterId: null, castPower: null, castAccuracy: 0, castUsedAssistance: false, lineTurn: 0, lineTension: 48, lineActions: [], snagApproach: "unassessed", lineQuality: 0, lineResolved: false, fishDistance: 0, fishMaxDistance: 0, fishStamina: 0, fightPhase: "run", phaseProgress: 0, fightMessage: "", interactionProgress: 0, interactionMistakes: 0, handlingId: null };
+  return { ...state, anglingRules: "classic", anglingBeat: 0, rodSide: "center", stage: "gear", encounterId: null, castPower: null, castAccuracy: 0, castUsedAssistance: false, lineTurn: 0, lineTension: 48, lineActions: [], snagApproach: "unassessed", lineQuality: 0, lineResolved: false, fishDistance: 0, fishMaxDistance: 0, fishStamina: 0, fightPhase: "run", phaseProgress: 0, fightMessage: "", interactionProgress: 0, interactionMistakes: 0, handlingId: null };
 }
 
 export function beginDebrief(state: ExpeditionState): ExpeditionState {

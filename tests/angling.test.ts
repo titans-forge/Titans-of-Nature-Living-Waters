@@ -1,7 +1,8 @@
+import { legacyCastLine as castLine } from './helpers/fishing';
 import { describe, expect, it } from 'vitest';
 import { venues, venueById } from '../src/data/venues';
 import { getAnglingWindow, getAnglingPose } from '../src/game/angling';
-import { advanceAssistedInteraction, advanceInteraction, askQuestion, beginQuestions, castLine, createInitialState,
+import { advanceAssistedInteraction, advanceInteraction, askQuestion, beginQuestions,  createInitialState,
   finishGear, finishQuestions, getRecommendedEngagement, hasLostFish, retryFish, selectGear, selectHabitat, selectVenue } from '../src/game/engine';
 import { parseExpedition, serializeExpedition } from '../src/game/save';
 import type { ExpeditionState } from '../src/types';

@@ -60,14 +60,14 @@ describe('evidence review save integrity', () => {
     expect(getProjectEvidenceStatus(reviewed, question.id)).toMatchObject({ attempted: true, supported: false });
   });
 
-  it.each(['sample-limits', 'population-proof', 'whole-route-proof'])('preserves schema 12 first answers and stable links for contextual %s choices', limitationId => {
+  it.each(['sample-limits', 'population-proof', 'whole-route-proof'])('preserves schema 13 first answers and stable links for contextual %s choices', limitationId => {
     const question = getLearningQuestion('project:floods')!;
     const initial = recordLearningAnswer(paired(), question.id, 'area');
     const reviewed = recordLearningRevision(initial, question.id, question.correctId, [1, 2], limitationId);
     const parsed = parseExpedition(serializeExpedition(reviewed));
     expect(parsed).toMatchObject({ ok: true, migrated: false });
     if (!parsed.ok) return;
-    expect(parsed.state.version).toBe(12);
+    expect(parsed.state.version).toBe(13);
     expect(parsed.state.learningAnswers).toEqual(initial.learningAnswers);
     expect(parsed.state.learningRevisions[0]).toMatchObject({ questionId: question.id, answerId: question.correctId, evidenceIds: [1, 2], limitationId });
     expect(getProjectEvidenceStatus(parsed.state, question.id).supported).toBe(limitationId === correctLimitationId);
@@ -89,14 +89,14 @@ describe('evidence review save integrity', () => {
     const parsed = parseExpedition(JSON.stringify(playedV10));
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
-    expect(parsed.state).toEqual({ ...playedV10.state, version: 12, learningRevisions: [], anglingRules: 'classic', anglingBeat: 0 });
+    expect(parsed.state).toEqual({ ...playedV10.state, version: 13, learningRevisions: [], anglingRules: 'classic', anglingBeat: 0, rodSide: 'center' });
     expect(parsed.warnings.join(' ')).toContain('first answers');
     expect(parseExpedition(serializeExpedition(parsed.state))).toMatchObject({ ok: true, migrated: false });
   });
 
   it('preserves a historical correct project answer as answered with unlinked evidence', () => {
     const state = paired('project:migration');
-    const { learningRevisions: _reviews, anglingRules: _rules, anglingBeat: _beat, ...old } = recordLearningAnswer(state, 'project:migration', 'access');
+    const { learningRevisions: _reviews, anglingRules: _rules, anglingBeat: _beat, rodSide: _side, ...old } = recordLearningAnswer(state, 'project:migration', 'access');
     const parsed = parseExpedition(JSON.stringify({ ...old, version: 10 }));
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;

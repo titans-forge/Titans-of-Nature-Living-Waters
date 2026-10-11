@@ -2,12 +2,12 @@ import { createInitialState } from './engine';
 import { parseExpedition, serializeExpedition } from './save';
 import type { ExpeditionState } from '../types';
 
-export const SAVE_KEY = 'living-waters-save-v12';
-export const MIGRATION_BACKUP_KEY = 'living-waters-before-v12';
-export const REPLACEMENT_BACKUP_KEY = 'living-waters-replaced-v12';
-export const MEMORY_RECOVERY_KEY = 'living-waters-memory-recovery-v12';
-export const RECOVERY_POINTER_KEY = 'living-waters-latest-recovery-v12';
-export const LEGACY_SAVE_KEYS = ['living-waters-save-v11', 'living-waters-save-v10', 'living-waters-save-v9', 'living-waters-save-v8', 'living-waters-save-v7', 'living-waters-save-v6', 'living-waters-save-v5', 'living-waters-save-v4', 'living-waters-save-v3', 'living-waters-save-v2', 'living-waters-save-v1', 'living-waters-amazon-v1'];
+export const SAVE_KEY = 'living-waters-save-v13';
+export const MIGRATION_BACKUP_KEY = 'living-waters-before-v13';
+export const REPLACEMENT_BACKUP_KEY = 'living-waters-replaced-v13';
+export const MEMORY_RECOVERY_KEY = 'living-waters-memory-recovery-v13';
+export const RECOVERY_POINTER_KEY = 'living-waters-latest-recovery-v13';
+export const LEGACY_SAVE_KEYS = ['living-waters-save-v12', 'living-waters-save-v11', 'living-waters-save-v10', 'living-waters-save-v9', 'living-waters-save-v8', 'living-waters-save-v7', 'living-waters-save-v6', 'living-waters-save-v5', 'living-waters-save-v4', 'living-waters-save-v3', 'living-waters-save-v2', 'living-waters-save-v1', 'living-waters-amazon-v1'];
 export interface SaveStorage { getItem(key: string): string | null; setItem(key: string, value: string): void }
 export interface StoredExpedition { state: ExpeditionState; notice: string; blocked: boolean; raw: string | null }
 export type ExpeditionWriteResult = { ok: true; raw: string } | { ok: false; reason: 'conflict' | 'invalid' | 'unavailable' };
@@ -121,7 +121,7 @@ export function getExpeditionBackupRaw(provided?: SaveStorage): string | null {
     const store = storage(provided); const latestKey = store.getItem(RECOVERY_POINTER_KEY);
     const latest = latestKey === MEMORY_RECOVERY_KEY || latestKey === REPLACEMENT_BACKUP_KEY ? store.getItem(latestKey) : null;
     // Honor each older version's own pointer before its fallback copies.
-    const previousCopies = [11, 10, 9].flatMap(version => {
+    const previousCopies = [12, 11, 10, 9].flatMap(version => {
       const memory = `living-waters-memory-recovery-v${version}`;
       const replaced = `living-waters-replaced-v${version}`;
       const pointer = store.getItem(`living-waters-latest-recovery-v${version}`);

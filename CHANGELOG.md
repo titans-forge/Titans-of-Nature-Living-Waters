@@ -1,3 +1,13 @@
+# Release 1.15.0 — October 11, 2026
+
+- Underwater fights across fourteen angling waters, with species-aware turning and distinct burst, pelagic, undulatory, bottom, flatfish and steady movement families.
+- Thirteen new habitat plates, fourteen fish atlases and 123 new side/oblique/front frames for 41 additional fish encounter IDs.
+- Pressure-aware reel pulses and latched rod-side decisions at visible cover. Continuous holding can break the line; untimed assistance remains available.
+- Current behavior cues agree across the heading and reel controls; short-pulse coaching and keyboard practice recover correctly after pause.
+- Save schema13 migrates older journeys conservatively with recovery backups and preserves active classic/v1 fights.
+- Compact controls, native file-import recovery, updated browser regression specification and a browser icon.
+- Existing license terms, legacy MIT grants and separate media notices preserved.
+
 # 1.14.0 — October 9, 2026 (local oblique artwork and compact controls, unpublished)
 
 - Four fish turn through genuine profile, three-quarter and frontal artwork with proportional framing and their own mouth anchors. Missing images retain an available view or vector fallback. The saved-clock simulation remains unchanged.

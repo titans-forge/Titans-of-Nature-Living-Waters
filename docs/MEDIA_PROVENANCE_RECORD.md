@@ -1,4 +1,24 @@
+# October 11, 2026 publication authorization
+
+The owner instructed: “So publish it on GitHub and itch.” This explicitly authorizes redistribution of the accepted all-water underwater candidate and its associated newly generated assets as release 1.15.0 on those existing project pages. Dated generation records below remain historical records; earlier local-only statements describe their status at creation. This release authorization is recorded separately from earlier account-holder confirmations and does not invent a private receipt or model identity.
+
 # Media Provenance Record
+
+## October 10, 2026 all-water underwater rollout
+
+This separate local batch contains 13 new submerged habitat plates and 14 transparent fish atlases. Together with the retained Amazon plate, underwater habitat artwork covers fourteen angling waters. The atlases add 41 authored fish encounter IDs with three views each (123 frames); four earlier three-view fish families remain intact. Galapagos camera/acoustic work and other non-angling methods remain outside fishing fights.
+
+`UNDERWATER_HABITAT_V2_MANIFEST.json` binds every new habitat's exact original prompt, absolute PNG output path, source/game SHA-256 hashes, game-file size, dimensions, provider (`built-in image_gen`), mode (`generate`) and processing. `UNDERWATER_FISH_ART_V2_MANIFEST.json` binds every accepted atlas output, all 123 runtime source rectangles and mouth anchors, preserved alpha, prompts and targeted edit history. Fish generation history retains both rejected and chosen outputs when an anatomy or spacing correction was made. Initial generations used no input references; each built-in edit records the earlier generated image supplied as its reference. No third-party photograph was supplied as an image input.
+
+The provider is OpenAI's built-in image capability in Codex. Its exact model was not reported by the tool and is not inferred from visual quality. Source PNGs remain retained locally. Pillow performed full-frame WebP encoding only; source alpha was preserved exactly. Read-only alpha bounds and visual measurements define atlas display rectangles and mouth anchors; they do not add, repaint, erase or composite generated pixels. Morphology-source checks in the fish manifest support review rather than certify a specimen or measured movement.
+
+The habitat and fish images are educational game reconstructions. Enhanced underwater visibility, an open swimming corridor and the animated camera are presentation choices. They are not documentary field captures, surveyed substrate maps or scientific encounter evidence. The Lake Holiday generation prompt erroneously names Illinois although the game is set in Virginia. That exact prompt remains unchanged in the record; the accepted plate is generic freshwater woody-cover scenery, with no claim to a specific field site or verified geographic location.
+
+The provenance gate checks separately dated batch inventories, final hashes/sizes, local source PNG hashes, edit references and exact runtime frame/plate metadata. It also requires every physical encounter/sprite/underwater WebP to belong to its own recorded batch. Passing that integrity check does not publish a release, confer scientific accuracy, create an account receipt or extend an earlier owner redistribution confirmation to this new batch. This rollout remains local and unpublished.
+
+## October 10, 2026 Amazon underwater prototype
+
+One submerged flooded-forest habitat was generated with OpenAI's built-in image capability in Codex for the owner-requested Amazon prototype. `AMAZON_UNDERWATER_MANIFEST.json` records the exact prompt, original output, dimensions and original/game-file SHA-256 hashes. No reference images were supplied. The tool did not report an exact model name. The source PNG is retained locally; Pillow encoded the complete frame as WebP without altering the composition. This is an educational game reconstruction, not documentary evidence, and remains unpublished. Earlier redistribution confirmations and account receipts are not extended to this batch.
 
 Complete this owner record before publicly redistributing any habitat panorama or guide portrait. Do not infer a provider from visual style or file metadata.
 

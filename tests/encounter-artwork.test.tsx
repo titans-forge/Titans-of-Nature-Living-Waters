@@ -4,11 +4,12 @@ import { Handling, Debrief } from '../src/App';
 import { FishingScene } from '../src/components/FishingScene';
 import { getEncounterArtwork } from '../src/data/encounterArtwork';
 import { liveFishSpriteByEncounterId } from '../src/data/liveFishSprites';
+import { underwaterFishByEncounterId } from '../src/data/underwaterFish';
 import { venues } from '../src/data/venues';
-import { castLine, createInitialState, getIdealCastPower } from '../src/game/engine';
-import { getAnglingWindow } from '../src/game/angling';
-import { getLiveFishMotion } from '../src/game/fishMotion';
+import { createInitialState, getIdealCastPower } from '../src/game/engine';
+import { getUnderwaterFishFrameWidth, getUnderwaterFishPose, getUnderwaterLine, getUnderwaterMeshPoint } from '../src/game/underwaterMotion';
 import type { ExpeditionState } from '../src/types';
+import { legacyCastLine } from './helpers/fishing';
 
 const noChange = () => { throw new Error('Artwork rendering must not change the journey'); };
 const routes = [
@@ -20,7 +21,7 @@ const routes = [
 ];
 function prepare(route: typeof routes[number]): ExpeditionState {
   const state: ExpeditionState = { ...createInitialState(), stage: 'habitat', venueId: route.venueId, zoneId: route.habitat, gearId: route.gear, seasonId: route.season, assistMode: true };
-  const cast = castLine(state, getIdealCastPower(state));
+  const cast = legacyCastLine(state, getIdealCastPower(state));
   expect(cast.encounterId).toBe(route.subject);
   return cast;
 }
@@ -77,7 +78,7 @@ describe('contextual encounter art', () => {
   it('uses honest habitat fallback for mismatched completed legacy routes and retains existing fish art', () => {
     const amazon = venues.find(item => item.id === 'amazon')!;
     const state: ExpeditionState = { ...createInitialState(), stage: 'habitat', venueId: 'amazon', gearId: 'surface', zoneId: 'roots', seasonId: 'rising-water' };
-    const cast = castLine(state, getIdealCastPower(state));
+    const cast = legacyCastLine(state, getIdealCastPower(state));
     expect(getEncounterArtwork(cast, amazon)?.purpose).toBe('waterline');
     const oldRoute = { ...cast, lineResolved: true, encounterId: 'river-turtle', handlingId: 'pliers-release', stage: 'debrief' as const, debriefChoice: 'identity-only' as const };
     expect(getEncounterArtwork(oldRoute, amazon)).toBeNull();
@@ -88,26 +89,38 @@ describe('contextual encounter art', () => {
 });
 
 describe('live fish sprite framing', () => {
-  it('preserves natural image aspect, saved pose and a silhouette until decode', () => {
+  it('uses preserved fish artwork and its own mouth anchors in submerged Florida fights', () => {
     const starts = [
-      { ...createInitialState(), stage: 'habitat' as const, venueId: 'amazon', gearId: 'surface', zoneId: 'roots', seasonId: 'rising-water' },
       { ...createInitialState(), stage: 'habitat' as const, venueId: 'florida-bay', gearId: 'roots', zoneId: 'creek', seasonId: 'spring-exchange' },
       { ...createInitialState(), stage: 'habitat' as const, venueId: 'florida-bay', gearId: 'flat', zoneId: 'seagrass', seasonId: 'dry-salinity' },
     ];
     for (const start of starts) {
-      const state = { ...castLine(start, getIdealCastPower(start)), anglingBeat: 11, interactionProgress: 36 };
-      const venue = venues.find(item => item.id === state.venueId)!; const window = getAnglingWindow(state, venue)!;
-      const pose = getLiveFishMotion(state, window.species, window, getAnglingWindow({ ...state, anglingBeat: Math.max(0, state.anglingBeat - window.elapsed - 1) }, venue));
-      const sprite = liveFishSpriteByEncounterId[window.species];
+      const state = { ...legacyCastLine(start, getIdealCastPower(start)), anglingBeat: 11, interactionProgress: 36 };
+      const venue = venues.find(item => item.id === state.venueId)!;
+      const pose = getUnderwaterFishPose(state, venue), before = JSON.stringify(state);
+      const fish = underwaterFishByEncounterId[state.encounterId!];
+      const sprite = liveFishSpriteByEncounterId[state.encounterId as 'common-snook' | 'spotted-seatrout'];
       const html = renderToStaticMarkup(<FishingScene state={state} venue={venue} paused={false} engaged/>);
       const paused = renderToStaticMarkup(<FishingScene state={state} venue={venue} paused/>);
-      expect(html).toContain(sprite.src); expect(html).toContain('angling-live-fish__fallback');
-      expect(html).toContain(`left:${pose.x}%;top:${pose.y}%;aspect-ratio:${sprite.aspectRatio}`);
-      expect(paused).toContain(`left:${pose.x}%;top:${pose.y}%;aspect-ratio:${sprite.aspectRatio}`);
-      expect(html).toContain(`transform-origin:${sprite.mouthX}% ${sprite.mouthY}%`);
-      expect(html).toContain('decoding="async" draggable="false"');
+      expect(fish.side!.src).toBe(sprite.src); expect(fish.side!.aspectRatio).toBe(sprite.aspectRatio);
+      expect(fish.oblique!.src).toBe(sprite.oblique.src); expect(fish.turn!.src).toBe(sprite.turn.src);
+      for (const markup of [html, paused]) {
+        expect(markup).toContain(`data-mouth-x="${pose.x}" data-mouth-y="${pose.y}"`);
+        expect(markup).toContain(`data-species="${state.encounterId}"`); expect(markup).toContain('underwater-fight-canvas');
+        expect(markup).toContain('data-motion-source="saved-encounter"');
+        expect(markup).not.toContain(venue.habitatImage); expect(markup).not.toContain('landed-reveal');
+      }
+      const width = getUnderwaterFishFrameWidth(pose, 390, 350);
+      expect(width).toBeGreaterThan(0);
+      for (const frame of [fish.side!, fish.oblique!, fish.turn!]) {
+        const frameWidth = width * frame.widthScale, frameHeight = frameWidth / frame.aspectRatio;
+        expect(frameWidth / frameHeight).toBeCloseTo(frame.aspectRatio);
+        expect(getUnderwaterMeshPoint(frame.mouthX / 100, frame.mouthY / 100, frameWidth, frameHeight, frame.mouthX, frame.mouthY, pose)).toEqual({ x: 0, y: 0 });
+      }
+      expect(getUnderwaterLine(pose, 390, 350)!.end).toEqual({ x: pose.x * 390 / 100, y: pose.y * 350 / 100 });
       expect(html).not.toContain('angling-boat'); expect(html).not.toContain('angling-crew');
-      expect(html).not.toContain('angling-cover'); expect(html).not.toContain('angling-grass');
+      expect(html).not.toContain('angling-live-fish__piece'); expect(html).not.toContain('class="fish-shadow"');
+      expect(JSON.stringify(state)).toBe(before);
     }
   });
 });

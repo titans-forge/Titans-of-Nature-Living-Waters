@@ -1,9 +1,10 @@
+import { legacyCastLine as castLine } from './helpers/fishing';
 import { describe, expect, it } from 'vitest';
 import reviewedV11 from './fixtures/v11-reviewed-journey.json';
 import midcastV11 from './fixtures/v11-midcast-reviewed-journey.json';
 import nextTickV11 from './fixtures/v11-midcast-next-tick.json';
 import { venueById } from '../src/data/venues';
-import { advanceInteraction, askQuestion, beginDebrief, beginQuestions, castLine, completeDebrief, createInitialState, finishGear, finishQuestions, getCurrentEncounter, getRecommendedEngagement, handleEncounter, revealEncounter, selectGear, selectHabitat, selectVenue } from '../src/game/engine';
+import { advanceInteraction, askQuestion, beginDebrief, beginQuestions,  completeDebrief, createInitialState, finishGear, finishQuestions, getCurrentEncounter, getRecommendedEngagement, handleEncounter, revealEncounter, selectGear, selectHabitat, selectVenue } from '../src/game/engine';
 import { getAnglingWindow } from '../src/game/angling';
 import { parseExpedition, serializeExpedition, validateExpedition } from '../src/game/save';
 import { getExpeditionBackupRaw, LEGACY_SAVE_KEYS, loadStoredExpedition, MIGRATION_BACKUP_KEY, SAVE_KEY, saveStoredExpeditionIfUnchanged } from '../src/game/storage';
@@ -11,7 +12,7 @@ import type { ExpeditionState } from '../src/types';
 
 // reviewedV11 is an unchanged real browser export. Midcast and nextTick were
 // produced by the retained pre-pilot schema11 engine, not relabeled new states.
-const migrated = (state: typeof reviewedV11.state | typeof midcastV11.state) => ({ ...state, version: 12, anglingRules: 'classic', anglingBeat: 0 });
+const migrated = (state: typeof reviewedV11.state | typeof midcastV11.state) => ({ ...state, version: 13, anglingRules: 'classic', anglingBeat: 0, rodSide: 'center' });
 function nativeCast(venueId: string, gearId: string, habitatId: string, seasonIndex = 0) {
   const venue = venueById[venueId];
   let state = beginQuestions(selectVenue({ ...createInitialState(), venueVisitCounts: { [venueId]: seasonIndex } }, venueId));
@@ -30,7 +31,7 @@ function storage(values = new Map<string, string>()) {
   return { values, writes, getItem: (key: string) => values.get(key) ?? null, setItem: (key: string, value: string) => { writes.push(key); values.set(key, value); } };
 }
 
-describe('schema12 preserves genuine schema11 journeys', () => {
+describe('schema13 preserves genuine schema11 journeys', () => {
   it.each([reviewedV11, midcastV11])('preserves every earlier field, including first answers, latest review and field notes', fixture => {
     const original = structuredClone(fixture);
     const parsed = parseExpedition(JSON.stringify(fixture));
@@ -38,7 +39,7 @@ describe('schema12 preserves genuine schema11 journeys', () => {
     if (!parsed.ok) return;
     expect(parsed).toMatchObject({ migrated: true, state: migrated(fixture.state) });
     expect(parsed.state).toEqual(migrated(fixture.state));
-    expect(parsed.warnings).toContain('Existing encounters keep their original controls; new pilot casts use behavior-specific windows.');
+    expect(parsed.warnings).toContain('Existing encounters keep their original controls; new angling casts use pressure and rod-angle decisions.');
     expect(parseExpedition(serializeExpedition(parsed.state))).toMatchObject({ ok: true, migrated: false, state: parsed.state });
     expect(fixture).toEqual(original);
   });
@@ -60,11 +61,11 @@ describe('schema12 preserves genuine schema11 journeys', () => {
     expect(parseExpedition(JSON.stringify({ ...reviewedV11, state: missing })).ok).toBe(false);
   });
 
-  it('preserves exact prior bytes before writing the version12 key, leaving the old key intact', () => {
+  it('preserves exact prior bytes before writing the version13 key, leaving the old key intact', () => {
     const raw = JSON.stringify(midcastV11, null, 2);
     const memory = storage(new Map([['living-waters-save-v11', raw]]));
-    expect(LEGACY_SAVE_KEYS[0]).toBe('living-waters-save-v11');
-    expect(SAVE_KEY).toBe('living-waters-save-v12');
+    expect(LEGACY_SAVE_KEYS[0]).toBe('living-waters-save-v12');
+    expect(SAVE_KEY).toBe('living-waters-save-v13');
     const loaded = loadStoredExpedition(memory);
     expect(loaded).toMatchObject({ blocked: false, raw, state: migrated(midcastV11.state) });
     expect(memory.values.get(MIGRATION_BACKUP_KEY)).toBe(raw);
@@ -86,7 +87,7 @@ describe('schema12 preserves genuine schema11 journeys', () => {
   });
 });
 
-describe('schema12 pilot rules are bounded and internally consistent', () => {
+describe('schema13 pilot rules are bounded and internally consistent', () => {
   it.each([
     ['amazon', 'surface', 'roots', 'peacock-bass', 0],
     ['florida-bay', 'roots', 'mangroves', 'common-snook', 0],

@@ -1,3 +1,4 @@
+import { advanceRecommendedInteraction } from './helpers/fishing';
 import { describe, expect, it } from 'vitest';
 import { venues } from '../src/data/venues';
 import { advanceInteraction, askQuestion, beginQuestions, castLine, createInitialState, finishGear, finishQuestions, getFightProfile, handleEncounter, revealEncounter, selectGear, selectHabitat, selectVenue } from '../src/game/engine';
@@ -22,8 +23,8 @@ describe('giant fish expeditions',()=>{
  });
  it.each([['amazon','arapaima-kit','roots','arapaima'],['danube','research-cradle','navigation','beluga-research']])('completes and saves %s giant fish handling', (id,gear,habitat,fish)=>{
   let s=cast(id,gear,habitat);const v=venues.find(v=>v.id===id)!;
-  expect(getFightProfile(s).id).toBe(fish==='arapaima'?'burst':'bottom');
-  for(let i=0;i<220&&!s.lineResolved;i++)s=advanceInteraction(s,s.fightPhase==='rest');
+  expect(s.anglingRules).toBe('habitat-v2');
+  for(let i=0;i<220&&!s.lineResolved;i++)s=advanceRecommendedInteraction(s);
   expect(s.lineResolved).toBe(true);
   s=handleEncounter(revealEncounter(s),v.encounters[fish].handling.find(h=>h.safe)!.id);
   expect(s.journalIds).toContain(`${id}:${fish}`);

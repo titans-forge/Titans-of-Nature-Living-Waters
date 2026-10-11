@@ -8,7 +8,7 @@ function store() {
 }
 function legacyRaw() {
   const value = { ...createInitialState(), version: 7 } as Record<string, unknown>;
-  for (const key of ['observations', 'learningAnswers', 'expeditionNumber', 'castUsedAssistance', 'snagApproach', 'learningRevisions', 'anglingRules', 'anglingBeat']) delete value[key];
+  for (const key of ['observations', 'learningAnswers', 'expeditionNumber', 'castUsedAssistance', 'snagApproach', 'learningRevisions', 'anglingRules', 'anglingBeat', 'rodSide']) delete value[key];
   return JSON.stringify(value);
 }
 describe('recoverable browser storage', () => {
@@ -45,7 +45,7 @@ describe('recoverable browser storage', () => {
     expect(memory.values.get(MIGRATION_BACKUP_KEY)).toBe('earlier original');
   });
   it('keeps usable migrated state and original if creating the backup fails', () => {
-    const memory = store(); const raw = JSON.stringify({ ...JSON.parse(legacyRaw()), ...selectVenue(createInitialState(), 'amazon'), version: 7, observations: undefined, learningAnswers: undefined, expeditionNumber: undefined, castUsedAssistance: undefined, snagApproach: undefined, learningRevisions: undefined, anglingRules: undefined, anglingBeat: undefined }); memory.values.set(LEGACY_SAVE_KEYS[0], raw);
+    const memory = store(); const raw = JSON.stringify({ ...JSON.parse(legacyRaw()), ...selectVenue(createInitialState(), 'amazon'), version: 7, observations: undefined, learningAnswers: undefined, expeditionNumber: undefined, castUsedAssistance: undefined, snagApproach: undefined, learningRevisions: undefined, anglingRules: undefined, anglingBeat: undefined, rodSide: undefined }); memory.values.set(LEGACY_SAVE_KEYS[0], raw);
     const denied = { getItem: memory.getItem, setItem: () => { throw new Error('quota'); } };
     const loaded = loadStoredExpedition(denied);
     expect(loaded).toMatchObject({ blocked: true, raw }); expect(loaded.state.version).toBe(SAVE_VERSION); expect(loaded.state.stage).toBe('arrival'); expect(loaded.state.venueId).toBe('amazon');
@@ -180,7 +180,7 @@ describe('conflicting journey writers', () => {
   it('migrates a v8 exported envelope before its first guarded v9 save and keeps its exact original', () => {
     const memory = store();
     const envelope = JSON.parse(serializeExpedition(createInitialState()));
-    envelope.version = 8; envelope.state.version = 8; delete envelope.state.snagApproach; delete envelope.state.learningRevisions; delete envelope.state.anglingRules; delete envelope.state.anglingBeat;
+    envelope.version = 8; envelope.state.version = 8; delete envelope.state.snagApproach; delete envelope.state.learningRevisions; delete envelope.state.anglingRules; delete envelope.state.anglingBeat; delete envelope.state.rodSide;
     const original = JSON.stringify(envelope); memory.values.set(LEGACY_SAVE_KEYS[0], original);
     const loaded = loadStoredExpedition(memory);
     expect(loaded).toMatchObject({ blocked: false, raw: original, state: { version: SAVE_VERSION } });

@@ -7,6 +7,9 @@ import { getEncounterArtwork } from '../data/encounterArtwork';
 import { liveFishSpriteByEncounterId, type LiveFishSpecies } from '../data/liveFishSprites';
 import { getAnglingCue, getAnglingPose, getAnglingWindow } from '../game/angling';
 import { getDecodedLiveFishView, getLiveFishMotion, getLiveFishTransform, getLiveFishView, type LiveFishMotion } from '../game/fishMotion';
+import { UnderwaterFishingScene } from './UnderwaterFishingScene';
+import { supportsUnderwaterFishing } from '../game/underwaterMotion';
+import { underwaterHabitatByVenue } from '../data/underwaterHabitats';
 
 function PilotFish({ species }: { species: LiveFishSpecies }) {
   return <g className={`angling-fish angling-fish--${species}`} data-species={species}>
@@ -69,7 +72,13 @@ function LiveFish({ species, pose }: { species: LiveFishSpecies; pose: LiveFishM
 }
 
 /** State-driven illustration: never advances the simulation or changes a record. */
-export function FishingScene({ state, venue, paused, engaged = false }: { state: ExpeditionState; venue: Venue; paused: boolean; engaged?: boolean }) {
+export function FishingScene({ state, venue, paused: scenePaused, engaged = false, ready = true }: { state: ExpeditionState; venue: Venue; paused: boolean; engaged?: boolean; ready?: boolean }) {
+  if (supportsUnderwaterFishing(state, venue)) {
+    const habitat = underwaterHabitatByVenue[venue.id];
+    const position = venue.habitats.find(item => item.id === state.zoneId)?.position;
+    return <UnderwaterFishingScene state={state} venue={venue} paused={scenePaused} engaged={engaged} ready={ready} habitatSrc={habitat?.src} habitatTint={habitat?.tint} habitatFocus={position === 'left' ? .2 : position === 'right' ? .8 : .5}/>;
+  }
+  const paused = scenePaused || !ready;
   const encounter = getCurrentEncounter(state)!;
   const kind = getInteractionKind(state, venue);
   const presentation = getInteractionPresentation(kind);
