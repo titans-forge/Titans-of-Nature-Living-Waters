@@ -223,7 +223,7 @@ describe('submerged fish geometry', () => {
         }
       }
     }
-  });
+  }, 30_000); // Exhaustive geometry sampling also runs on slower shared CI CPUs.
 
   it('keeps fish size continuous when the front-view yaw crosses zero near the right frame edge', () => {
     const saved = getAmazonUnderwaterPose(nativeCast(), amazon);

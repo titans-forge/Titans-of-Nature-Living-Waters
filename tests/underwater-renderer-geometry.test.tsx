@@ -123,7 +123,7 @@ describe('species-aware underwater rendering', () => {
         }
       }
     }
-  });
+  }, 30_000); // Exhaustive geometry sampling also runs on slower shared CI CPUs.
 
   it('keeps legacy clock, reload pose, landing, and species identity literal', () => {
     const venue = venueById['alaska-kelp'];
