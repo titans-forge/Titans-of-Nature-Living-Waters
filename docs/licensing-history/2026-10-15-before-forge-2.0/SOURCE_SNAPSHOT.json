@@ -1,0 +1,498 @@
+{
+  "schema": "forge_game_source_snapshot_v1",
+  "game": "Titans of Nature: Living Waters",
+  "selected_source_sha256": "bb10e690713b263885314ef5ade7f4a3de9463f7f1e73cca86886e8fcfacc6bd",
+  "runtime_files": [
+    {
+      "path": "index.html",
+      "sha256": "ae646cb7c506cf48c21fa75f7f96416dc760b86b732a10011bc1640ce7d463eb",
+      "bytes": 520
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "5a15c63e700cfef870b6faa1c1f2a57df856f9b183fd4e19b69e171fa90be5c6",
+      "bytes": 42524
+    },
+    {
+      "path": "src/assets/aiko-guide.webp",
+      "sha256": "b0c3797b8e6ef1f90717bd29694dfb3077106897845acf6727d72dbbcf465989",
+      "bytes": 69190
+    },
+    {
+      "path": "src/assets/alaska-kelp-coast.webp",
+      "sha256": "74bd68450e352f8cf3b579076b44a98b420ce5256432be2b6b96f1a955e76600",
+      "bytes": 226968
+    },
+    {
+      "path": "src/assets/amazon-floodplain.webp",
+      "sha256": "ada2b45e7caf1cd7e8b2c15fa79eba94372fde34d0bcd701e07e099eb9ece80d",
+      "bytes": 297636
+    },
+    {
+      "path": "src/assets/anjali-guide.webp",
+      "sha256": "8d59fbb73a3ca224c2e4b07423a0e5d04114d0612116bb908b6c88538e479042",
+      "bytes": 144142
+    },
+    {
+      "path": "src/assets/anya-guide.webp",
+      "sha256": "39ef86e2c187ec875373cabf735de6ee1464fb8b2be6af8e84d02474194a1c24",
+      "bytes": 132196
+    },
+    {
+      "path": "src/assets/catches/african-tigerfish.webp",
+      "sha256": "20d1806883ad6040428e9f982f49a83fb00943dd359070b417f2e58cc6ed85e5",
+      "bytes": 164684
+    },
+    {
+      "path": "src/assets/catches/arapaima.webp",
+      "sha256": "cff561f1300ae16b04c2b9482036b5a3490b30880bd44adbe86e854b18ae3c16",
+      "bytes": 531442
+    },
+    {
+      "path": "src/assets/catches/baikal-sturgeon.webp",
+      "sha256": "4ec1b076500bdaca36e8fa99af7b270a60fd8213a61e63001867466494982bd3",
+      "bytes": 128656
+    },
+    {
+      "path": "src/assets/catches/beluga-research.webp",
+      "sha256": "05d62ad567598abfb05a6a3837992f513bac0391e457415bcf3243c38856a357",
+      "bytes": 367958
+    },
+    {
+      "path": "src/assets/catches/bunni.webp",
+      "sha256": "c701a259d102c029f7bc4ce10dbbd8b93a4a2914d2362b03717561896ab90736",
+      "bytes": 286108
+    },
+    {
+      "path": "src/assets/catches/channel-catfish.webp",
+      "sha256": "59f60ea020ca8909d7c47ba7681fcee5670879ebe249d0d1207a05fe65d417e5",
+      "bytes": 177630
+    },
+    {
+      "path": "src/assets/catches/coho-salmon.webp",
+      "sha256": "9bc16c1ecfbd3d13496f14b6f0540f1caf8b70c87e15aeaca44876268607a137",
+      "bytes": 147240
+    },
+    {
+      "path": "src/assets/catches/common-snook.webp",
+      "sha256": "5aff8ebbe06238e8aa725da6078bc27c1fbdc85a0257f3bbb5ccda4523c04eae",
+      "bytes": 318156
+    },
+    {
+      "path": "src/assets/catches/coral-trout.webp",
+      "sha256": "458a350a96a2f5d8a7b13d06fda40cbc42d22f63423b12658440c90239310fe7",
+      "bytes": 243334
+    },
+    {
+      "path": "src/assets/catches/giant-snakehead.webp",
+      "sha256": "5d932d9b2ee73639303b32c39bb7857a134f21994097872d9805a645ef4e0a6c",
+      "bytes": 264202
+    },
+    {
+      "path": "src/assets/catches/giant-trevally.webp",
+      "sha256": "e4ab6b8d5172a7f5a07e99a5ebb966d7009d9739233be25050fab3694b560b67",
+      "bytes": 166068
+    },
+    {
+      "path": "src/assets/catches/goonch-catfish.webp",
+      "sha256": "750ca2b12a98b6816a394f7a0258b9c44784ad4eb71d563e74993b8fe09493bf",
+      "bytes": 149676
+    },
+    {
+      "path": "src/assets/catches/japanese-sea-bass.webp",
+      "sha256": "98f7bec4ff66a57136e91d54a20a07d27059d1d625e068dde08b42283f1be72e",
+      "bytes": 158026
+    },
+    {
+      "path": "src/assets/catches/largemouth-bass.webp",
+      "sha256": "6bae812e518072c3ff4707547fd00a5a14698c585bf1c0c172d0b40ee8657c90",
+      "bytes": 196014
+    },
+    {
+      "path": "src/assets/catches/mesopotamian-catfish.webp",
+      "sha256": "69b0efbfc94d748d62cee31f4e52c1aaf70b6d5594d4d44b38251d39f43ac30e",
+      "bytes": 170112
+    },
+    {
+      "path": "src/assets/catches/nile-perch.webp",
+      "sha256": "10c8397de9fe90265297c09ec34e9b72c4f01ee2eb66269388b3886256bebdf3",
+      "bytes": 156970
+    },
+    {
+      "path": "src/assets/catches/nile-tilapia.webp",
+      "sha256": "cc38c9a123fd3dd00045917a07e384bb837ee29d51f75074234e3e4304ca4364",
+      "bytes": 191574
+    },
+    {
+      "path": "src/assets/catches/northern-pike.webp",
+      "sha256": "3c90a5e5d61531b57f9d2775313b0e5035bd2a567079114c10295b78ea9e0407",
+      "bytes": 226336
+    },
+    {
+      "path": "src/assets/catches/pacific-halibut.webp",
+      "sha256": "c508bd9843bda25f830bf6b6eba513a2e3dd27d164f83a1229bf03a4202a8c07",
+      "bytes": 154836
+    },
+    {
+      "path": "src/assets/catches/peacock-bass.webp",
+      "sha256": "82f9e21ab1ee9107d7cd69f7f4bbd6d08da5f907eb04345a8b9b15ab21fd45c8",
+      "bytes": 356270
+    },
+    {
+      "path": "src/assets/catches/red-seabream.webp",
+      "sha256": "1eae684192846849a909a73e1e6e09528cb1799d849953888b143da4e45f43e8",
+      "bytes": 202054
+    },
+    {
+      "path": "src/assets/catches/rohu.webp",
+      "sha256": "daa0c43ef0c564983cd3cd05ed9f2d9857dbf31763a85f5b1e22fca6a3c055b4",
+      "bytes": 264898
+    },
+    {
+      "path": "src/assets/catches/silver-arowana.webp",
+      "sha256": "02634b85fa6a3bcb6601b43ba0ca1532ee30d38e51140a5fd12f45b509756905",
+      "bytes": 202536
+    },
+    {
+      "path": "src/assets/catches/spotted-sea-bass.webp",
+      "sha256": "a7121f000d36dd3d80d6f3729bd5ab92630fd97a13d1e15b6143499675ca76f8",
+      "bytes": 134844
+    },
+    {
+      "path": "src/assets/danube-iron-gates.webp",
+      "sha256": "565de29ae86ba44ba9f8511993bdf67e877b9f9110a5e0229ad6f722fecf789d",
+      "bytes": 198148
+    },
+    {
+      "path": "src/assets/elena-guide.webp",
+      "sha256": "8f7db127f94610c6a62f5e05270196227fb98c705d8c2a3411a10dcace392896",
+      "bytes": 96620
+    },
+    {
+      "path": "src/assets/euphrates-marsh.webp",
+      "sha256": "34674019b8e32f83a8502eee469c57e531c41400703b83ba84d40ba6c13904b5",
+      "bytes": 226040
+    },
+    {
+      "path": "src/assets/florida-bay.webp",
+      "sha256": "852732e31cccea4ca6848521e20b61fac931e2838f7287cf4f3f4f73f7d4cc27",
+      "bytes": 380374
+    },
+    {
+      "path": "src/assets/galapagos-bolivar-channel.webp",
+      "sha256": "6ab39681641afd44acd428a6a078b8e9de655146040e4795b64fb0af2a2b5913",
+      "bytes": 224476
+    },
+    {
+      "path": "src/assets/ganges-river.webp",
+      "sha256": "0449f41242f310ec402406e80aceb666ee01613429de6445455df416843547ea",
+      "bytes": 198658
+    },
+    {
+      "path": "src/assets/great-barrier-reef.webp",
+      "sha256": "fa2639d138ad08777b027baadedeaf2140a73d65f85b5f738dbe49c94db3f7bf",
+      "bytes": 279650
+    },
+    {
+      "path": "src/assets/iara-guide.webp",
+      "sha256": "b0741afccd19438a8f9e025b80d3227c690ffc2d2dea9f06807975be35e1c290",
+      "bytes": 127462
+    },
+    {
+      "path": "src/assets/jack-guide.webp",
+      "sha256": "d0ba259695915a6fa96b907a03ff078455065cfeb7cc8f16e579eead97cbabb9",
+      "bytes": 71556
+    },
+    {
+      "path": "src/assets/jelena-guide.webp",
+      "sha256": "72fcc27fa414f4f02ae1c4f9af65de6904f28000e4c5ed215093bb3070e67f1a",
+      "bytes": 79026
+    },
+    {
+      "path": "src/assets/kabelo-guide.webp",
+      "sha256": "d52b3b886df2272cb65cc9c6b5f4ff506299e022342dc7711df2333fb2379b8c",
+      "bytes": 196942
+    },
+    {
+      "path": "src/assets/lake-baikal.webp",
+      "sha256": "8958d6c84e7b744ad75c69277a10180f92667ab3eac794624251cc23a1bf35d2",
+      "bytes": 230542
+    },
+    {
+      "path": "src/assets/lake-holiday.webp",
+      "sha256": "04edfbe1c3fb5be7ba93dd78c8305954c1bfd953033a20fdc6b3ca45ad501f88",
+      "bytes": 329218
+    },
+    {
+      "path": "src/assets/mariam-guide.webp",
+      "sha256": "0a14d1d94e39df9cd61bae94bbb7428361e67bb7d76ecdf39da2dcd0d8e01d6a",
+      "bytes": 163866
+    },
+    {
+      "path": "src/assets/mateo-guide.webp",
+      "sha256": "5c60c457de2fb5d972fd25d69f22d9ea4c84b7a7823e6e5457c2a45729314668",
+      "bytes": 86868
+    },
+    {
+      "path": "src/assets/maya-guide.webp",
+      "sha256": "2550b74773e0b6be8f87891c5d09355a07bf18642bf955b6c06c7611c6d45d60",
+      "bytes": 186704
+    },
+    {
+      "path": "src/assets/nile-river.webp",
+      "sha256": "f574bad60ddcb530bb2a3de280cd99997a9f4b36eb9cda12b8924d8b1adb5dc4",
+      "bytes": 270930
+    },
+    {
+      "path": "src/assets/noah-guide.webp",
+      "sha256": "a79ab85a62b11cacf01d14e7bde4b40887ebb1ce4989eba0741fad451840e4b2",
+      "bytes": 117160
+    },
+    {
+      "path": "src/assets/okavango-delta.webp",
+      "sha256": "0e46bad291c3c7bfd38317d34a6f340a350b296b62f154254b07462eb71fd93a",
+      "bytes": 219328
+    },
+    {
+      "path": "src/assets/seto-inland-sea.webp",
+      "sha256": "542bdfa843ff73ecfab50b5dbd628a9a57bb26d37e14cbbad229afc93aeec9b0",
+      "bytes": 186602
+    },
+    {
+      "path": "src/assets/sreyneang-guide.webp",
+      "sha256": "fb6f13aa73cca67a14888d2863bbdc9742598cea0bd69b9000c781b81efe248e",
+      "bytes": 158704
+    },
+    {
+      "path": "src/assets/tonle-sap.webp",
+      "sha256": "e7a004e926f63facb23752d69adc0a80f7d04a33167dabf538d3583a57c5b195",
+      "bytes": 206242
+    },
+    {
+      "path": "src/assets/wei-guide.webp",
+      "sha256": "1535ba802ace69578c15974a9148f4e352a776c515ae8397344ec7c02e8a524d",
+      "bytes": 82584
+    },
+    {
+      "path": "src/assets/yellow-river-delta.webp",
+      "sha256": "31d59968165651da13012fe3f8b842c804730783a1528de5ce81dffd9e82110f",
+      "bytes": 285108
+    },
+    {
+      "path": "src/assets/zahra-guide.webp",
+      "sha256": "808fc358a1e99284fdfaff03f99354eb88ced7f5031212f8f9952a6efc73f3b3",
+      "bytes": 206502
+    },
+    {
+      "path": "src/components/CampaignTransfer.tsx",
+      "sha256": "8f84480c154ccc2b1f8b2d503504cea5d350c91c3065bdf9f8c3611af3d04410",
+      "bytes": 4028
+    },
+    {
+      "path": "src/components/EcosystemWeb.tsx",
+      "sha256": "6f8d755147f9f3274aeb6ec9a9458c44b4abee804600ebfd0ee928c8c0385691",
+      "bytes": 3613
+    },
+    {
+      "path": "src/components/ErrorBoundary.tsx",
+      "sha256": "6e761f09c3543a15669084540222ea97c3d51bfdcb36f1f75616b66ac8d26282",
+      "bytes": 1183
+    },
+    {
+      "path": "src/components/FieldSettings.tsx",
+      "sha256": "f7acbe60656e17c4f2839bc4f875c45ec1a0f6e0aae39444288e258c1ddfe4b2",
+      "bytes": 2966
+    },
+    {
+      "path": "src/components/FishingScene.tsx",
+      "sha256": "691f19e462d1d8458115fada8b9848c1d9369fd94f865f74728af6d7397dfdb3",
+      "bytes": 3244
+    },
+    {
+      "path": "src/components/LearningPanel.tsx",
+      "sha256": "f139a38c1b8cbb853379716638a4b8a8a1930ae78eb32991504d0b8ab568a9c7",
+      "bytes": 2059
+    },
+    {
+      "path": "src/components/ObservationJournal.tsx",
+      "sha256": "e3c2cfb5a2e7ce375a9e23678eb05f8f2f8ef11c2878681aa26d6b39af3ce2a9",
+      "bytes": 3221
+    },
+    {
+      "path": "src/components/PostcardDownload.tsx",
+      "sha256": "eb65af148baa7f12a4fa58558d2a62ab12a4f2aa74a62e1df423ce39dce9f8c9",
+      "bytes": 2181
+    },
+    {
+      "path": "src/components/ResearchAtlas.tsx",
+      "sha256": "aa0fccce22f0c21788270009c831e3512fea70de277d7e37c51fea4a475b38f7",
+      "bytes": 5420
+    },
+    {
+      "path": "src/data/alaska.ts",
+      "sha256": "575f200efdac1305f637f1e36bd7edcec824c6b400c9a8cd55e5a7f608e1906e",
+      "bytes": 9027
+    },
+    {
+      "path": "src/data/amazon.ts",
+      "sha256": "1432cdb6d22e9f8967381d783c72bbff5e4e51b70a8a1a8c9aa1e500812efb30",
+      "bytes": 9883
+    },
+    {
+      "path": "src/data/australia.ts",
+      "sha256": "b51eae3b82ff3da95331256c0110972053db01a3d34c3a2294c7af9de8735961",
+      "bytes": 10350
+    },
+    {
+      "path": "src/data/baikal.ts",
+      "sha256": "093e7a56bd7ad4b53e311bb7864baeaff98ccbea9400f354223b2ff56edcd440",
+      "bytes": 9365
+    },
+    {
+      "path": "src/data/catchPhotos.ts",
+      "sha256": "4f1d739c590b3762ad74d24826d2afb52607007fe8199a84d0e620f97847c6b1",
+      "bytes": 2257
+    },
+    {
+      "path": "src/data/china.ts",
+      "sha256": "f81557f3e093b89c5fb2f33d346963c0d70b729edd4ad6f201e6d3779ff72593",
+      "bytes": 12035
+    },
+    {
+      "path": "src/data/danube.ts",
+      "sha256": "7f5d21582b6f0cd76b5ae52708d1c81af4391278e46be2b66fffc4e1d912be8d",
+      "bytes": 14055
+    },
+    {
+      "path": "src/data/euphrates.ts",
+      "sha256": "e20459a1636ecfec0e5be3cfcb49f5a2919ba139481e2ba7dc365d12096815ca",
+      "bytes": 10590
+    },
+    {
+      "path": "src/data/florida.ts",
+      "sha256": "228d4d4c6c4a818e17c5e0ac453ff86bd45cc3bb167e984ef9c94a4a42c6fcfd",
+      "bytes": 8423
+    },
+    {
+      "path": "src/data/galapagos.ts",
+      "sha256": "c52dc6fbcea754d38ed6fe769ffb91f78c84c4308d3010009bfd9a9575639925",
+      "bytes": 11851
+    },
+    {
+      "path": "src/data/ganges.ts",
+      "sha256": "1f469c9e674cb1afaaddadc164cdbd117a40ed1d62f8a3ab14a7e8bf3e7db20f",
+      "bytes": 10753
+    },
+    {
+      "path": "src/data/glossary.ts",
+      "sha256": "f559403186adcd35b99ac01ada6baf8df5f66eb7a531488af44227df375548c9",
+      "bytes": 3622
+    },
+    {
+      "path": "src/data/japan.ts",
+      "sha256": "044b630787f8230c226ffde15ff0a7fc2565fa7cae0f89ee11961acb87d488b2",
+      "bytes": 11914
+    },
+    {
+      "path": "src/data/lakeHoliday.ts",
+      "sha256": "d39977472845f2aab7ac05789c0bf69c0a7a6a28bb0d75eccef8d053d57b4225",
+      "bytes": 9161
+    },
+    {
+      "path": "src/data/learning.ts",
+      "sha256": "1541e5ba56a296919bdb184e9d221c1aeea7d2569bf1bcfdef5dd532d8760a61",
+      "bytes": 26815
+    },
+    {
+      "path": "src/data/nile.ts",
+      "sha256": "6faf8ffd95927a447df47a19eff04bb69081b632ff3de61ff341bebc3a8e731c",
+      "bytes": 9553
+    },
+    {
+      "path": "src/data/okavango.ts",
+      "sha256": "642e421350eee553bd1d0c7b314acac0ba62a6bf55d799b24b4ff35b8156d1e1",
+      "bytes": 7583
+    },
+    {
+      "path": "src/data/researchProjects.ts",
+      "sha256": "42fd1cacee41fa3de10e5141b981f5d62a2e05eaf8a24594e540089d1fd016b9",
+      "bytes": 2109
+    },
+    {
+      "path": "src/data/sourceLedger.ts",
+      "sha256": "6ed2b340f48d1befb5ab6cc599837721a5494af0a79ce85a9fbf9749649f25a3",
+      "bytes": 10586
+    },
+    {
+      "path": "src/data/tonleSap.ts",
+      "sha256": "fae212a89a4cd406b5fe0f11db3cf549adc83e6dce22a6d8a2db7a4aa3903cba",
+      "bytes": 8779
+    },
+    {
+      "path": "src/data/venues.ts",
+      "sha256": "a6c5667911fc04b538acf788e0bf7cdc5db0d4fde89ff7dc33be57159423be88",
+      "bytes": 81861
+    },
+    {
+      "path": "src/game/assignments.ts",
+      "sha256": "41b429ce2479ba49f8ff878d51d1be25c601730237a90d69abe5ded4265dbc71",
+      "bytes": 3607
+    },
+    {
+      "path": "src/game/engine.ts",
+      "sha256": "c73e5ab3ca7d3d19e9701447124fd9e2ceea3f071a7aa55d6eaed571e6a01eb3",
+      "bytes": 26120
+    },
+    {
+      "path": "src/game/progress.ts",
+      "sha256": "db64aef8f595d7dd75b41fb247b13e18b6e202961758c26847d7fa638d1a7364",
+      "bytes": 1555
+    },
+    {
+      "path": "src/game/save.ts",
+      "sha256": "17278b17f14312bdf6efc45e187cf4864d877d6899b3032fce2058b32e51e8d7",
+      "bytes": 18761
+    },
+    {
+      "path": "src/game/seasons.ts",
+      "sha256": "bc88523742e12f87f34e9a77893bd259569557f518f79b8d7176f0ac24488f2c",
+      "bytes": 770
+    },
+    {
+      "path": "src/game/storage.ts",
+      "sha256": "4be71f54ceb1a92646c3fa13b548de430bc3aef83e986bf18af6e0499d45ed1d",
+      "bytes": 4154
+    },
+    {
+      "path": "src/game/useJourney.ts",
+      "sha256": "594c6b47f2f1281952c5a90863d30d00873eb021c99b3b194f5292c2dec6294f",
+      "bytes": 2505
+    },
+    {
+      "path": "src/game/validation.ts",
+      "sha256": "21b3fc4f4cb151602653274db4f5a00996f511f099f95ad529155f5e12319cec",
+      "bytes": 3950
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "ca04dbb6dc3c182c57abb12e0f89e56d549be09366ab3673273afa6476c81115",
+      "bytes": 410
+    },
+    {
+      "path": "src/styles.css",
+      "sha256": "b342155d86e6e7ffc9736ed64cab7c9cf490b38376c6c94c56804a7a97fb516d",
+      "bytes": 66905
+    },
+    {
+      "path": "src/types.ts",
+      "sha256": "c35727b19d4c08342b0e3e872cbdff32611bf5d5d78541450bf5b2b9c1a52b95",
+      "bytes": 4648
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+      "bytes": 38
+    }
+  ],
+  "history_exported": false
+}

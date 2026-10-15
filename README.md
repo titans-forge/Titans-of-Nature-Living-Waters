@@ -1,5 +1,8 @@
 # Titans of Nature: Living Waters
 
+> **Current licensing policy — Forge Game License 2.0 (FG2-LIVING-WATERS-20261015).** This licensing-only edition requires separate permission for either public hosting or AI training by above-threshold entities on qualifying new Forge-controlled material. Previously supplied gameplay/media retain MIT, earlier Forge and other applicable grants. No retroactive restriction is claimed. See [release scope](LICENSING.md), [complete current terms](LICENSE), [preserved prior terms](LICENSE-LEGACY-PRE-FORGE-2.0.txt), [offline licensing page](FORGE-LICENSING.html) and [new download](https://github.com/titans-forge/Titans-of-Nature-Living-Waters/releases/tag/forge-license-2.0-20261015). Earlier statements below describe the earlier game and preserved grants.
+
+
 **Every cast reveals part of a living system.**
 
 Living Waters is a free, local-first educational fishing expedition. Fifteen destinations connect conversations with fictional local guides, field equipment, habitat reading, fish and non-fish encounters, wildlife handling, seasonal change, and a shared ecosystem journal.

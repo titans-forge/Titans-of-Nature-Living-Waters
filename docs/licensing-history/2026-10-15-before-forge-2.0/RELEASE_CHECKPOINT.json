@@ -1,0 +1,10 @@
+{
+  "product": "Titans of Nature: Living Waters",
+  "version": "1.15.0",
+  "release_date": "2026-10-11",
+  "license": "Forge Game Hosting License 1.0",
+  "license_sha256": "28638be413f7815704fe68aed52a4ea4cb7bd4d28b35f2dca9b78d438a4a90bf",
+  "historical_checkpoint": "LICENSING_CHECKPOINT.json",
+  "prior_grants_preserved": true,
+  "scope": "New Titans Forge-controlled upgrades; earlier MIT and separate media terms remain unchanged."
+}
